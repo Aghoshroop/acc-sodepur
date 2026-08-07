@@ -1,0 +1,274 @@
+"use client";
+
+import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
+
+function useIntersectionObserver(options = { threshold: 0.2 }) {
+  const [isIntersecting, setIsIntersecting] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIsIntersecting(true);
+      }
+    }, options);
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) observer.unobserve(ref.current);
+    };
+  }, [options]);
+
+  return [ref, isIntersecting] as const;
+}
+
+export default function ClientAboutContent() {
+  const [hoveredImage, setHoveredImage] = useState<string | null>(null);
+  const [mousePos, setMousePos] = useState({ x: 50, y: 50, clientX: 0, clientY: 0 });
+
+  const [modernSectionRef, isModernVisible] = useIntersectionObserver();
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, src: string) => {
+    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - left) / width) * 100;
+    const y = ((e.clientY - top) / height) * 100;
+    setHoveredImage(src);
+    setMousePos({ x, y, clientX: e.clientX, clientY: e.clientY });
+  };
+
+  const handleMouseLeave = () => setHoveredImage(null);
+
+  return (
+    <section className="relative z-20 w-full bg-chalk-white text-carbon-black py-32 min-h-screen overflow-hidden">
+      
+      {/* ----------------- HISTORY SECTION ----------------- */}
+      <div className="max-w-[1600px] mx-auto px-6 md:px-12 grid grid-cols-12 gap-16 lg:gap-24 relative">
+        
+        {/* Left Column: Text */}
+        <div className="col-span-12 lg:col-span-7 relative">
+          
+          <div className="flex flex-col gap-12 font-light leading-relaxed text-lg md:text-xl text-carbon-black/80">
+            <div className="mb-6">
+               <h2 className="text-5xl md:text-7xl font-primary uppercase tracking-tight text-carbon-black mb-8 border-b-4 border-track-red inline-block pb-4">
+                 Our History
+               </h2>
+            </div>
+            
+            <p>
+              <strong className="text-carbon-black font-semibold">Athletic Coaching Camp (ACC)</strong> was established on 4th April, 1969 with an idea that heralded a new beginning towards Scientific Coaching and Training in various disciplines of sports. Our goal has always been to involve the youth in the field of sports and games to improve awareness and protect them against the ills of society. We hold a simple philosophy: building a foundation to help the younger generation become healthy on both mental and physical levels.
+            </p>
+            
+            <p>
+              Throughout the world, sports have a popular appeal among people of all ages and sexes. It is vital to both the individual and society, considered an important criterion for the enhancement of the prestige and image of any nation. However, the prevailing socio-economic conditions during our early years denied the scope to provide adequate infrastructure, facilities, and the appropriate coaching which is indispensable for the promotion of sports in society.
+            </p>
+            
+            <p>
+              Keeping this challenge in mind, ACC was born to bridge that gap and provide an uncompromising platform for athletic excellence.
+            </p>
+            
+            <div className="my-8 py-8 border-y border-carbon-black/10">
+              <h3 className="text-3xl font-primary uppercase tracking-wide text-track-red mb-6">Rise to Excellence</h3>
+              <p className="mb-6">
+                In the initial stage, ACC produced several district and state-level athletes. But today, ACC stands proud. Athletes who train here have not only become <strong>National Champions</strong> within the country but have also secured many Gold Medals from various International Arenas (such as the Asian Games, Asian Championships, and many more).
+              </p>
+              <p>
+                Now we can proudly say that this organization has already produced <strong>3 Olympians</strong> and earned <strong>72 international medals</strong> from different levels of the world's top competitions like the Olympic Games, World Championships, Commonwealth Games, and Asian Games.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-3xl font-primary uppercase tracking-wide text-track-red mb-6">Prestigious Recognition</h3>
+              <p>
+                Our members have received the most prestigious awards in India—including the <strong>Dronacharya Award</strong> and the <strong>Arjuna Award</strong>—from the Government of India, cementing ACC's legacy in the history of Indian athletics.
+              </p>
+            </div>
+          </div>
+
+          {/* The Magnified Image Overlay (Floating Box) */}
+          {hoveredImage && (
+            <div 
+              className="fixed z-50 w-[400px] h-[400px] rounded-2xl overflow-hidden shadow-2xl border-4 border-chalk-white bg-carbon-black pointer-events-none transition-opacity duration-200"
+              style={{
+                left: mousePos.clientX - 420, 
+                top: mousePos.clientY - 200, 
+                backgroundImage: `url(${hoveredImage})`,
+                backgroundPosition: `${mousePos.x}% ${mousePos.y}%`,
+                backgroundSize: '250%',
+                backgroundRepeat: 'no-repeat'
+              }}
+            >
+            </div>
+          )}
+        </div>
+
+        {/* Right Column: Images */}
+        <div className="col-span-12 lg:col-span-5 flex flex-col gap-8 relative z-20">
+          
+          <div className="flex items-center gap-4 mb-4">
+            <h3 className="text-xl font-primary uppercase tracking-widest text-carbon-black/40">The Legacy Years</h3>
+            <div className="flex-1 h-px bg-carbon-black/10"></div>
+          </div>
+
+          {/* Historical Images Staggered Grid */}
+          <div className="grid grid-cols-2 gap-4">
+            <div className="flex flex-col gap-4 pt-8">
+              <div 
+                className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md group cursor-crosshair"
+                onMouseMove={(e) => handleMouseMove(e, '/images/acc_history/19.jpg')}
+                onMouseLeave={handleMouseLeave}
+              >
+                <Image src="/images/acc_history/19.jpg" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
+              </div>
+              <div 
+                className="relative w-full aspect-[3/4] bg-carbon-black/5 overflow-hidden shadow-md group cursor-crosshair"
+                onMouseMove={(e) => handleMouseMove(e, '/images/acc_history/55.jpg')}
+                onMouseLeave={handleMouseLeave}
+              >
+                <Image src="/images/acc_history/55.jpg" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
+              </div>
+              <div 
+                className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md group cursor-crosshair"
+                onMouseMove={(e) => handleMouseMove(e, '/images/acc_history/101.jpg')}
+                onMouseLeave={handleMouseLeave}
+              >
+                <Image src="/images/acc_history/101.jpg" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
+              </div>
+              <div 
+                className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md group cursor-crosshair"
+                onMouseMove={(e) => handleMouseMove(e, '/images/acc_history/79.jpg')}
+                onMouseLeave={handleMouseLeave}
+              >
+                <Image src="/images/acc_history/79.jpg" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
+              </div>
+            </div>
+            <div className="flex flex-col gap-4">
+              <div 
+                className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md group cursor-crosshair"
+                onMouseMove={(e) => handleMouseMove(e, '/images/acc_history/30.jpg')}
+                onMouseLeave={handleMouseLeave}
+              >
+                <Image src="/images/acc_history/30.jpg" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
+              </div>
+              <div 
+                className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md group cursor-crosshair"
+                onMouseMove={(e) => handleMouseMove(e, '/images/acc_history/70.jpg')}
+                onMouseLeave={handleMouseLeave}
+              >
+                <Image src="/images/acc_history/70.jpg" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
+              </div>
+              <div 
+                className="relative w-full aspect-[3/4] bg-carbon-black/5 overflow-hidden shadow-md group cursor-crosshair"
+                onMouseMove={(e) => handleMouseMove(e, '/images/acc_history/91.jpg')}
+                onMouseLeave={handleMouseLeave}
+              >
+                <Image src="/images/acc_history/91.jpg" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
+              </div>
+              <div 
+                className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md group cursor-crosshair"
+                onMouseMove={(e) => handleMouseMove(e, '/images/acc_history/dronacharya.png')}
+                onMouseLeave={handleMouseLeave}
+              >
+                <Image src="/images/acc_history/dronacharya.png" alt="Historical ACC Dronacharya" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ----------------- MODERN ERA SECTION ----------------- */}
+      <div 
+        ref={modernSectionRef}
+        className={`mt-48 max-w-[1600px] mx-auto px-6 md:px-12 transition-all duration-[1500ms] ease-out ${isModernVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-24'}`}
+      >
+        <div className="flex items-center gap-6 mb-16">
+          <h2 className="text-5xl md:text-7xl font-primary uppercase tracking-tight text-carbon-black">
+            The Modern Era
+          </h2>
+          <div className="flex-1 h-1 bg-track-red mt-4"></div>
+        </div>
+
+        <p className="text-xl md:text-2xl font-light leading-relaxed text-carbon-black/80 max-w-4xl mb-24">
+          <strong className="font-semibold text-carbon-black">Athletic Coaching Camp (ACC) Sodepur</strong> features high-performance track-and-field infrastructure explicitly designed for competitive training.
+        </p>
+
+        {/* Feature Grid: Zigzag Layout */}
+        <div className="flex flex-col gap-32">
+          
+          {/* Feature 1: Synthetic Track */}
+          <div className="grid grid-cols-12 gap-12 items-center">
+            <div className="col-span-12 lg:col-span-6 relative z-20">
+              <div className="bg-chalk-white border border-carbon-black/10 p-10 md:p-16 shadow-2xl rounded-2xl relative -mr-16 lg:-mr-32">
+                <h3 className="text-3xl font-primary uppercase tracking-wide text-track-red mb-6">Synthetic Athletic Track</h3>
+                <p className="text-xl font-light text-carbon-black/70 leading-relaxed">
+                  Bengal's first private club setup featuring a high-tech synthetic running track designed to provide optimal grip, minimal impact, and world-class training conditions.
+                </p>
+              </div>
+            </div>
+            <div className="col-span-12 lg:col-span-6 relative z-10 h-[500px]">
+              <div 
+                className="relative w-full h-full bg-carbon-black/5 overflow-hidden shadow-xl rounded-2xl cursor-crosshair group"
+                onMouseMove={(e) => handleMouseMove(e, '/images/synthetic.jpg')}
+                onMouseLeave={handleMouseLeave}
+              >
+                <Image src="/images/synthetic.jpg" alt="Synthetic Track" fill className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out" />
+              </div>
+            </div>
+          </div>
+
+          {/* Feature 2: Dedicated Event Stations */}
+          <div className="grid grid-cols-12 gap-12 items-center flex-col-reverse lg:flex-row">
+            <div className="col-span-12 lg:col-span-6 relative z-10 h-[500px] order-2 lg:order-1">
+              <div 
+                className="relative w-full h-full bg-carbon-black/5 overflow-hidden shadow-xl rounded-2xl cursor-crosshair group"
+                onMouseMove={(e) => handleMouseMove(e, '/images/facility.jpg')}
+                onMouseLeave={handleMouseLeave}
+              >
+                <Image src="/images/facility.jpg" alt="Event Stations" fill className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out" />
+              </div>
+            </div>
+            <div className="col-span-12 lg:col-span-6 relative z-20 order-1 lg:order-2">
+              <div className="bg-chalk-white border border-carbon-black/10 p-10 md:p-16 shadow-2xl rounded-2xl relative -ml-16 lg:-ml-32">
+                <h3 className="text-3xl font-primary uppercase tracking-wide text-track-red mb-6">Dedicated Event Stations</h3>
+                <p className="text-xl font-light text-carbon-black/70 leading-relaxed">
+                  Specialized setups for long jump pits, shot put rings, hurdles, and pentathlon disciplines, ensuring our athletes have access to the specific environments they need to excel.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Feature 3: Strength, Conditioning & Coaching */}
+          <div className="grid grid-cols-12 gap-12 items-center">
+            <div className="col-span-12 lg:col-span-6 relative z-20">
+              <div className="bg-chalk-white border border-carbon-black/10 p-10 md:p-16 shadow-2xl rounded-2xl relative -mr-16 lg:-mr-32">
+                <h3 className="text-3xl font-primary uppercase tracking-wide text-track-red mb-6">Strength & Scientific Coaching</h3>
+                <div className="flex flex-col gap-6">
+                  <p className="text-xl font-light text-carbon-black/70 leading-relaxed">
+                    <strong>Strength & Conditioning Area:</strong> Equipped with essential free weights, cardio gear, and functional fitness spaces.
+                  </p>
+                  <p className="text-xl font-light text-carbon-black/70 leading-relaxed">
+                    <strong>Scientific Coaching:</strong> Professional guidance tailored for state and national-level competitive athletic trials.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="col-span-12 lg:col-span-6 relative z-10 h-[500px]">
+              <div 
+                className="relative w-full h-full bg-carbon-black/5 overflow-hidden shadow-xl rounded-2xl cursor-crosshair group"
+                onMouseMove={(e) => handleMouseMove(e, '/images/scintific.jpg')}
+                onMouseLeave={handleMouseLeave}
+              >
+                <Image src="/images/scintific.jpg" alt="Conditioning Area" fill className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out" />
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+  );
+}

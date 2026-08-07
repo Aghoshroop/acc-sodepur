@@ -1,0 +1,27 @@
+[
+  {
+    "id": "res-001",
+    "championship": "74th West Bengal State Athletic Championships",
+    "year": 2026,
+    "metrics": {
+      "qualifiedAthletes": 65,
+      "totalMedals": 62,
+      "gold": 18,
+      "silver": 32,
+      "bronze": 12,
+      "meetRecords": 6
+    },
+    "description": "Historic camp record with highest representation of any camp. ACC athletes proudly anchored elite units like Mohun Bagan AC, Aryans Club, and East Bengal."
+  },
+  {
+    "id": "res-002",
+    "championship": "73rd West Bengal State Athletic Championships",
+    "year": 2025,
+    "metrics": {
+      "qualifiedAthletes": 50,
+      "totalMedals": 42,
+      "meetRecords": 6
+    },
+    "description": "Dominant regional performance across sprints, hurdles, and combined events."
+  }
+]

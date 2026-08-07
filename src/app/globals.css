@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0A0A0A;
+  --foreground: #F4F4F0;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  /* ACC Colour System */
+  --color-track-red: #C8322B;
+  --color-carbon-black: #0A0A0A;
+  --color-chalk-white: #F4F4F0;
+  --color-concrete-grey: #222222;
+  --color-ash-grey: #888888;
+  
+  /* Temporary Font Fallbacks */
+  --font-primary: "Impact", "Arial Black", sans-serif;
+  --font-secondary: "Times New Roman", serif;
+  --font-body: "Inter", Arial, sans-serif;
+  
+  /* Disable rounded corners */
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Brutalist Reset (Desktop Only) */
+@media (min-width: 1024px) {
+  * {
+    border-radius: 0 !important;
+  }
+}
+
+/* Typography Scale constraints */
+.reading-width {
+  max-width: 65ch;
+}
+
+/* Accessibility / Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Mobile Safari safe area fixes */
+@supports (padding: max(0px)) {
+  .safe-pt { padding-top: max(var(--safe-area-inset-top, env(safe-area-inset-top)), 1rem); }
+  .safe-pb { padding-bottom: max(var(--safe-area-inset-bottom, env(safe-area-inset-bottom)), 1rem); }
+  .safe-pl { padding-left: max(var(--safe-area-inset-left, env(safe-area-inset-left)), 1rem); }
+  .safe-pr { padding-right: max(var(--safe-area-inset-right, env(safe-area-inset-right)), 1rem); }
+}
+
+/* Hide scrollbar for clean mobile galleries */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}

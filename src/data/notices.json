@@ -1,0 +1,39 @@
+[
+  {
+    "id": "notice-001",
+    "title": "Annual Admissions Selection Trials 2026",
+    "description": "The annual selection trials for the upcoming athletic season. Open to age groups 10-18.",
+    "publishDate": "2026-08-01",
+    "expiryDate": "2026-08-15",
+    "category": "Admissions",
+    "archiveStatus": false,
+    "link": "/admissions/trials"
+  },
+  {
+    "id": "notice-002",
+    "title": "West Bengal State Athletics Championships Preparation",
+    "description": "Intensive preparation camp schedule for athletes representing affiliated clubs at the State Championships.",
+    "publishDate": "2026-07-25",
+    "expiryDate": "2026-08-05",
+    "category": "Trials",
+    "archiveStatus": false
+  },
+  {
+    "id": "notice-003",
+    "title": "Ground Maintenance - Synthetic Track Closure",
+    "description": "The main synthetic track will be closed for routine maintenance on Sunday. Hill ramp remains open.",
+    "publishDate": "2026-07-30",
+    "expiryDate": "2026-08-02",
+    "category": "Ground Updates",
+    "archiveStatus": false
+  },
+  {
+    "id": "notice-004",
+    "title": "Premier Relay Team Selections",
+    "description": "Final roster selections for the franchise teams: Beijing Dragons, Berlin Eagles, Sydney Kangaroos, Edmonton Horses, Athens Phoenix.",
+    "publishDate": "2026-03-01",
+    "expiryDate": "2026-03-15",
+    "category": "Premier Relay",
+    "archiveStatus": true
+  }
+]
