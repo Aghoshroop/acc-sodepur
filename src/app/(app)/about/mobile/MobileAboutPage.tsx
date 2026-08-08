@@ -262,6 +262,63 @@ export default function MobileAboutPage() {
 
         </div>
       </div>
+
+      {/* ----------------- OUR VISION SECTION ----------------- */}
+      <div className="w-full bg-chalk-white px-6 pb-24">
+        <div className="flex flex-col items-center gap-4 mb-10">
+          <div className="w-12 h-1 bg-track-red mb-2"></div>
+          <h2 className="text-4xl font-primary uppercase tracking-tight text-carbon-black text-center">
+            Our Vision
+          </h2>
+        </div>
+
+        <div className="flex flex-col gap-10">
+          
+          {/* Images Collage */}
+          <div className="flex flex-col gap-4">
+            <div className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-lg rounded-xl">
+              <Image src="/images/ACCfamily.jpg" alt="Our Vision" fill className="object-cover" />
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              <div className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-lg rounded-xl">
+                <Image src="/images/endurance.jpg" alt="Endurance Training" fill className="object-cover" />
+              </div>
+              <div className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-lg rounded-xl">
+                <Image src="/images/mid-distance.jpg" alt="Mid Distance" fill className="object-cover" />
+              </div>
+            </div>
+          </div>
+
+          {/* Text Content */}
+          <div className="flex flex-col gap-6 font-light leading-relaxed text-lg text-carbon-black/80">
+            <p className="text-xl text-carbon-black font-semibold border-l-4 border-track-red pl-4">
+              ACC's philosophy is to develop Indian sports culture in the society on scientific basis.
+            </p>
+            <ul className="list-disc pl-5 space-y-3">
+              <li><strong className="text-carbon-black">Our mission</strong> is to produce more Olympian and International athletes.</li>
+              <li>To impart <strong className="text-carbon-black">advance level of Scientific Training</strong> from the very young age.</li>
+              <li>To ensure proper <strong className="text-carbon-black">personality development</strong>, general education in the field of sports.</li>
+              <li>To provide advance level training support to <strong className="text-carbon-black">National and International level</strong> athletes.</li>
+              <li>To bring out raw young talents from the remote places of Bengal and other States and provide them right support for their development in Sports life.</li>
+            </ul>
+            
+            <div className="mt-6 pt-6 border-t border-carbon-black/10">
+              <h3 className="text-2xl font-primary uppercase tracking-wide text-track-red mb-4">Financial Support to the Athletes</h3>
+              <p className="mb-4">
+                With our limited possibilities, we support our athletes who come from poor family background with some financial aids. We go all-out support for good achiever/talent who need medical supports, spikes & gear and all type of supporting needs as and when required.
+              </p>
+              <p className="mb-6">
+                In order to fulfill the dream of producing more Olympian in to reality ACC is going to construct real Sports Infrastructure with the most modern facility for the improvement of Sports standards in West Bengal as well as in India.
+              </p>
+              <p className="bg-carbon-black text-chalk-white p-6 rounded-xl font-medium text-base">
+                With our limited facility we already produce <strong className="text-track-red text-xl">3 Olympians</strong> from Bengal. Only Camp from Bengal to produce more than 1 Olympian. So, with the support from right people we can achieve remarkable feat in the history of Indian Athletics.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   );
 }

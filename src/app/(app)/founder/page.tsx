@@ -147,7 +147,7 @@ export default function FounderPage() {
           >
             <source src="/videos/founder.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-chalk-white/80 via-carbon-black/20 to-carbon-black pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-carbon-black/80 via-carbon-black/50 to-carbon-black pointer-events-none" />
         </div>
         
         <div className="relative z-10 text-center max-w-7xl mx-auto px-6">

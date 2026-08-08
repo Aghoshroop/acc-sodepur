@@ -31,6 +31,7 @@ export default function ClientAboutContent() {
   const [mousePos, setMousePos] = useState({ x: 50, y: 50, clientX: 0, clientY: 0 });
 
   const [modernSectionRef, isModernVisible] = useIntersectionObserver();
+  const [visionSectionRef, isVisionVisible] = useIntersectionObserver();
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, src: string) => {
     const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
@@ -266,6 +267,71 @@ export default function ClientAboutContent() {
             </div>
           </div>
 
+        </div>
+      </div>
+
+      {/* ----------------- OUR VISION SECTION ----------------- */}
+      <div 
+        ref={visionSectionRef}
+        className={`mt-48 max-w-[1600px] mx-auto px-6 md:px-12 pb-32 transition-all duration-[1500ms] ease-out ${isVisionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-24'}`}
+      >
+        <div className="flex items-center gap-6 mb-16">
+          <h2 className="text-5xl md:text-7xl font-primary uppercase tracking-tight text-carbon-black">
+            Our Vision
+          </h2>
+          <div className="flex-1 h-1 bg-track-red mt-4"></div>
+        </div>
+
+        <div className="grid grid-cols-12 gap-16 lg:gap-24">
+          
+          {/* Left Column: Images Collage */}
+          <div className="col-span-12 lg:col-span-5 flex flex-col gap-6">
+            <div className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-xl rounded-xl">
+              <Image src="/images/ACCfamily.jpg" alt="Our Vision" fill className="object-cover hover:scale-105 transition-transform duration-500" />
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-xl rounded-xl">
+                <Image src="/images/endurance.jpg" alt="Endurance Training" fill className="object-cover hover:scale-105 transition-transform duration-500" />
+              </div>
+              <div className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-xl rounded-xl">
+                <Image src="/images/mid-distance.jpg" alt="Mid Distance" fill className="object-cover hover:scale-105 transition-transform duration-500" />
+              </div>
+            </div>
+            <div className="relative w-full aspect-[16/9] bg-carbon-black/5 overflow-hidden shadow-xl rounded-xl">
+              <Image src="/images/medal.jpg" alt="Excellence" fill className="object-cover hover:scale-105 transition-transform duration-500" />
+            </div>
+          </div>
+
+          {/* Right Column: Text Content */}
+          <div className="col-span-12 lg:col-span-7">
+            <div className="flex flex-col gap-8 font-light leading-relaxed text-lg md:text-xl text-carbon-black/80 sticky top-32">
+              <p className="text-2xl text-carbon-black font-semibold border-l-4 border-track-red pl-6">
+                ACC's philosophy is to develop Indian sports culture in the society on scientific basis.
+              </p>
+              
+              <ul className="list-disc pl-6 space-y-4">
+                <li><strong className="text-carbon-black">Our mission</strong> is to produce more Olympian and International athletes.</li>
+                <li>To impart <strong className="text-carbon-black">advance level of Scientific Training</strong> from the very young age.</li>
+                <li>To ensure proper <strong className="text-carbon-black">personality development</strong>, general education in the field of sports.</li>
+                <li>To provide advance level training support to <strong className="text-carbon-black">National and International level</strong> athletes.</li>
+                <li>To bring out raw young talents from the remote places of Bengal and other States and provide them right support for their development in Sports life.</li>
+              </ul>
+              
+              <div className="mt-8 pt-8 border-t border-carbon-black/10">
+                <h3 className="text-3xl font-primary uppercase tracking-wide text-track-red mb-6">Financial Support to the Athletes</h3>
+                <p className="mb-6">
+                  With our limited possibilities, we support our athletes who come from poor family background with some financial aids. We go all-out support for good achiever/talent who need medical supports, spikes & gear and all type of supporting needs as and when required.
+                </p>
+                <p className="mb-6">
+                  In order to fulfill the dream of producing more Olympian in to reality ACC is going to construct real Sports Infrastructure with the most modern facility for the improvement of Sports standards in West Bengal as well as in India.
+                </p>
+                <p className="bg-carbon-black text-chalk-white p-8 rounded-xl font-medium">
+                  With our limited facility we already produce <strong className="text-track-red text-2xl">3 Olympians</strong> from Bengal. Only Camp from Bengal to produce more than 1 Olympian. So, with the support from right people we can achieve remarkable feat in the history of Indian Athletics.
+                </p>
+              </div>
+            </div>
+          </div>
+          
         </div>
       </div>
 

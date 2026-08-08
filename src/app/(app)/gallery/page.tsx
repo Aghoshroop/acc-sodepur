@@ -1,32 +1,59 @@
-import Image from 'next/image';
-import MobileGalleryPage from './mobile/MobileGalleryPage';
+'use client';
+
+import { useEffect, useRef } from 'react';
+import Lenis from 'lenis';
+import SectionArchiveHero from './components/SectionArchiveHero';
+import SectionTheBeginning from './components/SectionTheBeginning';
+import SectionLegacyTimeline from './components/SectionLegacyTimeline';
+import SectionThenVsNow from './components/SectionThenVsNow';
+import SectionHallOfMoments from './components/SectionHallOfMoments';
+import SectionMemoryCorridor from './components/SectionMemoryCorridor';
+import SectionLegacyWall from './components/SectionLegacyWall';
+// import SectionChampionshipYears from './components/SectionChampionshipYears';
+import SectionFilmStrip from './components/SectionFilmStrip';
+import SectionModernACC from './components/SectionModernACC';
+import { GalleryProvider } from './context/GalleryContext';
+import StoriesBehindTheFrame from './components/StoriesBehindTheFrame';
+import { LenisProvider } from '@/components/providers/LenisProvider';
 
 export default function GalleryPage() {
   return (
-    <main className="w-full bg-carbon-black min-h-screen text-chalk-white border-t-8 border-track-red relative overflow-hidden">
-      
-      {/* --- DESKTOP VIEW --- */}
-      <div className="hidden lg:block">
-        <div className="absolute inset-0 z-0">
-          <Image src="/images/synthetic.jpg" alt="Background" fill className="object-cover opacity-20 " />
-          <div className="absolute inset-0 bg-gradient-to-b from-carbon-black/95 to-carbon-black/80 backdrop-blur-sm" />
-        </div>
+    <LenisProvider>
+      <GalleryProvider>
+      <main className="w-full bg-[#050505] text-[#F6F2EA] min-h-screen relative selection:bg-[#C8A96A] selection:text-[#050505]">
+        
+        {/* Modal Overlay */}
+        <StoriesBehindTheFrame />
 
-        <div className="relative z-10 pt-32 pb-24 px-6 md:px-12 max-w-7xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-primary uppercase tracking-widest text-chalk-white mb-8 border-b-4 border-track-red inline-block pb-2">
-            GALLERY
-          </h1>
-          <p className="text-chalk-white/60 text-lg uppercase tracking-widest">
-            This section is currently under construction.
-          </p>
-        </div>
-      </div>
+        {/* 1. THE ARCHIVE */}
+      <SectionArchiveHero />
 
-      {/* --- MOBILE VIEW --- */}
-      <div className="block lg:hidden w-full">
-        <MobileGalleryPage />
-      </div>
+      {/* 2. THE BEGINNING */}
+      <SectionTheBeginning />
 
-    </main>
+      {/* 3. THE LEGACY TIMELINE */}
+      <SectionLegacyTimeline />
+
+      {/* 4. THEN VS NOW */}
+      <SectionThenVsNow />
+
+      {/* 5. HALL OF MOMENTS */}
+      <SectionHallOfMoments />
+
+      {/* 6. MEMORY CORRIDOR */}
+      <SectionMemoryCorridor />
+
+      {/* 7. LEGACY WALL */}
+      <SectionLegacyWall />
+
+      {/* 8. FILM STRIP */}
+      <SectionFilmStrip />
+
+      {/* 9. MODERN ACC (and final CTA) */}
+      <SectionModernACC />
+
+      </main>
+    </GalleryProvider>
+    </LenisProvider>
   );
 }
