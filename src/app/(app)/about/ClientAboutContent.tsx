@@ -93,12 +93,12 @@ export default function ClientAboutContent() {
               <div 
                 className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md group"
               >
-                <Image src="/images/acc_history/34.jpg" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
+                <Image src="/images/acc_history/1st-acc.jpg" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
               </div>
               <div 
                 className="relative w-full aspect-[3/4] bg-carbon-black/5 overflow-hidden shadow-md group"
               >
-                <Image src="/images/acc_history/74.jpg" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
+                <Image src="/images/acc_history/old-group-photo.jpg" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
               </div>
               <div 
                 className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md group"
@@ -108,7 +108,7 @@ export default function ClientAboutContent() {
               <div 
                 className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md group"
               >
-                <Image src="/images/acc_history/67.jpg" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
+                <Image src="/images/acc_history/old-training.jpg" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
               </div>
             </div>
             <div className="flex flex-col gap-4">
@@ -130,7 +130,7 @@ export default function ClientAboutContent() {
               <div 
                 className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md group"
               >
-                <Image src="/images/acc_history/dronacharya.png" alt="Historical ACC Dronacharya" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
+                <Image src="/images/acc_history/old-highjump.jpg" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
               </div>
             </div>
           </div>
