@@ -6,26 +6,26 @@ import { motion } from 'framer-motion';
 
 const EXPLORE_ITEMS = [
   {
-    title: 'Founder & Legacy',
+    title: 'The Founder',
     href: '/founder',
     image: '/images/legacy/legacy-founder-kuntal-roy.jpg',
     colSpan: 'col-span-1 md:col-span-2',
   },
   {
-    title: 'Performance',
-    href: '/programmes',
+    title: 'Achievements',
+    href: '/achievements',
     image: '/images/performance/performance-hero-focus.jpg',
     colSpan: 'col-span-1',
   },
   {
     title: 'Facilities',
     href: '/facilities',
-    image: '/images/campus/campus-hero-evolution.jpg',
+    image: '/images/facility1.jpg',
     colSpan: 'col-span-1',
   },
   {
     title: 'Community',
-    href: '/community',
+    href: '/administration',
     image: '/images/legacy/legacy-timeline-2002.jpg',
     colSpan: 'col-span-1',
   },

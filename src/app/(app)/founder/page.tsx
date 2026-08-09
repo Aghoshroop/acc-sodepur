@@ -4,36 +4,107 @@ import { useRef } from 'react';
 import Image from 'next/image';
 import { motion, useScroll } from 'framer-motion';
 import Link from 'next/link';
-import FounderProtegesCarousel from '@/features/founder/components/FounderProtegesCarousel';
+import HierarchicalProteges from '@/features/founder/components/HierarchicalProteges';
 import MobileFounderHero from '@/features/founder/components/mobile/MobileFounderHero';
 import MobileFounderChapters from '@/features/founder/components/mobile/MobileFounderChapters';
-import MobileFounderProteges from '@/features/founder/components/mobile/MobileFounderProteges';
+import MobileHierarchicalProteges from '@/features/founder/components/mobile/MobileHierarchicalProteges';
 import MobileFounderTimeline from '@/features/founder/components/mobile/MobileFounderTimeline';
 import MobileFounderOutro from '@/features/founder/components/mobile/MobileFounderOutro';
 
 import OlympianTag from '@/components/ui/OlympianTag';
+import FloatingRedDots from '@/components/ui/FloatingRedDots';
 
 const OLYMPIANS = [
   {
     name: <>Soma Biswas<OlympianTag /></>,
     slug: 'soma-biswas',
-    image: '/images/soma.jpg',
+    image: '/images/somadi.jpg',
     event: 'Heptathlon',
-    achievement: 'Sydney 2000, Athens 2004, Asian Games Silver',
+    achievement: 'Olympic Games (Sydney 2000 & Athens 2004), Commonwealth Games (Melbourne 2006), Asian Games Silver Medallist (Busan 2002, Doha 2006), World Combined Event, Asian Championship Medallist (2001, 2003, 2005)',
   },
   {
-    name: <>Sushmita Singha Roy<OlympianTag /></>,
-    slug: 'sushmita-singha-roy',
+    name: <>Sanjay Rai<OlympianTag /></>,
+    slug: 'sanjay-rai',
+    image: '/images/sanjayda.jpg',
+    event: 'Long Jump',
+    achievement: 'Olympic Games (Sydney 2000), World Championship (Edmonton 2001), World Railway Medallist, Afro-Asian Games, Asian Championship Medallist (Jakarta 2000)',
+  },
+  {
+    name: <>Susmita Singha Roy<OlympianTag /></>,
+    slug: 'susmita-singha-roy',
     image: '/images/susmita.jpg',
     event: 'Heptathlon',
-    achievement: 'Beijing 2008',
+    achievement: 'Olympic Games (Beijing 2008), Commonwealth Games (Melbourne 2006 & Delhi 2010), Asian Games (Guangzhou 2010, Incheon 2014), World Combined Event, Asian Championship Medallist (Incheon 2005, Amman 2007, Kobe 2011, Pune 2013)',
   },
   {
-    name: <>Sanjay Kumar Rai<OlympianTag /></>,
-    slug: 'sanjay-kumar-rai',
-    image: '/images/sanjay.jpg',
+    name: 'Deepmala Devi',
+    slug: 'deepmala-devi',
+    image: '/images/athlete.png',
+    event: '20 KM Walk',
+    achievement: 'Asian Games, Commonwealth Games (Melbourne 2006 & Delhi 2010), Ex. National Record Holder',
+  },
+  {
+    name: 'Kalpana Das',
+    slug: 'kalpana-das',
+    image: '/images/athlete.png',
+    event: 'Long Jump & Triple Jump',
+    achievement: 'Junior Asian Championship',
+  },
+  {
+    name: 'Manisha Dey',
+    slug: 'manisha-dey',
+    image: '/images/athlete.png',
+    event: 'Long Jump & Triple Jump',
+    achievement: 'Asian Championship (2003 Manila)',
+  },
+  {
+    name: 'Jyoti Shankar Debnath',
+    slug: 'jyoti-shankar-debnath',
+    image: '/images/athlete.png',
+    event: '100 m',
+    achievement: 'Asian Championship',
+  },
+  {
+    name: 'Ankit Sharma',
+    slug: 'ankit-sharma',
+    image: '/images/athlete.png',
     event: 'Long Jump',
-    achievement: 'Sydney 2000',
+    achievement: 'Asian Championship',
+  },
+  {
+    name: 'Mohur Mukherjee',
+    slug: 'mohur-mukherjee',
+    image: '/images/athlete.png',
+    event: 'Heptathlon',
+    achievement: 'Youth Asian Championship Gold & Silver Medalist (Tashkent 2023), Asian Junior Championship (Yecheon 2023)',
+  },
+  {
+    name: 'Sutapa Das',
+    slug: 'sutapa-das',
+    image: '/images/athlete.png',
+    event: '1500 m',
+    achievement: 'Asian Track & Field Championship',
+  },
+  {
+    name: 'Bala Devi',
+    slug: 'bala-devi',
+    image: '/images/athlete.png',
+    event: '20 KM Walk',
+    achievement: 'Asian Games, Asian Championship',
+  },
+  {
+    name: 'Arabindo Dey',
+    slug: 'arabindo-dey',
+    image: '/images/athlete.png',
+    event: '400m Hurdles',
+    achievement: 'Asian School Games',
+  },
+  {
+    name: 'Titir Hore',
+    slug: 'titir-hore',
+    image: '/images/athlete.png',
+    event: '400 m',
+    achievement: 'Junior SAAF Games Medallist',
   }
 ];
 
@@ -52,12 +123,61 @@ const PRESS = [
 ];
 
 const TIMELINE = [
-  { year: '1969', event: 'The Foundation', detail: 'Founded ACC with just 8 refugee boys.' },
-  { year: '1982', event: 'First National Gold', detail: 'ACC athlete wins gold at the National Games.' },
-  { year: '2000', event: 'Olympic Debut', detail: <>Soma Biswas<OlympianTag /> & Sanjay Rai<OlympianTag /> at Sydney Olympics.</> },
-  { year: '2004', event: 'Athens Return', detail: <>Soma Biswas<OlympianTag /> returns to the Olympics.</> },
-  { year: '2008', event: 'Beijing Games', detail: <>Sushmita Singha Roy<OlympianTag /> competes in Heptathlon.</> },
-  { year: '2011', event: 'Dronacharya Award', detail: 'Awarded the highest coaching honor.' },
+  { 
+    period: 'The Beginning', 
+    event: 'Early Life & The Injury Twist', 
+    detail: (
+      <div className="space-y-4">
+        <p>Born in West Bengal, Kuntal Roy originally aspired to become a professional footballer. At just 17 years old, his life changed drastically during a match. While attempting to score a goal, he fell and fractured his ankle severely.</p>
+        <p>During treatment, doctors discovered a hidden, underlying tumor in his ankle. They informed his family that the accidental fracture saved his leg; had it gone undetected, his leg would have required amputation by age 25. Though his playing days ended, his passion shifted immediately to mentorship.</p>
+      </div>
+    )
+  },
+  { 
+    period: '1969', 
+    event: 'Founding the Sodepur Warehouse', 
+    detail: (
+      <div className="space-y-4">
+        <p>In 1969, at the age of 17, he founded the Athletic Coaching Camp (ACC) as a non-profit organisation in Sodepur, on the fringes of Kolkata. Starting with zero infrastructure and dealing with challenges like local refugees trying to disrupt training equipment, he persisted.</p>
+        <p>Over five decades, this modest grassroots camp evolved into what locals call an "athlete-making warehouse". It eventually became only the third facility in West Bengal to secure an elevated hill-training ramp and synthetic track.</p>
+      </div>
+    )
+  },
+  { 
+    period: 'The Golden Era', 
+    event: 'Coaching Laurels & Olympic Wards', 
+    detail: (
+      <div className="space-y-4">
+        <p>Roy went on to serve as the Chief Athletics Coach for the Sports Authority of India (SAI). He represented India as a national coach at the 2002 Asian Games, the 2006 & 2010 Commonwealth Games, and multiple World Combined Events.</p>
+        <p>He is celebrated for personally producing three Olympic athletes and multiple international champions:</p>
+        <ul className="list-disc pl-5 space-y-2 text-chalk-white/80">
+          <li><strong>Soma Biswas:</strong> Heavily nurtured by Roy, she represented India in two Olympic Games (Sydney 2000 and Athens 2004).</li>
+          <li><strong>Sanjay Kumar Rai:</strong> Formed under his camp, he represented India at the 2000 Sydney Olympics.</li>
+          <li><strong>Sushmita Singha Roy:</strong> Supported deeply by Roy through financial hardships, she reached the highest international stages.</li>
+        </ul>
+      </div>
+    ) 
+  },
+  { 
+    period: '2011', 
+    event: 'The Dronacharya Award', 
+    detail: (
+      <div className="space-y-4">
+        <p>After being nominated multiple times over the decades, he was officially conferred the Dronacharya Award in 2011 by President Pratibha Patil.</p>
+        <p>True to his humble nature, he didn't even submit his own name that year; his son and SAI officials filed it on his behalf after he had lost all hope of formal recognition.</p>
+      </div>
+    )
+  },
+  { 
+    period: 'Present', 
+    event: 'Current Legacy & Philosophy', 
+    detail: (
+      <div className="space-y-4">
+        <p>Now in his 70s, Coach Roy remains fiercely vocal about India's athletic system. He remains a strong critic of corporate neglect in state athletics, famously lamenting that authorities "water the branches rather than the roots" by failing to fund grassroots talent.</p>
+        <p>He continues to train young athletes out of the spotlight at his Sodepur camp, prioritizing their performance over media recognition.</p>
+      </div>
+    )
+  },
 ];
 
 type Chapter = {
@@ -73,6 +193,7 @@ const CHAPTERS: Chapter[] = [
   {
     chapter: '01 / The Origin',
     title: 'A Twist Of Fate',
+    bgImage: '/images/acc_history/1st-acc.jpg',
     content: (
       <div className="space-y-3 md:space-y-6 text-sm md:text-xl">
         <p>In the late 1960s, a 17-year-old Kuntal Roy was a promising footballer dreaming of playing professionally. During a match, attempting to score a goal, he fell and suffered a horrific ankle fracture.</p>
@@ -85,6 +206,7 @@ const CHAPTERS: Chapter[] = [
   {
     chapter: '02 / The Foundation',
     title: '8 Refugee Kids',
+    bgImage: '/images/acc_history/old-group-photo.jpg',
     content: (
       <div className="space-y-3 md:space-y-6 text-sm md:text-xl">
         <p>ACC didn't start with funding or grand infrastructure. It started with a stolen Adidas football.</p>
@@ -97,6 +219,7 @@ const CHAPTERS: Chapter[] = [
   {
     chapter: '03 / The Athlete Factory',
     title: 'Data, Tech & Sweat',
+    bgImage: '/images/TheAthleteFactory.webp',
     content: (
       <div className="space-y-3 md:space-y-6 text-sm md:text-xl">
         <p>Long before it was standard, Roy used multiple GoPros to dissect elite athletes' joint movements and stride lengths frame-by-frame.</p>
@@ -156,11 +279,11 @@ export default function FounderPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
           >
-            <span className="text-xs md:text-sm tracking-[0.4em] uppercase text-track-red mb-6 block">
+            <span className="inline-block bg-track-red/90 backdrop-blur-sm text-chalk-white px-4 py-1.5 text-xs md:text-sm tracking-[0.4em] uppercase font-bold mb-6 border border-track-red shadow-lg">
               The Modern Dronacharya of Bengal
             </span>
-            <h1 className="text-6xl md:text-9xl lg:text-[10rem] font-primary uppercase tracking-tighter leading-none mb-6">
-              Kuntal Roy
+            <h1 className="text-6xl md:text-9xl lg:text-[10rem] font-primary uppercase tracking-tighter leading-none mb-6 text-chalk-white">
+              Dr. Kuntal Roy
             </h1>
             <p className="text-xl md:text-3xl font-light text-chalk-white/60 tracking-wide max-w-3xl mx-auto uppercase mb-12">
               The Architect of Champions
@@ -201,7 +324,7 @@ export default function FounderPage() {
           return (
             <div 
               key={chapter.title}
-              className="sticky top-0 h-screen w-full flex items-center justify-center"
+              className="sticky top-0 h-screen w-full flex items-center justify-center bg-chalk-white"
             >
               {/* Background Image per section */}
               <motion.div 
@@ -215,11 +338,11 @@ export default function FounderPage() {
                   src={chapter.bgImage || chapter.image}
                   alt={chapter.title}
                   fill
-                  className="object-cover opacity-10"
+                  className="object-cover opacity-60"
                 />
                 {/* Background overlay */}
-                <div className="absolute inset-0 bg-chalk-white/95" />
-                <div className="absolute inset-0 bg-gradient-to-r from-chalk-white via-chalk-white/80 to-transparent" />
+                <div className="absolute inset-0 bg-chalk-white/50" />
+                <div className="absolute inset-0 bg-gradient-to-r from-chalk-white/95 via-chalk-white/60 to-chalk-white/10" />
               </motion.div>
 
               <div className="relative z-10 w-full max-w-[1600px] mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-12 md:gap-24">
@@ -286,6 +409,7 @@ export default function FounderPage() {
         <div className="absolute inset-0 z-0">
           <Image src="/images/synthetic.jpg" alt="Background" fill className="object-cover opacity-10 " />
           <div className="absolute inset-0 bg-gradient-to-b from-chalk-white/95 to-chalk-white/80 backdrop-blur-sm" />
+          <FloatingRedDots count={12} />
         </div>
         <div className="relative z-10 max-w-[1600px] mx-auto px-6 md:px-12">
           <div className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-12 pb-12 border-b border-carbon-black/10">
@@ -301,7 +425,7 @@ export default function FounderPage() {
           </div>
 
           <div className="mb-24">
-            <FounderProtegesCarousel olympians={OLYMPIANS} />
+            <HierarchicalProteges olympians={OLYMPIANS} />
           </div>
 
 
@@ -311,7 +435,8 @@ export default function FounderPage() {
 
       {/* Timeline Section */}
       <section className="relative z-40 py-32 bg-carbon-black text-chalk-white border-b border-chalk-white/10 overflow-hidden">
-        <div className="max-w-[1200px] mx-auto px-6 md:px-12">
+        <FloatingRedDots count={15} />
+        <div className="max-w-[1200px] mx-auto px-6 md:px-12 relative z-10">
           <div className="text-center mb-32">
             <div className="text-track-red text-xs tracking-[0.4em] uppercase mb-6">The Journey</div>
             <h2 className="text-5xl md:text-7xl font-primary uppercase tracking-tight">
@@ -332,7 +457,7 @@ export default function FounderPage() {
             {TIMELINE.map((item, idx) => {
               const isEven = idx % 2 === 0;
               return (
-                <div key={item.year} className={`relative flex items-center w-full mb-32 last:mb-0 justify-end ${isEven ? 'md:justify-start' : 'md:justify-end'}`}>
+                <div key={item.period} className={`relative flex items-center w-full mb-32 last:mb-0 justify-end ${isEven ? 'md:justify-start' : 'md:justify-end'}`}>
                   
                   {/* Center Dot */}
                   <motion.div 
@@ -351,9 +476,9 @@ export default function FounderPage() {
                     viewport={{ once: true, margin: "-20%" }}
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                   >
-                     <span className="text-track-red text-3xl md:text-4xl font-primary tracking-widest uppercase mb-2 block">{item.year}</span>
-                     <h4 className="text-2xl md:text-3xl font-primary uppercase tracking-tight mb-4">{item.event}</h4>
-                     <p className="text-chalk-white/60 font-light text-sm md:text-base leading-relaxed">{item.detail}</p>
+                     <span className="text-track-red text-2xl md:text-3xl font-primary tracking-widest uppercase mb-2 block">{item.period}</span>
+                     <h4 className="text-xl md:text-2xl font-primary uppercase tracking-tight mb-6">{item.event}</h4>
+                     <div className="text-chalk-white/70 font-light text-sm md:text-base leading-relaxed">{item.detail}</div>
                   </motion.div>
                 </div>
               );
@@ -363,8 +488,9 @@ export default function FounderPage() {
       </section>
 
       {/* Awards & Recognitions */}
-      <section className="relative py-32 bg-carbon-black/5 text-carbon-black">
-        <div className="max-w-[1600px] mx-auto px-6 md:px-12">
+      <section className="relative py-32 bg-carbon-black/5 text-carbon-black overflow-hidden">
+        <FloatingRedDots count={10} />
+        <div className="max-w-[1600px] mx-auto px-6 md:px-12 relative z-10">
           <div className="mb-16 text-center">
             <h2 className="text-4xl md:text-6xl font-primary uppercase tracking-tight mb-4">
               Honours
@@ -462,7 +588,7 @@ export default function FounderPage() {
       <div className="block lg:hidden w-full">
         <MobileFounderHero />
         <MobileFounderChapters chapters={CHAPTERS} />
-        <MobileFounderProteges olympians={OLYMPIANS} />
+        <MobileHierarchicalProteges olympians={OLYMPIANS} />
         <MobileFounderTimeline timeline={TIMELINE} />
         <MobileFounderOutro awards={AWARDS} press={PRESS} />
       </div>

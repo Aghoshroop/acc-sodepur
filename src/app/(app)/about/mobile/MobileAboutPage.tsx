@@ -27,14 +27,14 @@ function useIntersectionObserver(options = { threshold: 0.1 }) {
 }
 
 const heroImages = [
-  "/images/synthetic.jpg", "/images/athletes.jpg", "/images/relay2026.jpg", "/images/combined-event.jpg",
-  "/images/acc_history/103.jpg", "/images/acc_history/116.jpg", "/images/medal.jpg", "/images/throw.jpg",
-  "/images/sprint.jpg", "/images/endurance.jpg", "/images/acc_history/26.jpg", "/images/acc_history/79.jpg",
-  "/images/hurdles.jpg", "/images/jump.jpeg", "/images/campus/campus-hero-evolution.jpg", "/images/syntheticwithramp.jpg",
-  "/images/acc_history/19.jpg", "/images/acc_history/113.jpg", "/images/acc_history/101.jpg", "/images/acc_history/105.jpg", 
-  "/images/acc_history/106.jpg", "/images/acc_history/114.jpg", "/images/acc_history/117.jpg", "/images/acc_history/23.jpg", 
-  "/images/acc_history/28.jpg", "/images/acc_history/29.jpg", "/images/acc_history/30.jpg", "/images/acc_history/55.jpg", 
-  "/images/acc_history/70.jpg", "/images/acc_history/dronacharya.png", "/images/facility.jpg", "/images/scintific.jpg"
+  "/images/acc_history/103.jpg", "/images/acc_history/105.jpg", "/images/acc_history/106.jpg", "/images/acc_history/107.jpg",
+  "/images/acc_history/108.jpg", "/images/acc_history/113.jpg", "/images/acc_history/114.jpg", "/images/acc_history/116.jpg",
+  "/images/acc_history/117.jpg", "/images/acc_history/1st-acc.jpg", "/images/acc_history/1st-building.jpg", "/images/acc_history/1st-longjump-pit.jpg",
+  "/images/acc_history/1stpicnic.jpg", "/images/acc_history/2000s-acc.jpg", "/images/acc_history/26.jpg", "/images/acc_history/28.jpg",
+  "/images/acc_history/29.jpg", "/images/acc_history/32.jpg", "/images/acc_history/34.jpg", "/images/acc_history/63.jpg",
+  "/images/acc_history/67.jpg", "/images/acc_history/70.jpg", "/images/acc_history/71.jpg", "/images/acc_history/72.jpg",
+  "/images/acc_history/74.jpg", "/images/acc_history/91.jpg", "/images/acc_history/94.jpg", "/images/acc_history/95.jpg",
+  "/images/acc_history/97.jpg", "/images/acc_history/98.jpg", "/images/acc_history/dronacharya.png", "/images/acc_history/building.jpg"
 ];
 
 // Duplicate columns for infinite scroll
@@ -142,13 +142,13 @@ export default function MobileAboutPage() {
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md">
-                  <Image src="/images/acc_history/19.jpg" alt="Historical ACC" fill className="object-cover grayscale" />
+                  <Image src="/images/acc_history/34.jpg" alt="Historical ACC" fill className="object-cover grayscale" />
                 </div>
                 <div className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md">
-                  <Image src="/images/acc_history/55.jpg" alt="Historical ACC" fill className="object-cover grayscale" />
+                  <Image src="/images/acc_history/74.jpg" alt="Historical ACC" fill className="object-cover grayscale" />
                 </div>
                 <div className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md col-span-2">
-                  <Image src="/images/acc_history/101.jpg" alt="Historical ACC" fill className="object-cover grayscale" />
+                  <Image src="/images/acc_history/63.jpg" alt="Historical ACC" fill className="object-cover grayscale" />
                 </div>
               </div>
             </div>
@@ -164,13 +164,13 @@ export default function MobileAboutPage() {
             {/* Historical Images Grid 2 */}
             <div className="grid grid-cols-2 gap-3 my-8">
               <div className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md col-span-2">
-                <Image src="/images/acc_history/79.jpg" alt="Historical ACC" fill className="object-cover grayscale" />
+                <Image src="/images/acc_history/67.jpg" alt="Historical ACC" fill className="object-cover grayscale" />
               </div>
               <div className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md">
                 <Image src="/images/acc_history/70.jpg" alt="Historical ACC" fill className="object-cover grayscale" />
               </div>
               <div className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md col-span-2">
-                <Image src="/images/acc_history/30.jpg" alt="Historical ACC" fill className="object-cover grayscale" />
+                <Image src="/images/acc_history/72.jpg" alt="Historical ACC" fill className="object-cover grayscale" />
               </div>
               <div className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md col-span-2">
                 <Image src="/images/acc_history/dronacharya.png" alt="Historical ACC Dronacharya" fill className="object-cover grayscale" />

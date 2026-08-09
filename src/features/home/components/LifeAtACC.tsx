@@ -29,7 +29,7 @@ export default function LifeAtACC() {
             transition={{ duration: 1.5, delay: 0.2, ease: "easeOut" }}
           >
             <Link 
-              href="/community" 
+              href="/administration" 
               className="group flex items-center gap-4 text-xs md:text-sm tracking-[0.2em] uppercase hover:opacity-50 transition-opacity w-max"
             >
               Discover Our Community

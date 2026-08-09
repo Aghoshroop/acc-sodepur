@@ -110,7 +110,7 @@ export default function AboutACC() {
 
             {/* Button */}
             <div className="mt-10">
-              <Link href="/institution" className="inline-flex items-center gap-6 px-8 py-4 border border-track-red/30 rounded-2xl hover:bg-track-red/10 hover:border-track-red transition-colors group">
+              <Link href="/about" className="inline-flex items-center gap-6 px-8 py-4 border border-track-red/30 rounded-2xl hover:bg-track-red/10 hover:border-track-red transition-colors group">
                 <span className="text-[10px] md:text-xs tracking-[0.2em] uppercase text-carbon-black font-extrabold group-hover:text-track-red transition-colors">DISCOVER OUR JOURNEY</span>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-track-red group-hover:translate-x-2 transition-transform">
                   <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -160,7 +160,10 @@ export default function AboutACC() {
               <p className="text-[9px] md:text-[10px] tracking-[0.3em] uppercase text-carbon-black/50 font-bold mb-2">ESTABLISHED</p>
               <div className="w-8 h-[2px] bg-track-red/50" />
             </div>
-            <p className="text-7xl md:text-9xl font-primary text-track-red font-bold leading-none tracking-tight mt-2">1969</p>
+            <div className="flex items-baseline gap-3 md:gap-4 mt-2">
+              <p className="text-7xl md:text-9xl font-primary text-track-red font-bold leading-none tracking-tight">1969</p>
+              <p className="text-xs md:text-sm font-bold tracking-[0.2em] uppercase text-track-red whitespace-nowrap">4th April</p>
+            </div>
           </div>
           
           {/* Middle Line & Icon */}

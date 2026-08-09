@@ -36,12 +36,12 @@ export default function MobileFounderHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         >
-          <div className="text-[10px] uppercase tracking-widest text-track-red mb-2 font-bold">
+          <div className="inline-block bg-track-red/90 backdrop-blur-sm text-chalk-white px-3 py-1.5 text-[10px] uppercase tracking-widest font-bold mb-4 border border-track-red shadow-lg">
             The Modern Dronacharya
           </div>
           
-          <h1 className="text-[3.5rem] leading-[0.9] font-primary uppercase tracking-tight mb-3">
-            Kuntal Roy
+          <h1 className="text-[3.5rem] leading-[0.9] font-primary uppercase tracking-tight mb-3 text-chalk-white">
+            Dr. Kuntal Roy
           </h1>
           
           <p className="text-xs font-light text-chalk-white/60 tracking-wider uppercase mb-6">

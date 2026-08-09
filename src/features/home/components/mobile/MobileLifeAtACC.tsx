@@ -33,7 +33,7 @@ export default function MobileLifeAtACC() {
         </p>
 
         <Link 
-          href="/community" 
+          href="/administration" 
           className="group flex flex-col gap-2 w-max mt-2 transition-transform"
         >
           <span className="text-xs tracking-widest uppercase font-bold text-carbon-black">

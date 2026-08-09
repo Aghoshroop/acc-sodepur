@@ -16,9 +16,8 @@ const MENU_GROUPS = [
     links: [
       { href: '/founder', label: 'Founder' },
       { href: '/honoured-guests', label: 'Honoured Guests' },
-      { href: '/rudra-pratim', label: 'Successor' },
       { href: '/campus', label: 'Campus' },
-      { href: '/community', label: 'Community' },
+      { href: '/administration', label: 'Administration' },
     ]
   },
   {

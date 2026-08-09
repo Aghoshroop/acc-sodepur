@@ -7,20 +7,20 @@ const OLYMPIANS = [
   {
     name: "Soma Biswas",
     event: "Heptathlon",
-    image: "/images/soma.jpg",
-    achievements: ["Asian Games Silver", "Olympian"]
+    image: "/images/somadi.jpg",
+    achievements: ["Olympics 2000 & 2004", "Asian Games Medalist", "Olympian"]
   },
   {
     name: "Sanjay Rai",
     event: "Long Jump",
-    image: "/images/sanjay.jpg",
-    achievements: ["Olympian", "National Record"]
+    image: "/images/sanjayda.jpg",
+    achievements: ["Olympics 2000", "Asian Medalist", "Olympian"]
   },
   {
     name: "Susmita Singha Roy",
     event: "Heptathlon",
     image: "/images/susmita.jpg",
-    achievements: ["Asian Athletics Medal", "Olympian"]
+    achievements: ["Olympics 2008", "Asian Medalist", "Olympian"]
   }
 ];
 
@@ -72,12 +72,16 @@ export default function MobileOlympians() {
             transition={{ duration: 1, delay: 0.2 + index * 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
             {/* Image Container */}
-            <div className="absolute inset-0 w-full h-full bg-carbon-black/5">
+            <div className="absolute inset-0 w-full h-full bg-carbon-black/5 flex items-center justify-center">
               <Image
                 src={athlete.image}
                 alt={athlete.name}
                 fill
-                className="object-cover object-top filter grayscale"
+                className={`filter grayscale ${
+                  athlete.name === 'Soma Biswas' ? 'object-cover object-top scale-125' : 
+                  athlete.name === 'Sanjay Rai' ? 'object-cover object-[center_15%] scale-100' : 
+                  'object-cover object-top scale-100'
+                }`}
               />
             </div>
 
@@ -87,23 +91,37 @@ export default function MobileOlympians() {
             {/* Content */}
             <div className="absolute bottom-0 left-0 w-full p-6 flex flex-col gap-3">
               <div className="flex flex-col gap-1">
-                <span className="text-[9px] tracking-[0.3em] uppercase text-track-red font-bold">
-                  {athlete.event}
-                </span>
-                <h3 className="text-3xl font-primary uppercase tracking-tight text-chalk-white leading-[0.9]">
+                <div className="relative inline-block w-max overflow-hidden rounded-sm">
+                  {/* Animated Red Background */}
+                  <div className="absolute inset-0 bg-track-red transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-[0.16,1,0.3,1] z-0" />
+                  
+                  {/* Text */}
+                  <span className="relative z-10 block px-2 py-1 text-[10px] md:text-xs tracking-[0.4em] uppercase text-track-red group-hover:text-chalk-white font-black drop-shadow-md group-hover:drop-shadow-none transition-all duration-500">
+                    {athlete.event}
+                  </span>
+                </div>
+                <h3 className="text-4xl font-primary uppercase tracking-tight text-chalk-white leading-[0.9] drop-shadow-md mt-1">
                   {athlete.name}
                 </h3>
               </div>
 
-              <div className="flex flex-col gap-1.5 mt-2">
-                {athlete.achievements.map((achievement, i) => (
-                  <div key={i} className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 bg-track-red rounded-full shrink-0" />
-                    <span className="text-[10px] uppercase tracking-widest text-chalk-white/80 font-bold">
-                      {achievement}
-                    </span>
-                  </div>
-                ))}
+              <div className="flex flex-col gap-2 mt-2">
+                {/* Big OLYMPIAN text */}
+                <div className="text-xl font-primary font-bold uppercase tracking-[0.2em] text-track-red drop-shadow-md [-webkit-text-stroke:0.5px_#000] md:[-webkit-text-stroke:1px_#000]">
+                  OLYMPIAN
+                </div>
+                
+                {/* Other Achievements */}
+                <div className="flex flex-col gap-1.5 mt-1">
+                  {athlete.achievements.filter(a => a.toLowerCase() !== 'olympian').map((achievement, i) => (
+                    <div key={i} className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 bg-chalk-white rounded-full shrink-0" />
+                      <span className="text-[10px] uppercase tracking-widest text-chalk-white font-bold drop-shadow-md">
+                        {achievement}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
             

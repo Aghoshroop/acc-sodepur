@@ -27,21 +27,8 @@ function useIntersectionObserver(options = { threshold: 0.2 }) {
 }
 
 export default function ClientAboutContent() {
-  const [hoveredImage, setHoveredImage] = useState<string | null>(null);
-  const [mousePos, setMousePos] = useState({ x: 50, y: 50, clientX: 0, clientY: 0 });
-
   const [modernSectionRef, isModernVisible] = useIntersectionObserver();
   const [visionSectionRef, isVisionVisible] = useIntersectionObserver();
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, src: string) => {
-    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - left) / width) * 100;
-    const y = ((e.clientY - top) / height) * 100;
-    setHoveredImage(src);
-    setMousePos({ x, y, clientX: e.clientX, clientY: e.clientY });
-  };
-
-  const handleMouseLeave = () => setHoveredImage(null);
 
   return (
     <section className="relative z-20 w-full bg-chalk-white text-carbon-black py-32 min-h-screen overflow-hidden">
@@ -89,21 +76,7 @@ export default function ClientAboutContent() {
             </div>
           </div>
 
-          {/* The Magnified Image Overlay (Floating Box) */}
-          {hoveredImage && (
-            <div 
-              className="fixed z-50 w-[400px] h-[400px] rounded-2xl overflow-hidden shadow-2xl border-4 border-chalk-white bg-carbon-black pointer-events-none transition-opacity duration-200"
-              style={{
-                left: mousePos.clientX - 420, 
-                top: mousePos.clientY - 200, 
-                backgroundImage: `url(${hoveredImage})`,
-                backgroundPosition: `${mousePos.x}% ${mousePos.y}%`,
-                backgroundSize: '250%',
-                backgroundRepeat: 'no-repeat'
-              }}
-            >
-            </div>
-          )}
+
         </div>
 
         {/* Right Column: Images */}
@@ -118,60 +91,44 @@ export default function ClientAboutContent() {
           <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col gap-4 pt-8">
               <div 
-                className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md group cursor-crosshair"
-                onMouseMove={(e) => handleMouseMove(e, '/images/acc_history/19.jpg')}
-                onMouseLeave={handleMouseLeave}
+                className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md group"
               >
-                <Image src="/images/acc_history/19.jpg" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
+                <Image src="/images/acc_history/34.jpg" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
               </div>
               <div 
-                className="relative w-full aspect-[3/4] bg-carbon-black/5 overflow-hidden shadow-md group cursor-crosshair"
-                onMouseMove={(e) => handleMouseMove(e, '/images/acc_history/55.jpg')}
-                onMouseLeave={handleMouseLeave}
+                className="relative w-full aspect-[3/4] bg-carbon-black/5 overflow-hidden shadow-md group"
               >
-                <Image src="/images/acc_history/55.jpg" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
+                <Image src="/images/acc_history/74.jpg" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
               </div>
               <div 
-                className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md group cursor-crosshair"
-                onMouseMove={(e) => handleMouseMove(e, '/images/acc_history/101.jpg')}
-                onMouseLeave={handleMouseLeave}
+                className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md group"
               >
-                <Image src="/images/acc_history/101.jpg" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
+                <Image src="/images/acc_history/63.jpg" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
               </div>
               <div 
-                className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md group cursor-crosshair"
-                onMouseMove={(e) => handleMouseMove(e, '/images/acc_history/79.jpg')}
-                onMouseLeave={handleMouseLeave}
+                className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md group"
               >
-                <Image src="/images/acc_history/79.jpg" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
+                <Image src="/images/acc_history/67.jpg" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
               </div>
             </div>
             <div className="flex flex-col gap-4">
               <div 
-                className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md group cursor-crosshair"
-                onMouseMove={(e) => handleMouseMove(e, '/images/acc_history/30.jpg')}
-                onMouseLeave={handleMouseLeave}
+                className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md group"
               >
-                <Image src="/images/acc_history/30.jpg" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
+                <Image src="/images/acc_history/72.jpg" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
               </div>
               <div 
-                className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md group cursor-crosshair"
-                onMouseMove={(e) => handleMouseMove(e, '/images/acc_history/70.jpg')}
-                onMouseLeave={handleMouseLeave}
+                className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md group"
               >
                 <Image src="/images/acc_history/70.jpg" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
               </div>
               <div 
-                className="relative w-full aspect-[3/4] bg-carbon-black/5 overflow-hidden shadow-md group cursor-crosshair"
-                onMouseMove={(e) => handleMouseMove(e, '/images/acc_history/91.jpg')}
-                onMouseLeave={handleMouseLeave}
+                className="relative w-full aspect-[3/4] bg-carbon-black/5 overflow-hidden shadow-md group"
               >
                 <Image src="/images/acc_history/91.jpg" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
               </div>
               <div 
-                className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md group cursor-crosshair"
-                onMouseMove={(e) => handleMouseMove(e, '/images/acc_history/dronacharya.png')}
-                onMouseLeave={handleMouseLeave}
+                className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md group"
               >
                 <Image src="/images/acc_history/dronacharya.png" alt="Historical ACC Dronacharya" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
               </div>
@@ -211,9 +168,7 @@ export default function ClientAboutContent() {
             </div>
             <div className="col-span-12 lg:col-span-6 relative z-10 h-[500px]">
               <div 
-                className="relative w-full h-full bg-carbon-black/5 overflow-hidden shadow-xl rounded-2xl cursor-crosshair group"
-                onMouseMove={(e) => handleMouseMove(e, '/images/synthetic.jpg')}
-                onMouseLeave={handleMouseLeave}
+                className="relative w-full h-full bg-carbon-black/5 overflow-hidden shadow-xl rounded-2xl group"
               >
                 <Image src="/images/synthetic.jpg" alt="Synthetic Track" fill className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out" />
               </div>
@@ -224,9 +179,7 @@ export default function ClientAboutContent() {
           <div className="grid grid-cols-12 gap-12 items-center flex-col-reverse lg:flex-row">
             <div className="col-span-12 lg:col-span-6 relative z-10 h-[500px] order-2 lg:order-1">
               <div 
-                className="relative w-full h-full bg-carbon-black/5 overflow-hidden shadow-xl rounded-2xl cursor-crosshair group"
-                onMouseMove={(e) => handleMouseMove(e, '/images/facility.jpg')}
-                onMouseLeave={handleMouseLeave}
+                className="relative w-full h-full bg-carbon-black/5 overflow-hidden shadow-xl rounded-2xl group"
               >
                 <Image src="/images/facility.jpg" alt="Event Stations" fill className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out" />
               </div>
@@ -258,9 +211,7 @@ export default function ClientAboutContent() {
             </div>
             <div className="col-span-12 lg:col-span-6 relative z-10 h-[500px]">
               <div 
-                className="relative w-full h-full bg-carbon-black/5 overflow-hidden shadow-xl rounded-2xl cursor-crosshair group"
-                onMouseMove={(e) => handleMouseMove(e, '/images/scintific.jpg')}
-                onMouseLeave={handleMouseLeave}
+                className="relative w-full h-full bg-carbon-black/5 overflow-hidden shadow-xl rounded-2xl group"
               >
                 <Image src="/images/scintific.jpg" alt="Conditioning Area" fill className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out" />
               </div>

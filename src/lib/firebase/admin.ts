@@ -20,3 +20,8 @@ if (getApps().length === 0) {
 }
 
 export const adminDb = getFirestore();
+try {
+  adminDb.settings({ preferRest: true });
+} catch (e) {
+  // Ignore error if already initialized during HMR
+}

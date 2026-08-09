@@ -37,7 +37,7 @@ export default async function NoticeBoardPreview() {
           
           {/* Section Divider */}
           <div className="flex items-center gap-4 mb-8">
-            <h3 className="text-[10px] md:text-xs tracking-[0.2em] uppercase font-bold text-carbon-black/90 shrink-0">
+            <h3 className="text-[10px] md:text-xs tracking-[0.2em] uppercase font-bold bg-track-red text-chalk-white px-3 py-1.5 rounded-sm shadow-sm shrink-0">
               LATEST ANNOUNCEMENTS
             </h3>
             <div className="flex-grow h-[1px] bg-gradient-to-r from-carbon-black/20 to-transparent" />

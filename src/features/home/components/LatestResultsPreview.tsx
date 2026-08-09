@@ -107,11 +107,11 @@ export default async function LatestResultsPreview() {
 
           {latestResult.metrics.meetRecords && (
             <div className="mt-20 pt-12 border-t border-carbon-black/10 flex items-center gap-6">
-              <span className="uppercase text-[10px] md:text-xs tracking-[0.3em] text-carbon-black/40">
+              <span className="uppercase text-xs md:text-sm tracking-[0.3em] font-black text-carbon-black">
                 New Meet Records
               </span> 
-              <div className="h-[1px] flex-grow bg-carbon-black/10" />
-              <AnimatedCounter value={latestResult.metrics.meetRecords} className="text-track-red font-primary text-3xl md:text-4xl" />
+              <div className="h-[2px] flex-grow bg-track-red/50" />
+              <AnimatedCounter value={latestResult.metrics.meetRecords} className="text-track-red font-primary font-bold text-5xl md:text-6xl" />
             </div>
           )}
         </div>

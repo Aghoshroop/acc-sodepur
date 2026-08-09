@@ -7,20 +7,20 @@ const OLYMPIANS = [
   {
     name: "Soma Biswas",
     event: "Heptathlon",
-    image: "/images/soma.jpg",
-    achievements: ["Asian Games Silver Medalist", "Olympian"]
+    image: "/images/somadi.jpg",
+    achievements: ["Olympics 2000 & 2004", "Asian Games Medalist", "Olympian"]
   },
   {
     name: "Sanjay Rai",
     event: "Long Jump",
-    image: "/images/sanjay.jpg",
-    achievements: ["Olympian", "National Record Holder"]
+    image: "/images/sanjayda.jpg",
+    achievements: ["Olympics 2000", "Asian Medalist", "Olympian"]
   },
   {
     name: "Susmita Singha Roy",
     event: "Heptathlon",
     image: "/images/susmita.jpg",
-    achievements: ["Asian Athletics Medalist", "Olympian"]
+    achievements: ["Olympics 2008", "Asian Medalist", "Olympian"]
   }
 ];
 
@@ -79,7 +79,11 @@ export default function OlympiansSection() {
                   src={athlete.image}
                   alt={athlete.name}
                   fill
-                  className="object-cover object-top filter grayscale group-hover:grayscale-0 group-hover:scale-[1.03] transition-all duration-1000 ease-[0.16,1,0.3,1]"
+                  className={`object-top filter grayscale group-hover:grayscale-0 transition-all duration-1000 ease-[0.16,1,0.3,1] ${
+                    athlete.name === 'Soma Biswas' ? 'object-cover scale-125 group-hover:scale-[1.28]' : 
+                    athlete.name === 'Sanjay Rai' ? 'object-cover scale-100 group-hover:scale-[1.03] object-[center_15%]' : 
+                    'object-cover scale-100 group-hover:scale-[1.03]'
+                  }`}
                 />
               </div>
 
@@ -87,25 +91,39 @@ export default function OlympiansSection() {
               <div className="absolute inset-0 bg-gradient-to-t from-carbon-black/90 via-carbon-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-700" />
 
               {/* Content */}
-              <div className="absolute bottom-0 left-0 w-full p-8 flex flex-col gap-4 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-700 ease-[0.16,1,0.3,1]">
-                <div className="flex flex-col gap-1">
-                  <span className="text-[10px] tracking-[0.3em] uppercase text-track-red font-bold">
-                    {athlete.event}
-                  </span>
-                  <h3 className="text-3xl lg:text-4xl font-primary uppercase tracking-tight text-chalk-white leading-[0.9]">
+              <div className="absolute bottom-0 left-0 w-full p-8 flex flex-col gap-4 transform translate-y-24 group-hover:translate-y-0 transition-transform duration-700 ease-[0.16,1,0.3,1]">
+                <div className="flex flex-col gap-2">
+                  <div className="relative inline-block w-max overflow-hidden rounded-sm">
+                    {/* Animated Red Background */}
+                    <div className="absolute inset-0 bg-track-red transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-[0.16,1,0.3,1] z-0" />
+                    
+                    {/* Text */}
+                    <span className="relative z-10 block px-2 py-1 text-xs md:text-sm tracking-[0.4em] uppercase text-track-red group-hover:text-chalk-white font-black drop-shadow-md group-hover:drop-shadow-none transition-all duration-500">
+                      {athlete.event}
+                    </span>
+                  </div>
+                  <h3 className="text-4xl lg:text-5xl font-primary uppercase tracking-tight text-chalk-white leading-[0.9] drop-shadow-lg mt-1">
                     {athlete.name}
                   </h3>
                 </div>
 
-                <div className="flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100">
-                  {athlete.achievements.map((achievement, i) => (
-                    <div key={i} className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-track-red rounded-full shrink-0" />
-                      <span className="text-[10px] uppercase tracking-widest text-chalk-white/80 font-bold">
-                        {achievement}
-                      </span>
-                    </div>
-                  ))}
+                <div className="flex flex-col gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100 mt-2">
+                  {/* Big OLYMPIAN text */}
+                  <div className="text-xl md:text-2xl font-primary font-bold uppercase tracking-[0.2em] text-track-red drop-shadow-md [-webkit-text-stroke:0.5px_#000] md:[-webkit-text-stroke:1px_#000]">
+                    OLYMPIAN
+                  </div>
+                  
+                  {/* Other Achievements */}
+                  <div className="flex flex-col gap-2 mt-1">
+                    {athlete.achievements.filter(a => a.toLowerCase() !== 'olympian').map((achievement, i) => (
+                      <div key={i} className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 bg-chalk-white rounded-full shrink-0" />
+                        <span className="text-xs uppercase tracking-widest text-chalk-white font-bold drop-shadow-md">
+                          {achievement}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
               

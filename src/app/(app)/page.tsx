@@ -27,10 +27,10 @@ export default async function InstitutionalHomepage() {
     <div className="w-full">
       <div className="relative w-full">
         {/* Sprint 1: Mobile Hero vs Desktop Hero */}
-        <div className="hidden lg:block">
+        <div className="hidden lg:block sticky top-0 -z-10 h-screen">
           <InstitutionalHero />
         </div>
-        <div className="block lg:hidden">
+        <div className="block lg:hidden sticky top-0 -z-10 h-[100dvh]">
           <MobileHero />
         </div>
 

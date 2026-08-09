@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import { motion, useScroll } from 'framer-motion';
 
 type TimelineEvent = {
-  year: string;
+  period: string;
   event: string;
   detail: React.ReactNode;
 };
@@ -36,7 +36,7 @@ export default function MobileFounderTimeline({ timeline }: { timeline: Timeline
         />
 
         {timeline.map((item, idx) => (
-          <div key={item.year} className="relative flex w-full mb-16 last:mb-0">
+          <div key={item.period} className="relative flex w-full mb-16 last:mb-0">
             {/* Center Dot */}
             <motion.div 
               className="absolute left-[16px] -translate-x-1/2 w-3 h-3 rounded-full bg-chalk-white border border-track-red z-10"
@@ -54,9 +54,9 @@ export default function MobileFounderTimeline({ timeline }: { timeline: Timeline
               viewport={{ once: true, margin: "-10%" }}
               transition={{ duration: 0.6 }}
             >
-              <span className="text-track-red text-2xl font-primary tracking-widest uppercase mb-1 block">{item.year}</span>
-              <h4 className="text-xl font-primary uppercase tracking-tight mb-2 leading-tight">{item.event}</h4>
-              <p className="text-carbon-black/70 font-light text-[11px] leading-relaxed uppercase tracking-wider">{item.detail}</p>
+              <span className="text-track-red text-xl font-primary tracking-widest uppercase mb-1 block">{item.period}</span>
+              <h4 className="text-xl font-primary uppercase tracking-tight mb-4 leading-tight">{item.event}</h4>
+              <div className="text-carbon-black/75 font-light text-[13px] leading-relaxed">{item.detail}</div>
             </motion.div>
           </div>
         ))}

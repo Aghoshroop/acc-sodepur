@@ -27,7 +27,7 @@ export default function MobileAbout() {
         </p>
 
         <Link 
-          href="/institution" 
+          href="/about" 
           className="self-start inline-flex items-center gap-4 py-4 px-8 border border-carbon-black rounded-full text-sm font-bold uppercase tracking-wider hover:bg-carbon-black hover:text-chalk-white transition-colors"
         >
           <span>Discover Journey</span>
