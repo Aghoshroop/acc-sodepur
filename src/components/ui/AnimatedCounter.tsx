@@ -1,40 +1,38 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { useInView, animate } from 'framer-motion';
+import { motion, useInView, useMotionValue, useSpring } from 'framer-motion';
 
-export default function AnimatedCounter({
-  value,
-  className = '',
-  style,
-}: {
+interface AnimatedCounterProps {
   value?: number;
+  suffix?: string;
   className?: string;
   style?: React.CSSProperties;
-}) {
+}
+
+export default function AnimatedCounter({ value = 0, suffix = '', className = '', style }: AnimatedCounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: false, margin: "-50px" });
+  const isInView = useInView(ref, { once: true, margin: "-10%" });
+  
+  const motionValue = useMotionValue(0);
+  const springValue = useSpring(motionValue, {
+    damping: 60,
+    stiffness: 100,
+  });
 
   useEffect(() => {
-    const safeValue = value || 0;
-    if (isInView && ref.current) {
-      const controls = animate(0, safeValue, {
-        duration: 2,
-        ease: "easeOut",
-        onUpdate: (latest) => {
-          if (ref.current) {
-            ref.current.textContent = Math.round(latest).toString();
-          }
-        },
-      });
-
-      return controls.stop;
+    if (isInView) {
+      motionValue.set(value);
     }
-  }, [isInView, value]);
+  }, [isInView, value, motionValue]);
 
-  return (
-    <span ref={ref} className={className} style={style}>
-      0
-    </span>
-  );
+  useEffect(() => {
+    springValue.on("change", (latest) => {
+      if (ref.current) {
+        ref.current.textContent = Intl.NumberFormat('en-US').format(Math.round(latest)) + suffix;
+      }
+    });
+  }, [springValue, suffix]);
+
+  return <motion.span ref={ref} className={className} style={style}>0{suffix}</motion.span>;
 }

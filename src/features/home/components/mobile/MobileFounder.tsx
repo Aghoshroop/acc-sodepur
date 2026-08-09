@@ -16,7 +16,7 @@ export default function MobileFounder() {
   const duplicatedMilestones = [...milestones, ...milestones];
 
   return (
-    <section className="relative w-full h-[100dvh] min-h-[100dvh] bg-chalk-white text-carbon-black flex flex-col pt-12 pb-6 border-t border-carbon-black/10">
+    <section className="relative w-full h-[100dvh] min-h-[100dvh] bg-chalk-white text-carbon-black flex flex-col pt-16 pb-6 border-t border-carbon-black/10">
       
       {/* Editorial Header */}
       <div className="px-6 mb-6 shrink-0">
@@ -26,6 +26,14 @@ export default function MobileFounder() {
         <h2 className="text-[3.5rem] font-primary uppercase tracking-tighter leading-[0.85] text-carbon-black">
           Dr. Kuntal<br />Roy
         </h2>
+        <div className="flex flex-wrap gap-2 items-center mt-4">
+          <span className="text-[10px] tracking-[0.2em] uppercase border border-carbon-black/20 px-3 py-1.5 font-bold bg-carbon-black/5 text-carbon-black">
+            <span className="text-track-red">Dronacharya Awardee</span>
+          </span>
+          <span className="text-[10px] tracking-[0.2em] uppercase border border-carbon-black/20 px-3 py-1.5 text-carbon-black/70 font-bold bg-carbon-black/5">
+            Ph.D. Sports Science
+          </span>
+        </div>
       </div>
 
       {/* Portrait (Focus on eyes) */}

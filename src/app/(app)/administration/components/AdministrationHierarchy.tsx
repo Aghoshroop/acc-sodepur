@@ -20,7 +20,7 @@ const MemberCard = ({ member, className = "" }: { member: Member; className?: st
           src={member.image} 
           alt={member.name} 
           fill 
-          className="object-cover transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0"
+          className="object-cover transition-transform duration-700 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-carbon-black/60 to-transparent pointer-events-none" />
       </div>
@@ -228,12 +228,9 @@ export default function AdministrationHierarchy() {
         >
           <div className="flex-1">
             <SectionHeader title="Patrons" />
-            <div className="flex flex-col gap-6">
-              {technicalAndSupport.patrons.map(patron => (
-                <div key={patron.name}>
-                  <h4 className="text-base font-bold text-chalk-white">{patron.name}</h4>
-                  <p className="text-sm text-chalk-white/60">{patron.role}</p>
-                </div>
+            <div className="grid grid-cols-2 gap-6">
+              {technicalAndSupport.patrons.map((patron) => (
+                <MemberCard key={patron.name} member={patron} />
               ))}
             </div>
           </div>
@@ -241,19 +238,13 @@ export default function AdministrationHierarchy() {
           <div className="flex-[2] grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
               <SectionHeader title="Head Coach" />
-              <div>
-                <h4 className="text-base font-bold text-chalk-white">{technicalAndSupport.headCoach.name}</h4>
-                <p className="text-sm text-chalk-white/60 mt-1">{technicalAndSupport.headCoach.role}</p>
-              </div>
+              <MemberCard member={technicalAndSupport.headCoach} />
             </div>
             <div>
               <SectionHeader title="Visiting Coach" />
-              <div className="flex flex-col gap-6">
-                {technicalAndSupport.visitingCoaches.map(coach => (
-                  <div key={coach.name}>
-                    <h4 className="text-base font-bold text-chalk-white">{coach.name}</h4>
-                    <p className="text-sm text-chalk-white/60 mt-1">{coach.role}</p>
-                  </div>
+              <div className="grid grid-cols-2 gap-6">
+                {technicalAndSupport.visitingCoaches.map((coach) => (
+                  <MemberCard key={coach.name} member={coach} />
                 ))}
               </div>
             </div>

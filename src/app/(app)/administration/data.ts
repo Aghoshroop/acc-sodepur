@@ -13,15 +13,14 @@ export const legacyLeaders = {
   lifeTimeAdvisors: [
     {
       name: "Late Sri Mihir Baran Ray",
-      image: "/images/administration/Mihir B R.jpg.jpeg", 
+      image: "/images/administration/Late Mihir Baran Roy.jpeg", 
     },
     {
       name: "Late Sri Baldev Dutta",
-      image: "/images/administration/Baldev D.jpg.jpeg", 
     },
     {
       name: "Sri Monoj Guha Thakurata",
-      image: "/images/administration/Monoj G T.jpg.jpeg", 
+      image: "/images/administration/Manoj Guha Thakurata.jpeg", 
     },
   ],
 };
@@ -32,6 +31,7 @@ export const presidentialChronology = [
   { years: "1984 - 1986", name: "Late Sri Deb Narayan Paul" },
   { years: "1987 - 1996", name: "Late Sri N. Bakshi" },
   { years: "1997 - 2014", name: "Sri Monoj Guha Thakurata" },
+  { years: "2015 - Present", name: "Sri Pallab Sur" },
 ];
 
 export const specialProfile = {
@@ -99,15 +99,16 @@ export const executiveMembers = [
 
 export const technicalAndSupport = {
   patrons: [
-    { name: "Mr. Debasish Banerjee", role: "Ex Secretary, AAWB" },
-    { name: "Mr. Nirmal Kumar Saha", role: "Eminent Journalist" },
+    { name: "Mr. Debasish Banerjee", role: "Ex Secretary, AAWB", image: "/images/administration/Debasish Banerjee.jpeg" },
+    { name: "Mr. Nirmal Kumar Saha", role: "Eminent Journalist", image: "/images/administration/Nirmal K S.jpg.jpeg" },
   ],
   headCoach: {
     name: "Mr. Rudra Pratim Roy",
     role: "WA L3 Coach (Combined Event Specialist) EXOS & Performance Specialist (USA)",
+    image: "/images/administration/Rudra_Pratim.jpg",
   },
   visitingCoaches: [
-    { name: "Mr. Mrinal Roy", role: "CSCS & NIS" },
-    { name: "Ms. Susmita Singha Roy", role: "Olympian & WA Athletics Level - 2 Coach" },
+    { name: "Mr. Mrinal Roy", role: "CSCS & NIS", image: "/images/administration/mrinal-roy.jpg" },
+    { name: "Ms. Susmita Singha Roy", role: "Olympian & WA Athletics Level - 2 Coach", image: "/images/administration/susmita.jpg" },
   ],
 };

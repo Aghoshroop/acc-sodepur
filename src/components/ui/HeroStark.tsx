@@ -5,9 +5,10 @@ interface HeroStarkProps {
   subtitle?: React.ReactNode;
   theme?: 'dark' | 'light' | 'red' | 'transparent';
   backgroundElement?: React.ReactNode;
+  overlayClassName?: string;
 }
 
-export default function HeroStark({ title, subtitle, theme = 'dark', backgroundElement }: HeroStarkProps) {
+export default function HeroStark({ title, subtitle, theme = 'dark', backgroundElement, overlayClassName }: HeroStarkProps) {
   const themes = {
     dark: 'bg-[var(--color-carbon-black)] text-[var(--color-chalk-white)]',
     light: 'bg-[var(--color-chalk-white)] text-[var(--color-carbon-black)]',
@@ -20,9 +21,9 @@ export default function HeroStark({ title, subtitle, theme = 'dark', backgroundE
       {backgroundElement && (
         <div className="absolute inset-0 z-0">
           {backgroundElement}
-          {theme === 'dark' && <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-carbon-black)] via-[var(--color-carbon-black)]/80 to-transparent" />}
-          {theme === 'light' && <div className="absolute inset-0 bg-[var(--color-chalk-white)]/80" />}
-          {theme === 'red' && <div className="absolute inset-0 bg-[var(--color-track-red)]/80" />}
+          {theme === 'dark' && <div className={`absolute inset-0 ${overlayClassName || 'bg-gradient-to-t from-[var(--color-carbon-black)] via-[var(--color-carbon-black)]/80 to-transparent'}`} />}
+          {theme === 'light' && <div className={`absolute inset-0 ${overlayClassName || 'bg-[var(--color-chalk-white)]/80'}`} />}
+          {theme === 'red' && <div className={`absolute inset-0 ${overlayClassName || 'bg-[var(--color-track-red)]/80'}`} />}
         </div>
       )}
 

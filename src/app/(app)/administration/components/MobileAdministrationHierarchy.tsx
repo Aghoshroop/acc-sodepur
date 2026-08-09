@@ -18,7 +18,7 @@ const MobileMemberCard = ({ member, className = "" }: { member: Member; classNam
           src={member.image} 
           alt={member.name} 
           fill 
-          className="object-cover grayscale"
+          className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-carbon-black/60 to-transparent pointer-events-none" />
       </div>
@@ -181,12 +181,9 @@ export default function MobileAdministrationHierarchy() {
         <div className="border-t border-chalk-white/10 pt-12 flex flex-col gap-10">
           <div>
             <MobileSectionHeader title="Patrons" />
-            <div className="flex flex-col gap-4">
-              {technicalAndSupport.patrons.map(patron => (
-                <div key={patron.name}>
-                  <h4 className="text-sm font-bold text-chalk-white">{patron.name}</h4>
-                  <p className="text-xs text-chalk-white/60">{patron.role}</p>
-                </div>
+            <div className="grid grid-cols-2 gap-x-3 gap-y-6">
+              {technicalAndSupport.patrons.map((patron) => (
+                <MobileMemberCard key={patron.name} member={patron} />
               ))}
             </div>
           </div>
@@ -194,19 +191,15 @@ export default function MobileAdministrationHierarchy() {
           <div className="grid grid-cols-1 gap-8">
             <div>
               <MobileSectionHeader title="Head Coach" />
-              <div>
-                <h4 className="text-sm font-bold text-chalk-white">{technicalAndSupport.headCoach.name}</h4>
-                <p className="text-xs text-chalk-white/60 mt-1">{technicalAndSupport.headCoach.role}</p>
+              <div className="w-1/2">
+                <MobileMemberCard member={technicalAndSupport.headCoach} />
               </div>
             </div>
             <div>
               <MobileSectionHeader title="Visiting Coach" />
-              <div className="flex flex-col gap-4">
-                {technicalAndSupport.visitingCoaches.map(coach => (
-                  <div key={coach.name}>
-                    <h4 className="text-sm font-bold text-chalk-white">{coach.name}</h4>
-                    <p className="text-xs text-chalk-white/60 mt-1">{coach.role}</p>
-                  </div>
+              <div className="grid grid-cols-2 gap-x-3 gap-y-6">
+                {technicalAndSupport.visitingCoaches.map((coach) => (
+                  <MobileMemberCard key={coach.name} member={coach} />
                 ))}
               </div>
             </div>

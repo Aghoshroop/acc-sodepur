@@ -32,7 +32,7 @@ const MENU_GROUPS = [
     title: 'Institution',
     links: [
       { href: '/archive', label: 'Archive' },
-      { href: '/memory', label: 'Memory' },
+      { href: '/tributes', label: 'Tributes' },
       { href: '/notices', label: 'Announcements' },
       { href: '/admissions', label: 'Admissions' },
     ]

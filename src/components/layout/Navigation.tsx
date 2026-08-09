@@ -13,16 +13,16 @@ const NAV_ITEMS = [
     href: '/institution',
     items: [
       { label: 'About ACC', href: '/about' },
-      { label: 'Achievements', href: '/achievements' },
       { label: 'Founder', href: '/founder' },
-      { label: 'Facilities', href: '/campus' },
       { label: 'Administration', href: '/administration' },
-      { label: 'Memory', href: '/memory' },
-      { label: 'Foundation Day', href: '/premier-relay' },
+      { label: 'Facilities', href: '/campus' },
       { label: 'Coaches', href: '/coaches' },
-      { label: 'Honoured Guests', href: '/honoured-guests' },
-      { label: 'Athletes', href: '/athletes' },
+      { label: 'Achievements', href: '/achievements' },
       { label: 'Sponsors', href: '/sponsors' },
+      { label: 'Honoured Guests', href: '/honoured-guests' },
+      { label: 'Tributes', href: '/tributes' },
+      { label: 'Foundation Day', href: '/premier-relay' },
+      { label: 'Athletes', href: '/athletes' },
     ],
   },
   {
@@ -196,7 +196,8 @@ export default function Navigation({ notices = [] }: { notices?: { id: string; p
                         animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
                         exit={{ opacity: 0, y: 10, scale: 0.98, filter: 'blur(5px)' }}
                         transition={transitionConfig}
-                        className={`absolute top-full left-0 mt-6 py-4 bg-chalk-white/95 backdrop-blur-2xl backdrop-saturate-[1.8] border border-carbon-black/10 shadow-[0_10px_40px_rgba(0,0,0,0.1)] rounded-2xl overflow-hidden ${item.items.length > 5 ? 'w-[480px] grid grid-cols-2 gap-x-4' : 'w-64 flex flex-col'}`}
+                        className={`absolute top-full left-0 mt-6 py-4 bg-chalk-white/95 backdrop-blur-2xl backdrop-saturate-[1.8] border border-carbon-black/10 shadow-[0_10px_40px_rgba(0,0,0,0.1)] rounded-2xl overflow-hidden ${item.items.length > 5 ? 'w-[480px] grid grid-flow-col gap-x-4' : 'w-64 flex flex-col'}`}
+                        style={item.items.length > 5 ? { gridTemplateRows: `repeat(${Math.ceil(item.items.length / 2)}, minmax(0, 1fr))` } : undefined}
                       >
                         {item.items.map((subItem, i) => (
                           <motion.div

@@ -13,6 +13,7 @@ import MobileFounderOutro from '@/features/founder/components/mobile/MobileFound
 
 import OlympianTag from '@/components/ui/OlympianTag';
 import FloatingRedDots from '@/components/ui/FloatingRedDots';
+import AnimatedCounter from '@/components/ui/AnimatedCounter';
 
 const OLYMPIANS = [
   {
@@ -404,44 +405,20 @@ export default function FounderPage() {
         })}
       </section>
 
-      {/* The Legacy & The Olympians Section */}
-      <section className="sticky top-0 z-30 w-full min-h-screen py-32 bg-chalk-white text-carbon-black border-b border-carbon-black/10 overflow-y-auto">
-        <div className="absolute inset-0 z-0">
-          <Image src="/images/synthetic.jpg" alt="Background" fill className="object-cover opacity-10 " />
-          <div className="absolute inset-0 bg-gradient-to-b from-chalk-white/95 to-chalk-white/80 backdrop-blur-sm" />
-          <FloatingRedDots />
-        </div>
-        <div className="relative z-10 max-w-[1600px] mx-auto px-6 md:px-12">
-          <div className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-12 pb-12 border-b border-carbon-black/10">
-            <div>
-              <div className="text-track-red text-xs tracking-[0.4em] uppercase mb-6">The Legacy</div>
-              <h2 className="text-5xl md:text-7xl font-primary uppercase tracking-tight">
-                The Protégés
-              </h2>
-            </div>
-            <p className="text-lg font-light text-carbon-black/60 max-w-lg">
-              Over a career spanning more than five decades, Roy’s students have brought home over 70 international medals, conquering the hardest disciplines in track and field.
-            </p>
-          </div>
-
-          <div className="mb-24">
-            <HierarchicalProteges olympians={OLYMPIANS} />
-          </div>
-
-
-        </div>
-      </section>
       </div>
 
       {/* Timeline Section */}
       <section className="relative z-40 py-32 bg-carbon-black text-chalk-white border-b border-chalk-white/10 overflow-hidden">
         <FloatingRedDots />
         <div className="max-w-[1200px] mx-auto px-6 md:px-12 relative z-10">
-          <div className="text-center mb-32">
+          <div className="text-center mb-32 flex flex-col items-center">
             <div className="text-track-red text-xs tracking-[0.4em] uppercase mb-6">The Journey</div>
-            <h2 className="text-5xl md:text-7xl font-primary uppercase tracking-tight">
+            <h2 className="text-5xl md:text-7xl font-primary uppercase tracking-tight mb-8">
               Decades of Dedication
             </h2>
+            <p className="text-lg font-light text-chalk-white/70 max-w-2xl text-center">
+              Over a career spanning more than five decades, Roy’s protégés have brought home over 70 international medals and produced multiple Olympians, conquering the hardest disciplines in track and field.
+            </p>
           </div>
           
           <div className="relative pb-12" ref={timelineRef}>
@@ -483,6 +460,46 @@ export default function FounderPage() {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* The Protégés Stats */}
+      <section className="relative z-40 py-32 bg-chalk-white text-carbon-black border-b border-carbon-black/10 overflow-hidden">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-12 relative z-10 text-center">
+          <div className="text-track-red text-xs tracking-[0.4em] uppercase mb-6">The Legacy</div>
+          <h2 className="text-5xl md:text-7xl font-primary uppercase tracking-tight mb-16">
+            The Protégés
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8 max-w-4xl mx-auto">
+            <motion.div 
+              className="flex flex-col items-center justify-center p-12 border border-carbon-black/10 bg-carbon-black/5 rounded-lg"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="text-7xl md:text-9xl font-primary text-track-red mb-4">
+                <AnimatedCounter value={73} suffix="+" />
+              </div>
+              <div className="text-sm md:text-lg font-bold uppercase tracking-widest text-carbon-black/80 mb-4">International Medals</div>
+              <p className="text-sm text-carbon-black/60 font-light max-w-sm">Across prestigious Asian Championships, World Meets, and Commonwealth Games.</p>
+            </motion.div>
+
+            <motion.div 
+              className="flex flex-col items-center justify-center p-12 border border-carbon-black/10 bg-carbon-black/5 rounded-lg"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <div className="text-7xl md:text-9xl font-primary text-track-red mb-4">
+                <AnimatedCounter value={25} suffix="+" />
+              </div>
+              <div className="text-sm md:text-lg font-bold uppercase tracking-widest text-carbon-black/80 mb-4">International Meets</div>
+              <p className="text-sm text-carbon-black/60 font-light max-w-sm">Representing Team India on the ultimate global stage for over five decades.</p>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -588,8 +605,34 @@ export default function FounderPage() {
       <div className="block lg:hidden w-full">
         <MobileFounderHero />
         <MobileFounderChapters chapters={CHAPTERS} />
-        <MobileHierarchicalProteges olympians={OLYMPIANS} />
         <MobileFounderTimeline timeline={TIMELINE} />
+        
+        {/* Mobile Proteges Stats */}
+        <section className="w-full bg-chalk-white text-carbon-black py-20 px-6">
+          <div className="text-center mb-12">
+            <div className="text-track-red text-[10px] tracking-[0.4em] uppercase mb-3 font-bold">The Legacy</div>
+            <h2 className="text-[2.5rem] font-primary uppercase tracking-tight leading-[0.9]">
+              The Protégés
+            </h2>
+          </div>
+          <div className="flex flex-col gap-6">
+            <div className="flex flex-col items-center justify-center p-8 border border-carbon-black/10 bg-carbon-black/5 rounded-lg">
+              <div className="text-[5rem] leading-none font-primary text-track-red mb-3">
+                <AnimatedCounter value={73} suffix="+" />
+              </div>
+              <div className="text-xs font-bold uppercase tracking-widest text-carbon-black/80 text-center mb-3">International Medals</div>
+              <p className="text-xs text-carbon-black/60 font-light text-center">Across prestigious Asian Championships, World Meets, and Commonwealth Games.</p>
+            </div>
+            <div className="flex flex-col items-center justify-center p-8 border border-carbon-black/10 bg-carbon-black/5 rounded-lg">
+              <div className="text-[5rem] leading-none font-primary text-track-red mb-3">
+                <AnimatedCounter value={25} suffix="+" />
+              </div>
+              <div className="text-xs font-bold uppercase tracking-widest text-carbon-black/80 text-center mb-3">International Meets</div>
+              <p className="text-xs text-carbon-black/60 font-light text-center">Representing Team India on the ultimate global stage for over five decades.</p>
+            </div>
+          </div>
+        </section>
+
         <MobileFounderOutro awards={AWARDS} press={PRESS} />
       </div>
     </main>

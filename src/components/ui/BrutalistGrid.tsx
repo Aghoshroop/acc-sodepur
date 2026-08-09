@@ -6,6 +6,7 @@ export interface GridItem {
   subtitle?: string;
   description?: string;
   image?: string;
+  imagePosition?: string;
   metric?: string;
 }
 
@@ -34,35 +35,35 @@ export default function BrutalistGrid({ items, columns = 3, theme = 'light' }: B
             <div key={item.id || index} className={`group relative border-t-2 pt-6 ${borderClass}`}>
               <div className="absolute top-[-2px] left-0 w-0 h-[2px] bg-[var(--color-track-red)] transition-all duration-700 ease-[0.16,1,0.3,1] group-hover:w-full" />
               
-              {item.image && (
-                <div className="w-full aspect-[4/5] bg-[var(--color-concrete-grey)] mb-6 overflow-hidden relative grayscale group-hover:grayscale-0 transition-all duration-700">
-                  <div 
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-105"
-                    style={{ backgroundImage: `url(${item.image})` }}
-                  />
+              <div className="flex flex-col md:flex-row gap-6 md:items-start mb-4">
+                {item.image && (
+                  <div className="w-full md:w-2/5 h-[240px] md:h-[280px] shrink-0 relative overflow-hidden transition-all duration-700 border border-[var(--color-track-red)]/20 shadow-sm bg-[var(--color-concrete-grey)]">
+                    <img src={item.image} alt={item.title} className={`absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 ${item.imagePosition || 'object-center'}`} />
+                  </div>
+                )}
+                <div className="flex flex-col justify-center flex-grow py-1">
+                  {item.subtitle && (
+                    <p className="text-[var(--color-track-red)] text-xs tracking-[0.3em] font-bold uppercase mb-2">
+                      {item.subtitle}
+                    </p>
+                  )}
+                  <h3 className="text-2xl md:text-3xl font-primary uppercase tracking-wide leading-tight mb-3">
+                    {item.title}
+                  </h3>
+                  
                   {item.metric && (
-                    <div className="absolute top-4 right-4 bg-[var(--color-track-red)] text-white font-bold px-3 py-1 text-sm tracking-widest uppercase">
+                    <div className="bg-[var(--color-track-red)] text-white font-bold px-3 py-1 text-xs tracking-widest uppercase inline-block self-start mb-3">
                       {item.metric}
                     </div>
                   )}
+                  
+                  {item.description && (
+                    <p className={`${textMutedClass} font-light leading-relaxed text-sm md:text-base`}>
+                      {item.description}
+                    </p>
+                  )}
                 </div>
-              )}
-              
-              {item.subtitle && (
-                <p className="text-[var(--color-track-red)] text-xs tracking-[0.3em] font-bold uppercase mb-2">
-                  {item.subtitle}
-                </p>
-              )}
-              
-              <h3 className="text-2xl md:text-3xl font-primary uppercase tracking-wide mb-4 leading-tight">
-                {item.title}
-              </h3>
-              
-              {item.description && (
-                <p className={`${textMutedClass} font-light leading-relaxed`}>
-                  {item.description}
-                </p>
-              )}
+              </div>
             </div>
           ))}
         </div>

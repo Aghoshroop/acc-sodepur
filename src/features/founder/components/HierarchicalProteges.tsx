@@ -59,36 +59,7 @@ export default function HierarchicalProteges({ olympians }: { olympians: Athlete
         ))}
       </div>
 
-      {/* Second Tier: International Laureates */}
-      <div className="w-full">
-        <div className="mb-12 text-center md:text-left flex flex-col items-center md:items-start">
-            <div className="text-track-red text-[10px] tracking-[0.4em] uppercase mb-2 font-bold">Glorifying Members</div>
-            <h3 className="text-2xl font-primary uppercase tracking-tight text-carbon-black">International Laureates</h3>
-            <div className="w-12 h-[1px] bg-carbon-black/20 mt-4 md:hidden" />
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
-          {secondTier.map((athlete, idx) => (
-            <motion.div 
-              key={athlete.slug}
-              className="flex items-start p-4 hover:bg-carbon-black/5 rounded-lg transition-colors border-b border-carbon-black/10 last:border-b-0 md:border-b-0"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-10%" }}
-              transition={{ duration: 0.5, delay: (idx % 5) * 0.1 }}
-            >
-              <div className="flex-1">
-                <div className="flex flex-col xl:flex-row xl:items-center gap-1 xl:gap-3 mb-2">
-                  <h4 className="text-xl font-primary uppercase tracking-tight text-carbon-black">{athlete.name}</h4>
-                  <span className="hidden xl:block w-1.5 h-1.5 rounded-full bg-track-red/40" />
-                  <span className="text-track-red text-xs md:text-sm uppercase tracking-widest font-bold">{athlete.event}</span>
-                </div>
-                <p className="text-xs md:text-sm text-carbon-black/70 uppercase tracking-wider leading-relaxed">{athlete.achievement}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
+
     </div>
   );
 }

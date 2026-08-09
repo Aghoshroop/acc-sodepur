@@ -42,6 +42,14 @@ export default function FounderSection() {
             <h2 className="text-4xl sm:text-6xl md:text-[80px] lg:text-[100px] xl:text-[120px] font-primary uppercase tracking-tighter leading-[0.9] md:leading-[1.1] text-chalk-white whitespace-nowrap">
               Dr. Kuntal Roy
             </h2>
+            <div className="flex flex-wrap gap-2 md:gap-4 items-center mt-2 justify-center md:justify-start">
+              <span className="text-xs md:text-sm tracking-[0.2em] uppercase border border-chalk-white/20 px-6 py-3 font-bold bg-carbon-black/50 backdrop-blur-sm text-chalk-white">
+                <span className="text-track-red">Dronacharya Awardee</span>
+              </span>
+              <span className="text-xs md:text-sm tracking-[0.2em] uppercase border border-chalk-white/20 px-6 py-3 text-chalk-white/70 font-bold bg-carbon-black/50 backdrop-blur-sm">
+                Ph.D. Sports Science
+              </span>
+            </div>
           </div>
         </motion.div>
 
@@ -52,18 +60,6 @@ export default function FounderSection() {
           viewport={{ once: true, margin: "-10%" }}
           transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="hidden md:flex flex-wrap gap-4 items-center">
-            <span className="text-[10px] tracking-[0.2em] uppercase border border-chalk-white/20 px-4 py-2 font-bold bg-carbon-black/50 backdrop-blur-sm">
-              <span className="text-track-red">Dronacharya Awardee</span>
-            </span>
-            <span className="text-[10px] tracking-[0.2em] uppercase border border-chalk-white/20 px-4 py-2 text-chalk-white/70 font-bold bg-carbon-black/50 backdrop-blur-sm">
-              Ph.D. Sports Science
-            </span>
-            <span className="text-[10px] tracking-[0.2em] uppercase border border-chalk-white/20 px-4 py-2 text-chalk-white/70 font-bold bg-carbon-black/50 backdrop-blur-sm">
-              <span className="text-track-red">57 Years</span> of Legacy
-            </span>
-          </div>
-
           <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center md:items-center md:border-l border-chalk-white/10 md:pl-12 md:ml-4 mt-2 md:mt-4">
             <p className="text-base sm:text-lg md:text-lg leading-[1.6] md:leading-[1.8] tracking-wide opacity-80 md:opacity-90 max-w-sm md:max-w-xl font-medium text-chalk-white italic md:not-italic">
               "Taking grassroots talent from underprivileged backgrounds and crafting them into international icons."

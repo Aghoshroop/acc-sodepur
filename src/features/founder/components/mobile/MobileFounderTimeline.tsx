@@ -18,11 +18,14 @@ export default function MobileFounderTimeline({ timeline }: { timeline: Timeline
 
   return (
     <section className="relative w-full bg-chalk-white text-carbon-black py-20 px-6 overflow-hidden">
-      <div className="text-center mb-16">
+      <div className="text-center mb-16 flex flex-col items-center">
         <div className="text-track-red text-[10px] tracking-[0.4em] uppercase mb-3 font-bold">The Journey</div>
-        <h2 className="text-[2.5rem] font-primary uppercase tracking-tight leading-[0.9]">
+        <h2 className="text-[2.5rem] font-primary uppercase tracking-tight leading-[0.9] mb-6">
           Decades of Dedication
         </h2>
+        <p className="text-[13px] font-light text-carbon-black/75 max-w-md text-center">
+          Over a career spanning more than five decades, Roy’s protégés have brought home over 70 international medals and produced multiple Olympians, conquering the hardest disciplines in track and field.
+        </p>
       </div>
 
       <div className="relative pb-8" ref={containerRef}>

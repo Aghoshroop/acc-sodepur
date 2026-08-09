@@ -310,6 +310,9 @@ export default function MobileAboutPage() {
               <p className="mb-6">
                 In order to fulfill the dream of producing more Olympian in to reality ACC is going to construct real Sports Infrastructure with the most modern facility for the improvement of Sports standards in West Bengal as well as in India.
               </p>
+              <p className="mb-6 font-medium">
+                We are also proud to introduce our all-new hostel facilities. For athletes who travel from a distance to train with us, we provide this dedicated accommodation so they have a supportive environment to live, recover, and focus entirely on their athletic development.
+              </p>
               <p className="bg-carbon-black text-chalk-white p-6 rounded-xl font-medium text-base">
                 With our limited facility we already produce <strong className="text-track-red text-xl">3 Olympians</strong> from Bengal. Only Camp from Bengal to produce more than 1 Olympian. So, with the support from right people we can achieve remarkable feat in the history of Indian Athletics.
               </p>

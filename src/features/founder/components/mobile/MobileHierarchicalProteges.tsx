@@ -59,33 +59,7 @@ export default function MobileHierarchicalProteges({ olympians }: { olympians: A
         ))}
       </div>
 
-      {/* Second Tier: International Laureates */}
-      <div className="w-full bg-carbon-black/50 p-6 rounded-lg backdrop-blur-sm border border-chalk-white/5">
-        <div className="mb-8 text-center flex flex-col items-center">
-            <div className="text-track-red text-[10px] tracking-[0.4em] uppercase mb-2 font-bold">Glorifying Members</div>
-            <h3 className="text-xl font-primary uppercase tracking-tight text-chalk-white">International Laureates</h3>
-            <div className="w-8 h-[1px] bg-chalk-white/20 mt-4" />
-        </div>
-        
-        <div className="flex flex-col gap-6">
-          {secondTier.map((athlete, idx) => (
-            <motion.div 
-              key={athlete.slug}
-              className="flex flex-col items-center text-center gap-2 pb-6 border-b border-chalk-white/10 last:border-b-0 last:pb-0"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-10%" }}
-              transition={{ duration: 0.5, delay: (idx % 5) * 0.1 }}
-            >
-              <div className="flex flex-col gap-1 mb-2">
-                <h4 className="text-xl md:text-2xl font-primary uppercase tracking-tight text-chalk-white">{athlete.name}</h4>
-                <span className="text-track-red text-xs uppercase tracking-widest font-bold">{athlete.event}</span>
-              </div>
-              <p className="text-xs text-chalk-white/70 uppercase tracking-wider leading-relaxed">{athlete.achievement}</p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
+
     </div>
   );
 }

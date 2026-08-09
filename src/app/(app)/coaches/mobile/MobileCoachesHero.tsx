@@ -20,9 +20,11 @@ export default function MobileCoachesHero() {
         <h1 className="text-5xl font-primary uppercase tracking-tight text-chalk-white mb-2 leading-[0.9]">
           The<br />Architects
         </h1>
-        <p className="text-[10px] tracking-[0.4em] uppercase text-track-red font-bold">
-          Our Coaching Staff
-        </p>
+        <div className="inline-block bg-carbon-black/50 backdrop-blur-sm border border-chalk-white/10 px-4 py-2 rounded-sm">
+          <p className="text-[10px] tracking-[0.4em] uppercase text-track-red font-bold">
+            Our Respected Coaches
+          </p>
+        </div>
       </div>
     </section>
   );

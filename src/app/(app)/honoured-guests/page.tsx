@@ -3,7 +3,6 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import MobileHonouredGuestsPage from './mobile/MobileHonouredGuestsPage';
 
 const transitionConfig = { duration: 0.8, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] };
 
@@ -35,11 +34,10 @@ const guests = [
       { name: "Mr. Kamal Maitra", title: "Secretary, WBAA" },
       { name: "Mr. Shilbhadra Dutta", title: "Ex. MLA, Barrakpore" },
       { name: "Mr. Madan Mitra", title: "Ex. Sports Minister, Govt. of WB" },
-      { name: "Mr. Nirmal Ghosh", title: "MLA, Govt. of WB" },
     ]
   },
   {
-    category: "Olympians & International Athletes",
+    category: "Olympians & Athletes",
     members: [
       { name: "Mrs. Saraswati Saha", title: "Olympian, Athletics" },
       { name: "Mrs. Jyotirmoyee Sikhdar", title: "Olympian, Athletics" },
@@ -63,7 +61,7 @@ const guests = [
     ]
   },
   {
-    category: "Coaches & Sporting Leaders",
+    category: "Coaches & Leaders",
     members: [
       { name: "Mr. Vidyasagar", title: "Ex. Chief National Athletics Coach" },
       { name: "Mr. Bastab Roy", title: "Football Coach, Mohun Bagan SG" },
@@ -73,108 +71,100 @@ const guests = [
 
 export default function HonouredGuestsPage() {
   return (
-    <div className="min-h-screen bg-chalk-white text-carbon-black md:pt-48 md:pb-40">
+    <main className="w-full bg-chalk-white text-carbon-black min-h-screen">
       
-      {/* --- DESKTOP VIEW --- */}
-      <div className="hidden lg:block">
-        {/* Hero Section */}
-        <section className="max-w-[1600px] mx-auto px-6 md:px-12 mb-24 md:mb-40 pt-32 md:pt-0">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
-            <div className="lg:col-span-6 flex flex-col justify-between h-full">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ ...transitionConfig, delay: 0.1 }}
-              >
-                <h1 className="font-primary text-[clamp(4rem,10vw,8rem)] leading-[0.85] uppercase tracking-tighter text-carbon-black mb-12">
-                  Honoured <br/>
-                  Guests
-                </h1>
-                
-                <div className="max-w-md text-carbon-black/80 font-body text-lg leading-relaxed">
-                  <p className="mb-6">
-                    For more than five decades, Athletic Coaching Camp has welcomed
-                    Olympians, national coaches, sports administrators, government leaders,
-                    and distinguished personalities who have contributed to Indian sport.
-                  </p>
-                  <p className="font-bold tracking-widest uppercase text-xs text-track-red">
-                    Since 1969.
-                  </p>
-                </div>
-              </motion.div>
-            </div>
-            
-            <div className="lg:col-span-6">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.98 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ ...transitionConfig, delay: 0.3 }}
-                className="relative w-full aspect-[4/5] md:aspect-[3/4] bg-carbon-black/5 overflow-hidden"
-              >
-                <Image 
-                  src="/medal.jpg" 
-                  alt="Historical ACC Photograph"
-                  fill
-                  className="object-cover opacity-90 mix-blend-multiply contrast-125"
-                  priority
-                />
-                <div className="absolute inset-0 border border-carbon-black/10 z-10" />
-              </motion.div>
-              <p className="mt-4 text-xs tracking-widest text-carbon-black/40 uppercase text-right">
-                Archive Photography
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Editorial Roster */}
-        <section className="max-w-[1600px] mx-auto px-6 md:px-12">
-          <div className="w-full h-px bg-carbon-black/10 mb-24 md:mb-32" />
+      {/* Hero Section */}
+      <section className="relative w-full h-[60vh] md:h-[75vh] flex flex-col justify-center items-center text-center">
+        
+        {/* Background Image Container */}
+        <div className="absolute top-[-40px] left-0 right-0 bottom-[-150px] z-0 pointer-events-none">
+          <Image
+            src="/images/honoured guest/honoured guestes hero.webp"
+            alt="Honoured Guests of Athletic Coaching Camp"
+            fill
+            className="object-cover"
+            priority
+          />
+          {/* Global text-visibility overlay */}
+          <div className="absolute inset-0 bg-carbon-black/40" />
           
-          {guests.map((group, groupIndex) => (
-            <motion.div 
-              key={group.category}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ ...transitionConfig }}
-              className="mb-24 md:mb-32 last:mb-0"
-            >
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
-                <div className="md:col-span-4 lg:col-span-5">
-                  <h2 className="text-sm tracking-[0.2em] uppercase font-bold text-track-red sticky top-32">
+          {/* Smooth bottom fade to seamlessly mix into the white section */}
+          <div className="absolute bottom-0 left-0 right-0 h-[150px] bg-gradient-to-t from-chalk-white via-chalk-white/80 to-transparent" />
+        </div>
+        
+        {/* Hero Content */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 mt-12 md:mt-24 pointer-events-none">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ...transitionConfig, delay: 0.1 }}
+          >
+            <span className="inline-block bg-white/10 backdrop-blur-md border border-chalk-white/20 px-4 py-1.5 rounded-sm shadow-xl text-chalk-white text-xs md:text-sm tracking-[0.4em] uppercase font-bold mb-6">
+              Distinguished Personalities
+            </span>
+            <h1 className="font-primary text-6xl sm:text-7xl md:text-[9rem] uppercase tracking-tighter max-w-5xl mx-auto leading-[0.85] text-transparent [-webkit-text-stroke:1px_var(--color-chalk-white)] md:[-webkit-text-stroke:2px_var(--color-chalk-white)] opacity-80">
+              HONOURED <br />
+              GUESTS
+            </h1>
+            <p className="mt-8 font-secondary text-lg md:text-2xl tracking-widest text-chalk-white/90 max-w-3xl mx-auto leading-relaxed drop-shadow-md">
+              For over five decades, Athletic Coaching Camp has welcomed Olympians, national coaches, and sports administrators who have profoundly shaped Indian sport.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Editorial Roster */}
+      <section className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-12 py-20 pb-40">
+        
+        {guests.map((group, groupIndex) => (
+          <motion.div 
+            key={group.category}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ ...transitionConfig }}
+            className="mb-12 md:mb-16 last:mb-0"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+              
+              {/* Category Sticky Header */}
+              <div className="lg:col-span-5">
+                <div className="lg:sticky lg:top-32 flex flex-col">
+                  <span className="text-4xl md:text-5xl font-primary text-carbon-black/10 absolute -top-8 -left-4 md:-left-8 select-none tracking-tighter">
+                    {String(groupIndex + 1).padStart(2, '0')}
+                  </span>
+                  <h2 className="text-2xl md:text-4xl font-secondary uppercase text-carbon-black relative z-10">
                     {group.category}
                   </h2>
-                </div>
-                
-                <div className="md:col-span-8 lg:col-span-7">
-                  <div className="flex flex-col gap-8 md:gap-10">
-                    {group.members.map((member, i) => (
-                      <div 
-                        key={i} 
-                        className="group flex flex-col md:flex-row md:items-baseline md:justify-between border-b border-carbon-black/5 pb-8 last:border-0"
-                      >
-                        <h3 className="text-2xl md:text-3xl font-primary uppercase tracking-tight text-carbon-black mb-2 md:mb-0 md:pr-8">
-                          {member.name}
-                        </h3>
-                        <p className="text-sm md:text-base text-carbon-black/60 font-body font-medium md:text-right md:w-1/2">
-                          {member.title}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
+                  <div className="w-16 h-1 bg-track-red mt-6" />
                 </div>
               </div>
-            </motion.div>
-          ))}
-        </section>
-      </div>
+              
+              {/* Members List */}
+              <div className="lg:col-span-7">
+                <div className="flex flex-col gap-0 border-t border-carbon-black/10">
+                  {group.members.map((member, i) => (
+                    <div 
+                      key={i} 
+                      className="group flex flex-col md:flex-row md:items-center md:justify-between py-3 md:py-4 border-b border-carbon-black/10 hover:bg-carbon-black/5 transition-colors px-4 -mx-4 md:px-6 md:-mx-6 cursor-default"
+                    >
+                      <h3 className="text-lg md:text-xl font-primary uppercase tracking-tight text-carbon-black mb-0.5 md:mb-0">
+                        {member.name}
+                      </h3>
+                      <p className="text-xs md:text-sm text-carbon-black/60 font-body md:text-right">
+                        {member.title}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
 
-      {/* --- MOBILE VIEW --- */}
-      <div className="block lg:hidden w-full">
-        <MobileHonouredGuestsPage guests={guests} />
-      </div>
+            </div>
+          </motion.div>
+        ))}
 
-    </div>
+      </section>
+
+    </main>
   );
 }
