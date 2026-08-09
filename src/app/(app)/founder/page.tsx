@@ -409,7 +409,7 @@ export default function FounderPage() {
         <div className="absolute inset-0 z-0">
           <Image src="/images/synthetic.jpg" alt="Background" fill className="object-cover opacity-10 " />
           <div className="absolute inset-0 bg-gradient-to-b from-chalk-white/95 to-chalk-white/80 backdrop-blur-sm" />
-          <FloatingRedDots count={12} />
+          <FloatingRedDots />
         </div>
         <div className="relative z-10 max-w-[1600px] mx-auto px-6 md:px-12">
           <div className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-12 pb-12 border-b border-carbon-black/10">
@@ -435,7 +435,7 @@ export default function FounderPage() {
 
       {/* Timeline Section */}
       <section className="relative z-40 py-32 bg-carbon-black text-chalk-white border-b border-chalk-white/10 overflow-hidden">
-        <FloatingRedDots count={15} />
+        <FloatingRedDots />
         <div className="max-w-[1200px] mx-auto px-6 md:px-12 relative z-10">
           <div className="text-center mb-32">
             <div className="text-track-red text-xs tracking-[0.4em] uppercase mb-6">The Journey</div>
@@ -489,7 +489,7 @@ export default function FounderPage() {
 
       {/* Awards & Recognitions */}
       <section className="relative py-32 bg-carbon-black/5 text-carbon-black overflow-hidden">
-        <FloatingRedDots count={10} />
+        <FloatingRedDots />
         <div className="max-w-[1600px] mx-auto px-6 md:px-12 relative z-10">
           <div className="mb-16 text-center">
             <h2 className="text-4xl md:text-6xl font-primary uppercase tracking-tight mb-4">
