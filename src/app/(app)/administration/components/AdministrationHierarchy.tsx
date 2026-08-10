@@ -96,18 +96,18 @@ export default function AdministrationHierarchy() {
                 {/* President & Director */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div>
-                    <h5 className="text-xs tracking-[0.2em] uppercase text-chalk-white/40 mb-4">President</h5>
+                    <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[10px] md:text-xs tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-bold mb-4">President</h5>
                     <MemberCard member={executiveBody.president} />
                   </div>
                   <div>
-                    <h5 className="text-xs tracking-[0.2em] uppercase text-chalk-white/40 mb-4">Director</h5>
+                    <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[10px] md:text-xs tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-bold mb-4">Director</h5>
                     <MemberCard member={executiveBody.director} />
                   </div>
                 </div>
 
                 {/* Vice Presidents */}
                 <div>
-                  <h5 className="text-xs tracking-[0.2em] uppercase text-chalk-white/40 mb-4">Vice-President</h5>
+                  <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[10px] md:text-xs tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-bold mb-4">Vice-President</h5>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
                     {executiveBody.vicePresidents.map(vp => (
                       <MemberCard key={vp.name} member={vp} />
@@ -119,16 +119,16 @@ export default function AdministrationHierarchy() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                   <div className="flex flex-col gap-8">
                     <div>
-                      <h5 className="text-xs tracking-[0.2em] uppercase text-chalk-white/40 mb-4">General Secretary</h5>
+                      <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[10px] md:text-xs tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-bold mb-4">General Secretary</h5>
                       <MemberCard member={executiveBody.generalSecretary} />
                     </div>
                     <div>
-                      <h5 className="text-xs tracking-[0.2em] uppercase text-chalk-white/40 mb-4">Assistant Secretary</h5>
+                      <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[10px] md:text-xs tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-bold mb-4">Assistant Secretary</h5>
                       <MemberCard member={executiveBody.assistantSecretary} />
                     </div>
                   </div>
                   <div>
-                    <h5 className="text-xs tracking-[0.2em] uppercase text-chalk-white/40 mb-4">Treasurer</h5>
+                    <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[10px] md:text-xs tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-bold mb-4">Treasurer</h5>
                     <div className="flex flex-col gap-8">
                       {executiveBody.treasurers.map(t => (
                         <MemberCard key={t.name} member={t} />
@@ -136,6 +136,7 @@ export default function AdministrationHierarchy() {
                     </div>
                   </div>
                 </div>
+
               </div>
             </motion.div>
           </div>
@@ -164,41 +165,15 @@ export default function AdministrationHierarchy() {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-10%" }}
-              className="relative p-8 border border-track-red/20 overflow-hidden group"
-            >
-              <div className="absolute inset-0 bg-track-red/5 group-hover:bg-track-red/10 transition-colors" />
-              <div className="relative z-10 flex flex-col md:flex-row gap-6 items-start">
-                <div className="relative aspect-square w-32 shrink-0 border border-chalk-white/10 overflow-hidden">
-                  <Image src={specialProfile.image} alt={specialProfile.name} fill className="object-cover" />
-                </div>
-                <div>
-                  <h4 className="text-lg font-bold text-chalk-white mb-2">{specialProfile.name}</h4>
-                  <p className="text-sm font-light text-chalk-white/70 leading-relaxed">
-                    {specialProfile.description}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-10%" }}
               className="flex flex-col gap-10"
             >
               <div>
-                <h5 className="text-xs tracking-[0.2em] uppercase text-chalk-white/40 mb-4">Director (Sports Science)</h5>
+                <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[10px] md:text-xs tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-bold mb-4">Director (Sports Science)</h5>
                 <MemberCard member={executiveBody.directorSportsScience} />
               </div>
-              <div className="grid grid-cols-2 gap-8">
-                <div>
-                  <h5 className="text-xs tracking-[0.2em] uppercase text-chalk-white/40 mb-4">Head - Infrastructure & Advisory</h5>
-                  <MemberCard member={executiveBody.headInfrastructure} />
-                </div>
-                <div>
-                  <h5 className="text-xs tracking-[0.2em] uppercase text-chalk-white/40 mb-4">Head - Creative, Media & Publication</h5>
-                  <MemberCard member={executiveBody.headCreative} />
-                </div>
+              <div>
+                <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[10px] md:text-xs tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-bold mb-4">Head - Infrastructure & Advisory</h5>
+                <MemberCard member={executiveBody.headInfrastructure} />
               </div>
             </motion.div>
 
@@ -212,6 +187,10 @@ export default function AdministrationHierarchy() {
           viewport={{ once: true, margin: "-10%" }}
         >
           <SectionHeader title="Executive Members" />
+          <div className="mb-10">
+            <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[10px] md:text-xs tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-bold mb-4">Head - Creative, Media & Publication</h5>
+            <MemberCard member={executiveBody.headCreative} className="max-w-[200px]" />
+          </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 md:gap-8">
             {executiveMembers.map(member => (
               <MemberCard key={member.name} member={member} className="w-full" />

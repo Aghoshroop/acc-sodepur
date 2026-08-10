@@ -41,11 +41,17 @@ export default function CoachesClient() {
                 loop 
                 muted 
                 playsInline 
-                className="absolute inset-0 w-full h-full object-cover object-[center_30%] "
+                className="absolute top-1/2 left-0 w-full -translate-y-1/2 h-auto scale-[0.65]"
               >
-                <source src="/videos/coaches.mp4" type="video/mp4" />
+                <source src="/videos/rudra-pratim-hero.mp4" type="video/mp4" />
               </video>
-              <div className="absolute inset-0 bg-carbon-black/30" />
+              <div className="absolute inset-0 bg-carbon-black/40" />
+              
+              {/* Fade Overlays for sharp video edges (Video is scale-65, so edges are at 17.5% and 82.5%) */}
+              <div className="absolute inset-y-0 left-0 w-[35%] bg-gradient-to-r from-carbon-black from-[50%] to-transparent pointer-events-none" />
+              <div className="absolute inset-y-0 right-0 w-[35%] bg-gradient-to-l from-carbon-black from-[50%] to-transparent pointer-events-none" />
+              <div className="absolute inset-x-0 top-0 h-[30%] bg-gradient-to-b from-carbon-black to-transparent pointer-events-none" />
+              <div className="absolute inset-x-0 bottom-0 h-[30%] bg-gradient-to-t from-carbon-black to-transparent pointer-events-none" />
             </div>
             <div className="relative z-10 w-full">
               <HeroStark 
@@ -63,52 +69,54 @@ export default function CoachesClient() {
           {/* Section 2: Kuntal Roy */}
           <section className="relative z-20 w-full min-h-screen border-b border-chalk-white/10 overflow-hidden bg-carbon-black flex flex-col">
             <div className="absolute inset-0 z-0">
-              <Image src="/images/51681-kuntal-roy.png" alt="Dr. Kuntal Roy" fill className="object-cover object-[center_top] transition-transform" />
+              <Image src="/images/legacy/legacy-timeline-2023.jpg" alt="Dr. Kuntal Roy" fill className="object-cover object-[center_top] transition-transform" />
               <div className="absolute inset-0 bg-carbon-black/40" />
               <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-carbon-black/95 via-carbon-black/50 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-carbon-black/95 via-carbon-black/70 to-transparent" />
             </div>
             
-            <div className="relative z-10 w-full flex-grow max-w-[1600px] mx-auto px-6 md:px-12 flex flex-col justify-between pt-12 md:pt-16 pb-16">
-              <motion.div 
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8 }}
-                className="w-full md:w-3/4 flex flex-col items-start"
-              >
-                <div className="flex flex-col gap-4 items-start relative z-20">
-                  <p className="text-sm tracking-[0.4em] uppercase text-track-red font-semibold">
+            <div className="relative z-10 w-full h-full flex-grow max-w-[1600px] mx-auto px-6 md:px-12 flex flex-col justify-end pb-16 md:pb-24">
+              <div className="flex flex-col items-start gap-8 w-full max-w-3xl">
+                
+                <motion.div 
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.8 }}
+                  className="flex flex-col gap-4 items-start relative z-20"
+                >
+                  <p className="text-sm tracking-[0.4em] uppercase text-track-red font-semibold drop-shadow-lg">
                     The Founder / Director
                   </p>
-                  <h2 className="text-[80px] lg:text-[100px] xl:text-[120px] font-primary uppercase tracking-tighter leading-[0.9] text-chalk-white whitespace-nowrap">
+                  <h2 className="text-[70px] md:text-[90px] xl:text-[110px] font-primary uppercase tracking-tighter leading-[0.9] text-chalk-white whitespace-nowrap drop-shadow-2xl">
                     Dr. Kuntal Roy
                   </h2>
                   <div className="flex flex-wrap gap-4 items-center mt-2">
-                    <span className="text-xs md:text-sm tracking-[0.2em] uppercase border border-chalk-white/20 px-6 py-3 font-bold bg-carbon-black/50 backdrop-blur-sm text-chalk-white">
+                    <span className="text-xs md:text-sm tracking-[0.2em] uppercase border border-chalk-white/20 px-6 py-3 font-bold bg-carbon-black/60 backdrop-blur-md text-chalk-white shadow-xl">
                       <span className="text-track-red">Dronacharya Awardee</span>
                     </span>
-                    <span className="text-xs md:text-sm tracking-[0.2em] uppercase border border-chalk-white/20 px-6 py-3 text-chalk-white/70 font-bold bg-carbon-black/50 backdrop-blur-sm">
+                    <span className="text-xs md:text-sm tracking-[0.2em] uppercase border border-chalk-white/20 px-6 py-3 text-chalk-white/90 font-bold bg-carbon-black/60 backdrop-blur-md shadow-xl">
                       Ph.D. Sports Science
                     </span>
                   </div>
-                </div>
-              </motion.div>
+                </motion.div>
 
-              <motion.div 
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="w-full md:w-3/4 flex flex-col gap-8 md:gap-12 items-start mt-auto pt-24"
-              >
-                <div className="flex flex-col md:flex-row gap-8 items-center border-l border-chalk-white/10 pl-12 ml-4">
-                  <p className="text-lg leading-[1.8] tracking-wide opacity-90 max-w-xl font-medium text-chalk-white">
+                <motion.div 
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="w-full flex flex-col items-start text-left border-l border-track-red/50 pl-6"
+                >
+                  <p className="text-xl md:text-2xl leading-[1.6] tracking-wide font-medium text-chalk-white drop-shadow-lg mb-4">
                     "Taking grassroots talent from underprivileged backgrounds and crafting them into international icons."
-                    <span className="font-normal"> His lineage has fundamentally shaped Bengal's history in athletics, resulting in Olympians and over 73 international medals.</span>
                   </p>
-                </div>
-              </motion.div>
+                  <p className="text-base md:text-lg text-chalk-white/80 font-light leading-relaxed drop-shadow-md bg-carbon-black/30 p-4 rounded-md backdrop-blur-sm">
+                    His lineage has fundamentally shaped Bengal's history in athletics, resulting in Olympians and over 73 international medals.
+                  </p>
+                </motion.div>
+                
+              </div>
             </div>
           </section>
 
@@ -133,6 +141,16 @@ export default function CoachesClient() {
                   <p className="text-chalk-white/90 font-light text-lg leading-relaxed mb-8 bg-carbon-black/30 p-6 backdrop-blur-sm border-l-2 border-track-red/50 rounded-r-xl">
                     Son and protégé of Dr. Kuntal Roy, Rudra is a prominent Track & Field and Strength & Conditioning (S&C) coach holding elite national and international coaching credentials.
                   </p>
+                  
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="relative w-full aspect-[4/5] rounded-xl overflow-hidden border border-chalk-white/10 shadow-2xl mt-4 hidden lg:block"
+                  >
+                    <Image src="/images/rudrapratimroy.jpg" alt="Rudra Pratim Roy" fill className="object-cover" />
+                  </motion.div>
                 </motion.div>
                 
                 <div className="w-full lg:w-2/3 space-y-16">

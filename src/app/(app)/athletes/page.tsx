@@ -51,12 +51,27 @@ export const metadata = {
   title: 'Athletes | Athletic Coaching Camp',
 };
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 60;
+
+const GIRLS = [
+  'aishanya', 'bidisha', 'debanjana', 'dipti', 'ginia', 'genia', 'nupur', 'sreeja', 'tiyasha', 'tiasha', 'trishna', 'triya', 'priyanka'
+];
+
+const BOYS = [
+  'aviroop', 'hirak', 'meghadri', 'rajdip', 'rupak', 'sanoyaj', 'sanayoj', 'satayu', 'sayan karmakar', 'sayan biswas', 'shikhar', 'sisant', 'shishant', 'sounak', 'shounak', 'subham', 'surya', 'tarun'
+];
+
+const getGender = (name: string) => {
+  const lower = name.toLowerCase();
+  if (GIRLS.some(g => lower.includes(g))) return "Girls";
+  if (BOYS.some(b => lower.includes(b))) return "Boys";
+  return "Boys"; // Default fallback so no one is lost
+};
 
 export default async function AthletesPage() {
   const rawAthletes = await getAthletes();
   
-  const sortOrder = ['bidisha', 'shikhar', 'aviroop', 'sayan karmakar', 'rajdip', 'dipti', 'debanjana', 'hirak'];
+
   
   const allAthletes = rawAthletes
     .filter(a => !(a.category === "Combined Events" && a.name.toLowerCase().includes("priyanka")))
@@ -115,19 +130,6 @@ export default async function AthletesPage() {
         };
       }
       return a;
-    })
-    .sort((a, b) => {
-      const aLower = a.name.toLowerCase();
-      const bLower = b.name.toLowerCase();
-      
-      const aIndex = sortOrder.findIndex(name => aLower.includes(name));
-      const bIndex = sortOrder.findIndex(name => bLower.includes(name));
-      
-      if (aIndex !== -1 && bIndex !== -1) return aIndex - bIndex;
-      if (aIndex !== -1) return -1;
-      if (bIndex !== -1) return 1;
-      
-      return 0; // keep original order for rest
     });
     
   const throwersData: Athlete[] = [
@@ -204,23 +206,108 @@ export default async function AthletesPage() {
 
   const sprintersToAdd = sprintersData.filter(s => !allAthletes.some(a => a.name.toLowerCase() === s.name.toLowerCase() && a.category === "Sprinters"));
   allAthletes.push(...sprintersToAdd);
-  
-  // The exact categories to ensure order
-  const categories = [
-    "Combined Events",
-    "Sprinters",
-    "Sprints",
-    "Hurdlers",
-    "Middle Distance",
-    "Long Jump & Triple Jump",
-    "High Jump & Pole Vault",
-    "Throwers",
-    "Emerging Youth Jumpers"
-  ];
 
-  const activeCategories = categories.filter(category => 
-    allAthletes.some(a => a.category === category)
-  );
+  // 1. Deduplicate athletes by name and combine events
+  const uniqueAthletesMap = new Map<string, Athlete & { gender: string }>();
+
+  allAthletes.forEach(a => {
+    const key = a.name.toLowerCase().trim();
+    const gender = getGender(key);
+    
+    if (uniqueAthletesMap.has(key)) {
+      const existing = uniqueAthletesMap.get(key)!;
+      
+      // Split by common separators to avoid "100m & 200m • 100m" -> we want clean deduping
+      const existingEvents = existing.event ? existing.event.split(/ • | & | and /i).map(e => e.trim()) : [];
+      const newEvents = a.event ? a.event.split(/ • | & | and /i).map(e => e.trim()) : [];
+      
+      const combinedEvents = Array.from(new Set([...existingEvents, ...newEvents])).filter(Boolean);
+      existing.event = combinedEvents.join(' • ');
+
+      if (!existing.description && a.description) existing.description = a.description;
+      if (!existing.metric && a.metric) existing.metric = a.metric;
+    } else {
+      uniqueAthletesMap.set(key, { ...a, gender });
+    }
+  });
+
+  // Event priority helper for sorting
+  const getEventPriority = (eventStr: string | undefined): number => {
+    if (!eventStr) return 99;
+    const lower = eventStr.toLowerCase();
+    
+    // 1. Combined Events
+    if (lower.includes('decathlon') || lower.includes('heptathlon')) return 1;
+    // 2. Sprints
+    if (lower.includes('100m') || lower.includes('200m') || lower.includes('400m') || lower.includes('sprint')) return 2;
+    // 3. 800m / Middle Distance
+    if (lower.includes('800m') || lower.includes('middle distance')) return 3;
+    // 4. Hurdles
+    if (lower.includes('hurdle')) return 4;
+    // 5. Jumpers
+    if (lower.includes('jump') || lower.includes('vault')) return 5;
+    // 6. Throwers
+    if (lower.includes('shot put') || lower.includes('discus') || lower.includes('javelin') || lower.includes('throw')) return 6;
+    
+    return 99; // Default
+  };
+
+  const performanceOrder = ['shikhar', 'aviroop', 'sayan karmakar', 'rajdip'];
+
+  const deduplicatedAthletes = Array.from(uniqueAthletesMap.values())
+    .sort((a, b) => {
+      const priorityA = getEventPriority(a.event);
+      const priorityB = getEventPriority(b.event);
+      
+      // Primary Sort: Event Type
+      if (priorityA !== priorityB) {
+        return priorityA - priorityB;
+      }
+      
+      const aLower = a.name.toLowerCase();
+      const bLower = b.name.toLowerCase();
+      
+      const aIndex = performanceOrder.findIndex(name => aLower.includes(name));
+      const bIndex = performanceOrder.findIndex(name => bLower.includes(name));
+      
+      // Secondary Sort: Performance Order (if explicitly listed)
+      if (aIndex !== -1 && bIndex !== -1) return aIndex - bIndex;
+      if (aIndex !== -1) return -1;
+      if (bIndex !== -1) return 1;
+      
+      // Tertiary Sort: Alphabetical
+      return a.name.localeCompare(b.name);
+    });
+
+  // 2. Generate categories
+  const categories = [];
+  
+  const boysItems = deduplicatedAthletes
+    .filter(a => a.gender === "Boys")
+    .map(a => ({
+      id: a.id || a.name,
+      title: a.name,
+      subtitle: a.event,
+      description: a.description,
+      metric: a.metric,
+      image: getAthleteImage(a.name),
+      imagePosition: a.name.toLowerCase().includes("sayan karmakar") ? "object-[center_10%]" : "object-center"
+    }));
+
+  const girlsItems = deduplicatedAthletes
+    .filter(a => a.gender === "Girls")
+    .map(a => ({
+      id: a.id || a.name,
+      title: a.name,
+      subtitle: a.event,
+      description: a.description,
+      metric: a.metric,
+      image: getAthleteImage(a.name),
+      imagePosition: a.name.toLowerCase().includes("sayan karmakar") ? "object-[center_10%]" : "object-center"
+    }));
+
+  if (boysItems.length > 0) categories.push({ name: "Boys", items: boysItems });
+  if (girlsItems.length > 0) categories.push({ name: "Girls", items: girlsItems });
 
   return (
     <main className="w-full bg-carbon-black min-h-screen">
@@ -242,12 +329,11 @@ export default async function AthletesPage() {
             </div>
           </section>
           
-          {activeCategories.map((category, index) => {
-            const athletesInCategory = allAthletes.filter(a => a.category === category);
+          {categories.map((category, index) => {
             const isDarkTheme = index % 2 === 0;
             
             return (
-              <section key={category} className={`relative z-20 w-full py-24 md:py-32 ${isDarkTheme ? 'bg-carbon-black' : 'bg-chalk-white'} border-b border-chalk-white/10 overflow-hidden`}>
+              <section key={category.name} className={`relative z-20 w-full py-24 md:py-32 ${isDarkTheme ? 'bg-carbon-black' : 'bg-chalk-white'} border-b border-chalk-white/10 overflow-hidden`}>
                 <div className="absolute inset-0 z-0">
                   <Image src={isDarkTheme ? "/images/legacy/legacy-timeline-2002.jpg" : "/images/synthetic.jpg"} alt="Background" fill className={`object-cover ${isDarkTheme ? 'opacity-20' : 'opacity-10'} `} />
                   <div className={`absolute inset-0 bg-gradient-to-b ${isDarkTheme ? 'from-carbon-black/95 to-carbon-black/80' : 'from-chalk-white/95 to-chalk-white/80'} backdrop-blur-sm`} />
@@ -255,19 +341,11 @@ export default async function AthletesPage() {
                 <div className="relative z-10 w-full">
                   <div className="max-w-[1800px] mx-auto px-6 md:px-12 mb-12">
                     <h2 className={`text-4xl md:text-5xl font-primary uppercase tracking-widest ${isDarkTheme ? 'text-chalk-white' : 'text-carbon-black'} border-b-4 border-track-red inline-block pb-2`}>
-                      {category}
+                      {category.name}
                     </h2>
                   </div>
                   <BrutalistGrid 
-                    items={athletesInCategory.map(a => ({
-                      id: a.id,
-                      title: a.name,
-                      subtitle: a.event,
-                      description: a.description,
-                      metric: a.metric,
-                      image: getAthleteImage(a.name),
-                      imagePosition: a.name.toLowerCase().includes("sayan karmakar") ? "object-[center_10%]" : "object-center"
-                    }))} 
+                    items={category.items} 
                     columns={2} 
                     theme={isDarkTheme ? "dark" : "light"} 
                   />
@@ -277,7 +355,7 @@ export default async function AthletesPage() {
           })}
         </div>
         
-        {activeCategories.length === 0 && (
+        {categories.length === 0 && (
           <div className="w-full bg-carbon-black py-32 text-center text-chalk-white">
             <p className="text-xl font-light opacity-50">Athlete roster is currently being updated.</p>
           </div>
@@ -286,7 +364,7 @@ export default async function AthletesPage() {
 
       {/* --- MOBILE VIEW --- */}
       <div className="block lg:hidden w-full">
-        <MobileAthletesPage />
+        <MobileAthletesPage categories={categories} />
       </div>
     </main>
   );

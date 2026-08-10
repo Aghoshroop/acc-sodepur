@@ -2,10 +2,12 @@
 
 import { useEffect, useRef } from 'react';
 import Image from 'next/image';
-import { X, Play, FileText } from 'lucide-react';
+import { X } from 'lucide-react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { useGallery } from '../context/GalleryContext';
+
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 export default function StoriesBehindTheFrame() {
   const { activeMedia, setActiveMedia } = useGallery();
@@ -40,6 +42,34 @@ export default function StoriesBehindTheFrame() {
     }
   }, [activeMedia]);
 
+  const strobeRef = useRef<HTMLDivElement>(null);
+
+  // Strobe DRM logic: rapidly shift a microscopic checkerboard mask to ruin screenshots
+  // The human eye blends the 60fps shift, but a screenshot captures the mask.
+  useEffect(() => {
+    let animationFrameId: number;
+    let frameCount = 0;
+    
+    const animateStrobe = () => {
+      if (strobeRef.current) {
+        // Shift the background position rapidly
+        frameCount++;
+        const offsetX = (frameCount % 2) * 2;
+        const offsetY = (Math.floor(frameCount / 2) % 2) * 2;
+        strobeRef.current.style.backgroundPosition = `${offsetX}px ${offsetY}px`;
+      }
+      animationFrameId = requestAnimationFrame(animateStrobe);
+    };
+
+    if (activeMedia) {
+      animateStrobe();
+    }
+
+    return () => {
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+    };
+  }, [activeMedia]);
+
   if (!activeMedia) {
     // Render hidden overlay for transition purposes
     return (
@@ -52,100 +82,78 @@ export default function StoriesBehindTheFrame() {
 
   const { title, description, year, era, location, coach, athletes, imageUrl, story } = activeMedia;
 
-  return (
-    <div 
-      ref={overlayRef} 
-      className="fixed inset-0 z-[100] bg-[#050505]/95 backdrop-blur-xl opacity-0 pointer-events-none overflow-y-auto"
-    >
-      <button 
-        onClick={() => setActiveMedia(null)}
-        className="fixed top-8 right-8 z-[110] p-4 bg-[#050505] border border-[#F6F2EA]/20 text-[#F6F2EA] hover:text-[#C8A96A] hover:border-[#C8A96A] transition-colors rounded-full"
+    return (
+      <div 
+        ref={overlayRef} 
+        className="fixed inset-0 z-[100] bg-[#050505]/95 backdrop-blur-xl opacity-0 pointer-events-none overflow-y-auto"
       >
-        <X size={24} />
-      </button>
+        <button 
+          onClick={() => setActiveMedia(null)}
+          className="fixed top-8 right-8 z-[110] p-4 bg-[#050505] border border-[#F6F2EA]/20 text-[#F6F2EA] hover:text-[#C8A96A] hover:border-[#C8A96A] transition-colors rounded-full"
+        >
+          <X size={24} />
+        </button>
 
-      <div ref={contentRef} className="min-h-screen w-full max-w-7xl mx-auto px-6 py-24 flex flex-col lg:flex-row gap-12 lg:gap-24 opacity-0">
-        
-        {/* Left: Huge Image */}
-        <div className="w-full lg:w-1/2 flex flex-col">
-          <div className="relative w-full aspect-[4/5] bg-[#0D0D0D] border border-[#F6F2EA]/10 p-4 shadow-2xl">
-            <div className="relative w-full h-full overflow-hidden">
-              <Image unoptimized={true}
-                src={imageUrl}
-                alt={title}
-                fill
-                className="object-cover"
-              />
+        <div ref={contentRef} className="min-h-screen w-full flex items-center justify-center p-4 md:p-12 opacity-0 pointer-events-auto">
+          <div className="relative w-full max-w-6xl h-[80vh] md:h-[90vh] flex flex-col items-center justify-center">
+            <div className="relative w-full h-full cursor-grab active:cursor-grabbing flex items-center justify-center overflow-hidden">
+              <TransformWrapper
+                initialScale={1}
+                minScale={0.5}
+                maxScale={5}
+                centerOnInit={true}
+                centerZoomedOut={true}
+                limitToBounds={true}
+                wheel={{ step: 0.2 }}
+                pinch={{ step: 5 }}
+                doubleClick={{ mode: "zoomIn", step: 0.5 }}
+                zoomAnimation={{ size: 0.2, animationType: 'easeOut', animationTime: 200 }}
+              >
+                <TransformComponent 
+                  wrapperClass="!w-full !h-full" 
+                  contentClass="!w-full !h-full !flex !items-center !justify-center"
+                >
+                  <div className="relative inline-block max-w-full max-h-full">
+                    <img
+                      src={imageUrl}
+                      alt={title || 'Gallery Image'}
+                      className="max-w-full max-h-full object-contain drop-shadow-2xl transition-transform duration-200"
+                      draggable={false}
+                    />
+                    {/* Strobe DRM Overlay */}
+                    <div 
+                      ref={strobeRef}
+                      className="absolute inset-0 z-[105] pointer-events-none mix-blend-multiply opacity-50"
+                      style={{
+                        backgroundImage: 'repeating-linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000), repeating-linear-gradient(45deg, #000 25%, #fff 25%, #fff 75%, #000 75%, #000)',
+                        backgroundSize: '4px 4px',
+                        backgroundPosition: '0 0, 2px 2px'
+                      }}
+                    />
+                  </div>
+                </TransformComponent>
+              </TransformWrapper>
             </div>
-          </div>
-          
-          <div className="mt-8 flex flex-wrap gap-4 text-xs font-primary tracking-[0.2em] uppercase text-[#F6F2EA]/50">
-            {year && <span className="border border-[#F6F2EA]/20 px-4 py-2">{year}</span>}
-            {era && <span className="border border-[#F6F2EA]/20 px-4 py-2">{era}</span>}
-            {location && <span className="border border-[#F6F2EA]/20 px-4 py-2">{location}</span>}
-          </div>
-        </div>
-
-        {/* Right: The Story */}
-        <div className="w-full lg:w-1/2 flex flex-col justify-center">
-          <h2 className="text-4xl md:text-6xl font-primary text-[#F6F2EA] uppercase tracking-widest leading-tight">
-            {story?.headline || title}
-          </h2>
-          {story?.subtitle && (
-            <h3 className="text-2xl text-[#C8A96A] font-secondary italic mt-4">
-              {story.subtitle}
-            </h3>
-          )}
-
-          <div className="w-12 h-1 bg-[#C8A96A] my-8" />
-
-          <p className="text-[#F6F2EA]/80 font-light text-lg md:text-xl leading-relaxed whitespace-pre-wrap">
-            {story?.body || description || "Every photograph in our archive carries the weight of history. This moment captured the essence of Athletic Coaching Camp's dedication to excellence."}
-          </p>
-
-          {story?.quote && (
-            <blockquote className="mt-12 border-l-4 border-[#C8A96A] pl-6 italic text-2xl text-[#F6F2EA] font-secondary">
-              "{story.quote}"
-              {story.quoteAuthor && (
-                <span className="block mt-4 text-sm font-primary uppercase tracking-widest text-[#F6F2EA]/50 not-italic">
-                  — {story.quoteAuthor}
+            
+            {(title || description || year) && (
+              <div className="mt-6 text-center max-w-3xl px-4 relative z-[110]">
+              {title && (
+                <h2 className="text-xl md:text-3xl font-primary text-[#F6F2EA] uppercase tracking-widest drop-shadow-lg">
+                  {title}
+                </h2>
+              )}
+              {year && (
+                <span className="inline-block mt-2 px-3 py-1 bg-[#C8A96A]/20 border border-[#C8A96A]/50 text-[#C8A96A] font-primary uppercase tracking-widest text-xs md:text-sm">
+                  {year}
                 </span>
               )}
-            </blockquote>
-          )}
-
-          {/* Metadata Grid */}
-          <div className="mt-16 grid grid-cols-2 gap-8 border-t border-[#F6F2EA]/10 pt-8">
-            {coach && (
-              <div>
-                <span className="block text-xs font-primary tracking-widest text-[#F6F2EA]/40 mb-2">HEAD COACH</span>
-                <span className="text-[#F6F2EA] font-secondary text-lg">{coach}</span>
-              </div>
-            )}
-            {athletes && athletes.length > 0 && (
-              <div>
-                <span className="block text-xs font-primary tracking-widest text-[#F6F2EA]/40 mb-2">FEATURING</span>
-                <span className="text-[#F6F2EA] font-secondary text-lg">{athletes.join(', ')}</span>
-              </div>
-            )}
-          </div>
-
-          {/* Related Media Buttons (Mock) */}
-          {(story?.videoUrl || story?.documentUrls) && (
-            <div className="mt-12 flex gap-4">
-              {story.videoUrl && (
-                <button className="flex items-center gap-3 px-6 py-3 bg-[#C8A96A] text-[#050505] font-primary uppercase tracking-widest hover:bg-[#F6F2EA] transition-colors">
-                  <Play size={18} fill="currentColor" /> Play Video
-                </button>
-              )}
-              {story.documentUrls && (
-                <button className="flex items-center gap-3 px-6 py-3 border border-[#F6F2EA]/20 text-[#F6F2EA] font-primary uppercase tracking-widest hover:border-[#C8A96A] hover:text-[#C8A96A] transition-colors">
-                  <FileText size={18} /> View Records
-                </button>
+              {description && (
+                <p className="mt-4 text-[#F6F2EA]/80 font-light text-sm md:text-base leading-relaxed">
+                  {description}
+                </p>
               )}
             </div>
           )}
-
         </div>
       </div>
     </div>

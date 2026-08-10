@@ -13,7 +13,11 @@ export type DisplayZone =
   | 'FilmStrip'
   | 'Homepage'
   | 'LegacyWall'
-  | 'ModernACC';
+  | 'ModernACC'
+  | 'ModernEra'
+  | 'TheBeginning'
+  | 'ThenVsNow'
+  | 'RecentMoments';
 
 export type GalleryMediaStatus = 'Published' | 'Draft' | 'Archived';
 

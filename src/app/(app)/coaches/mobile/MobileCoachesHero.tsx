@@ -9,12 +9,15 @@ export default function MobileCoachesHero() {
           loop 
           muted 
           playsInline 
-          className="absolute inset-0 w-full h-full object-cover object-[center_30%] "
+          className="absolute top-1/2 left-0 w-full -translate-y-1/2 h-auto scale-[0.85] md:scale-90"
         >
-          <source src="/videos/coaches.mp4" type="video/mp4" />
+          <source src="/videos/rudra-pratim-hero.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-carbon-black/20" />
         <div className="absolute inset-0 bg-gradient-to-t from-carbon-black via-transparent to-transparent" />
+        <div className="absolute inset-y-0 left-0 w-[30%] bg-gradient-to-r from-carbon-black from-[50%] to-transparent pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-[30%] bg-gradient-to-l from-carbon-black from-[50%] to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 top-0 h-[25%] bg-gradient-to-b from-carbon-black to-transparent pointer-events-none" />
       </div>
       <div className="relative z-10 w-full px-6">
         <h1 className="text-5xl font-primary uppercase tracking-tight text-chalk-white mb-2 leading-[0.9]">

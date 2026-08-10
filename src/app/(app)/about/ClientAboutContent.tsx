@@ -216,8 +216,6 @@ export default function ClientAboutContent() {
                 <Image src="/images/scintific.jpg" alt="Conditioning Area" fill className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out" />
               </div>
             </div>
-          </div>
-
         </div>
       </div>
 
@@ -276,9 +274,7 @@ export default function ClientAboutContent() {
                 <p className="mb-6">
                   In order to fulfill the dream of producing more Olympian in to reality ACC is going to construct real Sports Infrastructure with the most modern facility for the improvement of Sports standards in West Bengal as well as in India.
                 </p>
-                <p className="mb-6 font-medium">
-                  We are also proud to introduce our all-new hostel facilities. For athletes who travel from a distance to train with us, we provide this dedicated accommodation so they have a supportive environment to live, recover, and focus entirely on their athletic development.
-                </p>
+
                 <p className="bg-carbon-black text-chalk-white p-8 rounded-xl font-medium">
                   With our limited facility we already produce <strong className="text-track-red text-2xl">3 Olympians</strong> from Bengal. Only Camp from Bengal to produce more than 1 Olympian. So, with the support from right people we can achieve remarkable feat in the history of Indian Athletics.
                 </p>
@@ -286,6 +282,33 @@ export default function ClientAboutContent() {
             </div>
           </div>
           
+        </div>
+      </div>
+      </div>
+
+      {/* ----------------- HOSTEL FACILITY SECTION (Bottom) ----------------- */}
+      <div className="max-w-[1600px] mx-auto px-6 md:px-12 pb-32">
+        <div className="w-full relative mt-8 rounded-[2rem] overflow-hidden shadow-2xl group border border-track-red/30">
+          <div className="absolute inset-0 z-0">
+             <Image src="/images/relaxation.jpg" alt="Hostel Facilities" fill className="object-cover object-center group-hover:scale-105 transition-transform duration-1000 ease-out" />
+             <div className="absolute inset-0 bg-gradient-to-r from-carbon-black via-carbon-black/80 to-transparent" />
+             <div className="absolute inset-0 bg-carbon-black/30" />
+          </div>
+          
+          <div className="relative z-10 p-8 md:p-16 lg:p-24 flex flex-col justify-center h-full min-h-[500px] w-full lg:w-3/4">
+            <div className="inline-flex items-center gap-4 mb-6">
+              <span className="w-12 h-1 bg-track-red rounded-full"></span>
+              <span className="text-track-red tracking-[0.4em] font-bold uppercase text-sm md:text-base animate-pulse drop-shadow-md">New Addition</span>
+            </div>
+            
+            <h3 className="text-5xl md:text-6xl lg:text-7xl font-primary uppercase tracking-tight text-chalk-white mb-8 drop-shadow-2xl leading-[0.9]">
+              Dedicated Athlete<br/>Accommodation
+            </h3>
+            
+            <p className="text-lg md:text-xl lg:text-2xl font-light text-chalk-white/90 leading-relaxed drop-shadow-md border-l-4 border-track-red pl-6 bg-carbon-black/30 p-6 rounded-r-xl backdrop-blur-md">
+              We are also proud to introduce our all-new hostel facilities. For athletes who travel from a distance to train with us, we provide this dedicated accommodation so they have a supportive environment to live, recover, and focus entirely on their athletic development.
+            </p>
+          </div>
         </div>
       </div>
 

@@ -310,15 +310,37 @@ export default function MobileAboutPage() {
               <p className="mb-6">
                 In order to fulfill the dream of producing more Olympian in to reality ACC is going to construct real Sports Infrastructure with the most modern facility for the improvement of Sports standards in West Bengal as well as in India.
               </p>
-              <p className="mb-6 font-medium">
-                We are also proud to introduce our all-new hostel facilities. For athletes who travel from a distance to train with us, we provide this dedicated accommodation so they have a supportive environment to live, recover, and focus entirely on their athletic development.
-              </p>
               <p className="bg-carbon-black text-chalk-white p-6 rounded-xl font-medium text-base">
                 With our limited facility we already produce <strong className="text-track-red text-xl">3 Olympians</strong> from Bengal. Only Camp from Bengal to produce more than 1 Olympian. So, with the support from right people we can achieve remarkable feat in the history of Indian Athletics.
               </p>
             </div>
           </div>
 
+        </div>
+      </div>
+
+      {/* ----------------- HOSTEL FACILITY SECTION (Bottom) ----------------- */}
+      <div className="w-full bg-chalk-white px-6 pb-24">
+        <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-track-red/30">
+          <div className="absolute inset-0 z-0">
+             <Image src="/images/relaxation.jpg" alt="Hostel Facilities" fill className="object-cover object-center" />
+             <div className="absolute inset-0 bg-gradient-to-t from-carbon-black via-carbon-black/80 to-carbon-black/40" />
+          </div>
+          
+          <div className="relative z-10 p-8 flex flex-col justify-end min-h-[450px] w-full">
+            <div className="inline-flex items-center gap-3 mb-4">
+              <span className="w-8 h-1 bg-track-red rounded-full"></span>
+              <span className="text-track-red tracking-[0.3em] font-bold uppercase text-[10px] animate-pulse drop-shadow-md">New Addition</span>
+            </div>
+            
+            <h3 className="text-4xl font-primary uppercase tracking-tight text-chalk-white mb-6 drop-shadow-2xl leading-none">
+              Dedicated<br/>Athlete Hostel
+            </h3>
+            
+            <p className="text-sm font-light text-chalk-white/90 leading-relaxed drop-shadow-md border-l-2 border-track-red pl-4 bg-carbon-black/40 p-4 rounded-r-lg backdrop-blur-md">
+              We are proud to introduce our all-new hostel facilities. For athletes traveling from a distance, we provide dedicated accommodation for a supportive environment to live, recover, and focus entirely on athletic development.
+            </p>
+          </div>
         </div>
       </div>
 

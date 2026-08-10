@@ -26,9 +26,19 @@ export default function MobileCoachRudra() {
           <h2 className="text-5xl font-primary uppercase tracking-tight mb-6 leading-none drop-shadow-xl text-chalk-white">
             Rudra Pratim<br />Roy
           </h2>
-          <p className="text-chalk-white/90 font-light text-sm leading-relaxed border-l-2 border-track-red/40 pl-4 bg-carbon-black/20 backdrop-blur-sm p-4 rounded-r-lg">
+          <p className="text-chalk-white/90 font-light text-sm leading-relaxed border-l-2 border-track-red/40 pl-4 bg-carbon-black/20 backdrop-blur-sm p-4 rounded-r-lg mb-8">
             Son and protégé of Dr. Kuntal Roy, Rudra is a prominent Track & Field and Strength & Conditioning (S&C) coach holding elite national and international coaching credentials.
           </p>
+          
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative w-full aspect-[4/5] rounded-xl overflow-hidden border border-chalk-white/10 shadow-2xl"
+          >
+            <Image src="/images/rudrapratimroy.jpg" alt="Rudra Pratim Roy" fill className="object-cover" />
+          </motion.div>
         </motion.div>
         
         <div className="space-y-12">

@@ -20,8 +20,53 @@
     "metrics": {
       "qualifiedAthletes": 50,
       "totalMedals": 42,
+      "gold": 14,
+      "silver": 18,
+      "bronze": 10,
       "meetRecords": 6
     },
     "description": "Dominant regional performance across sprints, hurdles, and combined events."
+  },
+  {
+    "id": "res-003",
+    "championship": "72nd West Bengal State Athletic Championships",
+    "year": 2024,
+    "metrics": {
+      "qualifiedAthletes": 48,
+      "totalMedals": 38,
+      "gold": 12,
+      "silver": 16,
+      "bronze": 10,
+      "meetRecords": 4
+    },
+    "description": "Unmatched dominance across all track and field disciplines, setting new meet records."
+  },
+  {
+    "id": "res-004",
+    "championship": "71st West Bengal State Athletic Championships",
+    "year": 2023,
+    "metrics": {
+      "qualifiedAthletes": 45,
+      "totalMedals": 35,
+      "gold": 11,
+      "silver": 14,
+      "bronze": 10,
+      "meetRecords": 3
+    },
+    "description": "A breakout year for our junior and youth division athletes on the state stage."
+  },
+  {
+    "id": "res-005",
+    "championship": "70th West Bengal State Athletic Championships",
+    "year": 2022,
+    "metrics": {
+      "qualifiedAthletes": 40,
+      "totalMedals": 31,
+      "gold": 9,
+      "silver": 12,
+      "bronze": 10,
+      "meetRecords": 2
+    },
+    "description": "Setting the foundation of absolute supremacy in West Bengal state athletics."
   }
 ]

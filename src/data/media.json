@@ -1,0 +1,40 @@
+{
+  "press_clippings": [
+    {
+      "id": "press-1",
+      "title": "Athletics Camp Makes Headlines",
+      "publisher": "The Telegraph",
+      "date": "2023-05-15",
+      "description": "Local coaching camp sees record breaking numbers in summer registration.",
+      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=2070&auto=format&fit=crop"
+    },
+    {
+      "id": "press-2",
+      "title": "A Legacy of Champions",
+      "publisher": "Anandabazar Patrika",
+      "date": "2022-11-20",
+      "description": "Celebrating 40 years of athletic excellence at ACC.",
+      "imageUrl": "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?q=80&w=2070&auto=format&fit=crop"
+    }
+  ],
+  "social_posts": [
+    {
+      "id": "post-1",
+      "platform": "facebook",
+      "author": "Athletic Coaching Camp",
+      "date": "2024-01-10",
+      "content": "A fantastic start to the new year! Our junior athletes dominated the district championships today. Proud of their hard work and dedication. 🏃‍♂️🥇 #ACC #Athletics #Champions",
+      "link": "#",
+      "imageUrl": "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?q=80&w=2070&auto=format&fit=crop"
+    },
+    {
+      "id": "post-2",
+      "platform": "instagram",
+      "author": "Athletic Coaching Camp",
+      "date": "2023-12-05",
+      "content": "Winter training in full swing. Early mornings, hard work, no excuses. ❄️🏃‍♀️",
+      "link": "#",
+      "imageUrl": "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=2069&auto=format&fit=crop"
+    }
+  ]
+}

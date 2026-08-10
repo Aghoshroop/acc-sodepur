@@ -3,6 +3,7 @@ import { getAllResults } from '@/features/results/api';
 import BrutalistGrid from '@/components/ui/BrutalistGrid';
 import * as motion from 'framer-motion/client';
 import OlympianTag from '@/components/ui/OlympianTag';
+import AllPerformances from './AllPerformances';
 
 export const metadata = {
   title: 'Achievements | Athletic Coaching Camp',
@@ -29,14 +30,25 @@ const GLORIFYING_MEMBERS = [
 export default async function AchievementsPage() {
   const allResults = await getAllResults();
   
-  // Assuming the first 6 results in the DB are the latest state domination
-  const currentDomination = allResults.slice(0, 6).map(result => ({
+  const getDominationImage = (year: number) => {
+    const imageMap: Record<number, string> = {
+      2022: '/images/state-performance/2022-state.jpeg',
+      2023: '/images/state-performance/2023-state.jpeg',
+      2024: '/images/state-performance/2024-state.jpeg',
+      2025: '/images/state-performance/2025-state.jpg',
+      2026: '/images/state-performance/2026-state.jpg',
+    };
+    return imageMap[year] || '/images/achievements/state_domination.png';
+  };
+  
+  // Last 5 years state domination
+  const currentDomination = allResults.slice(0, 5).map(result => ({
     id: result.id,
     title: result.championship,
     subtitle: `${result.metrics.totalMedals} Medals (${result.year})`,
     description: result.description,
     metric: result.metrics.meetRecords ? "New Meet Records" : `${result.year}`,
-    image: '/images/achievements/state_domination.png' // Default image for domination
+    image: getDominationImage(result.year)
   }));
 
   return (
@@ -281,57 +293,9 @@ export default async function AchievementsPage() {
         </div>
       </section>
 
-      {/* 5. Historical Performances (Admin Connected) */}
-      <section className="relative w-full py-32 bg-chalk-white text-carbon-black">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={fadeUpVariant}
-            className="mb-16"
-          >
-            <h2 className="text-5xl md:text-7xl font-primary uppercase tracking-wider mb-6">
-              All Performances <br/> <span className="text-track-red">Till Now</span>
-            </h2>
-            <p className="text-xl font-light text-carbon-black/60 max-w-3xl leading-relaxed">
-              A comprehensive record of our domestic and national dominance across all championships.
-            </p>
-          </motion.div>
+      {/* 5. All Performances Till Now */}
+      <AllPerformances />
 
-          <div className="w-full overflow-x-auto">
-            <table className="w-full text-left border-collapse">
-              <thead>
-                <tr className="border-b-2 border-carbon-black/20">
-                  <th className="py-6 px-4 font-primary text-xl uppercase tracking-widest text-carbon-black">Year</th>
-                  <th className="py-6 px-4 font-primary text-xl uppercase tracking-widest text-carbon-black">Championship</th>
-                  <th className="py-6 px-4 font-primary text-xl uppercase tracking-widest text-carbon-black">Total Medals</th>
-                  <th className="py-6 px-4 font-primary text-xl uppercase tracking-widest text-carbon-black">G/S/B</th>
-                </tr>
-              </thead>
-              <tbody>
-                {allResults.map((result, idx) => (
-                  <tr key={result.id} className="border-b border-carbon-black/10 hover:bg-carbon-black/5 transition-colors">
-                    <td className="py-6 px-4 font-mono font-bold text-carbon-black/60">{result.year}</td>
-                    <td className="py-6 px-4">
-                      <p className="font-bold text-lg">{result.championship}</p>
-                      <p className="text-sm text-carbon-black/60 mt-1 max-w-md">{result.description}</p>
-                    </td>
-                    <td className="py-6 px-4 font-primary text-3xl text-track-red">{result.metrics.totalMedals}</td>
-                    <td className="py-6 px-4">
-                      <div className="flex gap-3 text-sm font-bold">
-                        <span className="text-yellow-500">{result.metrics.gold} G</span>
-                        <span className="text-gray-400">{result.metrics.silver} S</span>
-                        <span className="text-amber-700">{result.metrics.bronze} B</span>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
 
       {/* 6. State Domination (Last 5 Years) */}
       <section className="relative w-full bg-carbon-black text-chalk-white overflow-hidden border-t border-white/10">
@@ -362,10 +326,57 @@ export default async function AchievementsPage() {
           </motion.div>
         </div>
         
-        <div className="pb-32 relative z-10">
-          <BrutalistGrid items={currentDomination} columns={3} theme="dark" />
+        <div className="pb-32 relative z-10 max-w-[1800px] mx-auto px-6 md:px-12 flex flex-col gap-24 lg:gap-32">
+          {currentDomination.map((item, idx) => (
+            <motion.div 
+              key={item.id}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8 }}
+              className={`flex flex-col ${idx % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-12 lg:gap-24`}
+            >
+              {/* Image Container (Uncropped) */}
+              <div className="w-full lg:w-3/5 flex items-center justify-center p-4 md:p-8 bg-white/5 rounded-2xl border border-white/10 shadow-2xl backdrop-blur-sm relative group">
+                 {/* Decorative framing */}
+                 <div className="absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 border-track-red/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-tl-xl -translate-x-2 -translate-y-2" />
+                 <div className="absolute bottom-0 right-0 w-12 h-12 border-b-2 border-r-2 border-track-red/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-br-xl translate-x-2 translate-y-2" />
+                 
+                 <Image 
+                   src={item.image!}
+                   alt={item.title}
+                   width={1200}
+                   height={800}
+                   className="w-full h-auto object-contain drop-shadow-2xl hover:scale-[1.02] transition-transform duration-500"
+                 />
+              </div>
+
+              {/* Text Container */}
+              <div className="w-full lg:w-2/5 flex flex-col justify-center">
+                 <div className="inline-flex items-center gap-4 mb-6">
+                   <span className="w-8 h-1 bg-track-red rounded-full"></span>
+                   <span className="text-track-red tracking-[0.3em] font-bold uppercase text-sm md:text-base">
+                     {item.subtitle}
+                   </span>
+                 </div>
+                 
+                 <h3 className="text-4xl md:text-5xl lg:text-6xl font-primary uppercase tracking-tight text-chalk-white mb-6 leading-[1.1]">
+                   {item.title}
+                 </h3>
+                 
+                 <div className="bg-track-red text-white font-bold px-5 py-2.5 text-sm tracking-widest uppercase inline-block self-start mb-6 rounded-md shadow-lg shadow-track-red/20">
+                   {item.metric}
+                 </div>
+                 
+                 <p className="text-lg md:text-xl font-light text-chalk-white/80 leading-relaxed border-l-2 border-chalk-white/20 pl-6">
+                   {item.description}
+                 </p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </section>
+
 
     </main>
   );
