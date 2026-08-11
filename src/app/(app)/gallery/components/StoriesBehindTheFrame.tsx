@@ -42,34 +42,6 @@ export default function StoriesBehindTheFrame() {
     }
   }, [activeMedia]);
 
-  const strobeRef = useRef<HTMLDivElement>(null);
-
-  // Strobe DRM logic: rapidly shift a microscopic checkerboard mask to ruin screenshots
-  // The human eye blends the 60fps shift, but a screenshot captures the mask.
-  useEffect(() => {
-    let animationFrameId: number;
-    let frameCount = 0;
-    
-    const animateStrobe = () => {
-      if (strobeRef.current) {
-        // Shift the background position rapidly
-        frameCount++;
-        const offsetX = (frameCount % 2) * 2;
-        const offsetY = (Math.floor(frameCount / 2) % 2) * 2;
-        strobeRef.current.style.backgroundPosition = `${offsetX}px ${offsetY}px`;
-      }
-      animationFrameId = requestAnimationFrame(animateStrobe);
-    };
-
-    if (activeMedia) {
-      animateStrobe();
-    }
-
-    return () => {
-      if (animationFrameId) cancelAnimationFrame(animationFrameId);
-    };
-  }, [activeMedia]);
-
   if (!activeMedia) {
     // Render hidden overlay for transition purposes
     return (
@@ -119,16 +91,6 @@ export default function StoriesBehindTheFrame() {
                       alt={title || 'Gallery Image'}
                       className="max-w-full max-h-full object-contain drop-shadow-2xl transition-transform duration-200"
                       draggable={false}
-                    />
-                    {/* Strobe DRM Overlay */}
-                    <div 
-                      ref={strobeRef}
-                      className="absolute inset-0 z-[105] pointer-events-none mix-blend-multiply opacity-50"
-                      style={{
-                        backgroundImage: 'repeating-linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000), repeating-linear-gradient(45deg, #000 25%, #fff 25%, #fff 75%, #000 75%, #000)',
-                        backgroundSize: '4px 4px',
-                        backgroundPosition: '0 0, 2px 2px'
-                      }}
                     />
                   </div>
                 </TransformComponent>

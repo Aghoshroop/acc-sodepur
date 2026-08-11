@@ -94,7 +94,7 @@ const BeforeAfterBackground = () => {
           src="/images/acc-now.jpeg"
           alt="Current Athletic Coaching Camp (After)"
           fill
-          className="object-cover object-[center_-300px]"
+          className="object-cover"
           priority
         />
       </div>

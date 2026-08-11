@@ -124,19 +124,13 @@ export default function MobileFloatingNav({ noticesCount = 0 }: MobileFloatingNa
         >
           {/* Logo Mark */}
           <Link href="/" onClick={() => setMenuOpen(false)} className="relative w-10 h-10 flex items-center justify-center">
-            <div 
-              className={`w-full h-full ${isAtTop && !menuOpen ? 'bg-chalk-white' : 'bg-[#C8322B]'}`}
-              style={{
-                WebkitMaskImage: 'url(/images/logo.png)',
-                maskImage: 'url(/images/logo.png)',
-                WebkitMaskSize: 'contain',
-                maskSize: 'contain',
-                WebkitMaskRepeat: 'no-repeat',
-                maskRepeat: 'no-repeat',
-                WebkitMaskPosition: 'center',
-                maskPosition: 'center',
-                transform: 'scale(1.6)',
-              }}
+            <Image
+              src="/images/logo.png"
+              alt="ACC Logo"
+              fill
+              className={`object-contain transition-all duration-300 ${
+                isAtTop && !menuOpen ? 'brightness-0 invert' : ''
+              }`}
             />
           </Link>
 

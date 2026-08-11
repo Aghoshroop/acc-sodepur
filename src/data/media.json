@@ -2,39 +2,105 @@
   "press_clippings": [
     {
       "id": "press-1",
-      "title": "Athletics Camp Makes Headlines",
-      "publisher": "The Telegraph",
-      "date": "2023-05-15",
-      "description": "Local coaching camp sees record breaking numbers in summer registration.",
-      "imageUrl": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=2070&auto=format&fit=crop"
+      "title": "Multi-tasking Soma Protege is Beginning to Get Noticed",
+      "publisher": "Hindustan Times",
+      "date": "2005-08-27",
+      "description": "Rudra Pratim Roy, trained under Kuntal Roy at ACC, making waves at Asian Games selection trials.",
+      "imageUrl": "/images/paper-cuts/buntay01.jpg"
     },
     {
       "id": "press-2",
-      "title": "A Legacy of Champions",
+      "title": "Golden Girl Soma Eyes Doha",
+      "publisher": "Times of India",
+      "date": "2006-09-03",
+      "description": "Soma Biswas wins Asian Athletics gold — Training partner Sushmita earns silver in a memorable campaign.",
+      "imageUrl": "/images/paper-cuts/small_03.jpg"
+    },
+    {
+      "id": "press-3",
+      "title": "ACC Athletes Shine at National Championships",
+      "publisher": "The Telegraph",
+      "date": "2007-03-12",
+      "description": "Another breakthrough season for ACC-trained athletes at the National Athletics Championships.",
+      "imageUrl": "/images/paper-cuts/small_04.jpg"
+    },
+    {
+      "id": "press-4",
+      "title": "Sodepur Camp Produces State Champions",
       "publisher": "Anandabazar Patrika",
-      "date": "2022-11-20",
-      "description": "Celebrating 40 years of athletic excellence at ACC.",
-      "imageUrl": "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?q=80&w=2070&auto=format&fit=crop"
+      "date": "2008-07-18",
+      "description": "The quiet camp at Sodepur continues to produce top-level athletes across multiple disciplines.",
+      "imageUrl": "/images/paper-cuts/small_05.jpg"
+    },
+    {
+      "id": "press-5",
+      "title": "Young Athletes Break Camp Records",
+      "publisher": "Sports Star",
+      "date": "2009-11-04",
+      "description": "Junior athletes from ACC break multiple camp records in an outstanding inter-district meet.",
+      "imageUrl": "/images/paper-cuts/small_06.jpg"
+    },
+    {
+      "id": "press-6",
+      "title": "Legacy of Champions: 40 Years of ACC",
+      "publisher": "Ei Samay",
+      "date": "2010-02-22",
+      "description": "Four decades of nurturing athletic talent — a tribute to the founding vision of Kuntal Roy.",
+      "imageUrl": "/images/paper-cuts/small_07.jpg"
+    },
+    {
+      "id": "press-7",
+      "title": "District Glory for ACC Sprint Squad",
+      "publisher": "The Statesman",
+      "date": "2011-05-30",
+      "description": "ACC's sprint squad sweeps gold at the district-level championships in a dominant performance.",
+      "imageUrl": "/images/paper-cuts/small_08.jpg"
     }
   ],
   "social_posts": [
     {
-      "id": "post-1",
+      "id": "fb-1",
       "platform": "facebook",
-      "author": "Athletic Coaching Camp",
-      "date": "2024-01-10",
-      "content": "A fantastic start to the new year! Our junior athletes dominated the district championships today. Proud of their hard work and dedication. 🏃‍♂️🥇 #ACC #Athletics #Champions",
-      "link": "#",
-      "imageUrl": "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?q=80&w=2070&auto=format&fit=crop"
+      "author": "Athletic Coaching Camp – Sodepur",
+      "handle": "ACC Sodepur",
+      "date": "2024-06-15",
+      "content": "🏆 Proud moment for ACC! Our athletes brought home 7 medals from the State Athletics Championships. Every medal is a testament to years of early mornings, hard work, and belief. #ACC #Athletics #Sodepur",
+      "link": "https://www.facebook.com/accsodepur",
+      "imageUrl": ""
     },
     {
-      "id": "post-2",
+      "id": "fb-2",
+      "platform": "facebook",
+      "author": "Athletic Coaching Camp – Sodepur",
+      "handle": "ACC Sodepur",
+      "date": "2024-04-02",
+      "content": "New season, new goals. Registration open for 2024 summer camp. Join the legacy. 🏃‍♂️🌟",
+      "link": "https://www.facebook.com/accsodepur",
+      "imageUrl": ""
+    },
+    {
+      "id": "ig-1",
       "platform": "instagram",
-      "author": "Athletic Coaching Camp",
-      "date": "2023-12-05",
-      "content": "Winter training in full swing. Early mornings, hard work, no excuses. ❄️🏃‍♀️",
-      "link": "#",
-      "imageUrl": "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=2069&auto=format&fit=crop"
+      "author": "ACC Sodepur",
+      "handle": "@accsodepur",
+      "date": "2024-05-10",
+      "content": "5 AM. Track ready. Champions in the making. ❤️🔥 #EarlyMornings #ACC #Athletics #Sodepur #TrackAndField",
+      "link": "https://www.instagram.com/acc.sodepur/",
+      "imageUrl": ""
+    },
+    {
+      "id": "ig-2",
+      "platform": "instagram",
+      "author": "ACC Sodepur",
+      "handle": "@accsodepur",
+      "date": "2024-03-22",
+      "content": "Our girls proving every day that there are no limits. 🥇💪 Congratulations to our junior women's team! #WomenInAthletics #ACC",
+      "link": "https://www.instagram.com/acc.sodepur/",
+      "imageUrl": ""
     }
-  ]
+  ],
+  "social_links": {
+    "facebook": "https://www.facebook.com/accsodepur",
+    "instagram": "https://www.instagram.com/acc.sodepur/"
+  }
 }

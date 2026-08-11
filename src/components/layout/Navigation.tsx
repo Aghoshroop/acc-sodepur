@@ -90,38 +90,35 @@ export default function Navigation({ notices = [] }: { notices?: { id: string; p
         transition={{ ...transitionConfig, duration: 1, delay: 2.6 }}
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-700 ease-out border-b ${
           isScrolled || mobileMenuOpen
-            ? 'bg-chalk-white/95 backdrop-blur-2xl backdrop-saturate-[1.8] border-carbon-black/10 shadow-[0_10px_40px_rgba(0,0,0,0.1)] py-2'
-            : 'bg-transparent border-transparent py-4 shadow-none'
+            ? 'bg-chalk-white/95 backdrop-blur-2xl backdrop-saturate-[1.8] border-carbon-black/10 shadow-[0_10px_40px_rgba(0,0,0,0.1)] h-[50px] overflow-visible'
+            : 'bg-transparent border-transparent py-3 shadow-none overflow-visible'
         }`}
       >
-        <div className="max-w-[1600px] mx-auto px-6 md:px-12 flex justify-between items-center relative w-full">
-          {/* Logo */}
-          <Link href="/" className="group z-50 absolute left-1/2 -translate-x-1/2 lg:relative lg:left-auto lg:transform-none flex items-center h-full pt-1">
+        <div className={`max-w-[1600px] mx-auto flex justify-between items-center relative w-full h-full transition-all duration-700 ease-out ${
+          isScrolled ? 'px-4 md:px-6' : 'px-6 md:px-12'
+        }`}>
+          <Link href="/" className="group z-50 absolute left-1/2 -translate-x-1/2 xl:relative xl:left-auto xl:translate-x-0 flex items-center">
             <motion.div 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="relative w-12 h-12 md:w-16 md:h-16 flex items-center justify-center"
+              className={`relative flex items-center justify-center transition-all duration-700 ease-out ${
+                isScrolled ? 'w-[86px] h-[60px]' : 'w-28 h-28 md:w-32 md:h-32'
+              }`}
             >
-              <div 
-                className={`w-full h-full transition-colors duration-700 ease-out ${!isScrolled ? 'bg-chalk-white' : 'bg-[#C8322B]'}`}
-                style={{
-                  WebkitMaskImage: 'url(/images/logo.png)',
-                  maskImage: 'url(/images/logo.png)',
-                  WebkitMaskSize: 'contain',
-                  maskSize: 'contain',
-                  WebkitMaskRepeat: 'no-repeat',
-                  maskRepeat: 'no-repeat',
-                  WebkitMaskPosition: 'center',
-                  maskPosition: 'center',
-                  transform: 'scale(1.75)',
-                }}
+              <Image
+                src="/images/logo.png"
+                alt="ACC Logo"
+                fill
+                className={`object-contain transition-all duration-700 ease-out ${
+                  !isScrolled ? 'brightness-0 invert' : ''
+                }`}
               />
             </motion.div>
           </Link>
 
           {/* Desktop Nav */}
           <nav 
-            className="hidden lg:flex items-center gap-6 xl:gap-8 relative"
+            className="hidden xl:flex items-center gap-6 xl:gap-8 relative"
             onMouseLeave={() => {
               setHoveredItem(null);
               setActiveDropdown(null);
@@ -239,7 +236,7 @@ export default function Navigation({ notices = [] }: { notices?: { id: string; p
           </nav>
 
           {/* Right Action Items (Bell + Mobile Menu Toggle) */}
-          <div className="flex items-center justify-between lg:justify-end gap-4 z-50 w-full lg:w-auto">
+          <div className="flex items-center justify-between xl:justify-end gap-4 z-50 w-full xl:w-auto">
             {/* Bell Notification Icon */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -271,7 +268,7 @@ export default function Navigation({ notices = [] }: { notices?: { id: string; p
               animate={{ opacity: 1 }}
               transition={{ delay: 2.9 }}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden relative w-10 h-10 flex flex-col justify-center items-end p-2 z-[60]"
+              className="xl:hidden relative w-10 h-10 flex flex-col justify-center items-end p-2 z-[60]"
             >
               <span className={`h-[2px] block transition-all duration-300 ease-out origin-center ${!isScrolled && !mobileMenuOpen ? 'bg-chalk-white' : 'bg-track-red'} ${mobileMenuOpen ? 'w-6 rotate-45 absolute top-1/2 -translate-y-1/2 right-2' : 'w-6 mb-1.5'}`} />
               <span className={`h-[2px] block transition-all duration-300 ease-out origin-center ${!isScrolled && !mobileMenuOpen ? 'bg-chalk-white' : 'bg-track-red'} ${mobileMenuOpen ? 'w-6 -rotate-45 absolute top-1/2 -translate-y-1/2 right-2' : 'w-4'}`} />

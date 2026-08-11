@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { 
   LayoutDashboard, 
@@ -55,8 +56,11 @@ export default function AdminSidebar({ children }: { children: React.ReactNode }
         ${isOpen ? 'translate-x-0' : '-translate-x-full'}
       `}>
         <div className="p-6 flex items-center justify-between">
-          <Link href="/admin" className="text-2xl font-primary font-black tracking-widest uppercase flex items-center gap-2">
-            ACC <span className="text-track-red text-sm">Admin</span>
+          <Link href="/admin" className="flex items-center gap-2">
+            <div className="relative w-8 h-8 flex-shrink-0">
+              <Image src="/images/logo.png" alt="ACC Logo" fill className="object-contain" />
+            </div>
+            <span className="text-xl font-primary font-black tracking-widest uppercase">ACC <span className="text-track-red text-sm">Admin</span></span>
           </Link>
           <button onClick={() => setIsOpen(false)} className="lg:hidden text-chalk-white/50 hover:text-white">
             <X size={24} />

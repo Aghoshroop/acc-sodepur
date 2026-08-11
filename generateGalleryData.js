@@ -14,12 +14,21 @@ const excludedRootFiles = [
   'pexels-giantasparagus-35678274.jpg', 
   'somadi.jpg', 'soma.jpg', 
   'TheAthleteFactory.webp', 
-  'track-field.jpg'
+  'track-field.jpg',
+  'susmita.jpg', 'sanjay.jpg', 'rudra-pratim-roy.jpg', 'rudrapratimroy.jpg',
+  'rudra-pratim-roy-bg.jpg', 'jump.jpeg', 'dronacharya-award.jpg', 'combined-event.jpg',
+  '502752264_9586045524837189_7567083716543841592_n.jpg',
+  '502661823_9586045534837188_4306523131140361400_n.jpg',
+  '502467044_9586045364837205_720541060155550822_n.jpg'
 ];
 
 // Root images and other folders for Modern Era and Recent Moments
 const rootFiles = fs.existsSync(publicImagesPath) ? fs.readdirSync(publicImagesPath).filter(f => f.match(/\.(jpg|jpeg|png|webp|JPG|JPEG|PNG)$/) && !excludedRootFiles.includes(f)) : [];
-const subdirs = ['campus', 'facilities', 'performance', 'state-performance', 'sponsors', 'olympians', 'honoured guest'];
+
+const excludedDirs = ['acc_history', 'legacy', 'relay', 'paper-cuts', 'olympians', 'athletes', 'administration', 'achievements'];
+const allItems = fs.existsSync(publicImagesPath) ? fs.readdirSync(publicImagesPath) : [];
+const subdirs = allItems.filter(f => fs.statSync(path.join(publicImagesPath, f)).isDirectory() && !excludedDirs.includes(f));
+
 let modernEraFiles = [];
 for (const dir of subdirs) {
   const p = path.join(publicImagesPath, dir);
@@ -60,16 +69,23 @@ for (const file of beginningSpecific) {
 addMedia('acc_history/1st-acc.jpg', 'ThenVsNow');
 addMedia('acc2.jpg', 'ThenVsNow');
 
+const modernEraSpecific = ['IMG_2047.jpg', 'IMG_2087.jpg', '2000s-acc.jpg', '250.JPG'];
+
 // 3. Hall Of Moments (rest of acc_history)
 for (const file of accHistoryFiles) {
-  if (!beginningSpecific.includes(file) && file !== '1st-acc.jpg') {
+  if (!beginningSpecific.includes(file) && file !== '1st-acc.jpg' && !modernEraSpecific.includes(file)) {
     addMedia(`acc_history/${file}`, 'HallOfMoments');
   }
 }
 
-// 4. Modern Era (from subdirs)
+// 4. Modern Era (from subdirs and specific history files)
 for (const file of modernEraFiles) {
   addMedia(file, 'ModernEra');
+}
+for (const file of modernEraSpecific) {
+  if (accHistoryFiles.includes(file)) {
+    addMedia(`acc_history/${file}`, 'ModernEra');
+  }
 }
 
 // 5. Recent Moments (rest of root images)

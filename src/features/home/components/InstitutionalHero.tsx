@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function InstitutionalHero() {
   return (
-    <section className="relative z-0 w-full h-full flex items-end pb-12 md:pb-24 overflow-hidden bg-carbon-black">
+    <section className="relative z-0 w-full min-h-[100dvh] flex items-end pb-12 md:pb-24 pt-32 overflow-hidden bg-carbon-black">
       {/* Background Image / Video */}
       <motion.div 
         className="absolute inset-0 z-0"
@@ -38,7 +38,7 @@ export default function InstitutionalHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 2.3, ease: "easeOut" }}
           >
-             <span className="text-track-red font-black tracking-[0.4em] uppercase text-xl md:text-2xl [-webkit-text-stroke:1px_#C8322B]">Since 1969</span>
+             <span className="text-track-red font-black tracking-[0.4em] uppercase text-xl md:text-2xl lg:text-3xl [-webkit-text-stroke:1px_#C8322B]">Since 1969</span>
           </motion.div>
 
           <motion.div 
@@ -46,10 +46,10 @@ export default function InstitutionalHero() {
             animate={{ opacity: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
           >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-[110px] font-primary font-black leading-[0.9] text-chalk-white drop-shadow-2xl">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-[100px] font-primary font-black leading-[0.9] text-chalk-white drop-shadow-2xl mt-4">
               <motion.div className="overflow-hidden pb-2 px-2 -mx-2">
                 <motion.span 
-                  className="block tracking-[0.05em] md:tracking-[0.1em]"
+                  className="block tracking-[0.05em] md:tracking-[0.1em] lg:tracking-[0.15em]"
                   initial={{ y: "120%" }}
                   animate={{ y: 0 }}
                   transition={{ duration: 1.2, delay: 2.6, ease: [0.16, 1, 0.3, 1] }}
@@ -59,7 +59,7 @@ export default function InstitutionalHero() {
               </motion.div>
               <motion.div className="overflow-hidden pb-2 px-2 -mx-2 mt-1 md:mt-2">
                 <motion.span 
-                  className="block tracking-[0.05em] md:tracking-[0.1em]"
+                  className="block tracking-[0.05em] md:tracking-[0.1em] lg:tracking-[0.15em]"
                   initial={{ y: "120%" }}
                   animate={{ y: 0 }}
                   transition={{ duration: 1.2, delay: 2.8, ease: [0.16, 1, 0.3, 1] }}

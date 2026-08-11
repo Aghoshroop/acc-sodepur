@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 
-function useIntersectionObserver(options = { threshold: 0.2 }) {
+function useIntersectionObserver(options = { threshold: 0, rootMargin: '0px 0px -50px 0px' }) {
   const [isIntersecting, setIsIntersecting] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -140,7 +140,7 @@ export default function ClientAboutContent() {
       {/* ----------------- MODERN ERA SECTION ----------------- */}
       <div 
         ref={modernSectionRef}
-        className={`mt-48 max-w-[1600px] mx-auto px-6 md:px-12 transition-all duration-[1500ms] ease-out ${isModernVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-24'}`}
+        className={`mt-48 max-w-[1600px] mx-auto px-6 md:px-12 transition-opacity duration-[1500ms] ease-out ${isModernVisible ? 'opacity-100' : 'opacity-0'}`}
       >
         <div className="flex items-center gap-6 mb-16">
           <h2 className="text-5xl md:text-7xl font-primary uppercase tracking-tight text-carbon-black">
@@ -222,7 +222,7 @@ export default function ClientAboutContent() {
       {/* ----------------- OUR VISION SECTION ----------------- */}
       <div 
         ref={visionSectionRef}
-        className={`mt-48 max-w-[1600px] mx-auto px-6 md:px-12 pb-32 transition-all duration-[1500ms] ease-out ${isVisionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-24'}`}
+        className={`mt-48 max-w-[1600px] mx-auto px-6 md:px-12 pb-32 transition-opacity duration-[1500ms] ease-out ${isVisionVisible ? 'opacity-100' : 'opacity-0'}`}
       >
         <div className="flex items-center gap-6 mb-16">
           <h2 className="text-5xl md:text-7xl font-primary uppercase tracking-tight text-carbon-black">
@@ -231,10 +231,10 @@ export default function ClientAboutContent() {
           <div className="flex-1 h-1 bg-track-red mt-4"></div>
         </div>
 
-        <div className="grid grid-cols-12 gap-16 lg:gap-24">
+        <div className="grid grid-cols-12 gap-16 lg:gap-12 xl:gap-24">
           
           {/* Left Column: Images Collage */}
-          <div className="col-span-12 lg:col-span-5 flex flex-col gap-6">
+          <div className="col-span-12 lg:col-span-6 xl:col-span-5 flex flex-col gap-6">
             <div className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-xl rounded-xl">
               <Image src="/images/ACCfamily.jpg" alt="Our Vision" fill className="object-cover hover:scale-105 transition-transform duration-500" />
             </div>
@@ -252,8 +252,8 @@ export default function ClientAboutContent() {
           </div>
 
           {/* Right Column: Text Content */}
-          <div className="col-span-12 lg:col-span-7">
-            <div className="flex flex-col gap-8 font-light leading-relaxed text-lg md:text-xl text-carbon-black/80 sticky top-32">
+          <div className="col-span-12 lg:col-span-6 xl:col-span-7">
+            <div className="flex flex-col gap-8 font-light leading-relaxed text-lg xl:text-xl text-carbon-black/80 sticky top-32">
               <p className="text-2xl text-carbon-black font-semibold border-l-4 border-track-red pl-6">
                 ACC's philosophy is to develop Indian sports culture in the society on scientific basis.
               </p>

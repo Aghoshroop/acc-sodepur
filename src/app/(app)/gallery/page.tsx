@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import SectionArchiveHero from './components/SectionArchiveHero';
 import SectionTheBeginning from './components/SectionTheBeginning';
 import SectionThenVsNow from './components/SectionThenVsNow';
@@ -12,142 +12,141 @@ import StoriesBehindTheFrame from './components/StoriesBehindTheFrame';
 import { LenisProvider } from '@/components/providers/LenisProvider';
 
 export default function GalleryPage() {
-  const [isProtected, setIsProtected] = useState(false);
 
   useEffect(() => {
     const mainEl = document.getElementById('gallery-main');
     const overlayEl = document.getElementById('gallery-protection');
 
-    let penaltyTimer: NodeJS.Timeout | null = null;
-    let penaltySeconds = 0;
-
-    const triggerProtection = (isPenalty = false) => {
-      if (mainEl && overlayEl) {
-        mainEl.style.filter = 'blur(40px)';
-        mainEl.style.opacity = '0';
-        mainEl.style.visibility = 'hidden';
-        overlayEl.style.opacity = '1';
-        overlayEl.style.visibility = 'visible';
-        overlayEl.style.pointerEvents = 'auto';
-      }
-      
-      // Only start 10-second penalty for explicit snip attempts (not just idle)
-      if (isPenalty && penaltySeconds <= 0) {
-        penaltySeconds = 10;
-        const countdownEl = document.getElementById('gallery-countdown');
-        if (countdownEl) countdownEl.innerText = `10`;
-        
-        if (penaltyTimer) clearInterval(penaltyTimer);
-        penaltyTimer = setInterval(() => {
-          penaltySeconds -= 1;
-          if (countdownEl) countdownEl.innerText = penaltySeconds.toString();
-          
-          if (penaltySeconds <= 0) {
-            clearInterval(penaltyTimer!);
-            penaltyTimer = null;
-            // Auto-remove protection if document has focus
-            if (document.hasFocus()) {
-              forceRemoveProtection();
-            }
-          }
-        }, 1000);
-      }
+    const showOverlay = () => {
+      if (!mainEl || !overlayEl) return;
+      mainEl.style.opacity = '0';
+      mainEl.style.visibility = 'hidden';
+      overlayEl.style.opacity = '1';
+      overlayEl.style.visibility = 'visible';
+      overlayEl.style.pointerEvents = 'auto';
     };
 
-    const forceRemoveProtection = () => {
-      if (mainEl && overlayEl) {
-        mainEl.style.filter = 'none';
+    // Reveal after short delay — any screenshot taken during that window captures black
+    const hideOverlay = (delay = 400) => {
+      setTimeout(() => {
+        if (!mainEl || !overlayEl) return;
         mainEl.style.opacity = '1';
         mainEl.style.visibility = 'visible';
         overlayEl.style.opacity = '0';
         overlayEl.style.visibility = 'hidden';
         overlayEl.style.pointerEvents = 'none';
-      }
+      }, delay);
     };
 
-    const removeProtection = () => {
-      // Only remove if penalty is over
-      if (penaltySeconds <= 0) {
-        forceRemoveProtection();
-      }
-    };
-
+    // --- Keyboard screenshot shortcuts ---
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (
+      const isScreenshotKey =
         e.key === 'PrintScreen' ||
-        (e.ctrlKey && e.key === 'p') ||
-        (e.metaKey && e.shiftKey) || 
-        (e.altKey && e.key === 'PrintScreen')
-      ) {
+        (e.altKey && e.key === 'PrintScreen') ||         // Alt+PrtSc
+        (e.metaKey && e.shiftKey && ['3','4','5'].includes(e.key)) || // Mac Cmd+Shift+3/4/5
+        (e.ctrlKey && e.shiftKey && e.key === 'S') ||   // Windows snip shortcut variant
+        (e.key === 'F12');                               // DevTools (can screenshot)
+
+      if (isScreenshotKey) {
         e.preventDefault();
-        triggerProtection(true);
+        showOverlay();
+        hideOverlay(2000); // Stay black for 2s after key press
+      }
+
+      // Block Ctrl+P (print to PDF = screenshot)
+      if (e.ctrlKey && e.key === 'p') {
+        e.preventDefault();
+        showOverlay();
+        hideOverlay(1500);
       }
     };
 
-    const handleBlur = () => triggerProtection(true);
-    const handleFocus = () => removeProtection();
+    // --- Focus loss = possible screenshot tool ---
+    const handleBlur = () => showOverlay();
+    const handleFocus = () => hideOverlay(500); // Short delay before revealing
 
-    const handleVisibilityChange = () => {
-      if (document.hidden) triggerProtection(true);
-      else removeProtection();
+    // --- Tab switch / screen recorder via visibility API ---
+    const handleVisibility = () => {
+      if (document.hidden) {
+        showOverlay();
+      } else {
+        hideOverlay(500);
+      }
     };
 
+    // --- Tap overlay to dismiss ---
+    const handleOverlayTap = () => hideOverlay(0);
+
+    // --- Block right-click everywhere on page ---
+    const blockContextMenu = (e: MouseEvent) => e.preventDefault();
+
+    overlayEl?.addEventListener('click', handleOverlayTap);
+    overlayEl?.addEventListener('touchend', handleOverlayTap);
     window.addEventListener('keydown', handleKeyDown);
     window.addEventListener('blur', handleBlur);
     window.addEventListener('focus', handleFocus);
-    // Fallbacks to guarantee unblur if OS fails to send focus event after snipping
-    window.addEventListener('pointerdown', handleFocus);
-    window.addEventListener('click', handleFocus);
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    
-    // Also trigger on contextmenu just in case
-    document.addEventListener('contextmenu', (e) => e.preventDefault());
+    document.addEventListener('visibilitychange', handleVisibility);
+    document.addEventListener('contextmenu', blockContextMenu);
 
     return () => {
+      overlayEl?.removeEventListener('click', handleOverlayTap);
+      overlayEl?.removeEventListener('touchend', handleOverlayTap);
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('blur', handleBlur);
       window.removeEventListener('focus', handleFocus);
-      window.removeEventListener('pointerdown', handleFocus);
-      window.removeEventListener('click', handleFocus);
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      document.removeEventListener('visibilitychange', handleVisibility);
+      document.removeEventListener('contextmenu', blockContextMenu);
     };
   }, []);
 
   return (
     <LenisProvider>
       <GalleryProvider>
-        {/* Global styles to prevent screenshots and dragging */}
+        {/* CSS: block drag, select, touch-callout on all images */}
         <style jsx global>{`
-          .anti-screenshot-img {
+          #gallery-main img {
             -webkit-user-drag: none;
+            -webkit-touch-callout: none;
             user-select: none;
-            -moz-user-select: none;
-            -webkit-user-select: none;
-            -ms-user-select: none;
-          }
-          .anti-screenshot-img img {
             pointer-events: none;
           }
+          #gallery-main {
+            user-select: none;
+            -webkit-user-select: none;
+          }
+          @media print {
+            #gallery-main { display: none !important; }
+            #gallery-protection { display: flex !important; opacity: 1 !important; }
+          }
         `}</style>
-        
-        {/* Protection Overlay */}
-        <div 
+
+        {/* Protection Overlay — tap/click anywhere to dismiss */}
+        <div
           id="gallery-protection"
-          className={`fixed inset-0 z-[99999] bg-[#050505] text-[#F6F2EA] flex items-center justify-center transition-opacity duration-75 pointer-events-none opacity-0`}
+          style={{ transition: 'opacity 0.1s' }}
+          className="fixed inset-0 z-[99999] bg-[#050505] text-[#F6F2EA] flex flex-col items-center justify-center opacity-0 pointer-events-none select-none"
         >
-          <div className="text-center">
-            <h2 className="text-2xl font-primary uppercase tracking-widest mb-4 text-[#C8A96A]">Security Notice</h2>
-            <p className="font-secondary text-lg">Screenshots and recordings are strictly restricted in the Gallery.</p>
-            <p className="font-primary mt-6 text-xl">Please wait <span id="gallery-countdown" className="text-[#C8A96A] font-bold">10</span> seconds to return.</p>
+          {/* ACC Logo mark */}
+          <div className="w-16 h-16 border-2 border-[#C8A96A] rounded-full flex items-center justify-center mb-8">
+            <span className="text-[#C8A96A] font-primary text-xl">ACC</span>
           </div>
+          <h2 className="text-xl md:text-2xl font-primary uppercase tracking-[0.3em] text-[#C8A96A] mb-4">
+            Protected Content
+          </h2>
+          <p className="font-secondary text-[#F6F2EA]/60 text-sm md:text-base text-center max-w-xs px-6">
+            Screenshots and recordings are restricted in the ACC Gallery.
+          </p>
+          <p className="mt-10 text-[#F6F2EA]/30 text-xs tracking-widest uppercase">
+            Tap anywhere to return
+          </p>
         </div>
 
-        <main 
+        <main
           id="gallery-main"
-          className={`w-full bg-[#050505] text-[#F6F2EA] min-h-screen relative selection:bg-[#C8A96A] selection:text-[#050505] anti-screenshot-img transition-all duration-75 blur-0 opacity-100`}
-          onContextMenu={(e) => e.preventDefault()} // Disable right-click globally on this page
+          style={{ transition: 'opacity 0.1s' }}
+          className="w-full bg-[#050505] text-[#F6F2EA] min-h-screen relative selection:bg-[#C8A96A] selection:text-[#050505]"
+          onContextMenu={(e) => e.preventDefault()}
         >
-          
           {/* Modal Overlay */}
           <StoriesBehindTheFrame />
 
@@ -166,7 +165,7 @@ export default function GalleryPage() {
           {/* 5. MODERN ACC */}
           <SectionModernACC />
 
-          {/* 6. RECENT MOMENTS (Dynamic Uncropped Masonry) */}
+          {/* 6. RECENT MOMENTS */}
           <SectionRecentMoments />
 
         </main>

@@ -36,10 +36,16 @@ const PROGRAMMES = [
     image: '/images/throw.jpg'
   },
   {
-    title: 'Combined Events',
-    subtitle: 'Heptathlon & Decathlon',
-    description: 'The crown jewel program blending multi-discipline training into a single, comprehensive workload protocol.',
+    title: 'Decathlon',
+    subtitle: 'The Ultimate Athlete',
+    description: 'The crown jewel program blending 10 disciplines into a single, comprehensive workload protocol.',
     image: '/images/combined-event.jpg'
+  },
+  {
+    title: 'Heptathlon',
+    subtitle: '7-Event Mastery',
+    description: 'Elite multi-discipline training spanning two days of intense competition, combining speed, strength, and endurance.',
+    image: '/images/athletes/bidisha.jpg'
   }
 ];
 

@@ -9,7 +9,7 @@ export default function Footer() {
           
           <div className="lg:col-span-5 flex flex-col">
             <div className="relative w-32 h-32 md:w-40 md:h-40 mb-8">
-              <Image src="/images/logo.png" alt="ACC Logo" fill className="object-contain" />
+              <Image src="/images/logo.png" alt="ACC Logo" fill className="object-contain mix-blend-screen invert" />
             </div>
             <p className="font-body text-[var(--color-ash-grey)] text-xl max-w-md leading-relaxed mb-8">
               Athletic Coaching Camp.<br />

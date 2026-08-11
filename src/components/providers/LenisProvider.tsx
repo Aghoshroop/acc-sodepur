@@ -20,14 +20,14 @@ export function LenisProvider({ children }: { children: ReactNode }) {
 
     // Initialize Lenis
     const lenis = new Lenis({
-      duration: 1.5, // Cinematic smooth scrolling
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      duration: 0.8,             // Snappy — stops fast when user stops
+      easing: (t) => 1 - Math.pow(1 - t, 3), // Cubic ease-out: snappy start, quick stop
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 0.8,
-      syncTouch: true,
-      touchMultiplier: 2,
+      wheelMultiplier: 1.0,
+      syncTouch: false,          // Native touch on mobile — no momentum lag
+      touchMultiplier: 1.5,
     });
 
     lenisRef.current = lenis;

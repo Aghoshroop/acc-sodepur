@@ -90,7 +90,7 @@ export default function AboutACC() {
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24 mb-16 md:mb-32">
           
           {/* Left Column */}
-          <div className="w-full lg:w-5/12 flex flex-col justify-center">
+          <div className="w-full lg:w-1/2 flex flex-col justify-center relative z-20 pr-0 lg:pr-8">
             {/* OUR LEGACY tag */}
             <div className="inline-block mb-8">
               <p className="text-[10px] md:text-xs text-track-red font-bold tracking-[0.3em] uppercase mb-2">OUR LEGACY</p>
@@ -98,7 +98,7 @@ export default function AboutACC() {
             </div>
 
             {/* Heading */}
-            <h2 className="text-[clamp(3.5rem,12vw,6rem)] md:text-8xl lg:text-9xl font-primary uppercase tracking-normal font-bold leading-[0.9]">
+            <h2 className="text-[clamp(3.5rem,10vw,6rem)] lg:text-7xl xl:text-8xl font-primary uppercase tracking-normal font-bold leading-[0.9] break-words">
               <span className="text-carbon-black block">BENGAL'S</span>
               <span className="text-carbon-black block">PREMIER</span>
               <span className="text-track-red block">POWERHOUSE</span>
@@ -120,7 +120,7 @@ export default function AboutACC() {
           </div>
 
           {/* Right Column */}
-          <div className="w-full lg:w-7/12 relative flex justify-center lg:justify-end mt-12 lg:mt-0">
+          <div className="w-full lg:w-1/2 relative flex justify-center lg:justify-end mt-12 lg:mt-0 z-10">
             {/* Image */}
             <div className="relative w-full rounded-3xl lg:rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
               <Image 

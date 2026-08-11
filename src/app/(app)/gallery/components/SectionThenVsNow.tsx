@@ -1,67 +1,124 @@
 'use client';
 
-import { useRef } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
-import { getMediaByZone } from '@/features/gallery/data';
+
+const THEN_IMAGE = '/images/acc_history/old-lineup.jpg';
+const NOW_IMAGE  = '/images/now-lineup.JPG';
 
 export default function SectionThenVsNow() {
-  const sectionRef = useRef<HTMLElement>(null);
-  
-  const thenNowPhotos = getMediaByZone('ThenVsNow');
-  const thenImage = thenNowPhotos[0]?.imageUrl || '/images/acc_history/1st-acc.jpg';
-  const nowImage = thenNowPhotos[1]?.imageUrl || '/images/acc2.jpg';
+  // tap toggle for mobile/tablet
+  const [showNow, setShowNow] = useState(false);
 
   return (
-    <section ref={sectionRef} className="relative w-full py-24 bg-[#050505] overflow-hidden">
-      
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-[#C8A96A]/5 to-[#050505] pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15vw] font-primary text-[#F6F2EA]/5 uppercase whitespace-nowrap pointer-events-none">
-        Evolution
-      </div>
+    <section className="relative w-full py-24 bg-[#050505] border-t border-[#F6F2EA]/10">
+      <div className="max-w-[1400px] mx-auto px-6">
 
-      <div className="max-w-[1200px] mx-auto px-6 relative z-10">
-        
+        {/* Heading */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-primary text-[#F6F2EA] uppercase tracking-widest drop-shadow-lg">
+          <h2 className="text-4xl md:text-6xl font-primary text-[#F6F2EA] uppercase tracking-widest">
             Then <span className="text-[#C8A96A]">&</span> Now
           </h2>
-          <p className="text-[#F6F2EA]/40 font-secondary italic text-lg mt-4 max-w-2xl mx-auto">
-            Hover to witness the evolution of our legacy.
+          <div className="w-24 h-1 bg-[#C8A96A] mx-auto mt-6" />
+          <p className="mt-6 text-[#F6F2EA]/30 font-secondary italic text-sm">
+            Hover to see how far we've come · Tap to reveal on mobile
           </p>
         </div>
 
-        {/* Hover Exchange Container */}
-        <div className="relative w-full aspect-[4/3] md:aspect-video mx-auto border-4 border-[#C8A96A]/20 shadow-2xl overflow-hidden group">
-          
-          {/* Then Image (Default) */}
-          <div className="absolute inset-0 z-10 transition-opacity duration-1000 ease-in-out group-hover:opacity-0">
+        {/* 
+          Container: THEN sets the natural height (w-full h-auto).
+          NOW is overlaid absolutely and uses object-contain — fully visible, no crop.
+          Desktop: CSS group-hover fades NOW in.
+          Mobile/tablet: tap toggles the `showNow` state.
+        */}
+        <div
+          className="relative group cursor-pointer bg-[#050505] max-h-[420px] md:max-h-[520px] overflow-hidden flex items-center justify-center"
+          onClick={() => setShowNow((v) => !v)}
+        >
+          {/* ── THEN (base, constrained height, full image visible) ── */}
+          <Image
+            src={THEN_IMAGE}
+            alt="ACC – The Beginning"
+            width={1300}
+            height={975}
+            className="w-full h-full object-contain block"
+            priority
+            draggable={false}
+          />
+
+          {/* ── NOW overlay (fades in on hover / tap) ── */}
+          <div
+            className={`
+              absolute inset-0 bg-[#050505] flex items-center justify-center
+              transition-opacity duration-700
+              ${showNow ? 'opacity-100' : 'opacity-0'}
+              md:group-hover:opacity-100
+            `}
+          >
             <Image
-              src={thenImage}
-              alt="Athletic Camp Then"
-              fill
-              sizes="100vw"
-              className="object-cover grayscale"
+              src={NOW_IMAGE}
+              alt="ACC – Modern Era"
+              width={1800}
+              height={900}
+              className="w-full h-full object-contain"
+              priority
+              draggable={false}
             />
-            <div className="absolute bottom-6 left-6 bg-[#050505]/80 backdrop-blur px-4 py-2 border-l-2 border-[#F6F2EA] text-[#F6F2EA] font-primary uppercase tracking-widest text-sm md:text-base">
-              The Beginning
+          </div>
+
+          {/* ── THEN label (fades out on hover/reveal) ── */}
+          <div
+            className={`
+              absolute bottom-5 left-5 px-4 py-2 bg-[#050505]/80 backdrop-blur
+              border-l-2 border-[#F6F2EA] font-primary uppercase tracking-widest text-[#F6F2EA] text-xs md:text-sm
+              transition-opacity duration-500
+              ${showNow ? 'opacity-0' : 'opacity-100'}
+              md:group-hover:opacity-0
+            `}
+          >
+            The Beginning
+          </div>
+
+          {/* ── NOW label (fades in on hover/reveal) ── */}
+          <div
+            className={`
+              absolute bottom-5 right-5 px-4 py-2 bg-[#050505]/80 backdrop-blur
+              border-r-2 border-[#C8A96A] font-primary uppercase tracking-widest text-[#C8A96A] text-xs md:text-sm
+              transition-opacity duration-500
+              ${showNow ? 'opacity-100' : 'opacity-0'}
+              md:group-hover:opacity-100
+            `}
+          >
+            Modern Era
+          </div>
+
+          {/* ── Tap hint (mobile only) ── */}
+          <div
+            className={`
+              absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+              md:hidden pointer-events-none
+              transition-opacity duration-500
+              ${showNow ? 'opacity-0' : 'opacity-100'}
+            `}
+          >
+            <div className="px-5 py-2.5 bg-[#050505]/70 backdrop-blur-sm border border-[#C8A96A]/40 text-[#C8A96A] font-primary text-xs uppercase tracking-widest whitespace-nowrap">
+              Tap to reveal
             </div>
           </div>
 
-          {/* Now Image (Revealed on Hover) */}
-          <div className="absolute inset-0 z-0">
-            <Image
-              src={nowImage}
-              alt="Athletic Camp Now"
-              fill
-              sizes="100vw"
-              className="object-cover"
-            />
-            <div className="absolute bottom-6 right-6 bg-[#050505]/80 backdrop-blur px-4 py-2 border-r-2 border-[#C8A96A] text-[#C8A96A] font-primary uppercase tracking-widest text-sm md:text-base">
-              Modern Era
+          {/* ── Tap to go back hint (mobile, when NOW is shown) ── */}
+          <div
+            className={`
+              absolute top-5 right-5
+              md:hidden pointer-events-none
+              transition-opacity duration-500
+              ${showNow ? 'opacity-100' : 'opacity-0'}
+            `}
+          >
+            <div className="px-3 py-1.5 bg-[#050505]/70 backdrop-blur-sm border border-[#F6F2EA]/20 text-[#F6F2EA]/50 font-primary text-[10px] uppercase tracking-widest">
+              Tap to go back
             </div>
           </div>
-          
         </div>
 
       </div>
