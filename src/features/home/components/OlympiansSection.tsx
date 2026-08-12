@@ -7,7 +7,7 @@ const OLYMPIANS = [
   {
     name: "Soma Biswas",
     event: "Heptathlon",
-    image: "/images/somadi.jpg",
+    image: "/images/olympians/soma/soma-home-v2.jpg",
     achievements: ["Olympics 2000 & 2004", "Asian Games Medalist", "Olympian"]
   },
   {
@@ -79,10 +79,9 @@ export default function OlympiansSection() {
                   src={athlete.image}
                   alt={athlete.name}
                   fill
-                  className={`object-top filter grayscale group-hover:grayscale-0 transition-all duration-1000 ease-[0.16,1,0.3,1] ${
-                    athlete.name === 'Soma Biswas' ? 'object-cover scale-125 group-hover:scale-[1.28]' : 
+                  className={`filter grayscale group-hover:grayscale-0 transition-all duration-1000 ease-[0.16,1,0.3,1] w-full h-full ${
                     athlete.name === 'Sanjay Rai' ? 'object-cover scale-100 group-hover:scale-[1.03] object-[center_15%]' : 
-                    'object-cover scale-100 group-hover:scale-[1.03]'
+                    'object-cover object-center scale-100 group-hover:scale-[1.03]'
                   }`}
                 />
               </div>

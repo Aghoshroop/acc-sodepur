@@ -246,44 +246,9 @@ export default function PerformanceClient() {
           </div>
         </section>
 
-        {/* Chapter 04: The Recovery Protocol */}
-        <section className="relative z-40 py-40 bg-concrete-grey text-carbon-black overflow-hidden">
-          <div className="max-w-[1600px] mx-auto px-6 md:px-12">
-            
-            <div className="bg-carbon-black text-chalk-white p-12 md:p-24 relative overflow-hidden group">
-              {/* Background grid */}
-              <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
-              
-              <div className="relative z-10 flex flex-col md:flex-row-reverse gap-16 justify-between items-center">
-                 <div className="w-full md:w-1/2">
-                    <span className="text-track-red text-xs tracking-[0.4em] uppercase mb-6 block">Chapter 04 // Regeneration</span>
-                    <h3 className="text-5xl md:text-7xl font-primary uppercase tracking-tight mb-8">The Recovery<br/>Protocol</h3>
-                    <p className="text-chalk-white/60 font-light text-lg leading-relaxed mb-8">
-                      You break down muscle on the track. You build it back in the recovery suite. Our regeneration protocol uses cutting-edge sports science to repair tissue and reset your Central Nervous System, allowing you to train harder, more often, without burnout.
-                    </p>
-                    <ul className="space-y-4 font-secondary tracking-widest text-sm text-chalk-white/80">
-                      <li className="flex items-center gap-4"><div className="w-2 h-2 bg-track-red group-hover:scale-150 transition-transform" /> Cryotherapy & Cold-Water Immersion</li>
-                      <li className="flex items-center gap-4"><div className="w-2 h-2 bg-track-red group-hover:scale-150 transition-transform delay-75" /> Precision Macronutrient Reloading</li>
-                      <li className="flex items-center gap-4"><div className="w-2 h-2 bg-track-red group-hover:scale-150 transition-transform delay-150" /> CNS Readiness Tracking (HRV)</li>
-                    </ul>
-                 </div>
 
-                 <div className="w-full md:w-1/3 relative aspect-square border border-chalk-white/20 overflow-hidden bg-carbon-black">
-                    <Image
-                      src="/images/relaxation.jpg"
-                      alt="Recovery Protocol"
-                      fill
-                      className="object-cover opacity-40 group-hover:scale-110 transition-transform duration-1000"
-                    />
-                    <div className="absolute inset-0 bg-carbon-black/60" />
-                 </div>
-              </div>
-            </div>
 
-          </div>
-        </section>
-
-        {/* Chapter 05: Final CTA */}
+        {/* Chapter 04: Final CTA */}
         <section className="relative z-40 py-40 bg-carbon-black text-chalk-white overflow-hidden text-center border-t border-chalk-white/10">
           <div className="relative z-10 max-w-4xl mx-auto px-6">
             <motion.div
@@ -292,7 +257,7 @@ export default function PerformanceClient() {
               viewport={{ once: true }}
               transition={{ duration: 1 }}
             >
-               <div className="text-track-red text-xs tracking-[0.4em] uppercase mb-8 font-bold">Chapter 05 // The End</div>
+               <div className="text-track-red text-xs tracking-[0.4em] uppercase mb-8 font-bold">Chapter 04 // The End</div>
               <h2 className="text-5xl md:text-7xl lg:text-8xl font-primary uppercase tracking-tight mb-8">
                 Talent is common. <br/> Discipline is elite.
               </h2>

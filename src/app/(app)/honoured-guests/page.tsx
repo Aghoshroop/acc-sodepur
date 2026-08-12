@@ -38,6 +38,10 @@ const guests = [
   },
   {
     category: "Olympians & Athletes",
+    images: [
+      { src: "/images/jyotyrmoyee.png", alt: "Mrs. Jyotirmoyee Sikhdar" },
+      { src: "/images/paramjit.png", alt: "Mr. Paramjit Singh" }
+    ],
     members: [
       { name: "Mrs. Saraswati Saha", title: "Olympian, Athletics" },
       { name: "Mrs. Jyotirmoyee Sikhdar", title: "Olympian, Athletics" },
@@ -137,6 +141,22 @@ export default function HonouredGuestsPage() {
                     {group.category}
                   </h2>
                   <div className="w-16 h-1 bg-track-red mt-6" />
+
+                  {/* Featured Images */}
+                  {group.images && (
+                    <div className="flex flex-col gap-6 w-full max-w-sm mt-8">
+                      {group.images.map((img, idx) => (
+                        <div key={idx} className="flex flex-col items-center">
+                          <div className="w-full relative overflow-hidden flex items-center justify-start mb-2">
+                            <Image src={img.src} alt={img.alt} width={600} height={400} className="w-full h-auto object-contain shadow-sm" />
+                          </div>
+                          <span className="text-xs font-secondary uppercase tracking-widest text-carbon-black/70 text-center">
+                            {img.alt}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
               

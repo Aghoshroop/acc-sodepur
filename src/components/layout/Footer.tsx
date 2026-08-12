@@ -9,7 +9,13 @@ export default function Footer() {
           
           <div className="lg:col-span-5 flex flex-col">
             <div className="relative w-32 h-32 md:w-40 md:h-40 mb-8">
-              <Image src="/images/logo.png" alt="ACC Logo" fill className="object-contain mix-blend-screen invert" />
+              <Image 
+                src="/images/logo.png" 
+                alt="ACC Logo" 
+                fill 
+                className="object-contain" 
+                style={{ filter: 'brightness(0) saturate(100%) invert(29%) sepia(85%) saturate(7483%) hue-rotate(352deg) brightness(101%) contrast(110%)' }}
+              />
             </div>
             <p className="font-body text-[var(--color-ash-grey)] text-xl max-w-md leading-relaxed mb-8">
               Athletic Coaching Camp.<br />

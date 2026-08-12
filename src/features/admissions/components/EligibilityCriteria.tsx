@@ -25,7 +25,7 @@ export default function EligibilityCriteria() {
   ];
 
   return (
-    <section className="sticky top-0 z-20 w-full min-h-screen flex flex-col justify-center bg-chalk-white text-carbon-black py-24 md:py-48 border-b border-carbon-black/10 overflow-hidden">
+    <section className="sticky top-0 z-20 w-full min-h-screen flex flex-col justify-center bg-chalk-white text-carbon-black py-12 lg:py-16 xl:py-32 2xl:py-40 border-b border-carbon-black/10 overflow-hidden">
       {/* Background element */}
       <div className="absolute inset-0 z-0">
         <Image src="/images/campus/campus-hero-evolution.jpg" alt="Background" fill className="object-cover opacity-10 " />
@@ -33,26 +33,26 @@ export default function EligibilityCriteria() {
       </div>
 
       <div className="relative z-10 w-full max-w-[1600px] mx-auto px-6 md:px-12">
-        <div className="mb-20 md:mb-32">
-          <h2 className="text-4xl md:text-6xl font-primary uppercase tracking-wide">
+        <div className="mb-10 lg:mb-12 xl:mb-20">
+          <h2 className="text-4xl lg:text-5xl xl:text-6xl font-primary uppercase tracking-wide">
             Eligibility<br />Criteria
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 lg:gap-y-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 lg:gap-y-12 xl:gap-y-20">
           {criteria.map((item, index) => (
-            <div key={index} className="group relative border-t border-carbon-black/20 pt-8">
+            <div key={index} className="group relative border-t border-carbon-black/20 pt-6 lg:pt-8">
               <div className="absolute top-0 left-0 w-0 h-[2px] bg-track-red transition-all duration-700 ease-[0.16,1,0.3,1] group-hover:w-full" />
               
-              <div className="flex flex-col md:flex-row gap-6 md:gap-12">
+              <div className="flex flex-col md:flex-row gap-4 lg:gap-12">
                 <div className="text-4xl font-primary text-carbon-black/20 group-hover:text-track-red transition-colors duration-500">
                   {item.icon}
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold uppercase tracking-widest mb-4">
+                  <h3 className="text-xl xl:text-2xl font-bold uppercase tracking-widest mb-2 xl:mb-4">
                     {item.title}
                   </h3>
-                  <p className="text-carbon-black/70 font-light leading-relaxed">
+                  <p className="text-sm xl:text-base text-carbon-black/70 font-light leading-relaxed">
                     {item.description}
                   </p>
                 </div>

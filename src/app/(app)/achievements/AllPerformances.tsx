@@ -44,22 +44,22 @@ const PERFORMANCES_DATA = [
   {
     era: "2021 - Present",
     athletes: [
-      "1. Bidisha Kundu - Junior National Medalist", "2. Shikhar Rai - U23 National, East Zone Champion",
-      "3. Aviroop Ghosh - East Zone Champion", "4. Sayan Karmakar - East Zone Champion",
-      "5. Nupur Pandey - Junior National", "6. Tannishtha Shee - East Zone Medallist",
-      "7. Ujala Kumari Singh - Junior Fed Cup Champion", "8. Debanjana Dey - East Zone Champion",
-      "9. Priti Chakraborty - U23 National Medallist", "10. Hirak Sen - East Zone Medallist",
-      "11. Dipti Rajbanshi - East Zone Champion", "12. Rajdip Pal - East Zone Champion",
-      "13. Satayu Mondal - Inter University", "14. Tiyasha Chakraborty - East Zone Champion",
-      "15. Priyanka Saha - Junior National", "16. Genia Mondal - East Zone Medallist",
-      "17. Aishanya Priyadarshi - East Zone Champion", "18. Dibya Sen - U23 National",
-      "19. Srabani Mondal - Junior National", "20. Banhi Das - School National Medallist",
-      "21. Shreya Das - Junior National", "22. Avra Biswas - Youth National",
-      "23. Sayan Biswas - Inter University", "24. Tarun Bauri - East Zone Medallist",
-      "25. Meghadri Saha - Junior National", "26. Subham Paul - Junior National",
-      "27. Sreeja Das Karmakar - Junior National", "28. Sisant Das - East Zone Medallist, Junior National",
-      "29. Rai Mondal - National Cross Country, School National", "30. Aman Dey - School National",
-      "31. Anusha Gayen - School National"
+      "1. Bidisha Kundu", "2. Shikhar Rai",
+      "3. Aviroop Ghosh", "4. Sayan Karmakar",
+      "5. Nupur Pandey", "6. Tannishtha Shee",
+      "7. Ujala Kumari Singh", "8. Debanjana Dey",
+      "9. Priti Chakraborty", "10. Hirak Sen",
+      "11. Dipti Rajbanshi", "12. Rajdip Pal",
+      "13. Satayu Mondal", "14. Tiyasha Chakraborty",
+      "15. Priyanka Saha", "16. Genia Mondal",
+      "17. Aishanya Priyadarshi", "18. Dibya Sen",
+      "19. Srabani Mondal", "20. Banhi Das",
+      "21. Shreya Das", "22. Avra Biswas",
+      "23. Sayan Biswas", "24. Tarun Bauri",
+      "25. Meghadri Saha", "26. Subham Paul",
+      "27. Sreeja Das Karmakar", "28. Sisant Das",
+      "29. Rai Mondal", "30. Aman Dey",
+      "31. Anusha Gayen"
     ]
   }
 ];

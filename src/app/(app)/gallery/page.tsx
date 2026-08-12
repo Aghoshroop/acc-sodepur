@@ -1,15 +1,42 @@
 'use client';
 
 import { useEffect } from 'react';
+import { GalleryProvider, useGallery } from './context/GalleryContext';
+import StoriesBehindTheFrame from './components/StoriesBehindTheFrame';
+import { LenisProvider } from '@/components/providers/LenisProvider';
+import AlbumGrid from './components/AlbumGrid';
+import ExpandedAlbum from './components/ExpandedAlbum';
 import SectionArchiveHero from './components/SectionArchiveHero';
 import SectionTheBeginning from './components/SectionTheBeginning';
 import SectionThenVsNow from './components/SectionThenVsNow';
-import SectionHallOfMoments from './components/SectionHallOfMoments';
-import SectionModernACC from './components/SectionModernACC';
-import SectionRecentMoments from './components/SectionRecentMoments';
-import { GalleryProvider } from './context/GalleryContext';
-import StoriesBehindTheFrame from './components/StoriesBehindTheFrame';
-import { LenisProvider } from '@/components/providers/LenisProvider';
+import { AnimatePresence, motion } from 'framer-motion';
+
+function GalleryContent() {
+  const { activeAlbum } = useGallery();
+
+  return (
+    <>
+      <StoriesBehindTheFrame />
+      <AnimatePresence mode="wait">
+        {activeAlbum ? (
+          <ExpandedAlbum key="expanded" albumId={activeAlbum} />
+        ) : (
+          <motion.div 
+            key="grid"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <SectionArchiveHero />
+            <SectionTheBeginning />
+            <SectionThenVsNow />
+            <AlbumGrid />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+}
 
 export default function GalleryPage() {
 
@@ -147,27 +174,7 @@ export default function GalleryPage() {
           className="w-full bg-[#050505] text-[#F6F2EA] min-h-screen relative selection:bg-[#C8A96A] selection:text-[#050505]"
           onContextMenu={(e) => e.preventDefault()}
         >
-          {/* Modal Overlay */}
-          <StoriesBehindTheFrame />
-
-          {/* 1. THE ARCHIVE */}
-          <SectionArchiveHero />
-
-          {/* 2. THE BEGINNING */}
-          <SectionTheBeginning />
-
-          {/* 3. THEN VS NOW */}
-          <SectionThenVsNow />
-
-          {/* 4. HALL OF MOMENTS */}
-          <SectionHallOfMoments />
-
-          {/* 5. MODERN ACC */}
-          <SectionModernACC />
-
-          {/* 6. RECENT MOMENTS */}
-          <SectionRecentMoments />
-
+          <GalleryContent />
         </main>
       </GalleryProvider>
     </LenisProvider>

@@ -160,44 +160,12 @@ export default function MobilePerformancePage() {
         </div>
       </section>
 
-      {/* Chapter 04: The Recovery Protocol */}
-      <section className="relative z-40 py-24 bg-concrete-grey text-carbon-black overflow-hidden">
-        <div className="px-6 w-full">
-          <div className="bg-carbon-black text-chalk-white p-8 relative overflow-hidden flex flex-col gap-10">
-            {/* Background grid */}
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none" />
-            
-            <div className="relative z-10 w-full flex flex-col gap-8">
-               <div>
-                  <span className="text-track-red text-[10px] tracking-[0.4em] uppercase mb-4 block">Chapter 04 // Regeneration</span>
-                  <h3 className="text-4xl font-primary uppercase tracking-tight leading-[1.1] mb-6">The Recovery<br/>Protocol</h3>
-                  <p className="text-chalk-white/60 font-light text-sm leading-relaxed mb-6">
-                    You break down muscle on the track. You build it back in the recovery suite. Our regeneration protocol uses cutting-edge sports science to repair tissue and reset your Central Nervous System, allowing you to train harder, more often, without burnout.
-                  </p>
-                  <ul className="space-y-4 font-secondary tracking-widest text-[10px] text-chalk-white/80">
-                    <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 bg-track-red" /> Cryotherapy & Cold-Water Immersion</li>
-                    <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 bg-track-red" /> Precision Macronutrient Reloading</li>
-                    <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 bg-track-red" /> CNS Readiness Tracking (HRV)</li>
-                  </ul>
-               </div>
 
-               <div className="w-full relative aspect-square border border-chalk-white/20 bg-carbon-black overflow-hidden">
-                  <Image
-                    src="/images/relaxation.jpg"
-                    alt="Recovery Protocol"
-                    fill
-                    className="object-cover opacity-60"
-                  />
-               </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Chapter 05: Final CTA */}
+      {/* Chapter 04: Final CTA */}
       <section className="relative z-40 py-32 bg-carbon-black text-chalk-white text-center border-t border-chalk-white/10">
         <div className="relative z-10 w-full px-6 flex flex-col items-center">
-           <div className="text-track-red text-[10px] tracking-[0.4em] uppercase mb-6 font-bold">Chapter 05 // The End</div>
+           <div className="text-track-red text-[10px] tracking-[0.4em] uppercase mb-6 font-bold">Chapter 04 // The End</div>
           <h2 className="text-4xl font-primary uppercase tracking-tight leading-[1.1] mb-6">
             Talent is common. <br/> Discipline is elite.
           </h2>

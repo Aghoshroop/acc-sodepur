@@ -113,7 +113,7 @@ export default function MobileFloatingNav({ noticesCount = 0 }: MobileFloatingNa
           delay: isInitialMount ? 0 : (hidden ? 0 : 0.1),
           ease: "easeInOut" 
         }}
-        className="fixed top-0 left-0 right-0 z-50 px-4 pt-4 pb-2 flex justify-center pointer-events-none"
+        className="fixed top-0 left-0 right-0 z-[100] px-4 pt-4 pb-2 flex justify-center pointer-events-none"
       >
         <div 
           className={`pointer-events-auto flex items-center justify-between transition-all duration-300 ${
@@ -164,7 +164,7 @@ export default function MobileFloatingNav({ noticesCount = 0 }: MobileFloatingNa
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="fixed inset-0 z-40 bg-[#F4F4F0] text-[#0A0A0A] overflow-y-auto pt-24 pb-safe px-6"
+            className="fixed inset-0 z-[90] bg-[#F4F4F0] text-[#0A0A0A] overflow-y-auto pt-24 pb-safe px-6"
           >
             <div className="max-w-sm mx-auto flex flex-col pb-12">
               

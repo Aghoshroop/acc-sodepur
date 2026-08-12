@@ -296,10 +296,16 @@ export default function MobileAboutPage() {
 
       {/* Hostel Facility Section */}
       <div className="w-full bg-chalk-white px-6 pb-24">
-        <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-track-red/30">
+        <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-track-red/30 bg-carbon-black">
           <div className="absolute inset-0 z-0">
-            <Image src="/images/relaxation.jpg" alt="Hostel Facilities" fill className="object-cover object-center" />
-            <div className="absolute inset-0 bg-gradient-to-t from-carbon-black via-carbon-black/80 to-carbon-black/40" />
+            {/* Original Background */}
+            <Image src="/images/relaxation.jpg" alt="Hostel Background" fill className="object-cover object-center opacity-40" />
+            <div className="absolute inset-0 bg-gradient-to-t from-carbon-black via-carbon-black/80 to-transparent" />
+            
+            {/* Uncropped New Image */}
+            <div className="absolute inset-0 z-10 pointer-events-none p-4 pb-32">
+              <Image src="/images/hostel.png" alt="Hostel Facilities" fill className="object-contain object-top drop-shadow-2xl" />
+            </div>
           </div>
 
           <div className="relative z-10 p-8 flex flex-col justify-end min-h-[450px] w-full">

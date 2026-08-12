@@ -7,6 +7,34 @@ import HeroStark from '@/components/ui/HeroStark';
 
 const TRIBUTES = [
   {
+    name: "Late Sri Arun Banerjee",
+    subtitle: "",
+    role: "Lifetime President (Secretary, AAWB / Treasure, AAFI)",
+    image: "", 
+    description: "Serving as the Lifetime President of the Athletic Coaching Camp, his legacy and contributions will forever be remembered."
+  },
+  {
+    name: "Late Sri Mihir Baran Ray",
+    subtitle: "",
+    role: "Lifetime Advisor",
+    image: "/images/administration/Late Mihir Baran Roy.jpeg",
+    description: "As a Lifetime Advisor, his guidance has been instrumental in shaping the vision and future of the Athletic Coaching Camp."
+  },
+  {
+    name: "Late Sri Baldev Dutta",
+    subtitle: "",
+    role: "Lifetime Advisor",
+    image: "",
+    description: "His enduring advice and support as a Lifetime Advisor have provided a strong foundation for the Athletic Coaching Camp."
+  },
+  {
+    name: "Sri Monoj Guha Thakurata",
+    subtitle: "",
+    role: "Lifetime Advisor",
+    image: "/images/administration/Manoj Guha Thakurata.jpeg",
+    description: "An esteemed Lifetime Advisor, his insights and dedication continue to be a guiding light for the Athletic Coaching Camp."
+  },
+  {
     name: "Dr. Klaus Peter Herm",
     subtitle: "(Germany)",
     role: "Global Supporter & Benefactor",
@@ -147,12 +175,20 @@ export default function TributesClient() {
               transition={{ duration: 0.8 }}
             >
               <div className="w-full md:w-1/2 relative aspect-[4/5] overflow-hidden group bg-carbon-black/5">
-                <Image 
-                  src={tribute.image}
-                  alt={tribute.name}
-                  fill
-                  className="object-contain p-4 grayscale group-hover:grayscale-0 transition-all duration-700"
-                />
+                {tribute.image ? (
+                  <Image 
+                    src={tribute.image}
+                    alt={tribute.name}
+                    fill
+                    className="object-contain p-4 grayscale group-hover:grayscale-0 transition-all duration-700"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center border border-carbon-black/10">
+                    <span className="text-carbon-black/20 font-primary text-6xl">
+                      {tribute.name.replace(/^Late Sri |^Dr\. |^Mr\. |^Sri /, '').charAt(0)}
+                    </span>
+                  </div>
+                )}
               </div>
               
               <div className="w-full md:w-1/2 flex flex-col justify-center">

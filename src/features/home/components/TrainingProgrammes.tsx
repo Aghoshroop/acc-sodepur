@@ -92,11 +92,11 @@ export default function TrainingProgrammes() {
 
       <div className="relative z-10 w-full overflow-hidden pb-12 md:pb-0">
         <motion.div 
-          className="flex gap-6 md:gap-8 items-start pl-6 md:pl-12 w-max"
+          className="flex gap-6 md:gap-8 items-start w-max pr-6 md:pr-8"
           animate={{ x: [0, "-50%"] }}
           transition={{ duration: 40, ease: "linear", repeat: Infinity }}
         >
-          {[...PROGRAMMES, ...PROGRAMMES, ...PROGRAMMES].map((prog, i) => (
+          {[...PROGRAMMES, ...PROGRAMMES].map((prog, i) => (
             <div 
               key={i}
               className="flex flex-col gap-3 md:gap-6 group cursor-pointer w-[240px] md:w-[350px] shrink-0"

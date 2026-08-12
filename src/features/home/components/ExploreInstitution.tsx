@@ -26,7 +26,7 @@ const EXPLORE_ITEMS = [
   {
     title: 'Community',
     href: '/administration',
-    image: '/images/legacy/legacy-timeline-2002.jpg',
+    image: '/images/administration/community.png',
     colSpan: 'col-span-1',
   },
   {

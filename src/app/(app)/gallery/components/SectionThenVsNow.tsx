@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 
 const THEN_IMAGE = '/images/acc_history/old-lineup.jpg';
-const NOW_IMAGE  = '/images/now-lineup.JPG';
+const NOW_IMAGE  = '/images/current-lineup.png';
 
 export default function SectionThenVsNow() {
   // tap toggle for mobile/tablet
@@ -32,16 +32,16 @@ export default function SectionThenVsNow() {
           Mobile/tablet: tap toggles the `showNow` state.
         */}
         <div
-          className="relative group cursor-pointer bg-[#050505] max-h-[420px] md:max-h-[520px] overflow-hidden flex items-center justify-center"
+          className="relative group cursor-pointer bg-[#050505] overflow-hidden flex items-center justify-center max-w-4xl mx-auto border border-[#F6F2EA]/10 shadow-2xl"
           onClick={() => setShowNow((v) => !v)}
         >
-          {/* ── THEN (base, constrained height, full image visible) ── */}
+          {/* ── THEN (base, natural aspect ratio, full image visible) ── */}
           <Image
             src={THEN_IMAGE}
             alt="ACC – The Beginning"
             width={1300}
             height={975}
-            className="w-full h-full object-contain block"
+            className="w-auto h-auto max-h-[80vh] block mx-auto"
             priority
             draggable={false}
           />
@@ -58,9 +58,9 @@ export default function SectionThenVsNow() {
             <Image
               src={NOW_IMAGE}
               alt="ACC – Modern Era"
-              width={1800}
-              height={900}
-              className="w-full h-full object-contain"
+              width={1300}
+              height={975}
+              className="w-full h-full object-cover"
               priority
               draggable={false}
             />

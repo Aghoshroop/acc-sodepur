@@ -288,11 +288,17 @@ export default function ClientAboutContent() {
 
       {/* ----------------- HOSTEL FACILITY SECTION (Bottom) ----------------- */}
       <div className="max-w-[1600px] mx-auto px-6 md:px-12 pb-32">
-        <div className="w-full relative mt-8 rounded-[2rem] overflow-hidden shadow-2xl group border border-track-red/30">
+        <div className="w-full relative mt-8 rounded-[2rem] overflow-hidden shadow-2xl group border border-track-red/30 bg-carbon-black">
           <div className="absolute inset-0 z-0">
-             <Image src="/images/relaxation.jpg" alt="Hostel Facilities" fill className="object-cover object-center group-hover:scale-105 transition-transform duration-1000 ease-out" />
+             {/* Original Background */}
+             <Image src="/images/relaxation.jpg" alt="Hostel Background" fill className="object-cover object-center opacity-60 group-hover:scale-105 transition-transform duration-1000 ease-out" />
              <div className="absolute inset-0 bg-gradient-to-r from-carbon-black via-carbon-black/80 to-transparent" />
              <div className="absolute inset-0 bg-carbon-black/30" />
+             
+             {/* Uncropped New Image */}
+             <div className="absolute inset-0 z-10 pointer-events-none p-8 md:p-12">
+               <Image src="/images/hostel.png" alt="Hostel Facilities" fill className="object-contain object-right drop-shadow-2xl group-hover:scale-[1.02] transition-transform duration-1000 ease-out" />
+             </div>
           </div>
           
           <div className="relative z-10 p-8 md:p-16 lg:p-24 flex flex-col justify-center h-full min-h-[500px] w-full lg:w-3/4">

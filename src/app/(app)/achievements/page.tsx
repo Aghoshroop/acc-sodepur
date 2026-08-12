@@ -58,7 +58,7 @@ export default async function AchievementsPage() {
       <section className="relative w-full h-[100svh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/images/pexels-giantasparagus-35678274.jpg" 
+            src="/images/facility1.jpg" 
             alt="Hall of Glory" 
             fill 
             className="object-cover scale-105"
@@ -180,13 +180,13 @@ export default async function AchievementsPage() {
               {/* Images Right Side */}
               <div className="w-full lg:w-2/3 grid grid-cols-3 grid-rows-3 gap-2 lg:gap-4 h-[500px] lg:h-[70vh] min-h-[500px] max-h-[800px]">
                 {[
-                  { img: '09.jpg', classes: 'col-span-2 row-span-3' },
-                  { img: '211106n2.jpg', classes: 'col-span-1 row-span-1' },
-                  { img: '211106n5.jpg', classes: 'col-span-1 row-span-1' },
-                  { img: '08.jpg', classes: 'col-span-1 row-span-1' }
+                  { img: '/images/somadi-international.jpg', classes: 'col-span-2 row-span-3' },
+                  { img: '/images/olympians/soma/211106n2.jpg', classes: 'col-span-1 row-span-1' },
+                  { img: '/images/olympians/soma/211106n5.jpg', classes: 'col-span-1 row-span-1' },
+                  { img: '/images/olympians/soma/08.jpg', classes: 'col-span-1 row-span-1' }
                 ].map((item, i) => (
                   <motion.div key={item.img} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className={`relative w-full h-full ${item.classes}`}>
-                    <Image src={`/images/olympians/soma/${item.img}`} alt="Soma Biswas" fill className="object-cover object-[center_top] shadow-lg" />
+                    <Image src={item.img} alt="Soma Biswas" fill className="object-cover object-[center_top] shadow-lg" />
                   </motion.div>
                 ))}
               </div>

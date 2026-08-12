@@ -5,25 +5,6 @@ export type Member = {
   description?: string;
 };
 
-export const legacyLeaders = {
-  lifeTimePresident: {
-    name: "Late Sri Arun Banerjee",
-    role: "(Secretary, AAWB / Treasure, AAFI)",
-  },
-  lifeTimeAdvisors: [
-    {
-      name: "Late Sri Mihir Baran Ray",
-      image: "/images/administration/Late Mihir Baran Roy.jpeg", 
-    },
-    {
-      name: "Late Sri Baldev Dutta",
-    },
-    {
-      name: "Sri Monoj Guha Thakurata",
-      image: "/images/administration/Manoj Guha Thakurata.jpeg", 
-    },
-  ],
-};
 
 export const presidentialChronology = [
   { years: "1972 - 1979", name: "Late Sri Ajit Mukherjee" },

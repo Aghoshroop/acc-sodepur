@@ -11,6 +11,8 @@ export default async function NoticesPage() {
       <div className="absolute inset-0 z-0">
         <Image src="/images/synthetic.jpg" alt="Background" fill className="object-cover opacity-10 " />
         <div className="absolute inset-0 bg-gradient-to-b from-chalk-white/95 to-chalk-white/80 backdrop-blur-sm" />
+        {/* Dark overlay at top for navigation visibility */}
+        <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-carbon-black via-carbon-black/70 to-transparent z-10" />
       </div>
 
       {/* --- DESKTOP VIEW --- */}

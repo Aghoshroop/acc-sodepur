@@ -228,7 +228,7 @@ const CHAPTERS: Chapter[] = [
         <p>His legendary "Black Book" contains meticulous historic records. He can pull up the exact day-by-day load charts that Olympians like Soma Biswas<OlympianTag /> and Sanjay Rai<OlympianTag /> executed in the year 2000.</p>
       </div>
     ),
-    image: '/images/performance/performance-hero-focus.jpg'
+    image: '/images/acc_history/32.jpg'
   },
   {
     chapter: '04 / Rebel & Mentor',
@@ -255,7 +255,7 @@ export default function FounderPage() {
   });
 
   return (
-    <main className="w-full bg-chalk-white text-carbon-black selection:bg-track-red selection:text-chalk-white">
+    <main className="w-full overflow-x-hidden bg-chalk-white text-carbon-black selection:bg-track-red selection:text-chalk-white">
       {/* --- DESKTOP VIEW --- */}
       <div className="hidden lg:block">
         <div className="relative w-full" ref={containerRef}>
@@ -408,7 +408,7 @@ export default function FounderPage() {
       </div>
 
       {/* Timeline Section */}
-      <section className="relative z-40 py-32 bg-carbon-black text-chalk-white border-b border-chalk-white/10 overflow-hidden">
+      <section className="relative z-30 py-32 bg-carbon-black text-chalk-white border-b border-chalk-white/10 overflow-hidden">
         <FloatingRedDots />
         <div className="max-w-[1200px] mx-auto px-6 md:px-12 relative z-10">
           <div className="text-center mb-32 flex flex-col items-center">
@@ -465,7 +465,7 @@ export default function FounderPage() {
       </section>
 
       {/* The Protégés Stats */}
-      <section className="relative z-40 py-32 bg-chalk-white text-carbon-black border-b border-carbon-black/10 overflow-hidden">
+      <section className="relative z-30 py-32 bg-chalk-white text-carbon-black border-b border-carbon-black/10 overflow-hidden">
         <div className="max-w-[1200px] mx-auto px-6 md:px-12 relative z-10 text-center">
           <div className="text-track-red text-xs tracking-[0.4em] uppercase mb-6">The Legacy</div>
           <h2 className="text-5xl md:text-7xl font-primary uppercase tracking-tight mb-16">

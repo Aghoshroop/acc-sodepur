@@ -139,7 +139,7 @@ export default function CampusPage() {
 
             {/* Jump Pits */}
             <div className="flex flex-col lg:flex-row gap-16 items-center">
-              <div className="w-full lg:w-1/2 flex flex-col gap-6 pr-0 lg:pr-12">
+              <div className="w-full lg:w-5/12 xl:w-1/2 flex flex-col gap-6 pr-0 lg:pr-8 xl:pr-12">
                 <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariant} className="border-l-4 border-white pl-6">
                   <h3 className="text-4xl font-primary uppercase tracking-wide mb-4">Long Jump & High Jump Pits</h3>
                   <p className="text-chalk-white/80 leading-relaxed text-xl mb-4">
@@ -150,13 +150,13 @@ export default function CampusPage() {
                   </p>
                 </motion.div>
               </div>
-              <div className="w-full lg:w-1/2 grid grid-cols-2 gap-4 h-[400px] lg:h-[500px]">
+              <div className="w-full lg:w-7/12 xl:w-1/2 grid grid-cols-2 gap-4 h-[400px] lg:h-[380px] xl:h-[500px]">
                 <div className="relative w-full h-full">
                   <Image src="/images/facilities/longjump.jpg" alt="Long Jump Pit" fill className="object-cover shadow-2xl border-2 border-white/10" />
                   <div className="absolute bottom-4 left-4 bg-carbon-black/80 px-3 py-1 text-xs font-bold uppercase tracking-widest text-track-red backdrop-blur-md">Long Jump</div>
                 </div>
                 <div className="relative w-full h-full">
-                  <Image src="/images/facilities/highjump.jpg" alt="High Jump Pit" fill className="object-cover shadow-2xl border-2 border-white/10" />
+                  <Image src="/images/facilities/highjump.jpg" alt="High Jump Pit" fill className="object-cover shadow-2xl border-2 border-white/10 lg:object-center xl:object-[60%_50%]" />
                   <div className="absolute bottom-4 left-4 bg-carbon-black/80 px-3 py-1 text-xs font-bold uppercase tracking-widest text-track-red backdrop-blur-md">High Jump</div>
                 </div>
               </div>

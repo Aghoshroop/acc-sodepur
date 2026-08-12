@@ -87,8 +87,8 @@ export default function Navigation({ notices = [] }: { notices?: { id: string; p
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ ...transitionConfig, duration: 1, delay: 2.6 }}
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-700 ease-out border-b ${
+        transition={{ ...transitionConfig, duration: 1, delay: 0.1 }}
+        className={`fixed top-0 left-0 w-full z-[100] transition-all duration-700 ease-out border-b ${
           isScrolled || mobileMenuOpen
             ? 'bg-chalk-white/95 backdrop-blur-2xl backdrop-saturate-[1.8] border-carbon-black/10 shadow-[0_10px_40px_rgba(0,0,0,0.1)] h-[50px] overflow-visible'
             : 'bg-transparent border-transparent py-3 shadow-none overflow-visible'
@@ -130,7 +130,7 @@ export default function Navigation({ notices = [] }: { notices?: { id: string; p
                 className="relative"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ ...transitionConfig, delay: 2.7 + index * 0.05 }}
+                transition={{ ...transitionConfig, delay: 0.2 + index * 0.05 }}
                 onMouseEnter={() => {
                   setHoveredItem(item.label);
                   if (item.items) setActiveDropdown(item.label);
@@ -241,7 +241,7 @@ export default function Navigation({ notices = [] }: { notices?: { id: string; p
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 2.8 }}
+              transition={{ delay: 0.3 }}
             >
               <Link href="/notices" className={`relative p-2 flex items-center justify-center transition-colors duration-500 ${!isScrolled && !mobileMenuOpen ? 'text-chalk-white hover:text-chalk-white/70' : 'text-track-red hover:text-track-red/70'}`}>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -266,7 +266,7 @@ export default function Navigation({ notices = [] }: { notices?: { id: string; p
             <motion.button
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 2.9 }}
+              transition={{ delay: 0.4 }}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="xl:hidden relative w-10 h-10 flex flex-col justify-center items-end p-2 z-[60]"
             >
@@ -285,7 +285,7 @@ export default function Navigation({ notices = [] }: { notices?: { id: string; p
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="fixed inset-0 z-40 bg-carbon-black/95 backdrop-blur-2xl backdrop-saturate-[1.8] flex flex-col pt-32 pb-12 px-4 min-[360px]:px-6 overflow-y-auto pt-env-safe"
+            className="fixed inset-0 z-[90] bg-carbon-black/95 backdrop-blur-2xl backdrop-saturate-[1.8] flex flex-col pt-32 pb-12 px-4 min-[360px]:px-6 overflow-y-auto pt-env-safe"
           >
             <nav className="flex flex-col gap-10 mt-4 pb-12">
               {NAV_ITEMS.map((item, index) => (

@@ -107,6 +107,24 @@ export default function PremierRelayTeaser() {
         <TeamImage team={LEFT_TEAMS[2]} delay={0} />
       </div>
 
+      {/* Center Logo - In between left and right teams */}
+      <div className="flex absolute top-8 left-1/2 -translate-x-1/2 z-30">
+        <motion.div 
+          initial={{ opacity: 0, y: -20, scale: 0.9 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="relative w-32 h-32 lg:w-40 lg:h-40 xl:w-56 xl:h-56"
+        >
+          <Image 
+            src="/images/relay/premier-relay-logo.jpg" 
+            alt="Premier Relay Logo" 
+            fill 
+            className="object-contain drop-shadow-2xl mix-blend-multiply" 
+          />
+        </motion.div>
+      </div>
+
       {/* Right Side Teams - Absolute Top Right of the entire section */}
       <div className="hidden lg:flex items-start gap-6 xl:gap-10 absolute top-8 right-4 xl:right-8 z-30">
         <TeamImage team={RIGHT_TEAMS[0]} delay={0} />
@@ -117,7 +135,7 @@ export default function PremierRelayTeaser() {
       <div className="relative z-10 w-full max-w-[1600px] mx-auto px-4 md:px-8 h-full flex flex-col items-center justify-center pointer-events-none">
         
         {/* Center Content */}
-        <div className="flex-1 flex flex-col items-center justify-center text-center z-20 relative w-full max-w-3xl mt-12 lg:mt-24 pointer-events-auto">
+        <div className="flex-1 flex flex-col items-center justify-center text-center z-20 relative w-full max-w-3xl mt-40 lg:mt-24 pointer-events-auto">
           
           <motion.div
             initial={{ opacity: 0, y: -20 }}
