@@ -10,6 +10,7 @@ type Chapter = {
   image: string;
   bgImage?: string;
   containImage?: boolean;
+  noCard?: boolean;
 };
 
 export default function MobileFounderChapters({ chapters }: { chapters: Chapter[] }) {
