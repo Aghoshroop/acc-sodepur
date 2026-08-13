@@ -37,8 +37,8 @@ export default function MobileFounder() {
       </div>
 
       {/* Portrait (Focus on eyes) */}
-      <div className="relative w-full flex-1 min-h-0 mb-8">
-        <div className="relative w-full h-full overflow-hidden bg-carbon-black/5">
+      <div className="relative w-full aspect-[4/5] max-h-[50dvh] mb-8 mt-auto mx-auto max-w-sm">
+        <div className="absolute inset-0 w-full h-full overflow-hidden bg-carbon-black/5">
           <Image
             src="/images/51681-kuntal-roy.png"
             alt="Dr. Kuntal Roy"

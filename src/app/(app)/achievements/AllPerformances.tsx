@@ -118,7 +118,7 @@ export default function AllPerformances() {
                   {eraBlock.era}
                 </h3>
               </motion.div>
-              <ul className="flex flex-col gap-2 font-medium text-sm md:text-base text-carbon-black/80">
+              <ul className="grid grid-cols-2 lg:grid-cols-1 gap-x-2 gap-y-2 font-medium text-xs sm:text-sm md:text-base text-carbon-black/80">
                 {eraBlock.athletes.map((athlete) => {
                   const numMatch = athlete.match(/^(\d+)\.\s*(.*)/);
                   const rank = numMatch ? numMatch[1] : '';

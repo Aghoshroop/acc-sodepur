@@ -212,8 +212,8 @@ export default async function AchievementsPage() {
                 {[
                   { img: 'SANJAY DA (1).jpg', classes: 'col-span-2 row-span-4' },
                   { img: 'Sanjoy da.JPG', classes: 'col-span-2 row-span-2' },
-                  { img: '2003101502832101.jpg', classes: 'col-span-1 row-span-2' },
-                  { img: 'DSCF2028.JPG', classes: 'col-span-1 row-span-2' }
+                  { img: '2003101502832101.jpg', classes: 'col-span-2 row-span-1' },
+                  { img: 'DSCF2028.JPG', classes: 'col-span-2 row-span-1' }
                 ].map((item, i) => (
                   <motion.div key={item.img} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className={`relative w-full h-full ${item.classes}`}>
                     <Image src={`/images/olympians/sanjay/${item.img}`} alt="Sanjay Kumar Rai" fill className="object-cover object-[center_top] shadow-lg bg-carbon-black" />
@@ -240,10 +240,10 @@ export default async function AchievementsPage() {
               {/* Images Right Side */}
               <div className="w-full lg:w-2/3 grid grid-cols-3 grid-rows-2 gap-2 lg:gap-4 h-[500px] lg:h-[70vh] min-h-[500px] max-h-[800px]">
                 {[
-                  { img: '17Susmita 1.jpg', classes: 'col-span-1 row-span-2' },
+                  { img: '17Susmita 4.jpg', classes: 'col-span-1 row-span-2' },
                   { img: '210708 ss (4).jpg', classes: 'col-span-2 row-span-1' },
                   { img: 'P1010047.JPG', classes: 'col-span-1 row-span-1' },
-                  { img: '17Susmita 4.jpg', classes: 'col-span-1 row-span-1' }
+                  { img: '17Susmita 1.jpg', classes: 'col-span-1 row-span-1' }
                 ].map((item, i) => (
                   <motion.div key={item.img} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className={`relative w-full h-full ${item.classes}`}>
                     <Image src={`/images/olympians/susmita/${item.img}`} alt="Susmita Singha Roy" fill className="object-cover object-[center_top] shadow-lg" />
@@ -317,8 +317,8 @@ export default async function AchievementsPage() {
             viewport={{ once: true }}
             variants={fadeUpVariant}
           >
-            <h2 className="text-5xl md:text-7xl font-primary uppercase tracking-wider mb-6 flex items-center gap-6">
-              State <span className="text-track-red">Domination</span>
+            <h2 className="text-[clamp(2.5rem,10vw,4.5rem)] md:text-7xl font-primary uppercase tracking-wider mb-6 flex flex-wrap items-center gap-x-4 gap-y-2 leading-none">
+              <span>State</span> <span className="text-track-red">Domination</span>
             </h2>
             <p className="text-xl md:text-2xl font-light text-chalk-white/70 max-w-3xl leading-relaxed">
               The academy's absolute supremacy in West Bengal over the last 5 years.

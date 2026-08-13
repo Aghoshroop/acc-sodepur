@@ -26,7 +26,7 @@ const OLYMPIANS = [
 
 export default function MobileOlympians() {
   return (
-    <section className="relative w-full py-12 px-6 bg-chalk-white text-carbon-black overflow-hidden">
+    <section className="relative w-full py-10 px-4 bg-chalk-white text-carbon-black overflow-hidden">
       {/* Background Olympic Rings */}
       <div className="absolute inset-0 pointer-events-none flex items-center justify-center overflow-hidden z-0">
         <div className="relative w-[150%] md:w-full h-full opacity-10">
@@ -45,13 +45,13 @@ export default function MobileOlympians() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <p className="text-[10px] tracking-[0.4em] uppercase text-track-red font-bold mb-4">
+          <p className="text-[clamp(0.6rem,3vw,10px)] tracking-[0.4em] uppercase text-track-red font-bold mb-3 break-words">
             Legacy of Excellence
           </p>
         </motion.div>
         
         <motion.h2 
-          className="text-[2.5rem] font-primary uppercase tracking-tight leading-[0.9] text-carbon-black"
+          className="text-[clamp(2.5rem,14vw,3.5rem)] font-primary uppercase tracking-tight leading-[0.85] text-carbon-black break-words"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -88,34 +88,34 @@ export default function MobileOlympians() {
             <div className="absolute inset-0 bg-gradient-to-t from-carbon-black/90 via-carbon-black/30 to-transparent opacity-90" />
 
             {/* Content */}
-            <div className="absolute bottom-0 left-0 w-full p-6 flex flex-col gap-3">
-              <div className="flex flex-col gap-1">
-                <div className="relative inline-block w-max overflow-hidden rounded-sm">
+            <div className="absolute bottom-0 left-0 w-full p-4 sm:p-6 flex flex-col gap-2">
+              <div className="flex flex-col gap-1 w-full">
+                <div className="relative inline-block w-max overflow-hidden rounded-sm max-w-full">
                   {/* Animated Red Background */}
                   <div className="absolute inset-0 bg-track-red transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-[0.16,1,0.3,1] z-0" />
                   
                   {/* Text */}
-                  <span className="relative z-10 block px-2 py-1 text-[10px] md:text-xs tracking-[0.4em] uppercase text-track-red group-hover:text-chalk-white font-black drop-shadow-md group-hover:drop-shadow-none transition-all duration-500">
+                  <span className="relative z-10 block px-2 py-1 text-[clamp(0.6rem,3vw,10px)] tracking-[0.4em] uppercase text-track-red group-hover:text-chalk-white font-black drop-shadow-md group-hover:drop-shadow-none transition-all duration-500 truncate">
                     {athlete.event}
                   </span>
                 </div>
-                <h3 className="text-4xl font-primary uppercase tracking-tight text-chalk-white leading-[0.9] drop-shadow-md mt-1">
+                <h3 className="text-[clamp(1.8rem,10vw,2.25rem)] font-primary uppercase tracking-tight text-chalk-white leading-[0.9] drop-shadow-md mt-1 break-words">
                   {athlete.name}
                 </h3>
               </div>
 
-              <div className="flex flex-col gap-2 mt-2">
+              <div className="flex flex-col gap-2 mt-1">
                 {/* Big OLYMPIAN text */}
-                <div className="text-xl font-primary font-bold uppercase tracking-[0.2em] text-track-red drop-shadow-md [-webkit-text-stroke:0.5px_#000] md:[-webkit-text-stroke:1px_#000]">
+                <div className="text-[clamp(1rem,5.5vw,1.25rem)] font-primary font-bold uppercase tracking-[0.2em] text-track-red drop-shadow-md [-webkit-text-stroke:0.5px_#000] md:[-webkit-text-stroke:1px_#000]">
                   OLYMPIAN
                 </div>
                 
                 {/* Other Achievements */}
-                <div className="flex flex-col gap-1.5 mt-1">
+                <div className="flex flex-col gap-1 mt-1">
                   {athlete.achievements.filter(a => a.toLowerCase() !== 'olympian').map((achievement, i) => (
                     <div key={i} className="flex items-center gap-2">
                       <div className="w-1.5 h-1.5 bg-chalk-white rounded-full shrink-0" />
-                      <span className="text-[10px] uppercase tracking-widest text-chalk-white font-bold drop-shadow-md">
+                      <span className="text-[clamp(0.6rem,3vw,10px)] uppercase tracking-widest text-chalk-white font-bold drop-shadow-md break-words">
                         {achievement}
                       </span>
                     </div>

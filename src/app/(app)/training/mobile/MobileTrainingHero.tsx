@@ -6,7 +6,7 @@ export default function MobileTrainingHero() {
 
   return (
     <section className="relative w-full min-h-[90vh] flex flex-col justify-center items-center overflow-hidden bg-carbon-black border-b border-chalk-white/10 pt-20">
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-x-0 top-0 z-0 w-full aspect-[4/5] md:aspect-video max-h-[80vh]">
         <Image
           src="/images/performance/performance-hero-focus.jpg"
           alt="Performance Focus"

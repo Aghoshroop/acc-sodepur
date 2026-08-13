@@ -3,7 +3,7 @@ import HeroStark from '@/components/ui/HeroStark';
 export default function MobileCoachesHero() {
   return (
     <section className="relative w-full min-h-[85vh] flex flex-col justify-center border-b border-chalk-white/10 overflow-hidden">
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-x-0 top-0 z-0 w-full aspect-[4/5] md:aspect-video max-h-[80vh]">
         <video 
           autoPlay 
           loop 

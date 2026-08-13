@@ -10,8 +10,8 @@ export default function MobileHero() {
   return (
     <section className="relative w-full h-[100dvh] bg-chalk-white flex flex-col snap-start overflow-hidden">
       
-      {/* Monumental Photography (70%) */}
-      <div className="relative w-full h-[65dvh]">
+      {/* Monumental Photography */}
+      <div className="relative w-full aspect-[4/5] max-h-[65dvh]">
         <motion.div 
           className="absolute inset-0"
           initial={{ scale: 1.05 }}

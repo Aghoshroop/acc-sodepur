@@ -1,5 +1,4 @@
 import Navigation from '@/components/layout/Navigation';
-import MobileFloatingNav from '@/components/layout/MobileFloatingNav';
 import MasterCanvas from '@/components/layout/MasterCanvas';
 import Footer from '@/components/layout/Footer';
 import { getActiveNotices } from '@/features/notices/api';
@@ -18,15 +17,9 @@ export default async function AppLayout({
   return (
     <div className="min-h-screen flex flex-col text-carbon-black selection:bg-track-red selection:text-chalk-white relative z-0">
       <MasterCanvas />
-      {/* Desktop Navigation */}
-      <div className="hidden lg:block">
-        <Navigation notices={serializedNotices} />
-      </div>
       
-      {/* Mobile Navigation */}
-      <div className="block lg:hidden">
-        <MobileFloatingNav noticesCount={notices.length} />
-      </div>
+      {/* Navigation (Responsive Header & Sidebar) */}
+      <Navigation notices={serializedNotices} />
 
       <main className="flex-grow flex flex-col">
         {children}

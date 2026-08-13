@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 export default function MobileInstitutionHero() {
   return (
     <section className="relative h-[90vh] w-full flex items-center justify-center overflow-hidden border-b border-chalk-white/10 pt-20">
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-x-0 top-0 z-0 w-full aspect-[4/5] md:aspect-video max-h-[80vh]">
         <Image
           src="/images/legacy/legacy-hero-archive.jpg"
           alt="ACC Institution"

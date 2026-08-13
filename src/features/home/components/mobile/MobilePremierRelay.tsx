@@ -31,10 +31,10 @@ export default function MobilePremierRelay() {
       </div>
 
       {/* Horizontal Gallery: Hero + Franchises */}
-      <div className="w-full flex-1 min-h-0 overflow-x-auto no-scrollbar snap-x snap-mandatory flex items-stretch px-6 gap-4 pb-4">
+      <div className="w-full flex-1 min-h-0 overflow-x-auto no-scrollbar snap-x snap-mandatory flex px-4 gap-3 pb-4 mb-4">
         
         {/* Baton Exchange (One Memorable Image) */}
-        <div className="snap-start shrink-0 w-[80vw] max-w-[320px] relative rounded-lg overflow-hidden bg-carbon-black/20">
+        <div className="snap-center shrink-0 w-[85vw] max-w-[320px] h-full max-h-[50dvh] aspect-[4/5] relative rounded-lg overflow-hidden bg-carbon-black/20 my-auto">
           <Image
             src="/images/relay/relay-hero-night-race.jpg"
             alt="Premier Relay Baton Exchange"
@@ -46,7 +46,7 @@ export default function MobilePremierRelay() {
 
         {/* Franchises */}
         {FRANCHISES.map((team, idx) => (
-          <div key={team.id} className="snap-start shrink-0 w-[60vw] max-w-[240px] relative rounded-lg overflow-hidden bg-carbon-black/20 border border-chalk-white/20">
+          <div key={team.id} className="snap-center shrink-0 w-[70vw] max-w-[240px] h-full max-h-[50dvh] aspect-[4/5] relative rounded-lg overflow-hidden bg-carbon-black/20 border border-chalk-white/20 my-auto">
             <Image
               src={`/images/relay/relay-franchise-${team.id}.jpg`}
               alt={team.name}

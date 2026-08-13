@@ -8,8 +8,8 @@ export default function MobileFounderHero() {
   return (
     <section className="relative w-full h-[100dvh] bg-carbon-black flex flex-col snap-start overflow-hidden">
       
-      {/* Background Video/Image (70%) */}
-      <div className="relative w-full h-[65dvh]">
+      {/* Background Video/Image */}
+      <div className="relative w-full aspect-[4/5] max-h-[65dvh]">
         <motion.div 
           className="absolute inset-0"
           initial={{ scale: 1.05 }}

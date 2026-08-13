@@ -4,7 +4,7 @@ export default function MobileAdmissionsHero() {
   return (
     <section className="relative w-full min-h-[90vh] flex flex-col justify-end bg-carbon-black overflow-hidden pt-32 pb-16 border-b border-chalk-white/10">
       {/* Background element */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-x-0 top-0 z-0 w-full aspect-[4/5] md:aspect-video max-h-[80vh]">
         <video
           src="/videos/nextgen.mp4"
           autoPlay

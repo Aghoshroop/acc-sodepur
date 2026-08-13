@@ -102,7 +102,7 @@ export default function Navigation({ notices = [] }: { notices?: { id: string; p
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className={`relative flex items-center justify-center transition-all duration-700 ease-out ${
-                isScrolled ? 'w-[86px] h-[60px]' : 'w-28 h-28 md:w-32 md:h-32'
+                isScrolled ? 'w-[70px] h-[50px] md:w-[86px] md:h-[60px]' : 'w-20 h-20 md:w-28 md:h-28 xl:w-32 xl:h-32'
               }`}
             >
               <Image
@@ -277,39 +277,69 @@ export default function Navigation({ notices = [] }: { notices?: { id: string; p
         </div>
       </motion.header>
 
-      {/* Mobile Off-Canvas Menu */}
+      {/* Mobile Off-Canvas Menu Backdrop */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="fixed inset-0 z-[90] bg-carbon-black/95 backdrop-blur-2xl backdrop-saturate-[1.8] flex flex-col pt-32 pb-12 px-4 min-[360px]:px-6 overflow-y-auto pt-env-safe"
+            transition={{ duration: 0.3 }}
+            onClick={() => setMobileMenuOpen(false)}
+            className="fixed inset-0 z-[105] bg-black/60 backdrop-blur-sm"
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Mobile Off-Canvas Sidebar */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ x: "-100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "-100%" }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed top-0 left-0 bottom-0 w-[85%] max-w-[320px] z-[110] bg-carbon-black border-r border-white/10 flex flex-col overflow-y-auto shadow-2xl"
           >
-            <nav className="flex flex-col gap-10 mt-4 pb-12">
+            {/* Sidebar Header with Logo and Close Button */}
+            <div className="flex items-center justify-between p-4 md:p-6 border-b border-white/10">
+              <Link href="/" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-2">
+                <div className="relative w-8 h-8 flex-shrink-0">
+                  <Image src="/images/logo.png" alt="ACC Logo" fill className="object-contain brightness-0 invert" />
+                </div>
+                <span className="text-xl font-primary font-black tracking-widest uppercase text-chalk-white">ACC</span>
+              </Link>
+              <button onClick={() => setMobileMenuOpen(false)} className="text-chalk-white/50 hover:text-white p-1">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+
+            <nav className="flex flex-col gap-6 p-4 md:p-6 pb-12 flex-1">
               {NAV_ITEMS.map((item, index) => (
                   <motion.div
                     key={item.label}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 5 }}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -10 }}
                     transition={{ duration: 0.4, delay: 0.1 + index * 0.05, ease: "easeOut" }}
-                    className="flex flex-col gap-4"
+                    className="flex flex-col gap-3"
                   >
                     {item.items ? (
-                      <div className="flex flex-col gap-4">
+                      <div className="flex flex-col gap-3">
                         <div 
                           className="flex items-center justify-between cursor-pointer"
                           onClick={() => setActiveDropdown(activeDropdown === item.label ? null : item.label)}
                         >
-                          <span className="text-[clamp(1.5rem,8vw,3rem)] font-primary uppercase tracking-wide text-chalk-white break-words pr-4 active:scale-[0.98] active:opacity-90 transition-all duration-200">
+                          <span className="text-xl font-primary uppercase tracking-wide text-chalk-white pr-4 active:scale-[0.98] active:opacity-90 transition-all duration-200">
                             {item.label}
                           </span>
                           <motion.svg 
                             animate={{ rotate: activeDropdown === item.label ? 180 : 0 }}
                             transition={{ duration: 0.3 }}
-                            width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-chalk-white/50"
+                            width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-chalk-white/50"
                           >
                             <polyline points="6 9 12 15 18 9"></polyline>
                           </motion.svg>
@@ -324,13 +354,13 @@ export default function Navigation({ notices = [] }: { notices?: { id: string; p
                               transition={{ duration: 0.3 }}
                               className="overflow-hidden"
                             >
-                              <div className="flex flex-col gap-6 pt-4 pb-2 border-l-2 border-track-red/30 pl-6 ml-2">
+                              <div className="flex flex-col gap-4 pt-2 pb-2 border-l border-track-red/30 pl-4 ml-1">
                                 {item.items.map((subItem) => (
                                   <Link
                                     key={subItem.label}
                                     href={subItem.href}
                                     onClick={() => setMobileMenuOpen(false)}
-                                    className={`text-[clamp(1rem,5vw,1.25rem)] font-light tracking-wide block break-words active:scale-[0.98] active:opacity-90 transition-all duration-200 py-1 ${pathname === subItem.href ? 'text-track-red font-medium' : 'text-chalk-white/70'}`}
+                                    className={`text-sm font-light tracking-wide block break-words active:scale-[0.98] active:opacity-90 transition-all duration-200 py-1 ${pathname === subItem.href ? 'text-track-red font-medium' : 'text-chalk-white/70'}`}
                                   >
                                     {subItem.label}
                                   </Link>
@@ -344,7 +374,7 @@ export default function Navigation({ notices = [] }: { notices?: { id: string; p
                         <Link
                           href={item.href!}
                           onClick={() => setMobileMenuOpen(false)}
-                          className={`text-[clamp(1.5rem,8vw,3rem)] font-primary uppercase tracking-wide block break-words active:scale-[0.98] active:opacity-90 transition-all duration-200 ${
+                          className={`text-xl font-primary uppercase tracking-wide block break-words active:scale-[0.98] active:opacity-90 transition-all duration-200 ${
                             isActive(item) ? 'text-chalk-white' : 'text-chalk-white/80'
                           }`}
                         >
@@ -355,14 +385,16 @@ export default function Navigation({ notices = [] }: { notices?: { id: string; p
                 ))}
             </nav>
             
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              className="mt-auto pt-16 text-[10px] font-medium text-chalk-white/30 tracking-[0.3em] uppercase text-center"
-            >
-              Est. 1969 — Sodepur
-            </motion.div>
+            <div className="p-4 md:p-6 border-t border-white/10 mt-auto">
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4, duration: 0.8 }}
+                className="text-[10px] font-medium text-chalk-white/30 tracking-[0.3em] uppercase text-center"
+              >
+                Est. 1969 — Sodepur
+              </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
