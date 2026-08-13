@@ -16,7 +16,7 @@ export default function SectionArchiveHero() {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative w-full h-screen overflow-hidden bg-[#050505]">
+    <section ref={containerRef} className="relative w-full h-[50vh] md:h-screen overflow-hidden bg-[#050505]">
       {/* Collage Background */}
       <div className="absolute inset-0 w-full h-full hero-bg" style={{ filter: 'grayscale(100%) sepia(20%) brightness(0.5)' }}>
         <div className="absolute inset-0 grid grid-cols-3 grid-rows-2 gap-2 p-2 opacity-60">
@@ -47,7 +47,7 @@ export default function SectionArchiveHero() {
       </div>
       
       {/* Scroll indicator */}
-      <div className="hero-title-group absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+      <div className="hero-title-group absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 animate-bounce">
         <span className="text-[#F6F2EA]/50 text-xs tracking-[0.3em] uppercase">Begin Journey</span>
         <div className="w-[1px] h-12 bg-gradient-to-b from-[#C8A96A] to-transparent" />
       </div>

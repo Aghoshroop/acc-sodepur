@@ -41,7 +41,7 @@ export default function CoachesClient() {
                 loop 
                 muted 
                 playsInline 
-                className="absolute top-1/2 left-0 w-full -translate-y-1/2 h-auto scale-[0.65]"
+                className="absolute top-1/2 left-0 w-full -translate-y-1/2 h-auto max-h-[100vh] object-contain scale-[0.65]"
               >
                 <source src="/videos/rudra-pratim-hero.mp4" type="video/mp4" />
               </video>

@@ -60,10 +60,10 @@ export default function AdministrationHierarchy() {
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10 flex flex-col gap-32">
         
         {/* --- SECTION 2: CORE BODY --- */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+        <div className="grid grid-cols-1 lg:grid-cols-[7fr_5fr] gap-16 lg:gap-24">
           
           {/* Left Column */}
-          <div className="col-span-1 lg:col-span-7 flex flex-col gap-20">
+          <div className="flex flex-col gap-20">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -128,7 +128,7 @@ export default function AdministrationHierarchy() {
           </div>
 
           {/* Right Column */}
-          <div className="col-span-1 lg:col-span-5 flex flex-col gap-16">
+          <div className="flex flex-col gap-16">
             
             <motion.div
               initial={{ opacity: 0, x: 30 }}

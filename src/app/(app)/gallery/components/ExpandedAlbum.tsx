@@ -1,8 +1,10 @@
 'use client';
 
+import { useEffect } from 'react';
 import Image from 'next/image';
 import { getMediaByZone } from '@/features/gallery/data';
 import { useGallery } from '../context/GalleryContext';
+import { useLenis } from '@/components/providers/LenisProvider';
 import { ArrowLeft } from 'lucide-react';
 import { DisplayZone } from '@/features/gallery/types';
 import { motion } from 'framer-motion';
@@ -17,8 +19,35 @@ const ALBUM_TITLES: Partial<Record<DisplayZone, string>> = {
 
 export default function ExpandedAlbum({ albumId }: { albumId: DisplayZone }) {
   const { setActiveMedia, setActiveAlbum } = useGallery();
+  const { lenis } = useLenis();
   const photos = getMediaByZone(albumId);
   const title = ALBUM_TITLES[albumId] || 'Album';
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    
+    let frame = 0;
+    let rafId: number;
+    
+    const clampToTop = () => {
+      window.scrollTo(0, 0);
+      if (lenis) {
+        lenis.scrollTo(0, { immediate: true, force: true });
+      }
+      frame++;
+      if (frame < 10) {
+        rafId = requestAnimationFrame(clampToTop);
+      }
+    };
+    
+    clampToTop();
+
+    return () => {
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+  }, [lenis, albumId]);
 
   return (
     <motion.section 

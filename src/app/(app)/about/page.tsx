@@ -13,8 +13,8 @@ const heroImages = [
   "/images/acc_history/108.jpg", "/images/acc_history/113.jpg", "/images/acc_history/114.jpg", "/images/acc_history/116.jpg",
   "/images/acc_history/117.jpg", "/images/acc_history/1st-acc.jpg", "/images/acc_history/1st-building.jpg", "/images/acc_history/1st-longjump-pit.jpg",
   "/images/acc_history/1stpicnic.jpg", "/images/acc_history/2000s-acc.jpg", "/images/acc_history/26.jpg", "/images/acc_history/28.jpg",
-  "/images/acc_history/29.jpg", "/images/acc_history/32.jpg", "/images/acc_history/34.jpg", "/images/acc_history/63.jpg",
-  "/images/acc_history/67.jpg", "/images/acc_history/70.jpg", "/images/acc_history/71.jpg", "/images/acc_history/72.jpg",
+  "/images/acc_history/29.jpg", "/images/acc_history/32.jpg", "/images/acc_history/hurdles-old.jpg", "/images/acc_history/63.jpg",
+  "/images/acc_history/old-group-photo.jpg", "/images/acc_history/70.jpg", "/images/acc_history/71.jpg", "/images/acc_history/72.jpg",
   "/images/acc_history/74.jpg", "/images/acc_history/91.jpg", "/images/acc_history/94.jpg", "/images/acc_history/95.jpg",
   "/images/acc_history/97.jpg", "/images/acc_history/98.jpg", "/images/acc_history/dronacharya.png", "/images/acc_history/building.jpg"
 ];

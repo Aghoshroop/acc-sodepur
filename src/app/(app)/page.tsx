@@ -66,7 +66,7 @@ export default async function InstitutionalHomepage() {
         </div>
       </div>
       
-      <div className="hidden lg:block">
+      <div>
         <ExploreInstitution />
       </div>
       

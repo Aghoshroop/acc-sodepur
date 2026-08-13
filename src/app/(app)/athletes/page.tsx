@@ -53,21 +53,6 @@ export const metadata = {
 
 export const revalidate = 60;
 
-const GIRLS = [
-  'aishanya', 'bidisha', 'debanjana', 'dipti', 'ginia', 'genia', 'nupur', 'sreeja', 'tiyasha', 'tiasha', 'trishna', 'triya', 'priyanka'
-];
-
-const BOYS = [
-  'aviroop', 'hirak', 'meghadri', 'rajdip', 'rupak', 'sanoyaj', 'sanayoj', 'satayu', 'sayan karmakar', 'sayan biswas', 'shikhar', 'sisant', 'shishant', 'sounak', 'shounak', 'subham', 'surya', 'tarun'
-];
-
-const getGender = (name: string) => {
-  const lower = name.toLowerCase();
-  if (GIRLS.some(g => lower.includes(g))) return "Girls";
-  if (BOYS.some(b => lower.includes(b))) return "Boys";
-  return "Boys"; // Default fallback so no one is lost
-};
-
 export default async function AthletesPage() {
   const rawAthletes = await getAthletes();
   
@@ -208,11 +193,10 @@ export default async function AthletesPage() {
   allAthletes.push(...sprintersToAdd);
 
   // 1. Deduplicate athletes by name and combine events
-  const uniqueAthletesMap = new Map<string, Athlete & { gender: string }>();
+  const uniqueAthletesMap = new Map<string, Athlete>();
 
   allAthletes.forEach(a => {
     const key = a.name.toLowerCase().trim();
-    const gender = getGender(key);
     
     if (uniqueAthletesMap.has(key)) {
       const existing = uniqueAthletesMap.get(key)!;
@@ -227,7 +211,7 @@ export default async function AthletesPage() {
       if (!existing.description && a.description) existing.description = a.description;
       if (!existing.metric && a.metric) existing.metric = a.metric;
     } else {
-      uniqueAthletesMap.set(key, { ...a, gender });
+      uniqueAthletesMap.set(key, { ...a });
     }
   });
 
@@ -252,7 +236,7 @@ export default async function AthletesPage() {
     return 99; // Default
   };
 
-  const performanceOrder = ['shikhar', 'aviroop', 'sayan karmakar', 'rajdip'];
+  const performanceOrder = ['bidisha', 'shikhar', 'aviroop', 'sayan karmakar', 'rajdip'];
 
   const deduplicatedAthletes = Array.from(uniqueAthletesMap.values())
     .sort((a, b) => {
@@ -282,8 +266,7 @@ export default async function AthletesPage() {
   // 2. Generate categories
   const categories = [];
   
-  const boysItems = deduplicatedAthletes
-    .filter(a => a.gender === "Boys")
+  const allItems = deduplicatedAthletes
     .map(a => ({
       id: a.id || a.name,
       title: a.name,
@@ -294,20 +277,9 @@ export default async function AthletesPage() {
       imagePosition: a.name.toLowerCase().includes("sayan karmakar") ? "object-[center_10%]" : "object-center"
     }));
 
-  const girlsItems = deduplicatedAthletes
-    .filter(a => a.gender === "Girls")
-    .map(a => ({
-      id: a.id || a.name,
-      title: a.name,
-      subtitle: a.event,
-      description: a.description,
-      metric: a.metric,
-      image: getAthleteImage(a.name),
-      imagePosition: a.name.toLowerCase().includes("sayan karmakar") ? "object-[center_10%]" : "object-center"
-    }));
-
-  if (boysItems.length > 0) categories.push({ name: "Boys", items: boysItems });
-  if (girlsItems.length > 0) categories.push({ name: "Girls", items: girlsItems });
+  if (allItems.length > 0) {
+    categories.push({ name: "Elite Roster", items: allItems });
+  }
 
   return (
     <main className="w-full bg-carbon-black min-h-screen">

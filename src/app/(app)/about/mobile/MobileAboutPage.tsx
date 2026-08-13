@@ -31,10 +31,10 @@ const heroImages = [
   "/images/acc_history/108.jpg", "/images/acc_history/113.jpg", "/images/acc_history/114.jpg", "/images/acc_history/116.jpg",
   "/images/acc_history/117.jpg", "/images/acc_history/1st-acc.jpg", "/images/acc_history/1st-building.jpg", "/images/acc_history/1st-longjump-pit.jpg",
   "/images/acc_history/1stpicnic.jpg", "/images/acc_history/2000s-acc.jpg", "/images/acc_history/26.jpg", "/images/acc_history/28.jpg",
-  "/images/acc_history/29.jpg", "/images/acc_history/32.jpg", "/images/acc_history/34.jpg", "/images/acc_history/63.jpg",
-  "/images/acc_history/67.jpg", "/images/acc_history/70.jpg", "/images/acc_history/71.jpg", "/images/acc_history/72.jpg",
+  "/images/acc_history/29.jpg", "/images/acc_history/32.jpg", "/images/acc_history/hurdles-old.jpg", "/images/acc_history/63.jpg",
+  "/images/acc_history/old-group-photo.jpg", "/images/acc_history/70.jpg", "/images/acc_history/71.jpg", "/images/acc_history/72.jpg",
   "/images/acc_history/74.jpg", "/images/acc_history/91.jpg", "/images/acc_history/94.jpg", "/images/acc_history/95.jpg",
-  "/images/acc_history/97.jpg", "/images/acc_history/98.jpg", "/images/acc_history/dronacharya.png", "/images/acc_history/building.jpg"
+  "/images/acc_history/97.jpg", "/images/acc_history/98.jpg", "/images/acc_history/1st-acc.jpg", "/images/acc_history/building.jpg"
 ];
 
 const mcol1 = [...heroImages.slice(0, 10), ...heroImages.slice(0, 10)];
@@ -128,7 +128,7 @@ export default function MobileAboutPage() {
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md">
-                  <Image src="/images/acc_history/34.jpg" alt="Historical ACC" fill className="object-cover grayscale" />
+                  <Image src="/images/acc_history/hurdles-old.jpg" alt="Historical ACC" fill className="object-cover grayscale" />
                 </div>
                 <div className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md">
                   <Image src="/images/acc_history/74.jpg" alt="Historical ACC" fill className="object-cover grayscale" />
@@ -150,7 +150,7 @@ export default function MobileAboutPage() {
             {/* Historical Images Grid 2 */}
             <div className="grid grid-cols-2 gap-3 my-8">
               <div className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md col-span-2">
-                <Image src="/images/acc_history/67.jpg" alt="Historical ACC" fill className="object-cover grayscale" />
+                <Image src="/images/acc_history/old-group-photo.jpg" alt="Historical ACC" fill className="object-cover grayscale" />
               </div>
               <div className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md">
                 <Image src="/images/acc_history/70.jpg" alt="Historical ACC" fill className="object-cover grayscale" />
@@ -159,7 +159,7 @@ export default function MobileAboutPage() {
                 <Image src="/images/acc_history/72.jpg" alt="Historical ACC" fill className="object-cover grayscale" />
               </div>
               <div className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md col-span-2">
-                <Image src="/images/acc_history/dronacharya.png" alt="Historical ACC Dronacharya" fill className="object-cover grayscale" />
+                <Image src="/images/acc_history/1st-acc.jpg" alt="Historical ACC" fill className="object-cover grayscale" />
               </div>
             </div>
 
@@ -296,29 +296,30 @@ export default function MobileAboutPage() {
 
       {/* Hostel Facility Section */}
       <div className="w-full bg-chalk-white px-6 pb-24">
+        <div className="inline-flex items-center gap-3 mb-4 md:mb-6 px-2">
+          <span className="w-8 h-1 bg-track-red rounded-full"></span>
+          <span className="text-track-red tracking-[0.3em] font-bold uppercase text-[10px] animate-pulse drop-shadow-md">New Addition</span>
+        </div>
+
         <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-track-red/30 bg-carbon-black">
           <div className="absolute inset-0 z-0">
             {/* Original Background */}
-            <Image src="/images/relaxation.jpg" alt="Hostel Background" fill className="object-cover object-center opacity-40" />
-            <div className="absolute inset-0 bg-gradient-to-t from-carbon-black via-carbon-black/80 to-transparent" />
+            <Image src="/images/relaxation.jpg" alt="Hostel Background" fill className="object-cover object-center opacity-40 md:opacity-60" />
+            <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-carbon-black via-carbon-black/80 to-transparent" />
+            <div className="hidden md:block absolute inset-0 bg-carbon-black/30" />
             
             {/* Uncropped New Image */}
-            <div className="absolute inset-0 z-10 pointer-events-none p-4 pb-32">
-              <Image src="/images/hostel.png" alt="Hostel Facilities" fill className="object-contain object-top drop-shadow-2xl" />
+            <div className="absolute inset-0 z-10 pointer-events-none p-4 pb-32 md:p-12 md:pb-12">
+              <Image src="/images/hostel.png" alt="Hostel Facilities" fill className="object-contain object-top md:object-right drop-shadow-2xl" />
             </div>
           </div>
 
-          <div className="relative z-10 p-8 flex flex-col justify-end min-h-[450px] w-full">
-            <div className="inline-flex items-center gap-3 mb-4">
-              <span className="w-8 h-1 bg-track-red rounded-full"></span>
-              <span className="text-track-red tracking-[0.3em] font-bold uppercase text-[10px] animate-pulse drop-shadow-md">New Addition</span>
-            </div>
-
-            <h3 className="text-4xl font-primary uppercase tracking-tight text-chalk-white mb-6 drop-shadow-2xl leading-none">
+          <div className="relative z-10 p-8 md:p-12 flex flex-col justify-end md:justify-center min-h-[450px] md:min-h-[500px] w-full md:w-2/3">
+            <h3 className="text-4xl md:text-5xl font-primary uppercase tracking-tight text-chalk-white mb-6 md:mb-8 drop-shadow-2xl leading-none">
               Dedicated<br />Athlete Hostel
             </h3>
 
-            <p className="text-sm font-light text-chalk-white/90 leading-relaxed drop-shadow-md border-l-2 border-track-red pl-4 bg-carbon-black/40 p-4 rounded-r-lg backdrop-blur-md">
+            <p className="text-sm md:text-base font-light text-chalk-white/90 leading-relaxed drop-shadow-md border-l-2 border-track-red pl-4 bg-carbon-black/40 md:bg-carbon-black/30 p-4 rounded-r-lg backdrop-blur-md">
               We are proud to introduce our all-new hostel facilities. For athletes traveling from a distance, we provide dedicated accommodation for a supportive environment to live, recover, and focus entirely on athletic development.
             </p>
           </div>

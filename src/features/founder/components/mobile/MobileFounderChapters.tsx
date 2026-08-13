@@ -31,8 +31,8 @@ export default function MobileFounderChapters({ chapters }: { chapters: Chapter[
             </h3>
             
             {/* Image Block */}
-            <div className="relative w-full aspect-[4/5] mb-6 overflow-hidden bg-carbon-black/5">
-              {chapter.bgImage && (
+            <div className={`relative w-full mb-6 overflow-hidden ${chapter.noCard ? '' : 'aspect-[4/5] bg-carbon-black/5'}`}>
+              {!chapter.noCard && chapter.bgImage && (
                 <Image
                   src={chapter.bgImage}
                   alt={`${chapter.title} Background`}
@@ -40,12 +40,22 @@ export default function MobileFounderChapters({ chapters }: { chapters: Chapter[
                   className="object-cover opacity-10"
                 />
               )}
-              <Image
-                src={chapter.image}
-                alt={chapter.title}
-                fill
-                className={`${chapter.containImage ? 'object-contain' : 'object-cover'}`}
-              />
+              {chapter.noCard ? (
+                <Image
+                  src={chapter.image}
+                  alt={chapter.title}
+                  width={800}
+                  height={1000}
+                  className="w-full h-auto"
+                />
+              ) : (
+                <Image
+                  src={chapter.image}
+                  alt={chapter.title}
+                  fill
+                  className={`${chapter.containImage ? 'object-contain' : 'object-cover'}`}
+                />
+              )}
             </div>
             
             <div className="text-carbon-black/80 text-sm leading-relaxed font-light space-y-4">

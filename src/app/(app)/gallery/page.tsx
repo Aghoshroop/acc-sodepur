@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { GalleryProvider, useGallery } from './context/GalleryContext';
 import StoriesBehindTheFrame from './components/StoriesBehindTheFrame';
-import { LenisProvider } from '@/components/providers/LenisProvider';
+import { LenisProvider, useLenis } from '@/components/providers/LenisProvider';
 import AlbumGrid from './components/AlbumGrid';
 import ExpandedAlbum from './components/ExpandedAlbum';
 import SectionArchiveHero from './components/SectionArchiveHero';
@@ -13,11 +13,18 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 function GalleryContent() {
   const { activeAlbum } = useGallery();
+  const { lenis } = useLenis();
 
   return (
     <>
       <StoriesBehindTheFrame />
-      <AnimatePresence mode="wait">
+      <AnimatePresence 
+        mode="wait"
+        onExitComplete={() => {
+          window.scrollTo(0, 0);
+          if (lenis) lenis.scrollTo(0, { immediate: true, force: true });
+        }}
+      >
         {activeAlbum ? (
           <ExpandedAlbum key="expanded" albumId={activeAlbum} />
         ) : (

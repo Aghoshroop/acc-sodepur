@@ -9,7 +9,7 @@ const EXPLORE_ITEMS = [
     title: 'The Founder',
     href: '/founder',
     image: '/images/legacy/legacy-founder-kuntal-roy.jpg',
-    colSpan: 'col-span-1 md:col-span-2',
+    colSpan: 'col-span-2',
   },
   {
     title: 'Achievements',
@@ -84,11 +84,11 @@ export default function ExploreInstitution() {
         </div>
 
         {/* Gallery Grid */}
-        <div className="flex flex-col md:grid md:grid-cols-3 gap-6 sm:gap-8 md:gap-2 bg-transparent md:bg-chalk-white/5 p-0 md:p-2">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-2 bg-chalk-white/5 p-2">
           {EXPLORE_ITEMS.map((item, index) => (
             <motion.div
               key={item.title}
-              className={`${item.colSpan} relative bg-chalk-white/5 overflow-hidden h-full min-h-[120px] md:min-h-0 rounded-2xl md:rounded-none border border-chalk-white/10 md:border-none shadow-2xl md:shadow-none`}
+              className={`${item.colSpan} relative bg-chalk-white/5 overflow-hidden h-full rounded-none border-none shadow-none`}
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-5%" }}
@@ -96,7 +96,7 @@ export default function ExploreInstitution() {
             >
               <Link 
                 href={item.href}
-                className={`group relative block w-full flex flex-col justify-end ${index === 0 ? 'h-[320px] sm:h-[400px]' : 'h-[220px] sm:h-[300px]'} md:!h-[450px]`}
+                className={`group relative block w-full flex flex-col justify-end ${index === 0 ? 'h-[280px] sm:h-[350px]' : 'h-[180px] sm:h-[250px]'} md:!h-[450px]`}
               >
                 <Image
                   src={item.image}
@@ -107,28 +107,28 @@ export default function ExploreInstitution() {
                 />
                 
                 {/* Refined gradient overlay for text legibility */}
-                <div className="absolute inset-0 bg-gradient-to-t from-carbon-black via-carbon-black/40 md:via-transparent to-transparent opacity-90 md:opacity-60 group-hover:opacity-40 transition-opacity duration-1000" />
+                <div className="absolute inset-0 bg-gradient-to-t from-carbon-black via-transparent to-transparent opacity-80 md:opacity-60 group-hover:opacity-40 transition-opacity duration-1000" />
                 
                 {/* Elegant Hover Typography */}
-                <div className="absolute inset-0 bg-gradient-to-t from-carbon-black/90 via-transparent to-transparent flex flex-col justify-end p-6 sm:p-8 md:p-8">
+                <div className="absolute inset-0 bg-gradient-to-t from-carbon-black/90 via-transparent to-transparent flex flex-col justify-end p-4 md:p-8">
                   <div className="flex justify-between items-end w-full">
                     <div className="flex flex-col">
-                      <span className="text-chalk-white/60 text-[10px] md:text-xs tracking-[0.2em] uppercase font-bold mb-2 md:mb-2">
-                        0{index + 1} // Discover
+                      <span className="text-chalk-white/60 text-[8px] md:text-xs tracking-[0.2em] uppercase font-bold mb-1 md:mb-2 truncate">
+                        0{index + 1} <span className="hidden sm:inline">// Discover</span>
                       </span>
-                      <h4 className="text-chalk-white font-primary text-3xl sm:text-4xl md:text-3xl uppercase tracking-tight leading-none md:group-hover:text-track-red transition-colors duration-500">
+                      <h4 className="text-chalk-white font-primary text-xl sm:text-2xl md:text-3xl uppercase tracking-tight leading-none md:group-hover:text-track-red transition-colors duration-500 break-words">
                         {item.title}
                       </h4>
                     </div>
                     {/* Mobile Arrow / Desktop Hover Arrow */}
-                    <div className="text-track-red md:text-chalk-white/0 md:group-hover:text-track-red transition-all duration-500 transform translate-x-0 md:-translate-x-4 md:group-hover:translate-x-0 mb-1">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 sm:w-8 sm:h-8 md:w-6 md:h-6">
+                    <div className="text-chalk-white/0 md:group-hover:text-track-red transition-all duration-500 transform -translate-x-4 md:group-hover:translate-x-0 mb-1 hidden sm:block">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 md:w-6 md:h-6">
                         <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     </div>
                   </div>
                   {/* The Track Red Baton Pass */}
-                  <div className="w-12 md:w-0 h-[2px] md:h-[1px] bg-track-red mt-4 md:group-hover:w-full transition-all duration-1000 ease-[0.16,1,0.3,1]" />
+                  <div className="w-0 h-[1px] bg-track-red mt-4 md:group-hover:w-full transition-all duration-1000 ease-[0.16,1,0.3,1]" />
                 </div>
               </Link>
             </motion.div>

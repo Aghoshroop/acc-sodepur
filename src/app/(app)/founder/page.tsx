@@ -188,6 +188,7 @@ type Chapter = {
   image: string;
   bgImage?: string;
   containImage?: boolean;
+  noCard?: boolean;
 };
 
 const CHAPTERS: Chapter[] = [
@@ -242,7 +243,8 @@ const CHAPTERS: Chapter[] = [
     ),
     image: '/images/51681-kuntal-roy.png',
     bgImage: '/images/campus/campus-hero-evolution.jpg',
-    containImage: true
+    containImage: true,
+    noCard: true
   }
 ];
 
@@ -371,15 +373,17 @@ export default function FounderPage() {
                 {/* Right side Decorative Image container */}
                 <div className="w-full md:w-1/2 hidden md:block">
                   <motion.div
-                    className="relative aspect-[3/4] w-full max-w-md ml-auto"
+                    className={`relative w-full max-w-md ml-auto ${chapter.noCard ? '' : 'aspect-[3/4]'}`}
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ margin: "-20%" }}
                     transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                   >
-                    <div className="absolute inset-0 border border-carbon-black/10 transform translate-x-4 translate-y-4" />
-                    <div className="relative w-full h-full overflow-hidden border border-carbon-black/5 bg-chalk-white">
-                      {chapter.bgImage && (
+                    {!chapter.noCard && (
+                      <div className="absolute inset-0 border border-carbon-black/10 transform translate-x-4 translate-y-4" />
+                    )}
+                    <div className={`relative w-full overflow-hidden ${chapter.noCard ? '' : 'h-full border border-carbon-black/5 bg-chalk-white'}`}>
+                      {!chapter.noCard && chapter.bgImage && (
                         <>
                           <Image
                             src={chapter.bgImage}
@@ -390,12 +394,23 @@ export default function FounderPage() {
                           <div className="absolute inset-0 bg-chalk-white/60" />
                         </>
                       )}
-                      <Image
-                        src={chapter.image}
-                        alt={`${chapter.title} Preview`}
-                        fill
-                        className={`${chapter.containImage ? 'object-contain' : 'object-cover'} hover:scale-105 transition-all duration-700 opacity-90 z-10`}
-                      />
+                      
+                      {chapter.noCard ? (
+                        <Image
+                          src={chapter.image}
+                          alt={`${chapter.title} Preview`}
+                          width={800}
+                          height={1200}
+                          className="w-full h-auto hover:scale-105 transition-all duration-700 opacity-90 z-10"
+                        />
+                      ) : (
+                        <Image
+                          src={chapter.image}
+                          alt={`${chapter.title} Preview`}
+                          fill
+                          className={`${chapter.containImage ? 'object-contain' : 'object-cover'} hover:scale-105 transition-all duration-700 opacity-90 z-10`}
+                        />
+                      )}
                     </div>
                   </motion.div>
                 </div>

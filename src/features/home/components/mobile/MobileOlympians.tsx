@@ -77,7 +77,7 @@ export default function MobileOlympians() {
                 src={athlete.image}
                 alt={athlete.name}
                 fill
-                className={`filter grayscale transition-all duration-1000 ease-[0.16,1,0.3,1] w-full h-full ${
+                className={`transition-all duration-1000 ease-[0.16,1,0.3,1] w-full h-full ${
                   athlete.name === 'Sanjay Rai' ? 'object-cover scale-100 object-[center_15%]' : 
                   'object-cover object-center scale-100'
                 }`}

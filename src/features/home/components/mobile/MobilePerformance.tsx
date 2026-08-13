@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getAllResults } from '@/features/results/api';
+import AnimatedCounter from '@/components/ui/AnimatedCounter';
 
 export default async function MobilePerformance() {
   const results = await getAllResults();
@@ -37,30 +38,58 @@ export default async function MobilePerformance() {
         <div className="grid grid-cols-2 gap-y-10 gap-x-6">
           <div className="flex flex-col gap-2 border-l-2 border-carbon-black/10 pl-3">
             <span className="text-[clamp(0.6rem,3vw,10px)] uppercase tracking-widest text-carbon-black/50 font-bold truncate">Qualified</span>
-            <span className="text-[clamp(2.5rem,14vw,3rem)] font-primary font-light text-carbon-black leading-none">
-              {latestResult.metrics.qualifiedAthletes}
-            </span>
+            <div className="drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+              <AnimatedCounter 
+                value={latestResult.metrics.qualifiedAthletes} 
+                className="text-[clamp(2.5rem,14vw,3rem)] font-sans font-black tracking-tighter bg-clip-text text-transparent inline-block leading-none py-1 px-1"
+                style={{ 
+                  backgroundImage: 'linear-gradient(135deg, #1A1A1A 0%, #4D4D4D 25%, #000000 50%, #333333 75%, #000000 100%)',
+                  WebkitTextStroke: '1.5px rgba(255,255,255,0.4)'
+                }}
+              />
+            </div>
           </div>
 
           <div className="flex flex-col gap-2 border-l-2 border-[#D4AF37]/50 pl-3">
             <span className="text-[clamp(0.6rem,3vw,10px)] uppercase tracking-widest text-[#D4AF37] font-bold truncate">Gold</span>
-            <span className="text-[clamp(2.5rem,14vw,3rem)] font-primary font-light text-carbon-black leading-none">
-              {latestResult.metrics.gold}
-            </span>
+            <div className="drop-shadow-[0_3px_5px_rgba(170,119,28,0.5)]">
+              <AnimatedCounter 
+                value={latestResult.metrics.gold} 
+                className="text-[clamp(2.5rem,14vw,3rem)] font-sans font-black tracking-tighter bg-clip-text text-transparent inline-block leading-none py-1 px-1"
+                style={{ 
+                  backgroundImage: 'linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%)',
+                  WebkitTextStroke: '1.5px rgba(115,80,20,0.8)'
+                }}
+              />
+            </div>
           </div>
 
           <div className="flex flex-col gap-2 border-l-2 border-[#A3A3A3]/50 pl-3">
             <span className="text-[clamp(0.6rem,3vw,10px)] uppercase tracking-widest text-[#A3A3A3] font-bold truncate">Silver</span>
-            <span className="text-[clamp(2.5rem,14vw,3rem)] font-primary font-light text-carbon-black leading-none">
-              {latestResult.metrics.silver}
-            </span>
+            <div className="drop-shadow-[0_3px_5px_rgba(89,97,100,0.5)]">
+              <AnimatedCounter 
+                value={latestResult.metrics.silver} 
+                className="text-[clamp(2.5rem,14vw,3rem)] font-sans font-black tracking-tighter bg-clip-text text-transparent inline-block leading-none py-1 px-1"
+                style={{ 
+                  backgroundImage: 'linear-gradient(135deg, #8A9597 0%, #FFFFFF 25%, #596164 50%, #E6E6E6 75%, #474E51 100%)',
+                  WebkitTextStroke: '1.5px rgba(80,80,80,0.8)'
+                }}
+              />
+            </div>
           </div>
 
           <div className="flex flex-col gap-2 border-l-2 border-[#965A38]/50 pl-3">
             <span className="text-[clamp(0.6rem,3vw,10px)] uppercase tracking-widest text-[#965A38] font-bold truncate">Bronze</span>
-            <span className="text-[clamp(2.5rem,14vw,3rem)] font-primary font-light text-carbon-black leading-none">
-              {latestResult.metrics.bronze}
-            </span>
+            <div className="drop-shadow-[0_3px_5px_rgba(94,54,18,0.5)]">
+              <AnimatedCounter 
+                value={latestResult.metrics.bronze} 
+                className="text-[clamp(2.5rem,14vw,3rem)] font-sans font-black tracking-tighter bg-clip-text text-transparent inline-block leading-none py-1 px-1"
+                style={{ 
+                  backgroundImage: 'linear-gradient(135deg, #CD7F32 0%, #FFD7A0 25%, #8C5220 50%, #FFD7A0 75%, #5E3612 100%)',
+                  WebkitTextStroke: '1.5px rgba(70,40,15,0.8)'
+                }}
+              />
+            </div>
           </div>
         </div>
 
@@ -69,9 +98,10 @@ export default async function MobilePerformance() {
             <span className="uppercase text-[clamp(0.6rem,3vw,10px)] tracking-widest text-carbon-black/50 font-bold max-w-[60%] leading-tight">
               New Meet Records
             </span> 
-            <span className="text-[clamp(2rem,11vw,2.5rem)] font-primary text-track-red leading-none">
-              {latestResult.metrics.meetRecords}
-            </span>
+            <AnimatedCounter 
+              value={latestResult.metrics.meetRecords} 
+              className="text-[clamp(2rem,11vw,2.5rem)] font-primary text-track-red leading-none inline-block py-1 px-1" 
+            />
           </div>
         )}
       </div>
