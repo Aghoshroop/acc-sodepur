@@ -4,15 +4,9 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import HeroStark from '@/components/ui/HeroStark';
+import { executiveBody, executiveMembers, technicalAndSupport } from '../administration/data';
 
 const TRIBUTES = [
-  {
-    name: "Late Sri Arun Banerjee",
-    subtitle: "",
-    role: "Lifetime President (Secretary, AAWB / Treasure, AAFI)",
-    image: "/images/administration/Late Arun Banerjee.png", 
-    description: "Serving as the Lifetime President of the Athletic Coaching Camp, his legacy and contributions will forever be remembered."
-  },
   {
     name: "Late Sri Mihir Baran Ray",
     subtitle: "",
@@ -24,8 +18,15 @@ const TRIBUTES = [
     name: "Late Sri Baldev Dutta",
     subtitle: "",
     role: "Lifetime Advisor",
-    image: "",
+    image: "/images/administration/baldev.jpg",
     description: "His enduring advice and support as a Lifetime Advisor have provided a strong foundation for the Athletic Coaching Camp."
+  },
+  {
+    name: "Late Sri Arun Banerjee",
+    subtitle: "",
+    role: "Lifetime President (Secretary, AAWB / Treasure, AAFI)",
+    image: "/images/administration/Late Arun Banerjee.png", 
+    description: "Serving as the Lifetime President of the Athletic Coaching Camp, his legacy and contributions will forever be remembered."
   },
   {
     name: "Sri Monoj Guha Thakurata",
@@ -56,61 +57,24 @@ const TRIBUTES = [
     description: "A powerful voice in sports journalism, Mr. Nirmal Kumar Saha consistently brought the remarkable achievements of our athletes to the forefront. His passionate reporting not only documented our history but also inspired the next generation of champions."
   },
   {
-    name: "Mr. Pallab Sur",
+    name: "Mr. Dipak Patra",
     subtitle: "",
-    role: "President",
-    image: "/images/administration/Pallab Sur.jpg.jpeg",
-    description: "Serving as the President, his leadership and vision continue to guide the Athletic Coaching Camp towards excellence."
-  },
-  {
-    name: "Mr. Nisit Dey",
-    subtitle: "",
-    role: "Secretary",
-    image: "/images/administration/Nitish D.jpg.jpeg",
-    description: "As the Secretary, his tireless efforts and administrative acumen form the backbone of our camp's daily operations and long-term planning."
-  },
-  {
-    name: "Mr. Alok Dasgupta",
-    subtitle: "",
-    role: "Esteemed Supporter",
-    image: "/images/administration/Alok DG.jpg.jpeg",
-    description: ""
-  },
-  {
-    name: "Mr. Dipak Banerjee",
-    subtitle: "",
-    role: "Esteemed Supporter",
-    image: "/images/administration/Dipak M.jpg.jpeg",
-    description: ""
-  },
-  {
-    name: "Mr. Biswajit Roy",
-    subtitle: "",
-    role: "Esteemed Supporter",
-    image: "/images/administration/Biswajit R.jpg.jpeg",
-    description: ""
-  },
-  {
-    name: "Mrs. Subhraja Roy",
-    subtitle: "",
-    role: "Esteemed Supporter",
-    image: "/images/administration/Subhraja R.jpg.jpeg",
-    description: ""
-  },
-  {
-    name: "Mr. Pradip Das",
-    subtitle: "",
-    role: "Esteemed Supporter",
-    image: "/images/administration/Pradip D.jpg.jpeg",
-    description: ""
-  },
-  {
-    name: "Mr. Sankar Dutta",
-    subtitle: "",
-    role: "Esteemed Supporter",
-    image: "/images/administration/Sankar D.jpg.jpeg",
-    description: ""
+    role: "Eminent Journalist",
+    image: "/images/administration/dipak.png",
+    description: "An eminent journalist whose coverage and continuous support have significantly contributed to the recognition and growth of our athletic community."
   }
+];
+
+const CURRENT_SUPPORT = [
+  technicalAndSupport.headCoach,
+  executiveBody.president,
+  executiveBody.generalSecretary,
+  ...executiveBody.vicePresidents,
+  executiveBody.assistantSecretary,
+  ...executiveBody.treasurers,
+  executiveBody.headInfrastructure,
+  executiveBody.headCreative,
+  ...executiveMembers
 ];
 
 const FIRST_ACC = [
@@ -169,7 +133,7 @@ const BeforeAfterBackground = () => {
 
 export default function TributesClient() {
   return (
-    <main className="min-h-screen bg-chalk-white">
+    <main className="min-h-screen bg-chalk-white overflow-x-hidden w-full">
       <HeroStark 
         title="TRIBUTES"
         subtitle={<span className="bg-chalk-white/90 backdrop-blur-sm px-3 py-1 rounded-sm">HONORING OUR GUIDING LIGHTS</span>}
@@ -245,13 +209,13 @@ export default function TributesClient() {
               viewport={{ once: true, margin: "-10%" }}
               transition={{ duration: 0.8 }}
             >
-              <div className="w-full md:w-1/2 relative aspect-[4/5] overflow-hidden group bg-carbon-black/5">
+              <div className="w-5/6 sm:w-3/4 md:w-5/12 lg:w-1/3 mx-auto md:mx-0 relative aspect-[4/5] overflow-hidden group bg-carbon-black/5">
                 {tribute.image ? (
                   <Image 
                     src={tribute.image}
                     alt={tribute.name}
                     fill
-                    className="object-contain p-4 grayscale group-hover:grayscale-0 transition-all duration-700"
+                    className="object-contain p-8 md:p-10 transition-all duration-700"
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center border border-carbon-black/10">
@@ -280,6 +244,57 @@ export default function TributesClient() {
               </div>
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      {/* Current Support Section */}
+      <section className="py-24 px-6 md:px-12 bg-carbon-black text-chalk-white">
+        <div className="max-w-[1200px] mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-primary uppercase tracking-widest text-track-red mb-4">
+              Our Current Support
+            </h2>
+            <div className="w-24 h-1 bg-track-red mx-auto opacity-50"></div>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-x-2 sm:gap-x-4 gap-y-6 sm:gap-y-8"
+          >
+            {CURRENT_SUPPORT.map((member, idx) => (
+              <div 
+                key={idx} 
+                className="flex flex-col gap-3 group"
+              >
+                <div className="relative w-full aspect-[4/5] overflow-hidden border border-chalk-white/20 bg-chalk-white/5">
+                  {member.image ? (
+                    <Image 
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="object-cover transition-all duration-500"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-chalk-white/20 text-4xl font-primary">
+                      {member.name.replace(/^Mr\. |^Mrs\. |^Dr\. |^Late /, '').charAt(0)}
+                    </div>
+                  )}
+                </div>
+                <div className="font-medium text-chalk-white text-sm md:text-base leading-tight text-left">
+                  {member.name}
+                </div>
+              </div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
@@ -313,7 +328,7 @@ export default function TributesClient() {
                 src="/images/facilities/synthetic-track.png" 
                 alt="Synthetic Track" 
                 fill 
-                className="object-cover object-center grayscale hover:grayscale-0 transition-all duration-700"
+                className="object-cover object-center transition-all duration-700"
               />
             </motion.div>
             

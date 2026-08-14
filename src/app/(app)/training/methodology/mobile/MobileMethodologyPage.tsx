@@ -61,7 +61,7 @@ export default function MobileMethodologyPage() {
     <div className="w-full bg-carbon-black text-chalk-white min-h-screen overflow-x-hidden">
       
       {/* Chapter 0: The Hero */}
-      <section className="relative h-[85vh] w-full overflow-hidden flex flex-col justify-end pb-16 px-6 border-b border-chalk-white/10">
+      <section className="relative h-[85vh] w-full overflow-hidden flex flex-col justify-end pb-16 px-4 sm:px-6 border-b border-chalk-white/10">
         <div className="absolute inset-0 z-0">
           <video 
             src="/videos/coaches2.mp4" 
@@ -85,7 +85,7 @@ export default function MobileMethodologyPage() {
           <span className="text-track-red text-[10px] tracking-[0.5em] uppercase mb-4 block font-bold">
             The Science of Speed
           </span>
-          <h1 className="text-[15vw] min-[400px]:text-5xl sm:text-6xl font-primary uppercase tracking-tighter leading-[0.9] mb-4">
+          <h1 className="text-[13vw] min-[400px]:text-5xl sm:text-6xl font-primary uppercase tracking-tighter leading-[0.9] mb-4">
             Methodology
           </h1>
           <p className="text-sm font-light text-chalk-white/70 tracking-widest uppercase">

@@ -82,6 +82,7 @@ export const technicalAndSupport = {
   patrons: [
     { name: "Mr. Debasish Banerjee", role: "Ex Secretary, AAWB", image: "/images/administration/Debasish Banerjee.jpeg" },
     { name: "Mr. Nirmal Kumar Saha", role: "Eminent Journalist", image: "/images/administration/Nirmal K S.jpg.jpeg" },
+    { name: "Mr. Dipak Patra", role: "Eminent Journalist", image: "/images/administration/dipak.png" },
   ],
   headCoach: {
     name: "Mr. Rudra Pratim Roy",

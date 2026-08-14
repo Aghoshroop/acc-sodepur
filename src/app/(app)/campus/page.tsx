@@ -192,7 +192,7 @@ export default function CampusPage() {
             </div>
 
             <div className="w-full lg:w-2/3 relative h-[400px] lg:h-[600px]">
-              <Image src="/images/throw.jpg" alt="Throwing Sector" fill className="object-cover shadow-2xl border-4 border-white" />
+              <Image src="/images/facilities/throw.png" alt="Throwing Sector" fill className="object-cover shadow-2xl border-4 border-white" />
               <div className="absolute bottom-6 right-6 flex gap-4">
                 <div className="bg-white/90 text-carbon-black px-4 py-2 text-sm font-bold uppercase tracking-widest shadow-xl backdrop-blur-md">Shotput</div>
                 <div className="bg-track-red text-white px-4 py-2 text-sm font-bold uppercase tracking-widest shadow-xl">Discus</div>
@@ -232,8 +232,7 @@ export default function CampusPage() {
               className="w-full lg:w-1/2 relative h-[400px] lg:h-[600px] bg-white/5 border border-white/10 shadow-inner flex items-center justify-center"
               initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
             >
-              {/* Blank image block for Heavy Free Weights as requested */}
-              <div className="text-white/20 uppercase tracking-widest text-sm font-bold">Image Coming Soon</div>
+              <Image src="/images/facilities/gym.png" alt="Heavy Free Weights" fill className="object-cover border border-white/10 shadow-2xl" />
               <div className="absolute top-6 left-6 bg-carbon-black/90 text-white px-6 py-3 text-lg font-primary uppercase tracking-widest border-l-4 border-track-red">
                 Heavy Free Weights
               </div>
@@ -243,7 +242,7 @@ export default function CampusPage() {
               className="w-full lg:w-1/2 relative h-[400px] lg:h-[600px]"
               initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
             >
-              <Image src="/images/s&c.jpg" alt="Fitness Room" fill className="object-cover border border-white/10 shadow-2xl" />
+              <Image src="/images/facilities/fitness.png" alt="Fitness Room" fill className="object-cover border border-white/10 shadow-2xl" />
               <div className="absolute top-6 left-6 bg-carbon-black/90 text-white px-6 py-3 text-lg font-primary uppercase tracking-widest border-l-4 border-track-red">
                 Fitness Room
               </div>
