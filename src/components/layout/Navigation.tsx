@@ -10,7 +10,6 @@ const NAV_ITEMS = [
   { label: 'Home', href: '/' },
   {
     label: 'Institution',
-    href: '/institution',
     items: [
       { label: 'About ACC', href: '/about' },
       { label: 'Founder', href: '/founder' },
@@ -27,16 +26,20 @@ const NAV_ITEMS = [
   },
   {
     label: 'Training',
-    href: '/training',
     items: [
-      { label: 'Programmes', href: '/programmes' },
-      { label: 'Performance', href: '/performance' },
+      { label: 'Methodology & Programmes', href: '/training/methodology' },
       { label: 'Competition Calendar', href: '/training/calendar' },
     ],
   },
   { label: 'Media', href: '/media' },
   { label: 'Gallery', href: '/gallery' },
-  { label: 'Admissions', href: '/admissions' },
+  {
+    label: 'Connect',
+    items: [
+      { label: 'Admissions', href: '/admissions' },
+      { label: 'Contact', href: '/contact' },
+    ],
+  },
 ];
 
 // Easing for ultra-smooth premium feel (Apple-like)
@@ -91,13 +94,13 @@ export default function Navigation({ notices = [] }: { notices?: { id: string; p
         className={`fixed top-0 left-0 w-full z-[100] transition-all duration-700 ease-out border-b ${
           isScrolled || mobileMenuOpen
             ? 'bg-chalk-white/95 backdrop-blur-2xl backdrop-saturate-[1.8] border-carbon-black/10 shadow-[0_10px_40px_rgba(0,0,0,0.1)] h-[50px] overflow-visible'
-            : 'bg-transparent border-transparent py-3 shadow-none overflow-visible'
+            : 'bg-transparent border-transparent py-3 xl:py-0 shadow-none overflow-visible'
         }`}
       >
         <div className={`max-w-[1600px] mx-auto flex justify-between items-center relative w-full h-full transition-all duration-700 ease-out ${
           isScrolled ? 'px-4 md:px-6' : 'px-6 md:px-12'
         }`}>
-          <Link href="/" className="group z-50 absolute left-1/2 -translate-x-1/2 xl:relative xl:left-auto xl:translate-x-0 flex items-center">
+          <Link href="/" className={`group z-50 absolute left-1/2 -translate-x-1/2 xl:relative xl:left-auto xl:translate-x-0 flex items-center transition-transform duration-700 ease-out ${!isScrolled ? 'xl:-translate-y-6' : 'xl:translate-y-0'}`}>
             <motion.div 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -118,7 +121,7 @@ export default function Navigation({ notices = [] }: { notices?: { id: string; p
 
           {/* Desktop Nav */}
           <nav 
-            className="hidden xl:flex items-center gap-6 xl:gap-8 relative"
+            className={`hidden xl:flex items-center gap-6 xl:gap-8 relative transition-transform duration-700 ease-out ${!isScrolled ? '-translate-y-6' : 'translate-y-0'}`}
             onMouseLeave={() => {
               setHoveredItem(null);
               setActiveDropdown(null);
@@ -139,6 +142,7 @@ export default function Navigation({ notices = [] }: { notices?: { id: string; p
               >
                 <Link
                   href={item.href || '#'}
+                  onClick={(e) => { if (!item.href) e.preventDefault(); }}
                   className="group flex items-center gap-1 pb-2 relative"
                 >
                   <motion.span 
@@ -193,7 +197,7 @@ export default function Navigation({ notices = [] }: { notices?: { id: string; p
                         animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
                         exit={{ opacity: 0, y: 10, scale: 0.98, filter: 'blur(5px)' }}
                         transition={transitionConfig}
-                        className={`absolute top-full left-0 mt-6 py-4 bg-chalk-white/95 backdrop-blur-2xl backdrop-saturate-[1.8] border border-carbon-black/10 shadow-[0_10px_40px_rgba(0,0,0,0.1)] rounded-2xl overflow-hidden ${item.items.length > 5 ? 'w-[480px] grid grid-flow-col gap-x-4' : 'w-64 flex flex-col'}`}
+                        className={`absolute top-full left-0 py-4 bg-chalk-white/95 backdrop-blur-2xl backdrop-saturate-[1.8] border border-carbon-black/10 shadow-[0_10px_40px_rgba(0,0,0,0.1)] rounded-2xl overflow-hidden ${item.items.length > 5 ? 'w-[480px] grid grid-flow-col gap-x-4' : 'w-64 flex flex-col'}`}
                         style={item.items.length > 5 ? { gridTemplateRows: `repeat(${Math.ceil(item.items.length / 2)}, minmax(0, 1fr))` } : undefined}
                       >
                         {item.items.map((subItem, i) => (
@@ -236,7 +240,7 @@ export default function Navigation({ notices = [] }: { notices?: { id: string; p
           </nav>
 
           {/* Right Action Items (Bell + Mobile Menu Toggle) */}
-          <div className="flex items-center justify-between xl:justify-end gap-4 z-50 w-full xl:w-auto">
+          <div className={`flex items-center justify-between xl:justify-end gap-4 z-50 w-full xl:w-auto transition-transform duration-700 ease-out ${!isScrolled ? 'xl:-translate-y-6' : 'xl:translate-y-0'}`}>
             {/* Bell Notification Icon */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -303,11 +307,11 @@ export default function Navigation({ notices = [] }: { notices?: { id: string; p
           >
             {/* Sidebar Header with Logo and Close Button */}
             <div className="flex items-center justify-between p-4 md:p-6 border-b border-white/10">
-              <Link href="/" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-2">
-                <div className="relative w-8 h-8 flex-shrink-0">
+              <Link href="/" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3">
+                <div className="relative w-12 h-12 flex-shrink-0">
                   <Image src="/images/logo.png" alt="ACC Logo" fill className="object-contain brightness-0 invert" />
                 </div>
-                <span className="text-xl font-primary font-black tracking-widest uppercase text-chalk-white">ACC</span>
+                <span className="text-2xl font-primary font-black tracking-widest uppercase text-chalk-white">ACC</span>
               </Link>
               <button onClick={() => setMobileMenuOpen(false)} className="text-chalk-white/50 hover:text-white p-1">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

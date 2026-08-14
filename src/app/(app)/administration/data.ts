@@ -91,5 +91,6 @@ export const technicalAndSupport = {
   visitingCoaches: [
     { name: "Mr. Mrinal Roy", role: "CSCS & NIS", image: "/images/administration/mrinal-roy.jpg" },
     { name: "Ms. Susmita Singha Roy", role: "Olympian & WA Athletics Level - 2 Coach", image: "/images/administration/susmita.jpg" },
+    { name: "Mr. Sanjay Rai", role: "Olympian & NIS", image: "/images/sanjay-da.JPG" },
   ],
 };

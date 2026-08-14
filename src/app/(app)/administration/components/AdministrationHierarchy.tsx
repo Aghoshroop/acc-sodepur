@@ -71,22 +71,16 @@ export default function AdministrationHierarchy() {
             >
               <SectionHeader title="Executive Body" />
               <div className="flex flex-col gap-12">
-                {/* Directors */}
+                {/* Row 1: Director & President */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div>
                     <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[10px] md:text-xs tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-bold mb-4">Director</h5>
                     <MemberCard member={executiveBody.director} />
                   </div>
                   <div>
-                    <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[10px] md:text-xs tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-bold mb-4">Director (Sports Science)</h5>
-                    <MemberCard member={executiveBody.directorSportsScience} />
+                    <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[10px] md:text-xs tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-bold mb-4">President</h5>
+                    <MemberCard member={executiveBody.president} />
                   </div>
-                </div>
-
-                {/* President */}
-                <div>
-                  <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[10px] md:text-xs tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-bold mb-4">President</h5>
-                  <MemberCard member={executiveBody.president} />
                 </div>
 
                 {/* Vice Presidents */}
@@ -154,31 +148,53 @@ export default function AdministrationHierarchy() {
               className="flex flex-col gap-10"
             >
               <div>
+                <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[10px] md:text-xs tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-bold mb-4">Director (Sports Science)</h5>
+                <MemberCard member={executiveBody.directorSportsScience} />
+              </div>
+              <div>
                 <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[10px] md:text-xs tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-bold mb-4">Head - Infrastructure & Advisory</h5>
                 <MemberCard member={executiveBody.headInfrastructure} />
+              </div>
+              <div>
+                <SectionHeader title="Patrons" />
+                <div className="grid grid-cols-2 gap-6">
+                  {technicalAndSupport.patrons.map((patron) => (
+                    <MemberCard key={patron.name} member={patron} />
+                  ))}
+                </div>
               </div>
             </motion.div>
 
           </div>
         </div>
 
-        {/* --- SECTION 3: PATRONS & COACHES --- */}
+        {/* --- SECTION 3: EXECUTIVE MEMBERS --- */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-10%" }}
-          className="pb-16 border-b border-chalk-white/10 flex flex-col md:flex-row gap-16"
+          className="pb-16 border-b border-chalk-white/10"
         >
-          <div className="flex-1">
-            <SectionHeader title="Patrons" />
-            <div className="grid grid-cols-2 gap-6">
-              {technicalAndSupport.patrons.map((patron) => (
-                <MemberCard key={patron.name} member={patron} />
-              ))}
-            </div>
+          <SectionHeader title="Executive Members" />
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 md:gap-8 mb-16">
+            {executiveMembers.map(member => (
+              <MemberCard key={member.name} member={member} className="w-full" />
+            ))}
           </div>
+          <div className="mb-10">
+            <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[10px] md:text-xs tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-bold mb-4">Creative, Media & Publication</h5>
+            <MemberCard member={executiveBody.headCreative} className="max-w-[200px]" />
+          </div>
+        </motion.div>
 
-          <div className="flex-[2] grid grid-cols-1 md:grid-cols-2 gap-12">
+        {/* --- SECTION 4: COACHES --- */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10%" }}
+          className="flex flex-col md:flex-row gap-16"
+        >
+          <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
               <SectionHeader title="Head Coach" />
               <MemberCard member={technicalAndSupport.headCoach} />
@@ -191,24 +207,6 @@ export default function AdministrationHierarchy() {
                 ))}
               </div>
             </div>
-          </div>
-        </motion.div>
-
-        {/* --- SECTION 4: EXECUTIVE MEMBERS --- */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-10%" }}
-        >
-          <SectionHeader title="Executive Members" />
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 md:gap-8 mb-16">
-            {executiveMembers.map(member => (
-              <MemberCard key={member.name} member={member} className="w-full" />
-            ))}
-          </div>
-          <div className="mb-10">
-            <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[10px] md:text-xs tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-bold mb-4">Head - Creative, Media & Publication</h5>
-            <MemberCard member={executiveBody.headCreative} className="max-w-[200px]" />
           </div>
         </motion.div>
 

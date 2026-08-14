@@ -63,22 +63,16 @@ export default function MobileAdministrationHierarchy() {
           <MobileSectionHeader title="Executive Body" />
           
           <div className="flex flex-col gap-8">
-            {/* Directors */}
+            {/* Row 1: Director & President */}
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[8px] tracking-[0.2em] uppercase px-2 py-1 rounded-sm font-bold mb-3">Director</h5>
                 <MobileMemberCard member={executiveBody.director} />
               </div>
               <div>
-                <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[8px] tracking-[0.2em] uppercase px-2 py-1 rounded-sm font-bold mb-3">Director (Sports Science)</h5>
-                <MobileMemberCard member={executiveBody.directorSportsScience} />
+                <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[8px] tracking-[0.2em] uppercase px-2 py-1 rounded-sm font-bold mb-3">President</h5>
+                <MobileMemberCard member={executiveBody.president} />
               </div>
-            </div>
-
-            {/* President */}
-            <div>
-              <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[8px] tracking-[0.2em] uppercase px-2 py-1 rounded-sm font-bold mb-3">President</h5>
-              <MobileMemberCard member={executiveBody.president} className="w-1/2" />
             </div>
 
             {/* Vice Presidents */}
@@ -134,15 +128,16 @@ export default function MobileAdministrationHierarchy() {
           </div>
           
           <div>
+            <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[8px] tracking-[0.2em] uppercase px-2 py-1 rounded-sm font-bold mb-3">Director (Sports Science)</h5>
+            <MobileMemberCard member={executiveBody.directorSportsScience} className="w-1/2" />
+          </div>
+
+          <div>
             <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[8px] tracking-[0.2em] uppercase px-2 py-1 rounded-sm font-bold mb-3">Head - Infrastructure & Advisory</h5>
             <MobileMemberCard member={executiveBody.headInfrastructure} className="w-1/2" />
           </div>
 
-        </div>
-
-        {/* --- SECTION 3: PATRONS & COACHES --- */}
-        <div className="flex flex-col gap-10 border-t border-chalk-white/10 pt-12 pb-12">
-          <div>
+          <div className="pt-6">
             <MobileSectionHeader title="Patrons" />
             <div className="grid grid-cols-2 gap-x-3 gap-y-6">
               {technicalAndSupport.patrons.map((patron) => (
@@ -151,6 +146,24 @@ export default function MobileAdministrationHierarchy() {
             </div>
           </div>
 
+        </div>
+
+        {/* --- SECTION 3: EXECUTIVE MEMBERS --- */}
+        <div className="border-t border-chalk-white/10 pt-12 pb-12">
+          <MobileSectionHeader title="Executive Members" />
+          <div className="grid grid-cols-3 gap-x-3 gap-y-6 mb-8">
+            {executiveMembers.map(member => (
+              <MobileMemberCard key={member.name} member={member} className="w-full" />
+            ))}
+          </div>
+          <div className="mt-8">
+            <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[8px] tracking-[0.2em] uppercase px-2 py-1 rounded-sm font-bold mb-3">Creative, Media & Publication</h5>
+            <MobileMemberCard member={executiveBody.headCreative} className="w-1/2" />
+          </div>
+        </div>
+
+        {/* --- SECTION 4: COACHES --- */}
+        <div className="flex flex-col gap-10">
           <div className="grid grid-cols-1 gap-8">
             <div>
               <MobileSectionHeader title="Head Coach" />
@@ -166,20 +179,6 @@ export default function MobileAdministrationHierarchy() {
                 ))}
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* --- SECTION 4: EXECUTIVE MEMBERS --- */}
-        <div>
-          <MobileSectionHeader title="Executive Members" />
-          <div className="grid grid-cols-3 gap-x-3 gap-y-6 mb-8">
-            {executiveMembers.map(member => (
-              <MobileMemberCard key={member.name} member={member} className="w-full" />
-            ))}
-          </div>
-          <div className="mt-8">
-            <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[8px] tracking-[0.2em] uppercase px-2 py-1 rounded-sm font-bold mb-3">Head - Creative, Media & Publication</h5>
-            <MobileMemberCard member={executiveBody.headCreative} className="w-1/2" />
           </div>
         </div>
 

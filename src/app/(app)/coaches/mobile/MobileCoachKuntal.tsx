@@ -7,8 +7,8 @@ export default function MobileCoachKuntal() {
   return (
     <section className="relative w-full py-24 bg-carbon-black border-b border-chalk-white/10 overflow-hidden text-chalk-white">
       <div className="absolute inset-0 z-0">
-        <Image src="/images/legacy/legacy-timeline-2023.jpg" alt="Dr. Kuntal Roy" fill className="object-cover object-[center_20%] opacity-50" />
-        <div className="absolute inset-0 bg-gradient-to-t from-carbon-black via-carbon-black/80 to-transparent" />
+        <Image src="/images/legacy/legacy-timeline-2023.jpg" alt="Dr. Kuntal Roy" fill className="object-cover object-[center_20%] opacity-90" />
+        <div className="absolute inset-0 bg-gradient-to-t from-carbon-black via-carbon-black/40 to-transparent" />
       </div>
       <div className="relative z-10 px-6 pt-16 h-full flex flex-col justify-end pb-12">
         <motion.div
@@ -24,11 +24,11 @@ export default function MobileCoachKuntal() {
           <h2 className="text-[3.5rem] font-primary uppercase tracking-tighter mb-4 leading-[0.85] drop-shadow-2xl text-chalk-white">
             Dr. Kuntal<br />Roy
           </h2>
-          <div className="flex flex-wrap gap-2 items-center mb-8">
-            <span className="text-[10px] tracking-[0.2em] uppercase border border-chalk-white/20 px-3 py-1.5 font-bold bg-carbon-black/60 backdrop-blur-md text-chalk-white shadow-xl">
+          <div className="flex flex-col gap-2 items-start mb-8">
+            <span className="text-[9px] tracking-[0.15em] uppercase border border-chalk-white/20 px-2 py-1 font-bold bg-carbon-black/60 backdrop-blur-md text-chalk-white shadow-xl">
               <span className="text-track-red">Dronacharya Awardee</span>
             </span>
-            <span className="text-[10px] tracking-[0.2em] uppercase border border-chalk-white/20 px-3 py-1.5 text-chalk-white/90 font-bold bg-carbon-black/60 backdrop-blur-md shadow-xl">
+            <span className="text-[9px] tracking-[0.15em] uppercase border border-chalk-white/20 px-2 py-1 text-chalk-white/90 font-bold bg-carbon-black/60 backdrop-blur-md shadow-xl">
               Ph.D. Sports Science
             </span>
           </div>

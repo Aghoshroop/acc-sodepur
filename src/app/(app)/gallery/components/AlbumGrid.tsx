@@ -11,7 +11,6 @@ const ALBUMS: { id: DisplayZone; title: string; subtitle: string; coverImage?: s
   { id: 'TheBeginning', title: 'Where it all began', subtitle: 'The Archive' },
   { id: 'HallOfMoments', title: 'Hall of Moments', subtitle: 'Iconic Memories' },
   { id: 'ModernEra', title: 'The Modern Era', subtitle: 'Contemporary Athletics', coverImage: '/images/synthetic.jpg' },
-  { id: 'RecentMoments', title: 'Recent Moments', subtitle: 'Latest Triumphs', coverImage: '/images/athletes.jpg' }
 ];
 
 export default function AlbumGrid() {
@@ -48,24 +47,32 @@ export default function AlbumGrid() {
                 src={coverUrl}
                 alt={album.title}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100"
+                className="object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80 group-hover:opacity-100"
               />
               
-              {/* Light Red Transparent Overlay on Hover */}
-              <div className="absolute inset-0 bg-red-600/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center p-6 text-center backdrop-blur-sm">
+              {/* Top explicit tap indicator for mobile & desktop */}
+              <div className="absolute top-6 right-6 flex items-center gap-2 bg-black/40 backdrop-blur-md border border-white/10 px-4 py-2 rounded-full z-10 opacity-80 group-hover:opacity-100 transition-opacity">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-[#F6F2EA]">Explore Images</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#C8A96A]"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+
+              {/* Light Red Transparent Overlay on Hover (Desktop) */}
+              <div className="absolute inset-0 bg-red-600/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden md:flex flex-col items-center justify-center p-6 text-center backdrop-blur-sm z-20">
                 <Camera className="w-12 h-12 text-[#F6F2EA] mb-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500" />
                 <h3 className="text-3xl font-primary uppercase tracking-wider text-[#F6F2EA] transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
                   {album.title}
                 </h3>
-                <p className="text-[#F6F2EA]/80 font-secondary mt-2 tracking-widest text-sm uppercase transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-100">
-                  Click to Expand
-                </p>
+                <div className="mt-6 flex items-center gap-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-100">
+                  <div className="w-12 h-[1px] bg-[#F6F2EA]/50"></div>
+                  <span className="text-[#F6F2EA] tracking-[0.2em] text-xs uppercase font-bold">View Album</span>
+                  <div className="w-12 h-[1px] bg-[#F6F2EA]/50"></div>
+                </div>
               </div>
 
-              {/* Default Title when not hovered */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-300">
-                <p className="text-[#C8A96A] text-xs tracking-[0.3em] uppercase mb-1">{album.subtitle}</p>
-                <h3 className="text-2xl font-primary uppercase tracking-wider text-[#F6F2EA]">{album.title}</h3>
+              {/* Default Title block */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black/60 to-transparent opacity-100 md:group-hover:opacity-0 transition-opacity duration-300 z-10">
+                <p className="text-[#C8A96A] text-xs tracking-[0.3em] uppercase mb-2 font-bold">{album.subtitle}</p>
+                <h3 className="text-2xl font-primary uppercase tracking-wider text-[#F6F2EA] leading-tight">{album.title}</h3>
               </div>
             </motion.div>
           );

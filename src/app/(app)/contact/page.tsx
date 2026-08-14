@@ -16,6 +16,8 @@ export default function ContactPage() {
         <div className="absolute inset-0 z-0">
           <Image src="/images/synthetic.jpg" alt="Background" fill className="object-cover opacity-10 " />
           <div className="absolute inset-0 bg-gradient-to-b from-chalk-white/95 to-chalk-white/80 backdrop-blur-sm" />
+          {/* Dark overlay at the top for nav links visibility */}
+          <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-carbon-black/60 to-transparent" />
         </div>
 
         <div className="relative z-10 w-full pt-32 pb-24 max-w-7xl mx-auto px-6 md:px-12">
@@ -35,11 +37,29 @@ export default function ContactPage() {
                 <h2 className="text-sm font-bold tracking-[0.3em] uppercase text-track-red mb-6 border-b border-carbon-black/10 pb-4">
                   Headquarters
                 </h2>
-                <div className="text-2xl md:text-3xl font-light leading-relaxed">
+                <div className="text-2xl md:text-3xl font-light leading-relaxed mb-8">
                   <p>Athletic Coaching Camp</p>
-                  <p>Sodepur High School Ground</p>
-                  <p>Sodepur, Kolkata</p>
-                  <p>West Bengal 700114</p>
+                  <p>No. 2 Deshabondhu Nagar, Sodepur</p>
+                  <p>Kolkata, Khardaha</p>
+                  <p>West Bengal 700110</p>
+                </div>
+                <div className="w-full h-64 md:h-80 overflow-hidden border border-carbon-black/10 transition-all duration-500 relative">
+                  <iframe 
+                    src="https://maps.google.com/maps?q=M9XP%2BP47%2C%20No.%202%20Deshabondhu%20Nagar%2C%20Sodepur%2C%20Kolkata%2C%20Khardaha%2C%20West%20Bengal%20700110&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                    width="100%" 
+                    height="100%" 
+                    style={{ border: 0 }} 
+                    allowFullScreen 
+                    loading="lazy" 
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Athletic Coaching Camp Location"
+                    className="absolute inset-0"
+                  ></iframe>
+                </div>
+                <div className="mt-4">
+                  <a href="https://share.google/jKIgcddGqp96O9c1T" target="_blank" rel="noopener noreferrer" className="text-sm font-bold uppercase tracking-widest text-track-red hover:text-carbon-black transition-colors flex items-center gap-2">
+                    Open in Google Maps ↗
+                  </a>
                 </div>
               </div>
 
@@ -50,11 +70,11 @@ export default function ContactPage() {
                 <div className="text-2xl md:text-3xl font-light leading-relaxed space-y-4">
                   <p>
                     <span className="block text-sm uppercase tracking-widest text-carbon-black/50 mb-1">Admissions & General</span>
-                    <a href="tel:+919830098300" className="hover:text-track-red transition-colors">+91 98300 98300</a>
+                    <a href="tel:+919804433803" className="hover:text-track-red transition-colors">+91 98044 33803</a>
                   </p>
                   <p>
                     <span className="block text-sm uppercase tracking-widest text-carbon-black/50 mb-1">Email</span>
-                    <a href="mailto:info@athleticcoachingcamp.com" className="hover:text-track-red transition-colors">info@athleticcoachingcamp.com</a>
+                    <a href="mailto:acc.sodepur@gmail.com" className="hover:text-track-red transition-colors">acc.sodepur@gmail.com</a>
                   </p>
                 </div>
               </div>

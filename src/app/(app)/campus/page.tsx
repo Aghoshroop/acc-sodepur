@@ -132,9 +132,14 @@ export default function CampusPage() {
                   </p>
                 </motion.div>
               </div>
-              <div className="w-full lg:w-1/2 relative min-h-[400px] lg:min-h-[500px]">
-                <Image src="/images/syntheticwithramp.jpg" alt="Elevation Ramp" fill className="object-cover object-center shadow-2xl border-4 border-white/10" />
-              </div>
+                <div className="w-full lg:w-1/2 flex flex-col gap-4">
+                  <div className="relative w-full border-4 border-white/10 shadow-2xl overflow-hidden bg-carbon-black">
+                    <Image src="/images/syntheticwithramp.jpg" alt="Elevation Ramp" width={1200} height={800} className="w-full h-auto object-cover" />
+                  </div>
+                  <div className="relative w-full border-4 border-white/10 shadow-2xl overflow-hidden bg-carbon-black/20">
+                    <Image src="/images/facilities/ramp.png" alt="Elevation Ramp Close-up" width={1200} height={800} className="w-full h-auto object-contain" />
+                  </div>
+                </div>
             </div>
 
             {/* Jump Pits */}

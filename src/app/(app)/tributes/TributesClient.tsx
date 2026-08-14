@@ -10,7 +10,7 @@ const TRIBUTES = [
     name: "Late Sri Arun Banerjee",
     subtitle: "",
     role: "Lifetime President (Secretary, AAWB / Treasure, AAFI)",
-    image: "", 
+    image: "/images/administration/Late Arun Banerjee.png", 
     description: "Serving as the Lifetime President of the Athletic Coaching Camp, his legacy and contributions will forever be remembered."
   },
   {
@@ -209,6 +209,95 @@ export default function TributesClient() {
               </div>
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      {/* Dream Projects Investors Section */}
+      <section className="py-24 px-6 md:px-12 bg-carbon-black text-chalk-white border-t border-carbon-black/10">
+        <div className="max-w-[1200px] mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-20"
+          >
+            <h2 className="text-4xl md:text-6xl font-primary uppercase tracking-tight mb-4">
+              Our Dream Projects
+            </h2>
+            <p className="text-chalk-white/60 font-light max-w-2xl mx-auto text-lg leading-relaxed">
+              Honoring those who invested and provided loans to make our most ambitious dreams a reality—the Synthetic Track and the All-New Hostel.
+            </p>
+          </motion.div>
+
+          <div className="flex flex-col lg:flex-row gap-16 items-center">
+            {/* Image */}
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="w-full lg:w-1/2 relative aspect-[4/3] bg-chalk-white/5 overflow-hidden border border-chalk-white/10"
+            >
+              <Image 
+                src="/images/facilities/synthetic-track.png" 
+                alt="Synthetic Track" 
+                fill 
+                className="object-cover object-center grayscale hover:grayscale-0 transition-all duration-700"
+              />
+            </motion.div>
+            
+            {/* Lists */}
+            <div className="w-full lg:w-1/2 flex flex-col gap-16">
+              <motion.div 
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="text-2xl font-primary uppercase tracking-widest text-track-red mb-6 border-b border-track-red/30 pb-3">
+                  Synthetic Track Investors
+                </h3>
+                <ul className="space-y-4 font-light text-chalk-white/80 list-none pl-0">
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-track-red rounded-full block"></span>
+                    <span>[Name Placeholder 1]</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-track-red rounded-full block"></span>
+                    <span>[Name Placeholder 2]</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-track-red rounded-full block"></span>
+                    <span>[Name Placeholder 3]</span>
+                  </li>
+                </ul>
+              </motion.div>
+              
+              <motion.div 
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+              >
+                <h3 className="text-2xl font-primary uppercase tracking-widest text-track-red mb-6 border-b border-track-red/30 pb-3">
+                  All-New Hostel Investors
+                </h3>
+                <ul className="space-y-4 font-light text-chalk-white/80 list-none pl-0">
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-chalk-white/40 rounded-full block"></span>
+                    <span>[Name Placeholder 1]</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-chalk-white/40 rounded-full block"></span>
+                    <span>[Name Placeholder 2]</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-chalk-white/40 rounded-full block"></span>
+                    <span>[Name Placeholder 3]</span>
+                  </li>
+                </ul>
+              </motion.div>
+            </div>
+          </div>
         </div>
       </section>
     </main>

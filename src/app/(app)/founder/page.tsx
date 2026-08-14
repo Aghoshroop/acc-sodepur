@@ -203,11 +203,11 @@ const CHAPTERS: Chapter[] = [
         <p>Unable to play competitive football ever again, his obsession found a new outlet. At just 17, he shifted his focus entirely to coaching.</p>
       </div>
     ),
-    image: '/images/legacy/legacy-hero-archive.jpg'
+    image: '/images/acc_history/98.jpg'
   },
   {
     chapter: '02 / The Foundation',
-    title: '8 Refugee Kids',
+    title: 'Building The Foundation',
     bgImage: '/images/acc_history/old-group-photo.jpg',
     content: (
       <div className="space-y-3 md:space-y-6 text-sm md:text-xl">
@@ -216,7 +216,7 @@ const CHAPTERS: Chapter[] = [
         <p>Operating out of a muddy field in Sodepur, Roy rented a tiny kitchen for Rs 5 a month as their club room. Today, ACC hosts over 200 athletes, remaining a non-profit driven strictly by passion.</p>
       </div>
     ),
-    image: '/images/legacy/legacy-timeline-2002.jpg'
+    image: '/images/acc_history/1st-building.jpg'
   },
   {
     chapter: '03 / The Athlete Factory',
@@ -226,7 +226,7 @@ const CHAPTERS: Chapter[] = [
       <div className="space-y-3 md:space-y-6 text-sm md:text-xl">
         <p>Long before it was standard, Roy used multiple GoPros to dissect elite athletes' joint movements and stride lengths frame-by-frame.</p>
         <p>Using targeted recovery testing machinery in his lab, he measures muscle fatigue to ensure an athlete is biologically ready before the next session.</p>
-        <p>His legendary "Black Book" contains meticulous historic records. He can pull up the exact day-by-day load charts that Olympians like Soma Biswas<OlympianTag /> and Sanjay Rai<OlympianTag /> executed in the year 2000.</p>
+        <p>His legendary "Black Book" contains meticulous historic records. He can pull up the exact day-by-day load charts that Olympians like Soma Biswas<OlympianTag variant="text" /> and Sanjay Rai<OlympianTag variant="text" /> executed in the year 2000.</p>
       </div>
     ),
     image: '/images/acc_history/32.jpg'

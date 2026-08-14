@@ -17,6 +17,13 @@ export default function MobileVisitingCoaches() {
       image: "/images/administration/susmita.jpg", 
       desc: "An elite Indian heptathlete who represented the nation at the 2008 Beijing Olympics. A multi-time medallist at the Asian Athletics Championships with a personal best of 6,027 points, she brings invaluable international competition experience and elite-level tactical knowledge to the track." 
     },
+    { 
+      name: "Mr. Sanjay Rai", 
+      role: "Olympian & NIS Coach", 
+      image: "/images/sanjay-da.JPG", 
+      desc: "An Olympian and NIS certified coach, bringing decades of elite athletic experience to the track.",
+      imageClass: "object-cover object-top w-full h-full"
+    }
   ];
 
   return (
@@ -56,7 +63,7 @@ export default function MobileVisitingCoaches() {
                   src={coach.image} 
                   alt={coach.name} 
                   fill 
-                  className="object-contain p-4 transition-transform duration-700 group-hover:scale-105"
+                  className={`${coach.imageClass || "object-contain p-4"} transition-transform duration-700 group-hover:scale-105`}
                 />
               </div>
               <div className="p-6 md:p-8 flex flex-col justify-center flex-grow">

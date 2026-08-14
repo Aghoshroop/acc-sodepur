@@ -13,8 +13,7 @@ const ALBUM_TITLES: Partial<Record<DisplayZone, string>> = {
   TheBeginning: 'Where it all began',
   HallOfMoments: 'Hall of Moments',
   ThenVsNow: 'Then vs Now',
-  ModernEra: 'The Modern Era',
-  RecentMoments: 'Recent Moments'
+  ModernEra: 'The Modern Era'
 };
 
 export default function ExpandedAlbum({ albumId }: { albumId: DisplayZone }) {

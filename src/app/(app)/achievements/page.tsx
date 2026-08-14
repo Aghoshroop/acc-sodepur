@@ -88,6 +88,42 @@ export default async function AchievementsPage() {
         </div>
       </section>
 
+      {/* 1.5 Global Footprint Section */}
+      <section className="relative w-full py-24 bg-track-red text-chalk-white border-t border-chalk-white/10 z-20">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12 text-center">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeUpVariant}
+            className="flex flex-col items-center"
+          >
+            <p className="text-[10px] md:text-xs tracking-[0.4em] uppercase mb-8 font-bold text-carbon-black">The Global Footprint</p>
+            <h2 className="text-3xl md:text-5xl lg:text-7xl font-primary uppercase tracking-tight leading-[1.1] mb-8">
+              We have conquered every major international stage <span className="text-carbon-black opacity-80">—</span>
+            </h2>
+            <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-8 text-sm md:text-xl font-secondary tracking-widest uppercase text-chalk-white/90">
+              <span>Olympics</span>
+              <span className="text-carbon-black">•</span>
+              <span>World Championships</span>
+              <span className="text-carbon-black">•</span>
+              <span>Asian Games</span>
+              <span className="text-carbon-black">•</span>
+              <span>Commonwealth Games</span>
+              <span className="text-carbon-black">•</span>
+              <span>Asian Championships</span>
+              <span className="text-carbon-black">•</span>
+              <span>SAF Games</span>
+              <span className="text-carbon-black">•</span>
+              <span>Asian Youth Championships</span>
+            </div>
+            <p className="text-sm md:text-base font-light text-chalk-white/70 max-w-2xl mx-auto uppercase tracking-widest">
+              With the sole exception of the World Juniors.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* 2. Global Metrics Section */}
       <section className="relative w-full py-24 md:py-32 bg-carbon-black border-t border-white/10 z-20">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
@@ -212,8 +248,7 @@ export default async function AchievementsPage() {
                 {[
                   { img: 'SANJAY DA (1).jpg', classes: 'col-span-2 row-span-4' },
                   { img: 'Sanjoy da.JPG', classes: 'col-span-2 row-span-2' },
-                  { img: '2003101502832101.jpg', classes: 'col-span-2 row-span-1' },
-                  { img: 'DSCF2028.JPG', classes: 'col-span-2 row-span-1' }
+                  { img: '2003101502832101.jpg', classes: 'col-span-2 row-span-2' }
                 ].map((item, i) => (
                   <motion.div key={item.img} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className={`relative w-full h-full ${item.classes}`}>
                     <Image src={`/images/olympians/sanjay/${item.img}`} alt="Sanjay Kumar Rai" fill className="object-cover object-[center_top] shadow-lg bg-carbon-black" />

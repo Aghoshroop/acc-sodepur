@@ -8,7 +8,7 @@ const transitionConfig = { duration: 0.8, ease: [0.22, 1, 0.36, 1] as [number, n
 
 export default function SponsorsPage() {
   return (
-    <main className="w-full bg-chalk-white text-carbon-black min-h-screen selection:bg-track-red selection:text-white">
+    <main className="w-full bg-chalk-white text-carbon-black min-h-screen selection:bg-track-red selection:text-white overflow-x-hidden">
       
       {/* 1. Cinematic Hero Section */}
       <section className="relative w-full h-screen min-h-[700px] flex flex-col justify-center items-center text-center overflow-hidden bg-carbon-black">
@@ -146,7 +146,7 @@ export default function SponsorsPage() {
       {/* 4. Sponsorship Tiers */}
       <section className="py-24 md:py-40 px-6 bg-chalk-white">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 md:mb-24 gap-8">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-24 gap-8">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
