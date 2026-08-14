@@ -85,7 +85,7 @@ export default function MobileMethodologyPage() {
           <span className="text-track-red text-[10px] tracking-[0.5em] uppercase mb-4 block font-bold">
             The Science of Speed
           </span>
-          <h1 className="text-6xl font-primary uppercase tracking-tighter leading-[0.9] mb-4">
+          <h1 className="text-[15vw] min-[400px]:text-5xl sm:text-6xl font-primary uppercase tracking-tighter leading-[0.9] mb-4">
             Methodology
           </h1>
           <p className="text-sm font-light text-chalk-white/70 tracking-widest uppercase">
@@ -259,17 +259,18 @@ export default function MobileMethodologyPage() {
             {
               title: "Hill Training Slope",
               desc: "Dedicated slopes engineered to build explosive acceleration, lower-body power, and unyielding stamina through resisted elevation sprints.",
-              img: "/images/hill.jpg"
+              img: "/images/facilities/ramp.png"
             },
             {
               title: "Natural Recovery Pond",
               desc: "A dedicated natural aquatic zone utilized for low-impact hydrostatic recovery, reducing post-session inflammation and flushing out lactic acid.",
-              img: "/images/pond.jpg"
+              img: "/images/relaxation.jpg"
             },
             {
               title: "Performance Testing",
               desc: "Lakhs of rupees invested in cutting-edge sport-science gadgets—including laser timing gates and kinematic sensors—to optimize every millisecond.",
-              img: "/images/tech.jpg"
+              img: "/images/performance/performance-training-endurance.jpg",
+              imgClassName: "object-bottom"
             }
           ].map((item, idx) => (
             <motion.div 
@@ -284,7 +285,7 @@ export default function MobileMethodologyPage() {
                 src={item.img}
                 alt={item.title}
                 fill
-                className="object-cover opacity-50"
+                className={`object-cover opacity-50 ${item.imgClassName || ''}`}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-carbon-black via-carbon-black/60 to-transparent" />
               

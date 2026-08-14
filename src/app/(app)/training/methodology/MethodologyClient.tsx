@@ -343,17 +343,18 @@ export default function MethodologyClient() {
                 {
                   title: "Hill Training Slope",
                   desc: "Dedicated slopes engineered to build explosive acceleration, lower-body power, and unyielding stamina through resisted elevation sprints.",
-                  img: "/images/hill.jpg"
+                  img: "/images/facilities/ramp.png"
                 },
                 {
                   title: "Natural Recovery Pond",
                   desc: "A dedicated natural aquatic zone utilized for low-impact hydrostatic recovery, reducing post-session inflammation and flushing out lactic acid.",
-                  img: "/images/pond.jpg"
+img: "/images/relaxation.jpg"
                 },
                 {
                   title: "Performance Testing",
                   desc: "Lakhs of rupees invested in cutting-edge sport-science gadgets—including laser timing gates and kinematic sensors—to optimize every millisecond.",
-                  img: "/images/tech.jpg"
+                  img: "/images/performance/performance-training-endurance.jpg",
+                  imgClassName: "object-bottom"
                 }
               ].map((item, idx) => (
                 <motion.div 
@@ -368,7 +369,7 @@ export default function MethodologyClient() {
                     src={item.img}
                     alt={item.title}
                     fill
-                    className="object-cover transition-transform duration-1000 group-hover:scale-110 opacity-40 group-hover:opacity-60"
+                    className={`object-cover transition-transform duration-1000 group-hover:scale-110 opacity-40 group-hover:opacity-60 ${item.imgClassName || ''}`}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-carbon-black via-carbon-black/50 to-transparent" />
                   

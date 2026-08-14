@@ -113,6 +113,26 @@ const TRIBUTES = [
   }
 ];
 
+const FIRST_ACC = [
+  "Kuntal Roy", "Pallab Sur", "Dipak Banerjee", "Samir Pal", "Kamalesh Sarkar",
+  "Late Narayan Dey", "Ram Yadav Bose", "Subimal Sarkar", "Late Somnath Roy",
+  "Aloke Dasgupta", "Tapan Dasgupta", "Bachu Bose", "Tutun", "Biswajit Roy", "Tapan Ghosh"
+];
+
+const EARLY_SUPPORT = [
+  "Late Sulekha Roy", "Late Mihir Baran Roy", "Late Prabir Baran Roy", "Late Sasthi Charan Chatterjee",
+  "Late Baldev Dutta", "Late Ananta Mukherjee", "Late Amulya Sur", "Late Surya Chatterjee",
+  "Late Bijoy Hasi Dev", "Late Jyoti Das", "Late P.C. Sinha", "Late Ashoke Basu",
+  "Late Arati Banerjee", "Late S. Majumder", "Mother of Somnath Roy", "Mother of Aloke Dasgupta",
+  "Biplab Roy"
+];
+
+const SUPPORT_1981_2000 = [
+  "Late Swapon Ghosh", "Late Prithis Dutta", "Sri Krishna Lal Maity (IC)", "Shri Sibotosh Deb",
+  "Late Mihir Chatterjee", "Late Prabir Sarkar", "Late Indrajit Mukherjee", "Shri Alokendu Banerjee",
+  "Late Gouri Roy"
+];
+
 const BeforeAfterBackground = () => {
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
@@ -162,6 +182,57 @@ export default function TributesClient() {
           Celebrating the visionaries, administrators, and voices who laid the foundation for our enduring success.
         </p>
       </div>
+      
+      {/* Foundation Lists Section */}
+      <section className="relative py-20 px-6 md:px-12 bg-chalk-white text-carbon-black border-y border-carbon-black/10 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src="/images/acc_history/old-group-photo.jpg" 
+            alt="Historic ACC" 
+            fill 
+            className="object-cover opacity-[0.07] grayscale mix-blend-multiply pointer-events-none" 
+          />
+        </div>
+        <div className="relative z-10 max-w-[1200px] mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 lg:gap-16"
+          >
+            {/* First ACC */}
+            <div>
+              <h3 className="text-lg md:text-xl font-primary uppercase tracking-widest text-track-red mb-6 border-b border-track-red/30 pb-3">
+                1969 — The First ACC
+              </h3>
+              <ol className="list-decimal pl-5 space-y-3 font-light text-carbon-black/80 text-sm md:text-base marker:text-carbon-black/40">
+                {FIRST_ACC.map((name, i) => <li key={i}>{name}</li>)}
+              </ol>
+            </div>
+            
+            {/* Early Support */}
+            <div>
+              <h3 className="text-lg md:text-xl font-primary uppercase tracking-widest text-track-red mb-6 border-b border-track-red/30 pb-3">
+                Support in the Early Years<br/><span className="text-sm md:text-base text-track-red/70 tracking-wider">(1969 - 1980)</span>
+              </h3>
+              <ol className="list-decimal pl-5 space-y-3 font-light text-carbon-black/80 text-sm md:text-base marker:text-carbon-black/40">
+                {EARLY_SUPPORT.map((name, i) => <li key={i}>{name}</li>)}
+              </ol>
+            </div>
+            
+            {/* 1981 - 2000 */}
+            <div>
+              <h3 className="text-lg md:text-xl font-primary uppercase tracking-widest text-track-red mb-6 border-b border-track-red/30 pb-3">
+                Support<br/><span className="text-sm md:text-base text-track-red/70 tracking-wider">(1981 - 2000)</span>
+              </h3>
+              <ol className="list-decimal pl-5 space-y-3 font-light text-carbon-black/80 text-sm md:text-base marker:text-carbon-black/40">
+                {SUPPORT_1981_2000.map((name, i) => <li key={i}>{name}</li>)}
+              </ol>
+            </div>
+          </motion.div>
+        </div>
+      </section>
       
       <section className="py-24 px-6 md:px-12 max-w-[1200px] mx-auto">
         <div className="flex flex-col gap-32">

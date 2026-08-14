@@ -37,7 +37,7 @@ export default function MobileAthletesPage({ categories }: MobileAthletesPagePro
 
   return (
     <>
-      <div className="relative w-full">
+      <div className="relative w-full overflow-x-hidden">
         <section className="relative z-0 w-full bg-carbon-black flex flex-col pb-8">
           <div className="relative w-full">
             <Image 
@@ -51,7 +51,7 @@ export default function MobileAthletesPage({ categories }: MobileAthletesPagePro
             <div className="absolute inset-0 bg-gradient-to-t from-carbon-black via-transparent to-transparent" />
           </div>
           <div className="relative z-10 w-full px-6 -mt-12 md:-mt-24">
-            <h1 className="text-6xl md:text-8xl font-primary uppercase tracking-widest text-chalk-white leading-none mb-4">
+            <h1 className="text-[12vw] min-[400px]:text-6xl md:text-8xl font-primary uppercase tracking-widest text-chalk-white leading-none mb-4 break-words">
               The<br />Vanguard
             </h1>
             <p className="text-xl md:text-2xl text-track-red font-light uppercase tracking-wider">

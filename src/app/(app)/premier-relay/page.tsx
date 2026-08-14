@@ -6,7 +6,7 @@ export default function PremierRelayPage() {
     <main className="w-full overflow-x-hidden bg-chalk-white text-carbon-black min-h-screen">
       
       {/* Hero Section */}
-      <section className="relative w-full h-[60vh] md:h-[70vh] flex flex-col justify-end items-center text-center pb-[146px]">
+      <section className="relative w-full min-h-[70vh] flex flex-col justify-center md:justify-end items-center text-center pt-32 pb-12 md:pb-[146px]">
         <div className="absolute top-[-40px] left-0 right-0 bottom-[-150px] z-0 pointer-events-none">
           <Image
             src="/images/relay/relay2026.jpeg"
@@ -24,8 +24,8 @@ export default function PremierRelayPage() {
           <div className="absolute top-0 left-0 right-0 h-[30%] bg-gradient-to-b from-carbon-black/90 to-transparent" />
         </div>
         
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6">
-          <span className="inline-block bg-carbon-black/80 backdrop-blur-md border border-chalk-white/10 px-4 py-1.5 rounded-sm shadow-xl text-track-red text-xs md:text-sm tracking-[0.4em] uppercase font-bold mb-6">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6">
+          <span className="inline-block bg-carbon-black/80 backdrop-blur-md border border-chalk-white/10 px-3 py-1.5 rounded-sm shadow-xl text-track-red text-[9px] sm:text-xs md:text-sm tracking-[0.2em] sm:tracking-[0.3em] md:tracking-[0.4em] uppercase font-bold mb-4 md:mb-6 max-w-[90%] sm:max-w-none mx-auto leading-relaxed">
             Athletic Coaching Camp Foundation Day Celebration
           </span>
           <h1 className="font-primary text-4xl sm:text-5xl md:text-7xl uppercase tracking-tighter drop-shadow-2xl max-w-5xl mx-auto leading-[0.9] text-chalk-white">
