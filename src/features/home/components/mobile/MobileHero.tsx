@@ -11,7 +11,7 @@ export default function MobileHero() {
     <section className="relative w-full h-[100dvh] bg-chalk-white flex flex-col snap-start overflow-hidden">
       
       {/* Monumental Photography */}
-      <div className="relative w-full aspect-[4/5] max-h-[65dvh]">
+      <div className="relative w-full h-[50dvh] shrink-0">
         <motion.div 
           className="absolute inset-0"
           initial={{ scale: 1.05 }}
@@ -28,6 +28,9 @@ export default function MobileHero() {
             className="object-cover object-[center_65%]" 
           />
         </motion.div>
+        
+        {/* Fade to chalk-white at the bottom - Moved outside motion.div to prevent scaling artifacts */}
+        <div className="absolute inset-x-0 -bottom-1 h-32 bg-gradient-to-t from-chalk-white via-chalk-white/80 to-transparent pointer-events-none z-10" />
       </div>
 
       {/* Typography & Actions (30%) - Massive Whitespace & Editorial Feel */}

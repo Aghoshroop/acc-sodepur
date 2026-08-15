@@ -20,7 +20,7 @@ export default function MobileVisitingCoaches() {
     { 
       name: "Mr. Sanjay Rai", 
       role: "Olympian & NIS Coach", 
-      image: "/images/sanjay-da.JPG", 
+      image: "/images/administration/sanjay-coach.png", 
       desc: "An Olympian and NIS certified coach, bringing decades of elite athletic experience to the track.",
       imageClass: "object-cover object-top w-full h-full"
     }

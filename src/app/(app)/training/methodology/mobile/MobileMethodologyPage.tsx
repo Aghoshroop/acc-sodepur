@@ -254,7 +254,7 @@ export default function MobileMethodologyPage() {
             {
               title: "High-Performance Gym",
               desc: "Equipped with Olympic lifting platforms and heavy iron. Built specifically for explosive power development and injury prevention.",
-              img: "/images/gym.jpg" // Using an assumption that this might exist or fallback
+              img: "/images/facilities/gym.png"
             },
             {
               title: "Hill Training Slope",

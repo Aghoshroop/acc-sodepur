@@ -28,7 +28,7 @@ export default function MobileAdministrationPage() {
         </div>
         
         <div className="relative z-10 w-full text-chalk-white mt-12">
-          <h1 className="text-6xl sm:text-7xl font-primary uppercase tracking-tighter leading-[0.9] mb-4 drop-shadow-2xl flex flex-col items-center [text-shadow:0_4px_20px_rgba(0,0,0,0.8)]">
+          <h1 className="text-[11.5vw] sm:text-6xl font-primary uppercase tracking-tighter leading-[0.9] mb-4 drop-shadow-2xl flex flex-col items-center [text-shadow:0_4px_20px_rgba(0,0,0,0.8)]">
             <span className="block text-transparent [-webkit-text-stroke:1.5px_var(--color-chalk-white)]">Administration</span>
           </h1>
           <p className="text-sm font-light text-chalk-white/80 tracking-[0.2em] uppercase">

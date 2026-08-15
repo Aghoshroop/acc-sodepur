@@ -52,14 +52,14 @@ export default function MobileCoachRudra() {
             <h3 className="text-xl font-primary uppercase tracking-widest border-b-2 border-track-red inline-block pb-2 mb-6 drop-shadow-md">International Certifications</h3>
             <div className="flex flex-col gap-4">
               {[
-                { title: "World Athletics CECS Level 3", desc: "Passed at NSNIS, Patiala, specializing in Combined Events & Jumps. The first coach from West Bengal to achieve this tier, representing elite-level international coaching standards." },
+                { title: "World Athletics CECS Level 3 Coach", desc: "Passed at NSNIS, Patiala, specializing in Combined Events & Jumps. The first coach from West Bengal to achieve this tier, representing elite-level international coaching standards." },
                 { title: "EXOS High Performance Specialist", desc: "Certified XPS through EXOS (USA), a premier global authority in integrated performance training and athlete rehabilitation." },
                 { title: "ISAK Certification", desc: "International Society for the Advancement of Kinanthropometry (ISAK Level 1) from Germany. Expert in body composition mapping and anthropometric scaling." },
                 { title: "Rehab Trainer Essentials", desc: "Formally certified in elite athletic rehabilitation methods from Australia, managing on-field injury prevention and biomechanical correction." }
               ].map((cert, idx) => (
-                <div key={idx} className="bg-chalk-white/5 p-5 border border-chalk-white/10 backdrop-blur-sm rounded-sm">
+                <div key={idx} className="bg-carbon-black/70 p-5 border border-chalk-white/10 backdrop-blur-md rounded-sm">
                   <h4 className="font-primary text-sm uppercase mb-2 text-track-red drop-shadow-sm">{cert.title}</h4>
-                  <p className="text-xs font-light text-chalk-white/80 leading-relaxed">{cert.desc}</p>
+                  <p className="text-xs font-light text-chalk-white/90 leading-relaxed">{cert.desc}</p>
                 </div>
               ))}
             </div>
@@ -71,17 +71,16 @@ export default function MobileCoachRudra() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <h3 className="text-xl font-primary uppercase tracking-widest border-b-2 border-track-red inline-block pb-2 mb-6 drop-shadow-md">National Profile</h3>
+            <h3 className="text-xl font-primary uppercase tracking-widest border-b-2 border-track-red inline-block pb-2 mb-6 drop-shadow-md bg-carbon-black/40 px-2 rounded-sm">National Profile</h3>
             <div className="space-y-6">
               {[
                 { title: "Athletics Federation of India", desc: "Registered and certified active coach. Primary specializations in Combined Events, Hurdles, Sprint disciplines, and elite Sports S&C." },
-                { title: "Football - Bhawanipur FC", desc: "Strength & Conditioning Coach and Fitness Trainer for Bhawanipur FC. Designed periodized regimens for elite players like Pronoy Halder." },
-                { title: "Cricket - CAB S&C Protocols", desc: "Works with domestic cricketers, engineering throwing-velocity training, lateral power output metrics, and explosive rotational drills." },
-                { title: "Tennis Conditioning", desc: "Elite Personal Performance Coach for Shivika Burman, active member of the WTA, Fed Cup Indian Team, and Asian Games Indian Women's Tennis squad." }
+                { title: "Football S&C Coach", desc: "Strength & Conditioning Coach and Fitness Trainer for East Bengal, Bhawanipur FC, and Mohammedan Sporting for multiple years. Personal strength and conditioning coach for multiple footballers of the Indian National Team, including Pronay Halder, Sarthak Golui, Debjit Majumder, Pritam Kotal, Sourav Das, Arindam Bhattacharya, Ankit Mukherjee, Shilton Paul, Md. Rafique, Suvam Sen, Rahim Ali, and many more." },
+                { title: "Multi Sports S&C Coach", desc: "Extensive experience designing elite physical preparation and throwing-velocity training programs across multiple disciplines, including Badminton, Tennis, Table Tennis, and Cricket." }
               ].map((profile, idx) => (
-                <div key={idx} className="border-l-[2px] border-track-red/60 pl-4 bg-carbon-black/20 backdrop-blur-sm p-3 rounded-r-sm">
-                  <h4 className="font-primary text-sm uppercase mb-1 text-chalk-white">{profile.title}</h4>
-                  <p className="font-light text-xs text-chalk-white/70 leading-relaxed">{profile.desc}</p>
+                <div key={idx} className="border-l-[3px] border-track-red/70 pl-4 bg-carbon-black/70 backdrop-blur-md p-4 rounded-r-md shadow-lg">
+                  <h4 className="font-primary text-sm uppercase mb-1 text-chalk-white drop-shadow-sm">{profile.title}</h4>
+                  <p className="font-light text-xs text-chalk-white/90 leading-relaxed">{profile.desc}</p>
                 </div>
               ))}
             </div>

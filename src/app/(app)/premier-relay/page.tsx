@@ -49,12 +49,12 @@ export default function PremierRelayPage() {
             <div key={franchise.id} className={`flex flex-col lg:flex-row gap-12 items-center ${idx % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
               
               {/* Logo & Name Side */}
-              <div className="w-full lg:w-7/12 flex flex-col items-center justify-center p-12 bg-white border border-carbon-black/10 shadow-[0_10px_40px_rgba(0,0,0,0.08)] relative overflow-hidden group">
+              <div className="w-full lg:w-7/12 flex flex-col items-center justify-center p-6 sm:p-12 bg-white border border-carbon-black/10 shadow-[0_10px_40px_rgba(0,0,0,0.08)] relative overflow-hidden group">
                 <div className="relative w-48 h-48 md:w-64 md:h-64 mb-8 z-10 transition-transform duration-700 group-hover:scale-105">
                   <Image src={franchise.logoImage} alt={`${franchise.name} Logo`} fill className="object-contain drop-shadow-2xl" />
                 </div>
                 <h3 
-                  className="font-primary text-5xl md:text-6xl lg:text-7xl xl:text-[5rem] uppercase tracking-wider text-center leading-[0.85] z-10" 
+                  className="font-primary text-[11vw] sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5rem] uppercase tracking-wider text-center leading-[0.85] z-10 w-full px-2" 
                   style={{ color: franchise.color }}
                 >
                   {franchise.name}

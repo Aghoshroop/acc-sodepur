@@ -11,6 +11,7 @@ type Chapter = {
   bgImage?: string;
   containImage?: boolean;
   noCard?: boolean;
+  gallery?: { src: string; caption: string }[];
 };
 
 export default function MobileFounderChapters({ chapters }: { chapters: Chapter[] }) {
@@ -32,34 +33,67 @@ export default function MobileFounderChapters({ chapters }: { chapters: Chapter[
             </h3>
             
             {/* Image Block */}
-            <div className={`relative w-full mb-6 overflow-hidden ${chapter.noCard ? '' : 'aspect-[4/5] bg-carbon-black/5'}`}>
-              {!chapter.noCard && chapter.bgImage && (
-                <Image
-                  src={chapter.bgImage}
-                  alt={`${chapter.title} Background`}
-                  fill
-                  className="object-cover opacity-10"
-                />
-              )}
-              {chapter.noCard ? (
-                <Image
-                  src={chapter.image}
-                  alt={chapter.title}
-                  width={800}
-                  height={1000}
-                  className="w-full h-auto"
-                />
-              ) : (
-                <Image
-                  src={chapter.image}
-                  alt={chapter.title}
-                  fill
-                  className={`${chapter.containImage ? 'object-contain' : 'object-cover'}`}
-                />
-              )}
-            </div>
+            {chapter.gallery ? (
+              <div className="grid grid-cols-2 gap-3 mb-6">
+                <div className="space-y-4">
+                  {chapter.gallery[0] && (
+                    <div className="group">
+                      <Image src={chapter.gallery[0].src} alt={chapter.gallery[0].caption} width={400} height={500} className="w-full h-auto object-cover rounded shadow-md mb-2" />
+                      <p className="text-[9px] text-carbon-black/60 uppercase tracking-widest text-center">{chapter.gallery[0].caption}</p>
+                    </div>
+                  )}
+                  {chapter.gallery[2] && (
+                    <div className="group">
+                      <Image src={chapter.gallery[2].src} alt={chapter.gallery[2].caption} width={400} height={500} className="w-full h-auto object-cover rounded shadow-md mb-2" />
+                      <p className="text-[9px] text-carbon-black/60 uppercase tracking-widest text-center">{chapter.gallery[2].caption}</p>
+                    </div>
+                  )}
+                </div>
+                <div className="space-y-4 pt-8">
+                  {chapter.gallery[1] && (
+                    <div className="group">
+                      <Image src={chapter.gallery[1].src} alt={chapter.gallery[1].caption} width={400} height={500} className="w-full h-auto object-cover rounded shadow-md mb-2" />
+                      <p className="text-[9px] text-carbon-black/60 uppercase tracking-widest text-center">{chapter.gallery[1].caption}</p>
+                    </div>
+                  )}
+                  {chapter.gallery[3] && (
+                    <div className="group">
+                      <Image src={chapter.gallery[3].src} alt={chapter.gallery[3].caption} width={400} height={500} className="w-full h-auto object-cover rounded shadow-md mb-2" />
+                      <p className="text-[9px] text-carbon-black/60 uppercase tracking-widest text-center">{chapter.gallery[3].caption}</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ) : (
+              <div className={`relative w-full mb-6 overflow-hidden ${chapter.noCard ? '' : 'aspect-[4/5] bg-carbon-black/5'}`}>
+                {!chapter.noCard && chapter.bgImage && (
+                  <Image
+                    src={chapter.bgImage}
+                    alt={`${chapter.title} Background`}
+                    fill
+                    className="object-cover opacity-10"
+                  />
+                )}
+                {chapter.noCard ? (
+                  <Image
+                    src={chapter.image}
+                    alt={chapter.title}
+                    width={800}
+                    height={1000}
+                    className="w-full h-auto"
+                  />
+                ) : (
+                  <Image
+                    src={chapter.image}
+                    alt={chapter.title}
+                    fill
+                    className={`${chapter.containImage ? 'object-contain' : 'object-cover'} p-4`}
+                  />
+                )}
+              </div>
+            )}
             
-            <div className="text-carbon-black/80 text-sm leading-relaxed font-light space-y-4">
+            <div className="text-carbon-black/80 font-light text-base leading-relaxed">
               {chapter.content}
             </div>
           </motion.div>

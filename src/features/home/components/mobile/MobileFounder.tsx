@@ -4,12 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default function MobileFounder() {
-  const milestones = [
-    { year: "1969", text: "Founded ACC" },
-    { year: "1998", text: "Dronacharya Award" },
-    { year: "2000", text: "Sydney Olympics" },
-    { year: "2024", text: "Enduring Legacy" }
-  ];
+  // Milestones removed, replaced by biography excerpt
 
   return (
     <section className="relative w-full bg-chalk-white text-carbon-black flex flex-col pt-16 pb-6 border-t border-carbon-black/10">
@@ -44,14 +39,14 @@ export default function MobileFounder() {
         />
       </div>
 
-      {/* Milestones */}
+      {/* Biography Excerpt */}
       <div className="px-6 pb-6 w-full flex flex-col gap-4">
-        {milestones.map((milestone, idx) => (
-          <div key={idx} className="flex flex-col border-l-2 border-track-red/30 pl-4 py-1">
-            <span className="text-xl font-primary uppercase text-carbon-black">{milestone.year}</span>
-            <span className="text-sm text-carbon-black/70 leading-tight">{milestone.text}</span>
-          </div>
-        ))}
+        <p className="text-base leading-[1.6] tracking-wide text-carbon-black/80 font-medium italic border-l-2 border-track-red/30 pl-4">
+          "Taking grassroots talent from underprivileged backgrounds and crafting them into international icons."
+        </p>
+        <p className="text-sm leading-relaxed text-carbon-black/70 border-l-2 border-carbon-black/10 pl-4">
+          His lineage has fundamentally shaped Bengal's history in athletics, resulting in Olympians and over 73 international medals.
+        </p>
       </div>
 
       {/* Action */}

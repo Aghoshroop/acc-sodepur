@@ -31,7 +31,7 @@ export default function OlympiansSection() {
       <div className="absolute inset-0 pointer-events-none flex items-center justify-center overflow-hidden z-0">
         <div className="relative w-full h-full opacity-10">
           <Image
-            src="/images/Olympic_winter_rings_without_rims.svg.webp"
+            src="/images/olympians/olympic.jpg"
             alt="Olympic Rings Background"
             fill
             className="object-cover object-center"

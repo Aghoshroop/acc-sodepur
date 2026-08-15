@@ -123,24 +123,6 @@ export default function AdministrationHierarchy() {
 
           {/* Right Column */}
           <div className="flex flex-col gap-16">
-            
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-10%" }}
-              className="bg-chalk-white/5 border border-chalk-white/10 p-8"
-            >
-              <SectionHeader title="Presidential Chronology" />
-              <ul className="flex flex-col gap-3">
-                {presidentialChronology.map(item => (
-                  <li key={item.years} className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-6 border-b border-chalk-white/10 pb-2 last:border-0 last:pb-0">
-                    <span className="text-track-red font-secondary text-lg">{item.years}</span>
-                    <span className="text-chalk-white font-light">{item.name}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}

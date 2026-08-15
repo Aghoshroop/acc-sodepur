@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 import { 
-  presidentialChronology, 
   specialProfile, 
   executiveBody, 
   executiveMembers, 
@@ -115,18 +114,6 @@ export default function MobileAdministrationHierarchy() {
 
         {/* --- SECTION 3: HIGHLIGHTS --- */}
         <div className="flex flex-col gap-12">
-          <div className="bg-chalk-white/5 border border-chalk-white/10 p-6">
-            <MobileSectionHeader title="Presidential Chronology" />
-            <ul className="flex flex-col gap-3">
-              {presidentialChronology.map(item => (
-                <li key={item.years} className="flex flex-col gap-1 border-b border-chalk-white/10 pb-2 last:border-0 last:pb-0">
-                  <span className="text-track-red font-secondary text-sm">{item.years}</span>
-                  <span className="text-chalk-white font-light text-sm">{item.name}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          
           <div>
             <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[8px] tracking-[0.2em] uppercase px-2 py-1 rounded-sm font-bold mb-3">Director (Sports Science)</h5>
             <MobileMemberCard member={executiveBody.directorSportsScience} className="w-1/2" />

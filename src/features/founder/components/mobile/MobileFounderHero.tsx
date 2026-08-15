@@ -6,10 +6,10 @@ import Link from 'next/link';
 
 export default function MobileFounderHero() {
   return (
-    <section className="relative w-full h-[100dvh] bg-carbon-black flex flex-col snap-start overflow-hidden">
+    <section className="relative w-full min-h-[100dvh] bg-carbon-black snap-start overflow-hidden">
       
       {/* Background Video/Image */}
-      <div className="relative w-full aspect-[4/5] max-h-[65dvh]">
+      <div className="absolute inset-0 w-full h-full">
         <motion.div 
           className="absolute inset-0"
           initial={{ scale: 1.05 }}
@@ -25,12 +25,12 @@ export default function MobileFounderHero() {
           >
             <source src="/videos/founder.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-t from-carbon-black via-transparent to-carbon-black/40 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-carbon-black via-carbon-black/40 to-carbon-black/10 pointer-events-none" />
         </motion.div>
       </div>
 
-      {/* Typography & Actions (30%) - Match Home Mobile Standard */}
-      <div className="flex-1 flex flex-col px-6 pt-4 pb-safe justify-between bg-carbon-black text-chalk-white z-10 relative">
+      {/* Typography & Actions */}
+      <div className="relative z-10 w-full h-[100dvh] flex flex-col justify-end px-6 pb-12 pt-32 text-chalk-white">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}

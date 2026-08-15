@@ -75,14 +75,12 @@ export default async function InstitutionalHomepage() {
         <PremierRelayTeaser />
       </div>
       
-      <div className="hidden lg:block">
-        <LatestResultsPreview />
-      </div>
-      
-      {/* Mobile Flow Corrected: Founder -> Successor -> Performance */}
-
       <div className="block lg:hidden">
         <MobilePerformance />
+      </div>
+
+      <div className="hidden lg:block">
+        <LatestResultsPreview />
       </div>
       
       <div className="hidden lg:block">
@@ -96,6 +94,10 @@ export default async function InstitutionalHomepage() {
       {/* Sprint 4: Premier Relay (Mobile climax) */}
       <div className="block lg:hidden">
         <MobilePremierRelay />
+      </div>
+
+      <div className="block lg:hidden">
+        <TrainingProgrammes />
       </div>
 
       <div className="hidden lg:block">

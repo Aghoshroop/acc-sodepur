@@ -103,23 +103,24 @@ export default async function AchievementsPage() {
               We have conquered every major international stage <span className="text-carbon-black opacity-80">—</span>
             </h2>
             <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-8 text-sm md:text-xl font-secondary tracking-widest uppercase text-chalk-white/90">
-              <span>Olympics</span>
+              <span>Olympic Games</span>
               <span className="text-carbon-black">•</span>
               <span>World Championships</span>
               <span className="text-carbon-black">•</span>
-              <span>Asian Games</span>
-              <span className="text-carbon-black">•</span>
               <span>Commonwealth Games</span>
+              <span className="text-carbon-black">•</span>
+              <span>World Combined Events</span>
+              <span className="text-carbon-black">•</span>
+              <span>Asian Games</span>
               <span className="text-carbon-black">•</span>
               <span>Asian Championships</span>
               <span className="text-carbon-black">•</span>
               <span>SAF Games</span>
               <span className="text-carbon-black">•</span>
+              <span>Asian Junior Championships</span>
+              <span className="text-carbon-black">•</span>
               <span>Asian Youth Championships</span>
             </div>
-            <p className="text-sm md:text-base font-light text-chalk-white/70 max-w-2xl mx-auto uppercase tracking-widest">
-              With the sole exception of the World Juniors.
-            </p>
           </motion.div>
         </div>
       </section>

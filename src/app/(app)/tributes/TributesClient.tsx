@@ -4,11 +4,11 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import HeroStark from '@/components/ui/HeroStark';
-import { executiveBody, executiveMembers, technicalAndSupport } from '../administration/data';
+import { executiveBody, executiveMembers, technicalAndSupport, presidentialChronology } from '../administration/data';
 
 const TRIBUTES = [
   {
-    name: "Late Sri Mihir Baran Ray",
+    name: "Late Sri Mihir Baran Roy",
     subtitle: "",
     role: "Lifetime Advisor",
     image: "/images/administration/Late Mihir Baran Roy.jpeg",
@@ -66,7 +66,6 @@ const TRIBUTES = [
 ];
 
 const CURRENT_SUPPORT = [
-  technicalAndSupport.headCoach,
   executiveBody.president,
   executiveBody.generalSecretary,
   ...executiveBody.vicePresidents,
@@ -245,6 +244,28 @@ export default function TributesClient() {
             </motion.div>
           ))}
         </div>
+      </section>
+
+      {/* Presidential Chronology Section */}
+      <section className="py-12 md:py-24 px-6 md:px-12 max-w-[1200px] mx-auto">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10%" }}
+          className="bg-carbon-black/5 border border-carbon-black/10 p-8 md:p-12 max-w-4xl mx-auto"
+        >
+          <h2 className="text-2xl md:text-3xl font-primary uppercase tracking-widest text-track-red mb-8 border-b border-track-red/30 pb-4 text-center">
+            Presidential Chronology
+          </h2>
+          <ul className="flex flex-col gap-4">
+            {presidentialChronology.map(item => (
+              <li key={item.years} className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-8 border-b border-carbon-black/10 pb-3 last:border-0 last:pb-0">
+                <span className="text-track-red font-secondary text-lg md:text-xl w-32 shrink-0">{item.years}</span>
+                <span className="text-carbon-black font-light text-base md:text-xl">{item.name}</span>
+              </li>
+            ))}
+          </ul>
+        </motion.div>
       </section>
 
       {/* Current Support Section */}

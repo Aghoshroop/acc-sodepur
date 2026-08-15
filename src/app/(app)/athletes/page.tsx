@@ -32,10 +32,16 @@ const imageMap: Record<string, string> = {
   'subham': '/images/athletes/subhampal.jpg',
   'surya': '/images/athletes/surya.jpg',
   'tarun': '/images/athletes/tarun.jpg',
-  'tiyasha': '/images/athletes/tiyasha.jpg',
-  'tiasha': '/images/athletes/tiyasha.jpg',
+  'tiyasha': '/images/athletes/tiyasa.jpg',
+  'tiasha': '/images/athletes/tiyasa.jpg',
+  'tiasa': '/images/athletes/tiyasa.jpg',
   'trishna': '/images/athletes/trishna.jpg',
   'triya': '/images/athletes/triya.jpg',
+  'abhishek': '/images/athletes/abhishek.png',
+  'enjamul': '/images/athletes/enjamul.png',
+  'aniket': '/images/athletes/aniket.png',
+  'bijoy': '/images/athletes/bijoy.png',
+  'priyanka': '/images/athletes/priyanka.png',
 };
 
 const getAthleteImage = (name: string) => {
@@ -215,70 +221,95 @@ export default async function AthletesPage() {
     }
   });
 
-  // Event priority helper for sorting
-  const getEventPriority = (eventStr: string | undefined): number => {
-    if (!eventStr) return 99;
-    const lower = eventStr.toLowerCase();
-    
-    // 1. Combined Events
-    if (lower.includes('decathlon') || lower.includes('heptathlon')) return 1;
-    // 2. Sprints
-    if (lower.includes('100m') || lower.includes('200m') || lower.includes('400m') || lower.includes('sprint')) return 2;
-    // 3. 800m / Middle Distance
-    if (lower.includes('800m') || lower.includes('middle distance')) return 3;
-    // 4. Hurdles
-    if (lower.includes('hurdle')) return 4;
-    // 5. Jumpers
-    if (lower.includes('jump') || lower.includes('vault')) return 5;
-    // 6. Throwers
-    if (lower.includes('shot put') || lower.includes('discus') || lower.includes('javelin') || lower.includes('throw')) return 6;
-    
-    return 99; // Default
-  };
+  const REQUIRED_ATHLETES = [
+    "Bidisha Kundu",
+    "Shikhar Rai",
+    "Aviroop Ghosh",
+    "Nupur Pandey",
+    "Sayan Karmakar",
+    "Satayu Mondal",
+    "Sisant Das",
+    "Sayan Biswas",
+    "Rajdip Pal",
+    "Meghadri Saha",
+    "Genia Mondal",
+    "Tiasa Chakraborty",
+    "Aishanya Priyadarshi",
+    "Dipti Rajbanshi",
+    "Anusha Gayen",
+    "Aniket Roy",
+    "Sanayoj Mondal",
+    "Tarun Bauri",
+    "Surya Burman",
+    "Abhishek Mondal",
+    "Bijoy Sarkar",
+    "Subham Paul",
+    "Suvam Das",
+    "Debanjana Dey",
+    "Shivam Sasmal",
+    "Priyanka Saha",
+    "Triya Das",
+    "Rupsha Banik",
+    "Rupak Sanyal",
+    "Avra Biswas",
+    "Enjamul Hossain",
+    "Sounak Chowlia"
+  ];
 
-  const performanceOrder = ['bidisha', 'shikhar', 'aviroop', 'sayan karmakar', 'rajdip'];
+  const orderedAthletes = REQUIRED_ATHLETES.map((name) => {
+    const lowerName = name.toLowerCase();
+    
+    // First try exact match from uniqueAthletesMap
+    let match = uniqueAthletesMap.get(lowerName);
+    
+    // If not found, try includes
+    if (!match) {
+      const entry = Array.from(uniqueAthletesMap.entries()).find(([key]) => key.includes(lowerName) || lowerName.includes(key));
+      if (entry) match = entry[1];
+    }
+    
+    let finalEvent = match ? match.event : "TBA";
+    if (lowerName.includes("abhishek")) finalEvent = "Shot Put & Discus";
+    if (lowerName.includes("tiasa")) finalEvent = "100m Hurdles";
+    if (lowerName.includes("enjamul")) finalEvent = "100m & 200m";
+    if (lowerName.includes("aniket")) finalEvent = "Long Jump & Triple Jump";
+    if (lowerName.includes("bijoy")) finalEvent = "Long Jump & Triple Jump";
+    if (lowerName.includes("priyanka")) finalEvent = "Heptathlon";
 
-  const deduplicatedAthletes = Array.from(uniqueAthletesMap.values())
-    .sort((a, b) => {
-      const priorityA = getEventPriority(a.event);
-      const priorityB = getEventPriority(b.event);
-      
-      // Primary Sort: Event Type
-      if (priorityA !== priorityB) {
-        return priorityA - priorityB;
-      }
-      
-      const aLower = a.name.toLowerCase();
-      const bLower = b.name.toLowerCase();
-      
-      const aIndex = performanceOrder.findIndex(name => aLower.includes(name));
-      const bIndex = performanceOrder.findIndex(name => bLower.includes(name));
-      
-      // Secondary Sort: Performance Order (if explicitly listed)
-      if (aIndex !== -1 && bIndex !== -1) return aIndex - bIndex;
-      if (aIndex !== -1) return -1;
-      if (bIndex !== -1) return 1;
-      
-      // Tertiary Sort: Alphabetical
-      return a.name.localeCompare(b.name);
-    });
+    if (match) {
+      return { ...match, name, event: finalEvent || "TBA" };
+    } else {
+      // Create a placeholder athlete
+      return {
+        id: lowerName.replace(/\s+/g, '-'),
+        name: name,
+        event: finalEvent,
+        description: "",
+        category: "TBA"
+      } as Athlete;
+    }
+  });
 
   // 2. Generate categories
   const categories = [];
   
-  const allItems = deduplicatedAthletes
-    .map(a => ({
-      id: a.id || a.name,
-      title: a.name,
-      subtitle: a.event,
-      description: a.description,
-      metric: a.metric,
-      image: getAthleteImage(a.name),
-      imagePosition: a.name.toLowerCase().includes("sayan karmakar") ? "object-[center_10%]" : "object-center"
-    }));
+  const allItems = orderedAthletes
+    .map(a => {
+      const imgPath = getAthleteImage(a.name);
+      return {
+        id: a.id || a.name,
+        title: a.name,
+        subtitle: a.event,
+        description: a.description,
+        metric: a.metric,
+        // Provide a placeholder path so the image box is still rendered
+        image: imgPath || '/images/athletes/placeholder.jpg',
+        imagePosition: a.name.toLowerCase().includes("sayan karmakar") ? "object-[center_10%]" : a.name.toLowerCase().includes("abhishek") ? "object-top" : "object-center"
+      };
+    });
 
   if (allItems.length > 0) {
-    categories.push({ name: "Elite Roster", items: allItems });
+    categories.push({ name: "Our National Participants", items: allItems });
   }
 
   return (

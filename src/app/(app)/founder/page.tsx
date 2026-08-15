@@ -1,8 +1,8 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import Image from 'next/image';
-import { motion, useScroll } from 'framer-motion';
+import { motion, useScroll, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import HierarchicalProteges from '@/features/founder/components/HierarchicalProteges';
 import MobileFounderHero from '@/features/founder/components/mobile/MobileFounderHero';
@@ -189,62 +189,66 @@ type Chapter = {
   bgImage?: string;
   containImage?: boolean;
   noCard?: boolean;
+  gallery?: { src: string; caption: string }[];
 };
 
 const CHAPTERS: Chapter[] = [
   {
-    chapter: '01 / The Origin',
-    title: 'A Twist Of Fate',
+    chapter: '01 / The Origin & Foundation',
+    title: 'Building The Foundation',
     bgImage: '/images/acc_history/1st-acc.jpg',
     content: (
-      <div className="space-y-3 md:space-y-6 text-sm md:text-xl">
-        <p>In the late 1960s, a 17-year-old Kuntal Roy was a promising footballer dreaming of playing professionally. During a match, attempting to score a goal, he fell and suffered a horrific ankle fracture.</p>
-        <p>When doctors examined the X-rays, they discovered an underlying bone tumor. <span className="text-chalk-white font-normal">"If it went undetected, we would have had to chop off his leg when he turned 25,"</span> they warned. The fracture had inadvertently saved his life.</p>
-        <p>Unable to play competitive football ever again, his obsession found a new outlet. At just 17, he shifted his focus entirely to coaching.</p>
+      <div className="space-y-4 xl:space-y-6 text-sm md:text-base xl:text-xl">
+        <p>In the late 1960s, a 17-year-old Kuntal Roy fell during a football match and suffered a horrific ankle fracture. Doctors discovered an underlying bone tumor, warning that the fracture inadvertently saved his life. Unable to play competitive football ever again, his obsession found a new outlet.</p>
+        <p>Driven by an insatiable curiosity about biomechanics, he pursued higher education rigorously in Germany, bringing back scientific approaches that would revolutionize Indian athletics.</p>
+        <p>ACC didn't start with grand infrastructure. It started with a stolen Adidas football and a group of Bangladeshi refugee boys. Operating out of a muddy field in Sodepur, Roy rented a tiny kitchen for Rs 5 a month as their club room. Today, ACC hosts over 200 athletes.</p>
       </div>
     ),
-    image: '/images/acc_history/98.jpg'
+    image: '/images/founder/founder_adult.png',
+    containImage: true,
+    gallery: [
+      { src: '/images/founder/founder_boy.png', caption: 'The Young Kuntal Roy' },
+      { src: '/images/founder/founder_adult.png', caption: 'Building ACC' },
+      { src: '/images/founder/founder During PHD time Germany.png', caption: 'PhD in Germany' }
+    ]
   },
   {
-    chapter: '02 / The Foundation',
-    title: 'Building The Foundation',
-    bgImage: '/images/acc_history/old-group-photo.jpg',
+    chapter: '02 / Global Impact & Laurels',
+    title: 'The Architect of Olympians',
+    bgImage: '/images/founder/founder With his trainee Soma Biswas after Asian Games - Heptathlon Silver Medal.png',
     content: (
-      <div className="space-y-3 md:space-y-6 text-sm md:text-xl">
-        <p>ACC didn't start with funding or grand infrastructure. It started with a stolen Adidas football.</p>
-        <p>A group of malnourished Bangladeshi refugee boys tried to steal Roy's ball. When confronted, they confessed they just wanted to play but didn't know how. Seeing their fierce will, Roy told them, <span className="font-medium">"I'll teach you."</span></p>
-        <p>Operating out of a muddy field in Sodepur, Roy rented a tiny kitchen for Rs 5 a month as their club room. Today, ACC hosts over 200 athletes, remaining a non-profit driven strictly by passion.</p>
+      <div className="space-y-4 xl:space-y-6 text-sm md:text-base xl:text-xl">
+        <p>Over the years, his path crossed with some of the greatest legends of athletics. From sharing moments with the legendary Milkha Singh to exchanging knowledge with British sprinting icons Linford Christie and Darren Campbell.</p>
+        <p>The pinnacle of his coaching often materialized on the grandest continental stages. He is celebrated for personally producing three Olympic athletes, seeing his star trainee, Soma Biswas, win a monumental Silver Medal at the Asian Games.</p>
       </div>
     ),
-    image: '/images/acc_history/1st-building.jpg'
+    image: '/images/founder/founder with his 2 olympian.png',
+    containImage: true,
+    gallery: [
+      { src: '/images/founder/founder With Milkha Singh.png', caption: 'With Milkha Singh' },
+      { src: '/images/founder/founder with his 2 olympian.png', caption: 'With his Olympians' },
+      { src: '/images/founder/fou der With Lindford Christi and Darren Campbell.png', caption: 'Linford Christie & Darren Campbell' },
+      { src: '/images/founder/founder With his trainee Soma Biswas after Asian Games - Heptathlon Silver Medal.png', caption: 'Soma Biswas (Asian Games)' }
+    ]
   },
   {
-    chapter: '03 / The Athlete Factory',
-    title: 'Data, Tech & Sweat',
-    bgImage: '/images/TheAthleteFactory.webp',
-    content: (
-      <div className="space-y-3 md:space-y-6 text-sm md:text-xl">
-        <p>Long before it was standard, Roy used multiple GoPros to dissect elite athletes' joint movements and stride lengths frame-by-frame.</p>
-        <p>Using targeted recovery testing machinery in his lab, he measures muscle fatigue to ensure an athlete is biologically ready before the next session.</p>
-        <p>His legendary "Black Book" contains meticulous historic records. He can pull up the exact day-by-day load charts that Olympians like Soma Biswas<OlympianTag variant="text" /> and Sanjay Rai<OlympianTag variant="text" /> executed in the year 2000.</p>
-      </div>
-    ),
-    image: '/images/acc_history/32.jpg'
-  },
-  {
-    chapter: '04 / Rebel & Mentor',
+    chapter: '03 / Legacy & Present',
     title: 'The Reluctant Dronacharya',
+    bgImage: '/images/campus/campus-hero-evolution.jpg',
     content: (
-      <div className="space-y-3 md:space-y-6 text-sm md:text-xl">
+      <div className="space-y-4 xl:space-y-6 text-sm md:text-base xl:text-xl">
+        <p>Behind every great visionary is an unwavering support system. His wife stood by him through the grueling decades of building the camp from nothing, sacrificing personal comforts to ensure the athletes always had what they needed to succeed.</p>
         <p>In 2011, having produced three Olympians, Roy won the Dronacharya Award. Disillusioned with the system, he had refused to sign the application. His son and SAI officials filed it behind his back.</p>
-        <p>An outspoken critic, he publicly condemns schools that issue "show-cause notices" to athletes missing class, fighting fiercely for a culture that respects track and field.</p>
         <p className="italic text-chalk-white mt-8 border-l-2 border-track-red pl-4">"The award is a burden of expectation. My true reward is seeing my students win."</p>
       </div>
     ),
-    image: '/images/51681-kuntal-roy.png',
-    bgImage: '/images/campus/campus-hero-evolution.jpg',
+    image: '/images/founder/founder_now.png',
     containImage: true,
-    noCard: true
+    noCard: true,
+    gallery: [
+      { src: '/images/founder/with his wife.png', caption: 'His Unwavering Pillar' },
+      { src: '/images/founder/founder_now.png', caption: 'The Reluctant Dronacharya' }
+    ]
   }
 ];
 
@@ -255,6 +259,9 @@ export default function FounderPage() {
     target: timelineRef,
     offset: ["start center", "end center"]
   });
+
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedCaption, setSelectedCaption] = useState<string | null>(null);
 
   return (
     <main className="w-full overflow-x-hidden bg-chalk-white text-carbon-black selection:bg-track-red selection:text-chalk-white">
@@ -327,7 +334,7 @@ export default function FounderPage() {
           return (
             <div 
               key={chapter.title}
-              className="sticky top-0 h-screen w-full flex items-center justify-center bg-chalk-white"
+              className="sticky top-0 h-screen w-full bg-chalk-white overflow-y-auto overflow-x-hidden flex flex-col"
             >
               {/* Background Image per section */}
               <motion.div 
@@ -348,70 +355,101 @@ export default function FounderPage() {
                 <div className="absolute inset-0 bg-gradient-to-r from-chalk-white/95 via-chalk-white/60 to-chalk-white/10" />
               </motion.div>
 
-              <div className="relative z-10 w-full max-w-[1600px] mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-12 md:gap-24">
+              <div className="relative z-10 w-full max-w-[1600px] mx-auto px-6 lg:px-12 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 xl:gap-24 my-auto py-12 xl:py-24">
                 
                 {/* Text Content */}
-                <div className="w-full md:w-1/2">
+                <div className="w-full lg:w-1/2">
                   <motion.div
                     initial={{ opacity: 0, x: -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ margin: "-20%" }}
                     transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
                   >
-                    <span className="text-track-red text-xs md:text-base tracking-[0.3em] uppercase mb-2 md:mb-4 block">
+                    <span className="text-track-red text-xs md:text-sm lg:text-base tracking-[0.3em] uppercase mb-2 lg:mb-4 block">
                       {chapter.chapter}
                     </span>
-                    <h3 className="text-3xl sm:text-4xl md:text-7xl font-primary uppercase tracking-tight mb-4 md:mb-8">
+                    <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-7xl font-primary uppercase tracking-tight mb-4 lg:mb-8">
                       {chapter.title}
                     </h3>
-                    <div className="text-carbon-black/70 mb-6 md:mb-10 max-w-lg font-light leading-relaxed">
+                    <div className="text-carbon-black/70 mb-4 lg:mb-8 xl:mb-10 max-w-lg font-light leading-relaxed">
                       {chapter.content}
                     </div>
                   </motion.div>
                 </div>
 
                 {/* Right side Decorative Image container */}
-                <div className="w-full md:w-1/2 hidden md:block">
+                <div className="w-full lg:w-1/2 hidden lg:block">
                   <motion.div
-                    className={`relative w-full max-w-md ml-auto ${chapter.noCard ? '' : 'aspect-[3/4]'}`}
-                    initial={{ opacity: 0, scale: 0.8 }}
+                    className="relative w-full max-w-2xl mx-auto lg:ml-auto"
+                    initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ margin: "-20%" }}
                     transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                   >
-                    {!chapter.noCard && (
-                      <div className="absolute inset-0 border border-carbon-black/10 transform translate-x-4 translate-y-4" />
+                    {chapter.gallery ? (
+                      <div className="grid grid-cols-2 gap-4 items-center">
+                        <div className="space-y-4 xl:space-y-6">
+                           {chapter.gallery[0] && (
+                             <div className="group cursor-pointer" onClick={() => { setSelectedImage(chapter.gallery![0].src); setSelectedCaption(chapter.gallery![0].caption); }}>
+                               <div className="relative w-full overflow-hidden shadow-xl shadow-carbon-black/20 mb-3">
+                                 <Image src={chapter.gallery[0].src} alt={chapter.gallery[0].caption} width={600} height={800} className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
+                               </div>
+                               <p className="text-[10px] text-carbon-black/60 uppercase tracking-widest text-center">{chapter.gallery[0].caption}</p>
+                             </div>
+                           )}
+                           {chapter.gallery[2] && (
+                             <div className="group cursor-pointer" onClick={() => { setSelectedImage(chapter.gallery![2].src); setSelectedCaption(chapter.gallery![2].caption); }}>
+                               <div className="relative w-full overflow-hidden shadow-xl shadow-carbon-black/20 mb-3">
+                                 <Image src={chapter.gallery[2].src} alt={chapter.gallery[2].caption} width={600} height={800} className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
+                               </div>
+                               <p className="text-[10px] text-carbon-black/60 uppercase tracking-widest text-center">{chapter.gallery[2].caption}</p>
+                             </div>
+                           )}
+                        </div>
+                        <div className="space-y-4 xl:space-y-6 pt-8 xl:pt-16">
+                           {chapter.gallery[1] && (
+                             <div className="group cursor-pointer" onClick={() => { setSelectedImage(chapter.gallery![1].src); setSelectedCaption(chapter.gallery![1].caption); }}>
+                               <div className="relative w-full overflow-hidden shadow-xl shadow-carbon-black/20 mb-3">
+                                 <Image src={chapter.gallery[1].src} alt={chapter.gallery[1].caption} width={600} height={800} className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
+                               </div>
+                               <p className="text-[10px] text-carbon-black/60 uppercase tracking-widest text-center">{chapter.gallery[1].caption}</p>
+                             </div>
+                           )}
+                           {chapter.gallery[3] && (
+                             <div className="group cursor-pointer" onClick={() => { setSelectedImage(chapter.gallery![3].src); setSelectedCaption(chapter.gallery![3].caption); }}>
+                               <div className="relative w-full overflow-hidden shadow-xl shadow-carbon-black/20 mb-3">
+                                 <Image src={chapter.gallery[3].src} alt={chapter.gallery[3].caption} width={600} height={800} className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
+                               </div>
+                               <p className="text-[10px] text-carbon-black/60 uppercase tracking-widest text-center">{chapter.gallery[3].caption}</p>
+                             </div>
+                           )}
+                        </div>
+                      </div>
+                    ) : (
+                      <div className={`relative w-full max-w-md ml-auto ${chapter.noCard ? '' : 'aspect-[3/4]'}`}>
+                        {!chapter.noCard && (
+                          <div className="absolute inset-0 border border-carbon-black/10 transform translate-x-4 translate-y-4" />
+                        )}
+                        <div className={`relative w-full overflow-hidden ${chapter.noCard ? '' : 'h-full border border-carbon-black/5 bg-chalk-white'}`}>
+                          {chapter.noCard ? (
+                            <Image
+                              src={chapter.image}
+                              alt={`${chapter.title} Preview`}
+                              width={800}
+                              height={1200}
+                              className="w-full h-auto hover:scale-105 transition-all duration-700 opacity-90 z-10"
+                            />
+                          ) : (
+                            <Image
+                              src={chapter.image}
+                              alt={`${chapter.title} Preview`}
+                              fill
+                              className={`${chapter.containImage ? 'object-contain' : 'object-cover'} hover:scale-105 transition-all duration-700 opacity-90 z-10`}
+                            />
+                          )}
+                        </div>
+                      </div>
                     )}
-                    <div className={`relative w-full overflow-hidden ${chapter.noCard ? '' : 'h-full border border-carbon-black/5 bg-chalk-white'}`}>
-                      {!chapter.noCard && chapter.bgImage && (
-                        <>
-                          <Image
-                            src={chapter.bgImage}
-                            alt={`${chapter.title} Background`}
-                            fill
-                            className="object-cover opacity-10"
-                          />
-                          <div className="absolute inset-0 bg-chalk-white/60" />
-                        </>
-                      )}
-                      
-                      {chapter.noCard ? (
-                        <Image
-                          src={chapter.image}
-                          alt={`${chapter.title} Preview`}
-                          width={800}
-                          height={1200}
-                          className="w-full h-auto hover:scale-105 transition-all duration-700 opacity-90 z-10"
-                        />
-                      ) : (
-                        <Image
-                          src={chapter.image}
-                          alt={`${chapter.title} Preview`}
-                          fill
-                          className={`${chapter.containImage ? 'object-contain' : 'object-cover'} hover:scale-105 transition-all duration-700 opacity-90 z-10`}
-                        />
-                      )}
-                    </div>
                   </motion.div>
                 </div>
               </div>
@@ -650,6 +688,38 @@ export default function FounderPage() {
 
         <MobileFounderOutro awards={AWARDS} press={PRESS} />
       </div>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-carbon-black/95 p-4 md:p-12 cursor-zoom-out"
+            onClick={() => {
+              setSelectedImage(null);
+              setSelectedCaption(null);
+            }}
+          >
+            <div className="relative w-full max-w-5xl h-full flex flex-col items-center justify-center">
+              <div className="relative w-full h-[85vh]">
+                <Image
+                  src={selectedImage}
+                  alt={selectedCaption || "Expanded image"}
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              {selectedCaption && (
+                <p className="mt-4 text-chalk-white text-sm md:text-base uppercase tracking-widest text-center">
+                  {selectedCaption}
+                </p>
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }

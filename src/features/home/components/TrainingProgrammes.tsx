@@ -33,7 +33,7 @@ const PROGRAMMES = [
     title: 'Throws',
     subtitle: 'Power & Precision',
     description: 'Explosive power development and technical mastery for shot put, discus, and javelin.',
-    image: '/images/throw.jpg'
+    image: '/images/throw.png'
   },
   {
     title: 'Decathlon',
@@ -72,9 +72,9 @@ export default function TrainingProgrammes() {
             viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-xs md:text-sm tracking-[0.2em] uppercase opacity-50 mb-3 md:mb-4 text-carbon-black">Disciplines</h2>
+            <h2 className="text-xs md:text-sm tracking-[0.2em] uppercase opacity-50 mb-3 md:mb-4 text-carbon-black">Our Expertise</h2>
             <h3 className="text-4xl md:text-5xl font-primary uppercase tracking-wide text-carbon-black">
-              Training <br className="hidden md:block" />Programmes
+              Athletic <br className="hidden md:block" />Disciplines
             </h3>
           </motion.div>
           <motion.div
@@ -83,7 +83,7 @@ export default function TrainingProgrammes() {
             viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <Link href="/programmes" className="text-xs tracking-[0.2em] uppercase text-carbon-black hover:text-track-red transition-colors pb-2 border-b border-carbon-black/20">
+            <Link href="/training/methodology" className="text-xs tracking-[0.2em] uppercase text-carbon-black hover:text-track-red transition-colors pb-2 border-b border-carbon-black/20">
               View All Programmes
             </Link>
           </motion.div>
@@ -92,14 +92,14 @@ export default function TrainingProgrammes() {
 
       <div className="relative z-10 w-full overflow-hidden pb-12 md:pb-0">
         <motion.div 
-          className="flex gap-6 md:gap-8 items-start w-max pr-6 md:pr-8"
+          className="flex gap-4 md:gap-8 items-start w-max pr-6 md:pr-8"
           animate={{ x: [0, "-50%"] }}
           transition={{ duration: 40, ease: "linear", repeat: Infinity }}
         >
           {[...PROGRAMMES, ...PROGRAMMES].map((prog, i) => (
             <div 
               key={i}
-              className="flex flex-col gap-3 md:gap-6 group cursor-pointer w-[240px] md:w-[350px] shrink-0"
+              className="flex flex-col gap-3 md:gap-6 group cursor-pointer w-[180px] md:w-[350px] shrink-0"
             >
               <div className="relative w-full overflow-hidden bg-carbon-black/5 rounded-2xl md:rounded-none aspect-square md:!aspect-[4/5]">
                 <Image

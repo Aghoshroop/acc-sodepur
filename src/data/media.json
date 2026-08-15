@@ -87,6 +87,38 @@
       "date": "2018-09-25",
       "description": "Press clipping acknowledging the enduring legacy of the athletic camp.",
       "imageUrl": "/images/paper-cuts/497498356_3944346232519426_9089293181663779532_n.jpg"
+    },
+    {
+      "id": "press-12",
+      "title": "Ai Samay Feature",
+      "publisher": "Ai Samay",
+      "date": "2024-01-15",
+      "description": "Featured coverage of the Athletic Coaching Camp in Ai Samay.",
+      "imageUrl": "/images/paper-cuts/acc_ai samay.png"
+    },
+    {
+      "id": "press-13",
+      "title": "Elevated Ramp Inauguration",
+      "publisher": "Local Press",
+      "date": "2024-02-10",
+      "description": "Inauguration of the new elevated training ramp at the Sodepur facility.",
+      "imageUrl": "/images/paper-cuts/elivated ramp opening.png"
+    },
+    {
+      "id": "press-14",
+      "title": "Athlete Mohur Highlighted",
+      "publisher": "Local Press",
+      "date": "2024-03-20",
+      "description": "Mohur making headlines for outstanding athletic achievements.",
+      "imageUrl": "/images/paper-cuts/mohur in paper.png"
+    },
+    {
+      "id": "press-15",
+      "title": "New Synthetic Track Unveiled",
+      "publisher": "Local Press",
+      "date": "2024-04-05",
+      "description": "ACC Sodepur inaugurates the region's first private high-performance synthetic athletic track.",
+      "imageUrl": "/images/paper-cuts/new_synthetic_track in acc.png"
     }
   ],
   "social_posts": [

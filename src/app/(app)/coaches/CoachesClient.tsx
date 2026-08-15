@@ -27,7 +27,7 @@ export default function CoachesClient() {
     { 
       name: "Mr. Sanjay Rai", 
       role: "Olympian & NIS Coach", 
-      image: "/images/sanjay-da.JPG", 
+      image: "/images/administration/sanjay-coach.png", 
       desc: "An Olympian and NIS certified coach, bringing decades of elite athletic experience to the track.",
       imageClass: "object-cover object-top w-full h-full"
     }
@@ -165,21 +165,21 @@ export default function CoachesClient() {
                   >
                     <h3 className="text-2xl font-primary uppercase tracking-widest border-b-2 border-track-red inline-block pb-2 mb-8 drop-shadow-md">International Certifications</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                      <div className="bg-chalk-white/5 p-8 border border-chalk-white/10 backdrop-blur-md rounded-sm hover:bg-chalk-white/10 transition-colors">
-                        <h4 className="font-primary text-xl uppercase mb-4 text-track-red">World Athletics CECS Level 3</h4>
-                        <p className="text-sm font-light text-chalk-white/80">Passed at NSNIS, Patiala, specializing in Combined Events & Jumps. The first coach from West Bengal to achieve this tier, representing elite-level international coaching standards.</p>
+                      <div className="bg-carbon-black/70 p-8 border border-chalk-white/10 backdrop-blur-md rounded-sm hover:bg-carbon-black/90 transition-colors">
+                        <h4 className="font-primary text-xl uppercase mb-4 text-track-red drop-shadow-md">World Athletics CECS Level 3 Coach</h4>
+                        <p className="text-sm font-light text-chalk-white/90">Passed at NSNIS, Patiala, specializing in Combined Events & Jumps. The first coach from West Bengal to achieve this tier, representing elite-level international coaching standards.</p>
                       </div>
-                      <div className="bg-chalk-white/5 p-8 border border-chalk-white/10 backdrop-blur-md rounded-sm hover:bg-chalk-white/10 transition-colors">
-                        <h4 className="font-primary text-xl uppercase mb-4 text-track-red">EXOS High Performance Specialist</h4>
-                        <p className="text-sm font-light text-chalk-white/80">Certified XPS through EXOS (USA), a premier global authority in integrated performance training and athlete rehabilitation.</p>
+                      <div className="bg-carbon-black/70 p-8 border border-chalk-white/10 backdrop-blur-md rounded-sm hover:bg-carbon-black/90 transition-colors">
+                        <h4 className="font-primary text-xl uppercase mb-4 text-track-red drop-shadow-md">EXOS High Performance Specialist</h4>
+                        <p className="text-sm font-light text-chalk-white/90">Certified XPS through EXOS (USA), a premier global authority in integrated performance training and athlete rehabilitation.</p>
                       </div>
-                      <div className="bg-chalk-white/5 p-8 border border-chalk-white/10 backdrop-blur-md rounded-sm hover:bg-chalk-white/10 transition-colors">
-                        <h4 className="font-primary text-xl uppercase mb-4 text-track-red">ISAK Certification</h4>
-                        <p className="text-sm font-light text-chalk-white/80">International Society for the Advancement of Kinanthropometry (ISAK Level 1) from Germany. Expert in body composition mapping and anthropometric scaling.</p>
+                      <div className="bg-carbon-black/70 p-8 border border-chalk-white/10 backdrop-blur-md rounded-sm hover:bg-carbon-black/90 transition-colors">
+                        <h4 className="font-primary text-xl uppercase mb-4 text-track-red drop-shadow-md">ISAK Certification</h4>
+                        <p className="text-sm font-light text-chalk-white/90">International Society for the Advancement of Kinanthropometry (ISAK Level 1) from Germany. Expert in body composition mapping and anthropometric scaling.</p>
                       </div>
-                      <div className="bg-chalk-white/5 p-8 border border-chalk-white/10 backdrop-blur-md rounded-sm hover:bg-chalk-white/10 transition-colors">
-                        <h4 className="font-primary text-xl uppercase mb-4 text-track-red">Rehab Trainer Essentials</h4>
-                        <p className="text-sm font-light text-chalk-white/80">Formally certified in elite athletic rehabilitation methods from Australia, managing on-field injury prevention and biomechanical correction.</p>
+                      <div className="bg-carbon-black/70 p-8 border border-chalk-white/10 backdrop-blur-md rounded-sm hover:bg-carbon-black/90 transition-colors">
+                        <h4 className="font-primary text-xl uppercase mb-4 text-track-red drop-shadow-md">Rehab Trainer Essentials</h4>
+                        <p className="text-sm font-light text-chalk-white/90">Formally certified in elite athletic rehabilitation methods from Australia, managing on-field injury prevention and biomechanical correction.</p>
                       </div>
                     </div>
                   </motion.div>
@@ -190,23 +190,19 @@ export default function CoachesClient() {
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.8, delay: 0.4 }}
                   >
-                    <h3 className="text-2xl font-primary uppercase tracking-widest border-b-2 border-track-red inline-block pb-2 mb-8 drop-shadow-md">National Profile & Multi-Sport</h3>
+                    <h3 className="text-2xl font-primary uppercase tracking-widest border-b-2 border-track-red inline-block pb-2 mb-8 drop-shadow-md">National Profile</h3>
                     <div className="space-y-8">
-                      <div className="border-l-[3px] border-track-red/70 pl-6 bg-carbon-black/20 p-4 rounded-r-md backdrop-blur-sm">
-                        <h4 className="font-primary text-xl uppercase mb-2">Athletics Federation of India (AFI)</h4>
-                        <p className="font-light text-chalk-white/80">Registered and certified active coach. Primary specializations in Combined Events (Decathlon, Heptathlon, Pentathlon), Hurdles, Sprint disciplines, and elite Sports S&C.</p>
+                      <div className="border-l-[3px] border-track-red/70 pl-6 bg-carbon-black/70 p-4 rounded-r-md backdrop-blur-md">
+                        <h4 className="font-primary text-xl uppercase mb-2 text-chalk-white drop-shadow-md">Athletics Federation of India (AFI)</h4>
+                        <p className="font-light text-chalk-white/90">Registered and certified active coach. Primary specializations in Combined Events, Hurdles, Sprint disciplines, and elite Sports S&C.</p>
                       </div>
-                      <div className="border-l-[3px] border-track-red/70 pl-6 bg-carbon-black/20 p-4 rounded-r-md backdrop-blur-sm">
-                        <h4 className="font-primary text-xl uppercase mb-2">Football - Bhawanipur FC</h4>
-                        <p className="font-light text-chalk-white/80">Strength & Conditioning Coach and Fitness Trainer for Bhawanipur FC (IFA Shield and CFL). Designed periodized regimens for elite players like Pronoy Halder.</p>
+                      <div className="border-l-[3px] border-track-red/70 pl-6 bg-carbon-black/70 p-4 rounded-r-md backdrop-blur-md">
+                        <h4 className="font-primary text-xl uppercase mb-2 text-chalk-white drop-shadow-md">Football S&C Coach</h4>
+                        <p className="font-light text-chalk-white/90">Strength & Conditioning Coach and Fitness Trainer for East Bengal, Bhawanipur FC, and Mohammedan Sporting for multiple years. Personal strength and conditioning coach for multiple footballers of the Indian National Team, including Pronay Halder, Sarthak Golui, Debjit Majumder, Pritam Kotal, Sourav Das, Arindam Bhattacharya, Ankit Mukherjee, Shilton Paul, Md. Rafique, Suvam Sen, Rahim Ali, and many more.</p>
                       </div>
-                      <div className="border-l-[3px] border-track-red/70 pl-6 bg-carbon-black/20 p-4 rounded-r-md backdrop-blur-sm">
-                        <h4 className="font-primary text-xl uppercase mb-2">Cricket - CAB S&C Protocols</h4>
-                        <p className="font-light text-chalk-white/80">Works with domestic cricketers out of Sodepur, engineering throwing-velocity training, lateral power output metrics, and explosive rotational acceleration drills.</p>
-                      </div>
-                      <div className="border-l-[3px] border-track-red/70 pl-6 bg-carbon-black/20 p-4 rounded-r-md backdrop-blur-sm">
-                        <h4 className="font-primary text-xl uppercase mb-2">Tennis Conditioning</h4>
-                        <p className="font-light text-chalk-white/80">Elite Personal Performance Coach for Shivika Burman, active member of the WTA, Fed Cup Indian Team, and Asian Games Indian Women's Tennis squad.</p>
+                      <div className="border-l-[3px] border-track-red/70 pl-6 bg-carbon-black/70 p-4 rounded-r-md backdrop-blur-md">
+                        <h4 className="font-primary text-xl uppercase mb-2 text-chalk-white drop-shadow-md">Multi Sports S&C Coach</h4>
+                        <p className="font-light text-chalk-white/90">Extensive experience designing elite physical preparation and throwing-velocity training programs across multiple disciplines, including Badminton, Tennis, Table Tennis, and Cricket.</p>
                       </div>
                     </div>
                   </motion.div>

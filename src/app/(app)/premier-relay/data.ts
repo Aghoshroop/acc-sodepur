@@ -27,7 +27,7 @@ export const franchises: Franchise[] = [
     color: "#FF0000", // Full Red
     description: "Bringing incredible endurance and a bounding stride, the Kangaroos excel at maintaining top speed over long distances and tiring out their opponents.",
     historicalContext: "2000 OLYMPIC GAMES, Sydney, Australia. Our two athletes SOMA BISWAS & SANJAY RAI participated in this prestigious Olympic Games in Heptathlon & Long Jump respectively.",
-    owners: ["TAPAN GHOSH", "DIPAK BANERJEE", "BISWAJIT ROY", "ALOK DASGUPTA", "CHAITALI DEY", "PRADIP DAS", "SANKAR DUTTA", "MONTU BHOWMIK", "BHOLA DEY"],
+    owners: ["TBA"],
   },
   {
     id: "horses",
@@ -37,7 +37,7 @@ export const franchises: Franchise[] = [
     color: "#FFD700", // Yellow
     description: "Pure horsepower and unyielding stamina define the Horses. They are the workhorses of the track, pushing through the toughest conditions to secure the win.",
     historicalContext: "2001 World Athletics Championship, Edmonton, Canada. Our athlete SANJAY Kr. RAI participated in this World Championship in Long Jump.",
-    owners: ["SUBHRAJA ROY", "AVIJIT PHANI", "MRITYUNJAY SAHA", "PROLOY SEN", "TAPAS CHAKRABORTY", "SUDIP GHOSH"],
+    owners: ["TBA"],
   },
   {
     id: "phoenix",
@@ -47,7 +47,7 @@ export const franchises: Franchise[] = [
     color: "#8A2BE2", // Violet
     description: "Rising from the ashes in the final stretch, the Phoenix team is known for their miraculous comebacks and unmatched sprinting power as the anchor leg.",
     historicalContext: "2004 OLYMPIC GAMES, Athens, Greece. Our athlete SOMA BISWAS participated in this prestigious Olympic Games in Heptathlon.",
-    owners: ["BARUN MONDAL", "MOLOY GANGULY", "RINA MONDAL", "BISWAJIT KUNDU", "AVIJIT GHATAK", "HEMANTA MONDAL"],
+    owners: ["TBA"],
   },
   {
     id: "crocodiles",
@@ -67,7 +67,7 @@ export const franchises: Franchise[] = [
     color: "#FFA500", // Orange
     description: "Known for their explosive starts and relentless drive, the Dragons dominate the early legs of every race, setting a blistering pace for the competition.",
     historicalContext: "2008 OLYMPIC GAMES, Beijing, China. Our athlete SUSMITA SINGHA ROY participated in this prestigious OLYMPIC GAMES in Heptathlon.",
-    owners: ["NISIT DEY", "MANAB CHATTERJEE", "SATPATI PAL"],
+    owners: ["TBA"],
   },
   {
     id: "eagles",
@@ -78,7 +78,7 @@ export const franchises: Franchise[] = [
     secondaryColor: "#FFFFFF", // White
     description: "Precision, strategy, and flawless baton exchanges are the hallmarks of the Eagles. They soar past competitors in the crucial middle sections of the relay.",
     historicalContext: "2009 WORLD ATHLETICS CHAMPIONSHIP, Berlin, Germany. Our athlete SUSMITA SINGHA ROY participated in this World Championship in Heptathlon.",
-    owners: ["RUDRA PRATIM ROY", "MRINAL ROY", "SANJAY RAI", "SUSMITA SINGHA ROY"],
+    owners: ["TBA"],
   },
 ];
 

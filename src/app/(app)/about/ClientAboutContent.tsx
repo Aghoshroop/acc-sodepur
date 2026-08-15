@@ -34,10 +34,10 @@ export default function ClientAboutContent() {
     <section className="relative z-20 w-full bg-chalk-white text-carbon-black py-32 min-h-screen overflow-hidden">
       
       {/* ----------------- HISTORY SECTION ----------------- */}
-      <div className="max-w-[1600px] mx-auto px-6 md:px-12 grid grid-cols-12 gap-16 lg:gap-24 relative">
+      <div className="max-w-[1600px] mx-auto px-6 lg:px-8 xl:px-12 grid grid-cols-12 gap-8 lg:gap-12 xl:gap-24 relative">
         
         {/* Left Column: Text */}
-        <div className="col-span-12 lg:col-span-7 relative">
+        <div className="col-span-12 lg:col-span-7 xl:col-span-6 relative pr-0 lg:pr-8">
           
           <div className="flex flex-col gap-12 font-light leading-relaxed text-lg md:text-xl text-carbon-black/80">
             <div className="mb-6">
@@ -80,7 +80,7 @@ export default function ClientAboutContent() {
         </div>
 
         {/* Right Column: Images */}
-        <div className="col-span-12 lg:col-span-5 flex flex-col gap-8 relative z-20">
+        <div className="col-span-12 lg:col-span-5 xl:col-span-6 flex flex-col gap-8 relative z-20">
           
           <div className="flex items-center gap-4 mb-4">
             <h3 className="text-xl font-primary uppercase tracking-widest text-carbon-black/40">The Legacy Years</h3>
@@ -140,7 +140,7 @@ export default function ClientAboutContent() {
       {/* ----------------- MODERN ERA SECTION ----------------- */}
       <div 
         ref={modernSectionRef}
-        className={`mt-48 max-w-[1600px] mx-auto px-6 md:px-12 transition-opacity duration-[1500ms] ease-out ${isModernVisible ? 'opacity-100' : 'opacity-0'}`}
+        className={`mt-32 max-w-[1600px] mx-auto px-6 lg:px-8 xl:px-12 transition-opacity duration-[1500ms] ease-out ${isModernVisible ? 'opacity-100' : 'opacity-0'}`}
       >
         <div className="flex items-center gap-6 mb-16">
           <h2 className="text-5xl md:text-7xl font-primary uppercase tracking-tight text-carbon-black">
@@ -154,19 +154,19 @@ export default function ClientAboutContent() {
         </p>
 
         {/* Feature Grid: Zigzag Layout */}
-        <div className="flex flex-col gap-32">
+        <div className="flex flex-col gap-24 xl:gap-32">
           
           {/* Feature 1: Synthetic Track */}
-          <div className="grid grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-12 gap-8 lg:gap-12 items-center">
             <div className="col-span-12 lg:col-span-6 relative z-20">
-              <div className="bg-chalk-white border border-carbon-black/10 p-10 md:p-16 shadow-2xl rounded-2xl relative -mr-16 lg:-mr-32">
+              <div className="bg-chalk-white border border-carbon-black/10 p-8 md:p-12 xl:p-16 shadow-2xl rounded-2xl relative lg:-mr-16 xl:-mr-32">
                 <h3 className="text-3xl font-primary uppercase tracking-wide text-track-red mb-6">Synthetic Athletic Track</h3>
                 <p className="text-xl font-light text-carbon-black/70 leading-relaxed">
                   Bengal's first private club setup featuring a high-tech synthetic running track designed to provide optimal grip, minimal impact, and world-class training conditions.
                 </p>
               </div>
             </div>
-            <div className="col-span-12 lg:col-span-6 relative z-10 h-[500px]">
+            <div className="col-span-12 lg:col-span-6 relative z-10 h-[400px] xl:h-[500px]">
               <div 
                 className="relative w-full h-full bg-carbon-black/5 overflow-hidden shadow-xl rounded-2xl group"
               >
@@ -176,8 +176,8 @@ export default function ClientAboutContent() {
           </div>
 
           {/* Feature 2: Dedicated Event Stations */}
-          <div className="grid grid-cols-12 gap-12 items-center flex-col-reverse lg:flex-row">
-            <div className="col-span-12 lg:col-span-6 relative z-10 h-[500px] order-2 lg:order-1">
+          <div className="grid grid-cols-12 gap-8 lg:gap-12 items-center flex-col-reverse lg:flex-row">
+            <div className="col-span-12 lg:col-span-6 relative z-10 h-[400px] xl:h-[500px] order-2 lg:order-1">
               <div 
                 className="relative w-full h-full bg-carbon-black/5 overflow-hidden shadow-xl rounded-2xl group"
               >
@@ -185,7 +185,7 @@ export default function ClientAboutContent() {
               </div>
             </div>
             <div className="col-span-12 lg:col-span-6 relative z-20 order-1 lg:order-2">
-              <div className="bg-chalk-white border border-carbon-black/10 p-10 md:p-16 shadow-2xl rounded-2xl relative -ml-16 lg:-ml-32">
+              <div className="bg-chalk-white border border-carbon-black/10 p-8 md:p-12 xl:p-16 shadow-2xl rounded-2xl relative lg:-ml-16 xl:-ml-32">
                 <h3 className="text-3xl font-primary uppercase tracking-wide text-track-red mb-6">Dedicated Event Stations</h3>
                 <p className="text-xl font-light text-carbon-black/70 leading-relaxed">
                   Specialized setups for long jump pits, shot put rings, hurdles, and pentathlon disciplines, ensuring our athletes have access to the specific environments they need to excel.
@@ -195,9 +195,9 @@ export default function ClientAboutContent() {
           </div>
 
           {/* Feature 3: Strength, Conditioning & Coaching */}
-          <div className="grid grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-12 gap-8 lg:gap-12 items-center">
             <div className="col-span-12 lg:col-span-6 relative z-20">
-              <div className="bg-chalk-white border border-carbon-black/10 p-10 md:p-16 shadow-2xl rounded-2xl relative -mr-16 lg:-mr-32">
+              <div className="bg-chalk-white border border-carbon-black/10 p-8 md:p-12 xl:p-16 shadow-2xl rounded-2xl relative lg:-mr-16 xl:-mr-32">
                 <h3 className="text-3xl font-primary uppercase tracking-wide text-track-red mb-6">Strength & Scientific Coaching</h3>
                 <div className="flex flex-col gap-6">
                   <p className="text-xl font-light text-carbon-black/70 leading-relaxed">
@@ -209,7 +209,7 @@ export default function ClientAboutContent() {
                 </div>
               </div>
             </div>
-            <div className="col-span-12 lg:col-span-6 relative z-10 h-[500px]">
+            <div className="col-span-12 lg:col-span-6 relative z-10 h-[400px] xl:h-[500px]">
               <div 
                 className="relative w-full h-full bg-carbon-black/5 overflow-hidden shadow-xl rounded-2xl group"
               >

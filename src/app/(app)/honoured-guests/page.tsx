@@ -9,6 +9,9 @@ const transitionConfig = { duration: 0.8, ease: [0.22, 1, 0.36, 1] as [number, n
 const guests = [
   {
     category: "Sports Authority of India",
+    images: [
+      { src: "/images/honoured guest/G. Kishore.png", alt: "Dr. G. Kishor" }
+    ],
     members: [
       { name: "Dr. C.M. Muthaiah", title: "Director General Sports Authority of India" },
       { name: "Mr. Subrata Basu", title: "Director General Sports Authority of India" },
@@ -22,6 +25,10 @@ const guests = [
   },
   {
     category: "Government & Administration",
+    images: [
+      { src: "/images/honoured guest/Late Arun Banerjee.png", alt: "Late Mr. Arun Banerjee" },
+      { src: "/images/honoured guest/Mr. Prasun Mukherjee, Biswarup Dey, Dr. Klaus Peter Herm.png", alt: "Mr. Prasun Mukherjee, Biswarup Dey & Dr. Klaus Peter Herm" }
+    ],
     members: [
       { name: "Mr. Ashok Bhattacharyya", title: "Secretary, Govt of West Bengal" },
       { name: "Mr. Ajit Banerjee", title: "Ex. President, Bengal Olympic Association" },
@@ -56,6 +63,11 @@ const guests = [
   },
   {
     category: "Football Legends",
+    images: [
+      { src: "/images/honoured guest/Late PK Banerjee.png", alt: "Mr. Pradip Kumar Banerjee" },
+      { src: "/images/honoured guest/Late Sailen Manna, Late Chunni Goswami.png", alt: "Late Mr. Sailen Manna & Late Mr. Chuni Goswami" },
+      { src: "/images/honoured guest/Late Sailen Manna.png", alt: "Late Mr. Sailen Manna" }
+    ],
     members: [
       { name: "Mr. Sailen Manna", title: "International Footballer" },
       { name: "Mr. Pradip Kumar Banerjee", title: "International Footballer" },
@@ -78,7 +90,7 @@ export default function HonouredGuestsPage() {
     <main className="w-full bg-chalk-white text-carbon-black min-h-screen">
       
       {/* Hero Section */}
-      <section className="relative w-full h-[60vh] md:h-[75vh] flex flex-col justify-center items-center text-center">
+      <section className="relative w-full min-h-[85vh] py-32 md:h-[75vh] md:py-0 flex flex-col justify-center items-center text-center overflow-visible">
         
         {/* Background Image Container */}
         <div className="absolute top-[-40px] left-0 right-0 bottom-[-150px] z-0 pointer-events-none">
@@ -102,15 +114,16 @@ export default function HonouredGuestsPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ ...transitionConfig, delay: 0.1 }}
+            className="flex flex-col items-center"
           >
-            <span className="inline-block bg-white/10 backdrop-blur-md border border-chalk-white/20 px-4 py-1.5 rounded-sm shadow-xl text-chalk-white text-xs md:text-sm tracking-[0.4em] uppercase font-bold mb-6">
+            <span className="inline-block bg-carbon-black/20 backdrop-blur-md border border-chalk-white/20 px-4 py-1.5 rounded-sm shadow-xl text-chalk-white text-[10px] md:text-sm tracking-[0.4em] uppercase font-bold mb-8">
               Distinguished Personalities
             </span>
-            <h1 className="font-primary text-6xl sm:text-7xl md:text-[9rem] uppercase tracking-tighter max-w-5xl mx-auto leading-[0.85] text-transparent [-webkit-text-stroke:1px_var(--color-chalk-white)] md:[-webkit-text-stroke:2px_var(--color-chalk-white)] opacity-80">
-              HONOURED <br />
+            <h1 className="font-primary text-[14vw] sm:text-7xl md:text-[9rem] uppercase tracking-tighter max-w-5xl mx-auto leading-[0.85] text-transparent [-webkit-text-stroke:1.5px_var(--color-chalk-white)] md:[-webkit-text-stroke:2px_var(--color-chalk-white)] opacity-90">
+              HONOURED <br className="md:hidden" />
               GUESTS
             </h1>
-            <p className="mt-8 font-secondary text-lg md:text-2xl tracking-widest text-chalk-white/90 max-w-3xl mx-auto leading-relaxed drop-shadow-md">
+            <p className="mt-8 font-secondary text-sm md:text-2xl tracking-widest text-chalk-white/90 max-w-3xl mx-auto leading-relaxed drop-shadow-md px-4">
               For over five decades, Athletic Coaching Camp has welcomed Olympians, national coaches, and sports administrators who have profoundly shaped Indian sport.
             </p>
           </motion.div>
@@ -147,8 +160,8 @@ export default function HonouredGuestsPage() {
                     <div className="flex flex-col gap-6 w-full max-w-sm mt-8">
                       {group.images.map((img, idx) => (
                         <div key={idx} className="flex flex-col items-center">
-                          <div className="w-full relative overflow-hidden flex items-center justify-start mb-2">
-                            <Image src={img.src} alt={img.alt} width={600} height={400} className="w-full h-auto object-contain shadow-sm" />
+                          <div className="w-full relative overflow-hidden aspect-[4/3] lg:aspect-video mb-3 bg-carbon-black/5 rounded-sm">
+                            <Image src={img.src} alt={img.alt} fill className="object-cover object-top shadow-sm hover:scale-105 transition-transform duration-700" />
                           </div>
                           <span className="text-xs font-secondary uppercase tracking-widest text-carbon-black/70 text-center">
                             {img.alt}
