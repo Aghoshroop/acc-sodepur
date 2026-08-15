@@ -10,9 +10,9 @@ const SECTIONS = [
     image: '/images/legacy/legacy-founder-kuntal-roy.jpg',
   },
   {
-    title: 'The Campus',
+    title: 'Facilities',
     description: 'Explore our state-of-the-art facilities designed to foster athletic excellence and personal growth.',
-    href: '/campus',
+    href: '/facilities',
     image: '/images/campus/campus-hero-evolution.jpg',
   },
   {

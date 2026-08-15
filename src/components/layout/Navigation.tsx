@@ -16,7 +16,7 @@ const NAV_ITEMS = [
       { label: 'Administration', href: '/administration' },
       { label: 'Tributes', href: '/tributes' },
       { label: 'Coaches', href: '/coaches' },
-      { label: 'Facilities', href: '/campus' },
+      { label: 'Facilities', href: '/facilities' },
       { label: 'Achievements', href: '/achievements' },
       { label: 'Honoured Guests', href: '/honoured-guests' },
       { label: 'Foundation Day', href: '/premier-relay' },

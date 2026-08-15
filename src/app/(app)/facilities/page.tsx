@@ -9,7 +9,7 @@ const fadeUpVariant: any = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
 };
 
-export default function CampusPage() {
+export default function FacilitiesPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   
   // Parallax for hero
