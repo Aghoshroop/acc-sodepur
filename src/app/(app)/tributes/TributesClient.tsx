@@ -101,7 +101,7 @@ const EARLY_SUPPORT = [
 
 const SUPPORT_1981_2000 = [
   "Late Swapon Ghosh", "Late Prithis Dutta", "Sri Krishna Lal Maity (IC)", "Shri Sibotosh Deb",
-  "Late Mihir Chatterjee", "Late Prabir Sarkar", "Late Indrajit Mukherjee", "Shri Alokendu Banerjee",
+  "Late Mihir Chatterjee", "Prabir Sarkar", "Late Indrajit Mukherjee", "Shri Alokendu Banerjee",
   "Late Gouri Roy"
 ];
 

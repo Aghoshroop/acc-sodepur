@@ -41,7 +41,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <h4 className="font-primary text-xs uppercase tracking-[0.2em] text-[var(--color-track-red)] mb-8">Train</h4>
             <ul className="flex flex-col gap-4 font-body text-lg text-[var(--color-chalk-white)]/80">
-              <li><Link href="/programmes" className="hover:text-chalk-white hover:translate-x-1 inline-block transition-all duration-300">Programmes</Link></li>
+              <li><Link href="/training/methodology" className="hover:text-chalk-white hover:translate-x-1 inline-block transition-all duration-300">Methodology</Link></li>
               <li><Link href="/schedule" className="hover:text-chalk-white hover:translate-x-1 inline-block transition-all duration-300">Schedule</Link></li>
               <li><Link href="/premier-relay" className="hover:text-chalk-white hover:translate-x-1 inline-block transition-all duration-300">Premier Relay</Link></li>
               <li className="pt-4">
