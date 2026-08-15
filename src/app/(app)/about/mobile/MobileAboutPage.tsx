@@ -43,8 +43,10 @@ const mcol3 = [...heroImages.slice(20, 32), ...heroImages.slice(20, 32)];
 
 export default function MobileAboutPage() {
   const [modernRef, isModernVisible] = useIntersectionObserver();
+  const [lightboxImg, setLightboxImg] = useState<string | null>(null);
 
   return (
+    <>
     <div className="w-full bg-chalk-white text-carbon-black min-h-screen relative flex flex-col">
       <style>{`
         @keyframes scrollUpMobile {
@@ -128,7 +130,7 @@ export default function MobileAboutPage() {
               </div>
               <div className="flex flex-col gap-6 mb-8">
                 <div className="flex flex-col gap-2">
-                  <div className="relative w-full bg-carbon-black/5 overflow-hidden shadow-lg rounded-sm">
+                  <div className="relative w-full bg-carbon-black/5 overflow-hidden shadow-lg rounded-sm" onClick={() => setLightboxImg('/images/our1stcenter.png')}>
                     <Image 
                       src="/images/our1stcenter.png" 
                       alt="Our 1st ACC" 
@@ -144,16 +146,16 @@ export default function MobileAboutPage() {
               </div>
 
               <div className="grid grid-cols-2 gap-3">
-                <div className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md">
+                <div className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md" onClick={() => setLightboxImg('/images/6starter.png')}>
                   <Image src="/images/6starter.png" alt="6 Starters" fill className="object-cover object-top grayscale" />
                 </div>
-                <div className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md">
+                <div className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md" onClick={() => setLightboxImg('/images/acc_history/hurdles-old.jpg')}>
                   <Image src="/images/acc_history/hurdles-old.jpg" alt="Historical ACC" fill className="object-cover grayscale" />
                 </div>
-                <div className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md">
+                <div className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md" onClick={() => setLightboxImg('/images/acc_history/74.jpg')}>
                   <Image src="/images/acc_history/74.jpg" alt="Historical ACC" fill className="object-cover grayscale" />
                 </div>
-                <div className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md col-span-2">
+                <div className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md col-span-2" onClick={() => setLightboxImg('/images/acc_history/63.jpg')}>
                   <Image src="/images/acc_history/63.jpg" alt="Historical ACC" fill className="object-cover grayscale" />
                 </div>
               </div>
@@ -169,20 +171,23 @@ export default function MobileAboutPage() {
 
             {/* Historical Images Grid 2 */}
             <div className="grid grid-cols-2 gap-3 my-8">
-              <div className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md col-span-2">
+              <div className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md col-span-2" onClick={() => setLightboxImg('/images/acc_history/old-group-photo.jpg')}>
                 <Image src="/images/acc_history/old-group-photo.jpg" alt="Historical ACC" fill className="object-cover grayscale" />
               </div>
-              <div className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md">
+              <div className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md" onClick={() => setLightboxImg('/images/acc_history/70.jpg')}>
                 <Image src="/images/acc_history/70.jpg" alt="Historical ACC" fill className="object-cover grayscale" />
               </div>
-              <div className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md">
+              <div className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md" onClick={() => setLightboxImg('/images/acc_history/71.jpg')}>
                 <Image src="/images/acc_history/71.jpg" alt="Historical ACC" fill className="object-cover grayscale" />
               </div>
-              <div className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md col-span-2">
+              <div className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md col-span-2" onClick={() => setLightboxImg('/images/acc_history/72.jpg')}>
                 <Image src="/images/acc_history/72.jpg" alt="Historical ACC" fill className="object-cover grayscale" />
               </div>
-              <div className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md col-span-2">
+              <div className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md col-span-2" onClick={() => setLightboxImg('/images/acc_history/1st-acc.jpg')}>
                 <Image src="/images/acc_history/1st-acc.jpg" alt="Historical ACC" fill className="object-cover grayscale" />
+              </div>
+              <div className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md col-span-2" onClick={() => setLightboxImg('/images/acc_history/subhraja roy.png')}>
+                <Image src="/images/acc_history/subhraja roy.png" alt="Historical ACC" fill className="object-cover grayscale" />
               </div>
             </div>
 
@@ -349,6 +354,30 @@ export default function MobileAboutPage() {
         </div>
       </div>
 
-    </div>
+      </div>
+
+      {/* Lightbox Modal */}
+      {lightboxImg && (
+        <div 
+          className="fixed inset-0 z-[100] bg-carbon-black/95 flex items-center justify-center p-4"
+          onClick={() => setLightboxImg(null)}
+        >
+          <div className="relative w-full max-w-5xl h-full max-h-[80vh]">
+            <Image 
+              src={lightboxImg} 
+              alt="Expanded view" 
+              fill 
+              className="object-contain" 
+            />
+          </div>
+          <button 
+            className="absolute top-6 right-6 text-chalk-white hover:text-track-red transition-colors"
+            onClick={() => setLightboxImg(null)}
+          >
+            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+      )}
+    </>
   );
 }

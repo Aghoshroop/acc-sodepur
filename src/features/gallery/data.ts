@@ -28,6 +28,19 @@ export const STATIC_GALLERY_MEDIA: GalleryMedia[] = [
     "updatedAt": 1786440215001
   },
   {
+    "id": "img_new_3",
+    "imageUrl": "/images/acc_history/subhraja roy.png",
+    "thumbnailUrl": "/images/acc_history/subhraja roy.png",
+    "title": "Subhraja Roy",
+    "displayZones": [
+      "TheBeginning"
+    ],
+    "displayOrder": 2,
+    "status": "Published",
+    "createdAt": 1786440215002,
+    "updatedAt": 1786440215002
+  },
+  {
     "id": "img_1",
     "imageUrl": "/images/acc_history/1st-building.jpg",
     "thumbnailUrl": "/images/acc_history/1st-building.jpg",

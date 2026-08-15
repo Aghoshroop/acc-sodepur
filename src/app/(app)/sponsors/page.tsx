@@ -38,7 +38,7 @@ export default function SponsorsPage() {
                 LEGACY
               </span>
             </h1>
-            <p className="mt-8 font-secondary text-lg md:text-2xl tracking-widest text-white/70 max-w-3xl mx-auto leading-relaxed">
+            <p className="mt-8 text-lg md:text-2xl font-light tracking-wide text-white/70 max-w-3xl mx-auto leading-relaxed">
               Align your brand with 55+ years of athletic excellence, youth empowerment, and the pursuit of Olympic glory.
             </p>
           </motion.div>

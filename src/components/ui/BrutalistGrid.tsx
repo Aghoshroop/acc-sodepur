@@ -37,8 +37,12 @@ export default function BrutalistGrid({ items, columns = 3, theme = 'light' }: B
               
               <div className="flex flex-col md:flex-row gap-6 md:items-start mb-4">
                 {item.image && (
-                  <div className="w-full md:w-2/5 h-[240px] md:h-[280px] shrink-0 relative overflow-hidden transition-all duration-700 border border-[var(--color-track-red)]/20 shadow-sm bg-[var(--color-concrete-grey)]">
-                    <img src={item.image} alt={item.title} className={`absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 ${item.imagePosition || 'object-center'}`} />
+                  <div className="w-full md:w-2/5 h-[240px] md:h-[280px] shrink-0 relative overflow-hidden transition-all duration-700 border border-[var(--color-track-red)]/20 shadow-sm bg-[var(--color-concrete-grey)] flex items-center justify-center">
+                    {item.image === '/images/athletes/placeholder.jpg' ? (
+                      <span className="text-[var(--color-chalk-white)]/30 font-primary uppercase tracking-[0.2em] text-sm px-4 text-center">Portrait Coming Soon</span>
+                    ) : (
+                      <img src={item.image} alt={item.title} className={`absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 ${item.imagePosition || 'object-center'}`} />
+                    )}
                   </div>
                 )}
                 <div className="flex flex-col justify-center flex-grow py-1">

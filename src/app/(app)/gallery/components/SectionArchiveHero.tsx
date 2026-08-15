@@ -47,7 +47,7 @@ export default function SectionArchiveHero() {
         <h1 className="text-6xl md:text-8xl lg:text-9xl font-primary uppercase tracking-[0.2em] text-[#F6F2EA] drop-shadow-2xl">
           The Archive
         </h1>
-        <p className="mt-8 text-xl md:text-2xl font-secondary tracking-wide text-[#C8A96A] max-w-2xl mx-auto italic drop-shadow-lg">
+        <p className="mt-8 text-xl md:text-2xl font-light tracking-wide text-[#C8A96A] max-w-2xl mx-auto italic drop-shadow-lg">
           Where every photograph carries the weight of history.
         </p>
       </div>

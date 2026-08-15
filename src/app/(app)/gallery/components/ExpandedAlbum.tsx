@@ -81,7 +81,7 @@ export default function ExpandedAlbum({ albumId }: { albumId: DisplayZone }) {
             <h3 className="text-2xl md:text-3xl font-primary text-[#F6F2EA] tracking-widest uppercase mb-4">
               Moments Coming Soon
             </h3>
-            <p className="text-[#F6F2EA]/50 font-secondary max-w-md mx-auto italic tracking-wide">
+            <p className="text-[#F6F2EA]/50 font-light max-w-md mx-auto italic tracking-wide">
               No images have been added here just yet. Check back soon—you will see pictures here in the near future!
             </p>
           </div>

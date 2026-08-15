@@ -29,9 +29,11 @@ function useIntersectionObserver(options = { threshold: 0, rootMargin: '0px 0px 
 export default function ClientAboutContent() {
   const [modernSectionRef, isModernVisible] = useIntersectionObserver();
   const [visionSectionRef, isVisionVisible] = useIntersectionObserver();
+  const [lightboxImg, setLightboxImg] = useState<string | null>(null);
 
   return (
-    <section className="relative z-20 w-full bg-chalk-white text-carbon-black py-32 min-h-screen overflow-hidden">
+    <>
+      <section className="relative z-20 w-full bg-chalk-white text-carbon-black py-32 min-h-screen overflow-hidden">
       
       {/* ----------------- HISTORY SECTION ----------------- */}
       <div className="max-w-[1600px] mx-auto px-6 lg:px-8 xl:px-12 grid grid-cols-12 gap-8 lg:gap-12 xl:gap-24 relative">
@@ -90,7 +92,10 @@ export default function ClientAboutContent() {
           {/* Iconic Full-Width Images */}
           <div className="flex flex-col gap-8 mb-4">
             <div className="flex flex-col gap-3">
-              <div className="relative w-full bg-carbon-black/5 overflow-hidden shadow-lg group rounded-sm">
+              <div 
+                className="relative w-full bg-carbon-black/5 overflow-hidden shadow-lg group rounded-sm cursor-pointer"
+                onClick={() => setLightboxImg('/images/our1stcenter.png')}
+              >
                 <Image 
                   src="/images/our1stcenter.png" 
                   alt="Our 1st ACC" 
@@ -108,52 +113,37 @@ export default function ClientAboutContent() {
           {/* Historical Images Staggered Grid */}
           <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col gap-4 pt-8">
-              <div 
-                className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md group"
-              >
+              <div className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md group cursor-pointer" onClick={() => setLightboxImg('/images/acc_history/1st-acc.jpg')}>
                 <Image src="/images/acc_history/1st-acc.jpg" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
               </div>
-              <div 
-                className="relative w-full aspect-[3/4] bg-carbon-black/5 overflow-hidden shadow-md group"
-              >
+              <div className="relative w-full aspect-[3/4] bg-carbon-black/5 overflow-hidden shadow-md group cursor-pointer" onClick={() => setLightboxImg('/images/acc_history/old-group-photo.jpg')}>
                 <Image src="/images/acc_history/old-group-photo.jpg" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
               </div>
-              <div 
-                className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md group"
-              >
+              <div className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md group cursor-pointer" onClick={() => setLightboxImg('/images/acc_history/63.jpg')}>
                 <Image src="/images/acc_history/63.jpg" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
               </div>
-              <div 
-                className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md group"
-              >
+              <div className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md group cursor-pointer" onClick={() => setLightboxImg('/images/acc_history/old-training.jpg')}>
                 <Image src="/images/acc_history/old-training.jpg" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
               </div>
             </div>
             <div className="flex flex-col gap-4">
-              <div 
-                className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md group"
-              >
+              <div className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md group cursor-pointer" onClick={() => setLightboxImg('/images/6starter.png')}>
                 <Image src="/images/6starter.png" alt="6 Starters" fill className="object-cover object-top group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
               </div>
-              <div 
-                className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md group"
-              >
+              <div className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md group cursor-pointer" onClick={() => setLightboxImg('/images/acc_history/72.jpg')}>
                 <Image src="/images/acc_history/72.jpg" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
               </div>
-              <div 
-                className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md group"
-              >
+              <div className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md group cursor-pointer" onClick={() => setLightboxImg('/images/acc_history/70.jpg')}>
                 <Image src="/images/acc_history/70.jpg" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
               </div>
-              <div 
-                className="relative w-full aspect-[3/4] bg-carbon-black/5 overflow-hidden shadow-md group"
-              >
+              <div className="relative w-full aspect-[3/4] bg-carbon-black/5 overflow-hidden shadow-md group cursor-pointer" onClick={() => setLightboxImg('/images/acc_history/91.jpg')}>
                 <Image src="/images/acc_history/91.jpg" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
               </div>
-              <div 
-                className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md group"
-              >
+              <div className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md group cursor-pointer" onClick={() => setLightboxImg('/images/acc_history/old-highjump.jpg')}>
                 <Image src="/images/acc_history/old-highjump.jpg" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
+              </div>
+              <div className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md group cursor-pointer" onClick={() => setLightboxImg('/images/acc_history/subhraja roy.png')}>
+                <Image src="/images/acc_history/subhraja roy.png" alt="Historical ACC" fill className="object-cover group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
               </div>
             </div>
           </div>
@@ -342,5 +332,29 @@ export default function ClientAboutContent() {
       </div>
 
     </section>
+
+      {/* Lightbox Modal */}
+      {lightboxImg && (
+        <div 
+          className="fixed inset-0 z-[100] bg-carbon-black/95 flex items-center justify-center p-4 cursor-zoom-out"
+          onClick={() => setLightboxImg(null)}
+        >
+          <div className="relative w-full max-w-5xl h-full max-h-[90vh]">
+            <Image 
+              src={lightboxImg} 
+              alt="Expanded view" 
+              fill 
+              className="object-contain" 
+            />
+          </div>
+          <button 
+            className="absolute top-6 right-6 text-chalk-white hover:text-track-red transition-colors"
+            onClick={() => setLightboxImg(null)}
+          >
+            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+      )}
+    </>
   );
 }

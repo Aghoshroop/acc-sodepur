@@ -20,7 +20,7 @@ export default function SectionThenVsNow() {
             Then <span className="text-[#C8A96A]">&</span> Now
           </h2>
           <div className="w-24 h-1 bg-[#C8A96A] mx-auto mt-6" />
-          <p className="mt-6 text-[#F6F2EA]/30 font-secondary italic text-sm">
+          <p className="mt-6 text-[#F6F2EA]/30 font-light tracking-wide italic text-sm">
             Hover to see how far we've come · Tap to reveal on mobile
           </p>
         </div>

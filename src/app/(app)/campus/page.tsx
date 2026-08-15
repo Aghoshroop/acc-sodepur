@@ -191,11 +191,16 @@ export default function CampusPage() {
               </motion.div>
             </div>
 
-            <div className="w-full lg:w-2/3 relative h-[400px] lg:h-[600px]">
-              <Image src="/images/facilities/throw.png" alt="Throwing Sector" fill className="object-cover shadow-2xl border-4 border-white" />
-              <div className="absolute bottom-6 right-6 flex gap-4">
-                <div className="bg-white/90 text-carbon-black px-4 py-2 text-sm font-bold uppercase tracking-widest shadow-xl backdrop-blur-md">Shotput</div>
-                <div className="bg-track-red text-white px-4 py-2 text-sm font-bold uppercase tracking-widest shadow-xl">Discus</div>
+            <div className="w-full lg:w-2/3 flex flex-col md:flex-row gap-4 h-auto md:h-[600px]">
+              <div className="relative w-full md:flex-1 h-[300px] md:h-full">
+                <Image src="/images/throw.png" alt="Throwing Sector" fill className="object-cover shadow-2xl border-4 border-white" />
+              </div>
+              <div className="relative w-full md:flex-1 h-[300px] md:h-full">
+                <Image src="/images/throw2.png" alt="Throwing Sector 2" fill className="object-cover shadow-2xl border-4 border-white" />
+                <div className="absolute bottom-6 right-6 flex gap-4 z-10">
+                  <div className="bg-white/90 text-carbon-black px-4 py-2 text-xs md:text-sm font-bold uppercase tracking-widest shadow-xl backdrop-blur-md">Shotput</div>
+                  <div className="bg-track-red text-white px-4 py-2 text-xs md:text-sm font-bold uppercase tracking-widest shadow-xl">Discus</div>
+                </div>
               </div>
             </div>
 

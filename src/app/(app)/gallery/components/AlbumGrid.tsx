@@ -22,8 +22,8 @@ export default function AlbumGrid() {
         <h2 className="text-4xl md:text-5xl font-primary uppercase tracking-tight text-[#C8A96A] mb-4">
           Explore Albums
         </h2>
-        <p className="text-[#F6F2EA]/60 font-secondary text-lg max-w-2xl">
-          Dive into our curated collections capturing the essence of Athletic Coaching Camp.
+        <p className="text-[#F6F2EA]/60 font-light tracking-wide text-lg max-w-2xl">
+          A visual chronicle of the Athletic Coaching Camp&apos;s legacy.
         </p>
       </div>
 
@@ -84,8 +84,8 @@ export default function AlbumGrid() {
         <h3 className="text-2xl md:text-3xl font-primary uppercase tracking-widest text-[#F6F2EA] mb-4">
           More Albums Coming Soon
         </h3>
-        <p className="text-[#F6F2EA]/50 font-secondary text-lg italic max-w-2xl mx-auto tracking-wide">
-          Stay tuned! We are currently organizing our archives to bring you dedicated albums for Competitions, Fun & Leisure, Training Sessions, and much more.
+        <p className="text-[#F6F2EA]/50 font-light text-lg italic max-w-2xl mx-auto tracking-wide">
+          Select an album to explore more images.
         </p>
       </div>
     </section>

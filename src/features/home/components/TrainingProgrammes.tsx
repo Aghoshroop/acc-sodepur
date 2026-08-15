@@ -33,7 +33,7 @@ const PROGRAMMES = [
     title: 'Throws',
     subtitle: 'Power & Precision',
     description: 'Explosive power development and technical mastery for shot put, discus, and javelin.',
-    image: '/images/throw.png'
+    image: '/images/facilities/throw.png'
   },
   {
     title: 'Decathlon',

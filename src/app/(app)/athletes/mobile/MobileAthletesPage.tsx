@@ -87,7 +87,11 @@ export default function MobileAthletesPage({ categories }: MobileAthletesPagePro
                       onClick={() => setSelectedAthlete(item)}
                       whileTap={{ scale: 0.96 }}
                     >
-                      {item.image && (
+                      {item.image === '/images/athletes/placeholder.jpg' ? (
+                        <div className="absolute inset-0 flex items-center justify-center p-2 text-center bg-concrete-grey">
+                          <span className="text-chalk-white/30 font-primary uppercase tracking-[0.2em] text-[10px] leading-tight">Portrait Coming Soon</span>
+                        </div>
+                      ) : item.image && (
                         <Image 
                           src={item.image} 
                           alt={item.title} 
@@ -148,7 +152,11 @@ export default function MobileAthletesPage({ categories }: MobileAthletesPagePro
               </button>
               
               <div className="relative w-full h-[45%] sm:h-72 shrink-0 bg-carbon-black">
-                {selectedAthlete.image && (
+                {selectedAthlete.image === '/images/athletes/placeholder.jpg' ? (
+                  <div className="absolute inset-0 flex items-center justify-center bg-concrete-grey">
+                    <span className="text-chalk-white/30 font-primary uppercase tracking-[0.2em] text-xs">Portrait Coming Soon</span>
+                  </div>
+                ) : selectedAthlete.image && (
                   <Image 
                     src={selectedAthlete.image} 
                     alt={selectedAthlete.title}
@@ -176,7 +184,7 @@ export default function MobileAthletesPage({ categories }: MobileAthletesPagePro
                 )}
                 
                 {selectedAthlete.description && (
-                  <p className="text-carbon-black/80 font-secondary text-sm md:text-base leading-relaxed">
+                  <p className="text-carbon-black/80 font-light tracking-wide text-sm md:text-base leading-relaxed">
                     {selectedAthlete.description}
                   </p>
                 )}

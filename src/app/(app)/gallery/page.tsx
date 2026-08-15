@@ -167,7 +167,7 @@ export default function GalleryPage() {
           <h2 className="text-xl md:text-2xl font-primary uppercase tracking-[0.3em] text-[#C8A96A] mb-4">
             Protected Content
           </h2>
-          <p className="font-secondary text-[#F6F2EA]/60 text-sm md:text-base text-center max-w-xs px-6">
+          <p className="font-light tracking-wide text-[#F6F2EA]/60 text-sm md:text-base text-center max-w-xs px-6">
             Screenshots and recordings are restricted in the ACC Gallery.
           </p>
           <p className="mt-10 text-[#F6F2EA]/30 text-xs tracking-widest uppercase">
