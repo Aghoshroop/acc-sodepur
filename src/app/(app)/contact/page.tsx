@@ -39,9 +39,10 @@ export default function ContactPage() {
                 </h2>
                 <div className="text-2xl md:text-3xl font-light leading-relaxed mb-8">
                   <p>Athletic Coaching Camp</p>
-                  <p>No. 2 Deshabondhu Nagar, Sodepur</p>
-                  <p>Kolkata, Khardaha</p>
-                  <p>West Bengal 700110</p>
+                  <p>Jiban Krishna Chatterjee Road, Sodepur
+North 24 Parganas</p>
+                  <p>Kolkata 700110</p>
+                  <p>West Bengal</p>
                 </div>
                 <div className="w-full h-64 md:h-80 overflow-hidden border border-carbon-black/10 transition-all duration-500 relative">
                   <iframe 
@@ -70,7 +71,7 @@ export default function ContactPage() {
                 <div className="text-2xl md:text-3xl font-light leading-relaxed space-y-4">
                   <p>
                     <span className="block text-sm uppercase tracking-widest text-carbon-black/50 mb-1">Admissions & General</span>
-                    <a href="tel:+919804433803" className="hover:text-track-red transition-colors">+91 98044 33803</a>
+                    <a href="tel:+919831179639" className="hover:text-track-red transition-colors">+91 98311 79639</a>
                   </p>
                   <p>
                     <span className="block text-sm uppercase tracking-widest text-carbon-black/50 mb-1">Email</span>

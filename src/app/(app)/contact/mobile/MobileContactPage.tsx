@@ -62,7 +62,7 @@ export default function MobileContactPage() {
               <div className="text-2xl font-light leading-relaxed space-y-6">
                 <p className="flex flex-col">
                   <span className="text-xs uppercase tracking-widest text-carbon-black/50 mb-1">Admissions & General</span>
-                  <a href="tel:+919804433803" className="hover:text-track-red transition-colors active:text-track-red">+91 98044 33803</a>
+                  <a href="tel:+919831179639" className="hover:text-track-red transition-colors active:text-track-red">+91 98311 79639</a>
                 </p>
                 <p className="flex flex-col">
                   <span className="text-xs uppercase tracking-widest text-carbon-black/50 mb-1">Email</span>

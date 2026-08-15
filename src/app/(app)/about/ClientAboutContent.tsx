@@ -87,6 +87,24 @@ export default function ClientAboutContent() {
             <div className="flex-1 h-px bg-carbon-black/10"></div>
           </div>
 
+          {/* Iconic Full-Width Images */}
+          <div className="flex flex-col gap-8 mb-4">
+            <div className="flex flex-col gap-3">
+              <div className="relative w-full bg-carbon-black/5 overflow-hidden shadow-lg group rounded-sm">
+                <Image 
+                  src="/images/our1stcenter.png" 
+                  alt="Our 1st ACC" 
+                  width={1200} 
+                  height={800} 
+                  className="w-full h-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-500 ease-out" 
+                />
+              </div>
+              <p className="text-sm md:text-base font-medium text-carbon-black/60 italic px-2">
+                Our 1st building of ACC
+              </p>
+            </div>
+          </div>
+
           {/* Historical Images Staggered Grid */}
           <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col gap-4 pt-8">
@@ -112,6 +130,11 @@ export default function ClientAboutContent() {
               </div>
             </div>
             <div className="flex flex-col gap-4">
+              <div 
+                className="relative w-full aspect-[4/3] bg-carbon-black/5 overflow-hidden shadow-md group"
+              >
+                <Image src="/images/6starter.png" alt="6 Starters" fill className="object-cover object-top group-hover:scale-105 transition-transform duration-300 ease-out grayscale hover:grayscale-0" />
+              </div>
               <div 
                 className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md group"
               >

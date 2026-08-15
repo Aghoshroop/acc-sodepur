@@ -126,7 +126,27 @@ export default function MobileAboutPage() {
                 <h3 className="text-sm font-primary uppercase tracking-widest text-carbon-black/40">The Legacy Years</h3>
                 <div className="flex-1 h-px bg-carbon-black/10"></div>
               </div>
+              <div className="flex flex-col gap-6 mb-8">
+                <div className="flex flex-col gap-2">
+                  <div className="relative w-full bg-carbon-black/5 overflow-hidden shadow-lg rounded-sm">
+                    <Image 
+                      src="/images/our1stcenter.png" 
+                      alt="Our 1st ACC" 
+                      width={1200} 
+                      height={800} 
+                      className="w-full h-auto object-contain grayscale" 
+                    />
+                  </div>
+                  <p className="text-sm font-medium text-carbon-black/60 italic px-2">
+                    Our 1st building of ACC
+                  </p>
+                </div>
+              </div>
+
               <div className="grid grid-cols-2 gap-3">
+                <div className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md">
+                  <Image src="/images/6starter.png" alt="6 Starters" fill className="object-cover object-top grayscale" />
+                </div>
                 <div className="relative w-full aspect-square bg-carbon-black/5 overflow-hidden shadow-md">
                   <Image src="/images/acc_history/hurdles-old.jpg" alt="Historical ACC" fill className="object-cover grayscale" />
                 </div>

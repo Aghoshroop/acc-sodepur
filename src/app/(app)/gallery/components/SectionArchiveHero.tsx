@@ -19,15 +19,21 @@ export default function SectionArchiveHero() {
     <section ref={containerRef} className="relative w-full h-[50vh] md:h-screen overflow-hidden bg-[#050505]">
       {/* Collage Background */}
       <div className="absolute inset-0 w-full h-full hero-bg" style={{ filter: 'grayscale(100%) sepia(20%) brightness(0.5)' }}>
-        <div className="absolute inset-0 grid grid-cols-3 grid-rows-2 gap-2 p-2 opacity-60">
+        <div className="absolute inset-0 grid grid-cols-4 grid-rows-2 gap-2 p-2 opacity-60">
           <div className="relative w-full h-full col-span-2 row-span-2 overflow-hidden rounded-xl">
+            <Image unoptimized={true} src="/images/our1stcenter.png" alt="Our 1st ACC" fill className="object-cover" priority />
+          </div>
+          <div className="relative w-full h-full overflow-hidden rounded-xl">
+            <Image unoptimized={true} src="/images/acc_history/old-lineup.jpg" alt="Old Lineup" fill className="object-cover" priority />
+          </div>
+          <div className="relative w-full h-full overflow-hidden rounded-xl">
             <Image unoptimized={true} src="/images/athletes.jpg" alt="Athletes" fill className="object-cover" priority />
           </div>
           <div className="relative w-full h-full overflow-hidden rounded-xl">
-            <Image unoptimized={true} src="/images/medal.jpg" alt="Medal" fill className="object-cover" priority />
+            <Image unoptimized={true} src="/images/acc2.jpg" alt="Team" fill className="object-cover" priority />
           </div>
           <div className="relative w-full h-full overflow-hidden rounded-xl">
-            <Image unoptimized={true} src="/images/acc2.jpg" alt="Team" fill className="object-cover" priority />
+            <Image unoptimized={true} src="/images/6starter.png" alt="6 Starters" fill className="object-cover object-top" priority />
           </div>
         </div>
         

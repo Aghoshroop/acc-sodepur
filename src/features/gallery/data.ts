@@ -2,6 +2,32 @@ import { GalleryMedia, DisplayZone } from './types';
 
 export const STATIC_GALLERY_MEDIA: GalleryMedia[] = [
   {
+    "id": "img_new_1",
+    "imageUrl": "/images/our1stcenter.png",
+    "thumbnailUrl": "/images/our1stcenter.png",
+    "title": "Our 1st ACC Building",
+    "displayZones": [
+      "TheBeginning"
+    ],
+    "displayOrder": 0,
+    "status": "Published",
+    "createdAt": 1786440215000,
+    "updatedAt": 1786440215000
+  },
+  {
+    "id": "img_new_2",
+    "imageUrl": "/images/6starter.png",
+    "thumbnailUrl": "/images/6starter.png",
+    "title": "6 Starters",
+    "displayZones": [
+      "TheBeginning"
+    ],
+    "displayOrder": 1,
+    "status": "Published",
+    "createdAt": 1786440215001,
+    "updatedAt": 1786440215001
+  },
+  {
     "id": "img_1",
     "imageUrl": "/images/acc_history/1st-building.jpg",
     "thumbnailUrl": "/images/acc_history/1st-building.jpg",
