@@ -37,7 +37,7 @@ export default async function MobilePerformance() {
 
         <div className="grid grid-cols-2 gap-y-10 gap-x-6">
           <div className="flex flex-col gap-2 border-l-2 border-carbon-black/10 pl-3">
-            <span className="text-[clamp(0.6rem,3vw,10px)] uppercase tracking-widest text-carbon-black/50 font-bold truncate">Qualified</span>
+            <span className="text-[clamp(0.6rem,3vw,10px)] uppercase tracking-widest text-carbon-black/50 font-bold truncate">Participants</span>
             <div className="drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] [transform:translateZ(0)]">
               <AnimatedCounter 
                 value={latestResult.metrics.qualifiedAthletes} 

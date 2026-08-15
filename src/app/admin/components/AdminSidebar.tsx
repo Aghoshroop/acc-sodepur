@@ -40,7 +40,7 @@ export default function AdminSidebar({ children }: { children: React.ReactNode }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <div className="min-h-screen bg-carbon-black flex">
       {/* Mobile Sidebar Overlay */}
       {isOpen && (
         <div 
@@ -51,7 +51,7 @@ export default function AdminSidebar({ children }: { children: React.ReactNode }
 
       {/* Sidebar */}
       <aside className={`
-        fixed top-0 left-0 z-50 h-screen w-64 bg-carbon-black text-chalk-white flex flex-col
+        fixed top-0 left-0 z-50 h-screen w-64 bg-carbon-black border-r border-chalk-white/10 text-chalk-white flex flex-col
         transition-transform duration-300 ease-in-out lg:translate-x-0
         ${isOpen ? 'translate-x-0' : '-translate-x-full'}
       `}>
@@ -117,7 +117,7 @@ export default function AdminSidebar({ children }: { children: React.ReactNode }
       {/* Main Content */}
       <main className="flex-1 lg:pl-64 flex flex-col min-h-screen">
         {/* Mobile Header */}
-        <div className="lg:hidden bg-carbon-black text-white p-4 flex items-center gap-4 sticky top-0 z-30">
+        <div className="lg:hidden bg-carbon-black text-white p-4 flex items-center gap-4 sticky top-0 z-30 border-b border-chalk-white/10">
           <button onClick={() => setIsOpen(true)} className="p-1">
             <Menu size={24} />
           </button>

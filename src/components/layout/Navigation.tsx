@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
@@ -51,6 +51,7 @@ export default function Navigation({ notices = [] }: { notices?: { id: string; p
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const [unreadCount, setUnreadCount] = useState(0);
+  const lastEnterTime = useRef<number>(0);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -94,18 +95,18 @@ export default function Navigation({ notices = [] }: { notices?: { id: string; p
         className={`fixed top-0 left-0 w-full z-[100] transition-all duration-700 ease-out border-b ${
           isScrolled || mobileMenuOpen
             ? 'bg-chalk-white/95 backdrop-blur-2xl backdrop-saturate-[1.8] border-carbon-black/10 shadow-[0_10px_40px_rgba(0,0,0,0.1)] h-[50px] overflow-visible'
-            : 'bg-transparent border-transparent py-3 xl:py-0 shadow-none overflow-visible'
+            : 'bg-transparent border-transparent py-3 md:py-0 shadow-none overflow-visible'
         }`}
       >
         <div className={`max-w-[1600px] mx-auto flex justify-between items-center relative w-full h-full transition-all duration-700 ease-out ${
-          isScrolled ? 'px-4 md:px-6' : 'px-6 md:px-12'
+          isScrolled ? 'px-4 md:px-6' : 'px-6 md:px-8'
         }`}>
-          <Link href="/" className={`group z-50 absolute left-1/2 -translate-x-1/2 xl:relative xl:left-auto xl:translate-x-0 flex items-center transition-transform duration-700 ease-out ${!isScrolled ? 'xl:-translate-y-6' : 'xl:translate-y-0'}`}>
+          <Link href="/" className={`group z-50 absolute left-1/2 -translate-x-1/2 md:relative md:left-auto md:translate-x-0 flex items-center transition-transform duration-700 ease-out ${!isScrolled ? 'md:-translate-y-6' : 'md:translate-y-0'}`}>
             <motion.div 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className={`relative flex items-center justify-center transition-all duration-700 ease-out ${
-                isScrolled ? 'w-[70px] h-[50px] md:w-[86px] md:h-[60px]' : 'w-20 h-20 md:w-28 md:h-28 xl:w-32 xl:h-32'
+                isScrolled ? 'w-[60px] h-[40px] md:w-[65px] md:h-[45px] lg:w-[75px] lg:h-[50px] xl:w-[86px] xl:h-[60px]' : 'w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28'
               }`}
             >
               <Image
@@ -121,8 +122,9 @@ export default function Navigation({ notices = [] }: { notices?: { id: string; p
 
           {/* Desktop Nav */}
           <nav 
-            className={`hidden xl:flex items-center gap-6 xl:gap-8 relative transition-transform duration-700 ease-out ${!isScrolled ? '-translate-y-6' : 'translate-y-0'}`}
-            onMouseLeave={() => {
+            className={`hidden md:flex items-center justify-center gap-2 md:gap-3 lg:gap-5 xl:gap-8 relative transition-transform duration-700 ease-out ${!isScrolled ? '-translate-y-6' : 'translate-y-0'}`}
+            onPointerLeave={(e) => {
+              if (e.pointerType !== 'mouse') return;
               setHoveredItem(null);
               setActiveDropdown(null);
             }}
@@ -134,7 +136,8 @@ export default function Navigation({ notices = [] }: { notices?: { id: string; p
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ ...transitionConfig, delay: 0.2 + index * 0.05 }}
-                onMouseEnter={() => {
+                onPointerEnter={(e) => {
+                  if (e.pointerType !== 'mouse') return;
                   setHoveredItem(item.label);
                   if (item.items) setActiveDropdown(item.label);
                   else setActiveDropdown(null);
@@ -142,11 +145,20 @@ export default function Navigation({ notices = [] }: { notices?: { id: string; p
               >
                 <Link
                   href={item.href || '#'}
-                  onClick={(e) => { if (!item.href) e.preventDefault(); }}
+                  onClick={(e) => { 
+                    if (!item.href || item.items) {
+                      e.preventDefault();
+                      if (item.items) {
+                        // Normal click toggle
+                        setActiveDropdown(activeDropdown === item.label ? null : item.label);
+                        setHoveredItem(item.label);
+                      }
+                    }
+                  }}
                   className="group flex items-center gap-1 pb-2 relative"
                 >
                   <motion.span 
-                    className={`relative z-10 text-xs xl:text-sm uppercase tracking-[0.2em] font-extrabold transition-colors duration-500 block
+                    className={`relative z-10 text-[8px] md:text-[9px] lg:text-[11px] xl:text-sm uppercase tracking-[0.1em] lg:tracking-[0.15em] font-extrabold transition-colors duration-500 block
                       ${!isScrolled && !mobileMenuOpen 
                         ? (isActive(item) || hoveredItem === item.label ? 'text-chalk-white' : 'text-chalk-white/70 group-hover:text-chalk-white')
                         : (isActive(item) || hoveredItem === item.label ? 'text-track-red' : 'text-track-red/70 group-hover:text-track-red')}`}
@@ -209,7 +221,7 @@ export default function Navigation({ notices = [] }: { notices?: { id: string; p
                           >
                             <Link
                               href={subItem.href}
-                              className="relative px-6 py-4 text-[10px] xl:text-xs uppercase tracking-[0.2em] font-medium text-carbon-black/70 hover:text-carbon-black hover:bg-carbon-black/5 transition-colors group flex items-center justify-between"
+                              className="relative px-6 py-4 text-[10px] md:text-xs uppercase tracking-[0.2em] font-medium text-carbon-black/70 hover:text-carbon-black hover:bg-carbon-black/5 transition-colors group flex items-center justify-between"
                             >
                               <span className="relative z-10 group-hover:translate-x-2 transition-transform duration-300 ease-out">
                                 {subItem.label}
@@ -240,7 +252,7 @@ export default function Navigation({ notices = [] }: { notices?: { id: string; p
           </nav>
 
           {/* Right Action Items (Bell + Mobile Menu Toggle) */}
-          <div className={`flex items-center justify-between xl:justify-end gap-4 z-50 w-full xl:w-auto transition-transform duration-700 ease-out ${!isScrolled ? 'xl:-translate-y-6' : 'xl:translate-y-0'}`}>
+          <div className={`flex items-center justify-between md:justify-end gap-2 md:gap-4 z-50 w-full md:w-auto transition-transform duration-700 ease-out ${!isScrolled ? 'md:-translate-y-6' : 'md:translate-y-0'}`}>
             {/* Bell Notification Icon */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -272,7 +284,7 @@ export default function Navigation({ notices = [] }: { notices?: { id: string; p
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="xl:hidden relative w-10 h-10 flex flex-col justify-center items-end p-2 z-[60]"
+              className="md:hidden relative w-10 h-10 flex flex-col justify-center items-end p-2 z-[60]"
             >
               <span className={`h-[2px] block transition-all duration-300 ease-out origin-center ${!isScrolled && !mobileMenuOpen ? 'bg-chalk-white' : 'bg-track-red'} ${mobileMenuOpen ? 'w-6 rotate-45 absolute top-1/2 -translate-y-1/2 right-2' : 'w-6 mb-1.5'}`} />
               <span className={`h-[2px] block transition-all duration-300 ease-out origin-center ${!isScrolled && !mobileMenuOpen ? 'bg-chalk-white' : 'bg-track-red'} ${mobileMenuOpen ? 'w-6 -rotate-45 absolute top-1/2 -translate-y-1/2 right-2' : 'w-4'}`} />
