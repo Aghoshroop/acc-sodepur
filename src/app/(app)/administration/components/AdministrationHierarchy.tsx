@@ -60,94 +60,86 @@ export default function AdministrationHierarchy() {
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10 flex flex-col gap-32">
         
         {/* --- SECTION 2: CORE BODY --- */}
-        <div className="grid grid-cols-1 lg:grid-cols-[7fr_5fr] gap-16 lg:gap-24">
+        <div className="flex flex-col gap-24 mb-32">
           
-          {/* Left Column */}
-          <div className="flex flex-col gap-20">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-10%" }}
-            >
-              <SectionHeader title="Executive Body" />
-              <div className="flex flex-col gap-12">
-                {/* Row 1: Director & President */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div>
-                    <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[10px] md:text-xs tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-bold mb-4">Director</h5>
-                    <MemberCard member={executiveBody.director} />
-                  </div>
-                  <div>
-                    <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[10px] md:text-xs tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-bold mb-4">President</h5>
-                    <MemberCard member={executiveBody.president} />
-                  </div>
+          {/* Executive Body */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-10%" }}
+            className="flex flex-col gap-10"
+          >
+            <SectionHeader title="Executive Body" />
+            
+            <div className="flex flex-col gap-12">
+              {/* Row 1: Director, President, Director (Sports Science) */}
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 gap-y-12">
+                
+                {/* --- Row 1 --- */}
+                <div className="lg:col-start-1">
+                  <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[10px] md:text-xs tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-bold mb-4">Director</h5>
+                  <MemberCard member={executiveBody.director} />
+                </div>
+                <div className="lg:col-start-2">
+                  <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[10px] md:text-xs tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-bold mb-4">President</h5>
+                  <MemberCard member={executiveBody.president} />
+                </div>
+                <div className="lg:col-start-3">
+                  <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[10px] md:text-xs tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-bold mb-4">Director (Sports Science)</h5>
+                  <MemberCard member={executiveBody.directorSportsScience} />
                 </div>
 
-                {/* Vice Presidents */}
-                <div>
-                  <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[10px] md:text-xs tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-bold mb-4">Vice-President</h5>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
-                    {executiveBody.vicePresidents.map(vp => (
+                {/* --- Row 2 --- */}
+                <div className="lg:col-start-1 lg:col-span-2">
+                  <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[10px] md:text-xs tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-bold mb-4">Vice-Presidents</h5>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    {executiveBody.vicePresidents.map((vp) => (
                       <MemberCard key={vp.name} member={vp} />
                     ))}
                   </div>
                 </div>
-
-                {/* Secretaries & Treasurer */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                  <div className="flex flex-col gap-8">
-                    <div>
-                      <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[10px] md:text-xs tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-bold mb-4">General Secretary</h5>
-                      <MemberCard member={executiveBody.generalSecretary} />
-                    </div>
-                    <div>
-                      <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[10px] md:text-xs tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-bold mb-4">Assistant Secretary</h5>
-                      <MemberCard member={executiveBody.assistantSecretary} />
-                    </div>
-                  </div>
-                  <div>
-                    <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[10px] md:text-xs tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-bold mb-4">Treasurer</h5>
-                    <div className="flex flex-col gap-8">
-                      {executiveBody.treasurers.map(t => (
-                        <MemberCard key={t.name} member={t} />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-
-
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Right Column */}
-          <div className="flex flex-col gap-16">
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-10%" }}
-              className="flex flex-col gap-10"
-            >
-              <div>
-                <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[10px] md:text-xs tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-bold mb-4">Director (Sports Science)</h5>
-                <MemberCard member={executiveBody.directorSportsScience} />
-              </div>
-              <div>
-                <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[10px] md:text-xs tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-bold mb-4">Head - Infrastructure & Advisory</h5>
-                <MemberCard member={executiveBody.headInfrastructure} />
-              </div>
-              <div>
-                <SectionHeader title="Patrons" />
-                <div className="grid grid-cols-2 gap-6">
-                  {technicalAndSupport.patrons.map((patron) => (
-                    <MemberCard key={patron.name} member={patron} />
-                  ))}
+                <div className="lg:col-start-3">
+                  <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[10px] md:text-xs tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-bold mb-4">Head - Infrastructure</h5>
+                  <MemberCard member={executiveBody.headInfrastructure} />
                 </div>
               </div>
-            </motion.div>
 
-          </div>
+              {/* Secretaries & Treasurer */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div>
+                  <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[10px] md:text-xs tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-bold mb-4">General Secretary</h5>
+                  <MemberCard member={executiveBody.generalSecretary} />
+                </div>
+                <div>
+                  <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[10px] md:text-xs tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-bold mb-4">Assistant Secretary</h5>
+                  <MemberCard member={executiveBody.assistantSecretary} />
+                </div>
+                <div>
+                  <h5 className="inline-block bg-track-red/10 text-track-red border border-track-red/20 text-[10px] md:text-xs tracking-[0.2em] uppercase px-3 py-1.5 rounded-sm font-bold mb-4">Treasurer</h5>
+                  <div className="grid grid-cols-2 gap-8">
+                    {executiveBody.treasurers.map(t => (
+                      <MemberCard key={t.name} member={t} />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Patrons */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-10%" }}
+            className="flex flex-col gap-10"
+          >
+            <SectionHeader title="Patrons" />
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+              {technicalAndSupport.patrons.map((patron) => (
+                <MemberCard key={patron.name} member={patron} />
+              ))}
+            </div>
+          </motion.div>
         </div>
 
         {/* --- SECTION 3: EXECUTIVE MEMBERS --- */}

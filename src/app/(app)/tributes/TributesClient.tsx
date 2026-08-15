@@ -65,16 +65,25 @@ const TRIBUTES = [
   }
 ];
 
-const CURRENT_SUPPORT = [
-  executiveBody.president,
-  executiveBody.generalSecretary,
-  ...executiveBody.vicePresidents,
-  executiveBody.assistantSecretary,
-  ...executiveBody.treasurers,
-  executiveBody.headInfrastructure,
-  executiveBody.headCreative,
-  ...executiveMembers
-];
+const CURRENT_SUPPORT = (() => {
+  const manabIndex = executiveMembers.findIndex(m => m.name === "Mr. Manab Chatterjee");
+  
+  // In data.ts, Chaitali Dey is immediately after Manab Chatterjee (at manabIndex + 1).
+  // We'll insert Avijit Phani (headInfrastructure) immediately after Chaitali.
+  const splitIndex = manabIndex + 2; 
+
+  return [
+    executiveBody.president,
+    executiveBody.generalSecretary,
+    ...executiveBody.vicePresidents,
+    executiveBody.assistantSecretary,
+    ...executiveBody.treasurers,
+    ...executiveMembers.slice(0, splitIndex),
+    executiveBody.headInfrastructure,
+    ...executiveMembers.slice(splitIndex),
+    executiveBody.headCreative
+  ];
+})();
 
 const FIRST_ACC = [
   "Kuntal Roy", "Pallab Sur", "Dipak Banerjee", "Samir Pal", "Kamalesh Sarkar",
@@ -361,7 +370,7 @@ export default function TributesClient() {
                 viewport={{ once: true }}
               >
                 <h3 className="text-2xl font-primary uppercase tracking-widest text-track-red mb-6 border-b border-track-red/30 pb-3">
-                  Synthetic Track Investors
+                  Synthetic Track Contributors
                 </h3>
                 <ul className="space-y-4 font-light text-chalk-white/80 list-none pl-0">
                   <li className="flex items-center gap-3">
@@ -386,7 +395,7 @@ export default function TributesClient() {
                 transition={{ delay: 0.2 }}
               >
                 <h3 className="text-2xl font-primary uppercase tracking-widest text-track-red mb-6 border-b border-track-red/30 pb-3">
-                  All-New Hostel Investors
+                  All-New Hostel Contributors
                 </h3>
                 <ul className="space-y-4 font-light text-chalk-white/80 list-none pl-0">
                   <li className="flex items-center gap-3">

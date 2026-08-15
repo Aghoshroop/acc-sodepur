@@ -66,13 +66,13 @@ export const executiveBody = {
 export const executiveMembers = [
   { name: "Mr. Tapan Ghosh", image: "/images/administration/Tapan G.jpg.jpeg" },
   { name: "Mr. Manab Chatterjee", image: "/images/administration/Manab C.jpg.jpeg" },
+  { name: "Mrs. Chaitali Dey", image: "/images/administration/Chaitali D.jpg.jpeg" },
   { name: "Mrs. Rina Mondal", image: "/images/administration/Rina M.jpg.jpeg" },
   { name: "Mr. Barun Mondal", image: "/images/administration/Barun M.jpg.jpeg" },
   { name: "Mr. Mrityunjay Saha", image: "/images/administration/Mrityunjan S.jpg.jpeg" }, 
   { name: "Mr. Moloy Ganguly", image: "/images/administration/Moloy G.jpg.jpeg" },
   { name: "Mr. Proloy Sen", image: "/images/administration/Proloy S.jpg.jpeg" },
   { name: "Mr. Partha Dey", image: "/images/administration/Partha D.jpg.jpeg" },
-  { name: "Mrs. Chaitali Dey", image: "/images/administration/Chaitali D.jpg.jpeg" },
   { name: "Mr. Avijit Ghatak", image: "/images/administration/Avijit G.jpg.jpeg" },
   { name: "Mr. Tapas Chakraborty", image: "/images/administration/Tapas C.jpg.jpeg" },
   { name: "Mr. Sudip Ghosh", image: "/images/administration/Sudip G.jpg.jpeg" },
@@ -92,6 +92,6 @@ export const technicalAndSupport = {
   visitingCoaches: [
     { name: "Mr. Mrinal Roy", role: "CSCS & NIS", image: "/images/administration/mrinal-roy.jpg" },
     { name: "Ms. Susmita Singha Roy", role: "Olympian & WA Athletics Level - 2 Coach", image: "/images/administration/susmita.jpg" },
-    { name: "Mr. Sanjay Rai", role: "Olympian & NIS", image: "/images/sanjay-da.JPG" },
+    { name: "Mr. Sanjay Rai", role: "Olympian & NIS", image: "/images/sanjay-da.jpg" },
   ],
 };
