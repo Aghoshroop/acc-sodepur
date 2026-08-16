@@ -13,12 +13,16 @@ export default function EntrySplashScreen({ children }: { children: React.ReactN
       return;
     }
 
-    // Lock scroll on mount
+    // Lock scroll and touch gestures on mount
     document.body.style.overflow = 'hidden';
+    document.body.style.touchAction = 'none';
+    document.body.style.overscrollBehavior = 'none';
     window.scrollTo(0, 0);
     
     return () => {
       document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+      document.body.style.overscrollBehavior = '';
     };
   }, []);
 
@@ -29,6 +33,8 @@ export default function EntrySplashScreen({ children }: { children: React.ReactN
     setTimeout(() => {
       setSplashState('done');
       document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+      document.body.style.overscrollBehavior = '';
       if (typeof window !== 'undefined') {
         sessionStorage.setItem('hasSeenSplash', 'true');
       }
@@ -61,7 +67,7 @@ export default function EntrySplashScreen({ children }: { children: React.ReactN
             animate={{ opacity: splashState === 'fading' ? 0 : 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1, ease: 'easeInOut' }}
-            className="fixed inset-0 z-[100] bg-black flex items-center justify-center pointer-events-auto"
+            className="fixed inset-0 z-[100] bg-black flex items-center justify-center pointer-events-auto touch-none"
           >
             <video
               autoPlay
