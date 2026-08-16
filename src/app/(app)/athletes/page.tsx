@@ -240,7 +240,7 @@ export default async function AthletesPage() {
     "Aniket Roy",
     "Sanayoj Mondal",
     "Tarun Bauri",
-    "Surya Burman",
+    "Surya Barman",
     "Abhishek Mondal",
     "Bijoy Sarkar",
     "Subham Paul",

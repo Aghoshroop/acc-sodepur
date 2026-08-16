@@ -94,7 +94,7 @@ const FIRST_ACC = [
 const EARLY_SUPPORT = [
   "Late Sulekha Roy", "Late Mihir Baran Roy", "Late Prabir Baran Roy", "Late Sasthi Charan Chatterjee",
   "Late Baldev Dutta", "Late Ananta Mukherjee", "Late Amulya Sur", "Late Surya Chatterjee",
-  "Late Bijoy Hasi Dev", "Late Jyoti Das", "Late P.C. Sinha", "Late Ashoke Basu",
+  "Late Bijoy Hari Dev", "Late Jyoti Das", "Late P.C. Sinha", "Late Ashoke Basu",
   "Late Arati Banerjee", "Late S. Majumder", "Mother of Somnath Roy", "Mother of Aloke Dasgupta",
   "Biplab Roy"
 ];

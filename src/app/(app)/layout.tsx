@@ -21,11 +21,14 @@ export default async function AppLayout({
       {/* Navigation (Responsive Header & Sidebar) */}
       <Navigation notices={serializedNotices} />
 
-      <main className="flex-grow flex flex-col">
-        {children}
-      </main>
+      {/* Main page content - z-20 so it covers the footer until the end */}
+      <div className="relative z-20 flex-grow flex flex-col bg-[var(--color-carbon-black)]">
+        <main className="flex-grow flex flex-col">
+          {children}
+        </main>
+      </div>
       
-      {/* Footer conditionally handles its own mobile rendering or is fine as is, but we'll leave it for now */}
+      {/* Footer handles its own sticky reveal layers */}
       <Footer />
     </div>
   );

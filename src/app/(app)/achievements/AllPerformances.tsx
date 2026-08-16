@@ -46,7 +46,7 @@ const PERFORMANCES_DATA = [
     athletes: [
       "1. Bidisha Kundu", "2. Shikhar Rai",
       "3. Aviroop Ghosh", "4. Sayan Karmakar",
-      "5. Nupur Pandey", "6. Tannishtha Shee",
+      "5. Nupur Pandey", "6. Tannistha Shee",
       "7. Ujala Kumari Singh", "8. Debanjana Dey",
       "9. Priti Chakraborty", "10. Hirak Sen",
       "11. Dipti Rajbanshi", "12. Rajdip Pal",

@@ -52,7 +52,7 @@ export default function KnowledgeCentre() {
 
           <div className="mt-8">
             <Link 
-              href="/knowledge-centre" 
+              href="/learn" 
               className="group flex items-center gap-6 w-max"
             >
               <span className="text-xs tracking-[0.2em] uppercase pb-2 border-b border-carbon-black/30 group-hover:border-carbon-black transition-colors text-carbon-black font-bold">

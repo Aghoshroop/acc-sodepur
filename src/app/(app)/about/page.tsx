@@ -1,11 +1,15 @@
 import HeroStark from '@/components/ui/HeroStark';
+import { Metadata } from 'next';
 import Image from 'next/image';
 import MobileAboutPage from './mobile/MobileAboutPage';
 import ClientAboutContent from './ClientAboutContent';
 
-export const metadata = {
-  title: 'About Us | Athletic Coaching Camp',
-  description: 'The history, legacy, and philosophy of Bengal\'s premier athletic institution.',
+export const metadata: Metadata = {
+  title: 'About ACC | History & Legacy of Athletic Coaching Camp',
+  description: 'Learn about the history, legacy, and philosophy of Athletic Coaching Camp (ACC) Sodepur, a premier athletics training institution in West Bengal.',
+  alternates: {
+    canonical: '/about',
+  }
 };
 
 const heroImages = [

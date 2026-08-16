@@ -8,9 +8,14 @@ import MobileEligibilityCriteria from '@/features/admissions/components/mobile/M
 import MobileSelectionProcess from '@/features/admissions/components/mobile/MobileSelectionProcess';
 import MobileApplicationCTA from '@/features/admissions/components/mobile/MobileApplicationCTA';
 
-export const metadata = {
-  title: 'Admissions | Athletic Coaching Camp',
-  description: 'Join the next generation of elite athletes. Review the rigorous admissions criteria and selection process for Athletic Coaching Camp.',
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'How to Join ACC | Athletics Admission & Selection',
+  description: 'Join the next generation of elite athletes. Review the rigorous admissions criteria and selection process for Athletic Coaching Camp (ACC) Sodepur.',
+  alternates: {
+    canonical: '/admissions',
+  }
 };
 
 export default function AdmissionsPage() {

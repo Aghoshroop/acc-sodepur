@@ -1,5 +1,14 @@
 import { cookies } from 'next/headers';
+import { Metadata } from 'next';
 import InstitutionalHero from '@/features/home/components/InstitutionalHero';
+
+export const metadata: Metadata = {
+  title: 'Athletic Coaching Camp (ACC) Sodepur | Best Athletics Club in West Bengal',
+  description: 'Athletic Coaching Camp (ACC) Sodepur is the best athletic coaching center in India. Located in Kolkata, West Bengal, offering premier track and field training.',
+  alternates: {
+    canonical: '/',
+  }
+};
 import NoticeBoardPreview from '@/features/home/components/NoticeBoardPreview';
 import AboutACC from '@/features/home/components/AboutACC';
 import ExploreInstitution from '@/features/home/components/ExploreInstitution';
