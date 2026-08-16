@@ -63,7 +63,7 @@ export default function AdministrationPage() {
               transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
             >
               <h1 className="text-6xl md:text-8xl lg:text-[100px] xl:text-[140px] font-primary uppercase tracking-tighter leading-[0.9] mb-6 drop-shadow-2xl flex flex-col items-center [text-shadow:0_4px_20px_rgba(0,0,0,0.8)]">
-                <span className="block text-transparent [-webkit-text-stroke:2px_var(--color-chalk-white)]">Administration</span>
+                <span className="block text-[var(--color-chalk-white)]/40 md:text-transparent md:[-webkit-text-stroke:2px_var(--color-chalk-white)]">Administration</span>
               </h1>
               <p className="text-lg md:text-2xl font-light text-chalk-white/60 tracking-[0.2em] max-w-2xl mx-auto uppercase mt-8">
                 The Visionaries

@@ -8,9 +8,10 @@ export default function FooterSignature() {
       <div 
         className="w-full relative flex justify-center items-center overflow-hidden h-[20vh] md:h-[35vh]"
       >
+        {/* Desktop SVG Design */}
         <svg 
           viewBox="0 0 800 300" 
-          className="w-full h-full max-w-[1200px]"
+          className="hidden md:block w-full h-full max-w-[1200px]"
           preserveAspectRatio="xMidYMid meet"
         >
           {/* Base Subtle Outline */}
@@ -44,6 +45,15 @@ export default function FooterSignature() {
             ACC
           </text>
         </svg>
+
+        {/* Mobile Portrait Design (Fixes overlapping font stroke paths) */}
+        <div className="flex md:hidden flex-col items-center justify-center w-full px-8">
+          <div className="w-full flex items-center justify-between border-y border-[var(--color-track-red)]/30 py-4 md:py-0">
+            <span className="text-[20vw] font-black tracking-tighter text-[var(--color-chalk-white)] leading-none">A</span>
+            <span className="text-[20vw] font-black tracking-tighter text-[var(--color-track-red)] leading-none">C</span>
+            <span className="text-[20vw] font-black tracking-tighter text-[var(--color-chalk-white)] leading-none">C</span>
+          </div>
+        </div>
       </div>
 
       {/* Thin Horizontal Line */}

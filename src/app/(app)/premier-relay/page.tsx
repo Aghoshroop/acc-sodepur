@@ -30,7 +30,7 @@ export default function PremierRelayPage() {
           </span>
           <h1 className="font-primary text-4xl sm:text-5xl md:text-7xl uppercase tracking-tighter drop-shadow-2xl max-w-5xl mx-auto leading-[0.9] text-chalk-white">
             14TH PREMIER RELAY <br />
-            <span className="text-transparent [-webkit-text-stroke:1px_var(--color-chalk-white)] md:[-webkit-text-stroke:1.5px_var(--color-chalk-white)]">
+            <span className="text-[var(--color-chalk-white)]/40 md:text-transparent md:[-webkit-text-stroke:1.5px_var(--color-chalk-white)]">
               CHAMPIONSHIP 2026
             </span>
           </h1>

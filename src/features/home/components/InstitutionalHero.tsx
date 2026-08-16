@@ -38,7 +38,7 @@ export default function InstitutionalHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 2.3, ease: "easeOut" }}
           >
-             <span className="text-track-red font-black tracking-[0.4em] uppercase text-xl md:text-2xl lg:text-3xl [-webkit-text-stroke:1px_#C8322B]">Since 1969</span>
+             <span className="text-track-red font-black tracking-[0.4em] uppercase text-xl md:text-2xl lg:text-3xl md:[-webkit-text-stroke:1px_#C8322B]">Since 1969</span>
           </motion.div>
 
           <motion.div 
@@ -54,7 +54,7 @@ export default function InstitutionalHero() {
                   animate={{ y: 0 }}
                   transition={{ duration: 1.2, delay: 2.6, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <span className="text-chalk-white inline-block">a</span><span className="text-transparent [-webkit-text-stroke:1px_#F8F9FA] md:[-webkit-text-stroke:1.5px_#F8F9FA] inline-block [transform:translateZ(0)]">thletic</span>
+                  <span className="text-chalk-white inline-block">a</span><span className="text-[#F8F9FA]/40 md:text-transparent md:[-webkit-text-stroke:1.5px_#F8F9FA] inline-block [transform:translateZ(0)]">thletic</span>
                 </motion.span>
               </motion.div>
               <motion.div className="overflow-hidden pb-2 px-2 -mx-2 mt-1 md:mt-2">
@@ -64,8 +64,12 @@ export default function InstitutionalHero() {
                   animate={{ y: 0 }}
                   transition={{ duration: 1.2, delay: 2.8, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <span className="text-chalk-white inline-block">c</span><span className="text-transparent [-webkit-text-stroke:1px_#F8F9FA] md:[-webkit-text-stroke:1.5px_#F8F9FA] inline-block [transform:translateZ(0)]">oaching </span>
-                  <span className="text-chalk-white inline-block">c</span><span className="text-transparent [-webkit-text-stroke:1px_#F8F9FA] md:[-webkit-text-stroke:1.5px_#F8F9FA] inline-block [transform:translateZ(0)]">amp</span>
+                  <div>
+                    <span className="text-chalk-white inline-block">c</span><span className="text-[#F8F9FA]/40 md:text-transparent md:[-webkit-text-stroke:1.5px_#F8F9FA] inline-block [transform:translateZ(0)]">oaching </span>
+                  </div>
+                  <div>
+                    <span className="text-chalk-white inline-block">c</span><span className="text-[#F8F9FA]/40 md:text-transparent md:[-webkit-text-stroke:1.5px_#F8F9FA] inline-block [transform:translateZ(0)]">amp</span>
+                  </div>
                 </motion.span>
               </motion.div>
             </h1>

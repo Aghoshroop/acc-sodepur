@@ -119,7 +119,7 @@ export default function HonouredGuestsPage() {
             <span className="inline-block bg-carbon-black/20 backdrop-blur-md border border-chalk-white/20 px-4 py-1.5 rounded-sm shadow-xl text-chalk-white text-[10px] md:text-sm tracking-[0.4em] uppercase font-bold mb-8">
               Distinguished Personalities
             </span>
-            <h1 className="font-primary text-[14vw] sm:text-7xl md:text-[9rem] uppercase tracking-tighter max-w-5xl mx-auto leading-[1.1] md:leading-[0.85] text-transparent [-webkit-text-stroke:1.5px_var(--color-chalk-white)] md:[-webkit-text-stroke:2px_var(--color-chalk-white)] opacity-90">
+            <h1 className="font-primary text-[14vw] sm:text-7xl md:text-[9rem] uppercase tracking-tighter max-w-5xl mx-auto leading-[1.1] md:leading-[0.85] text-[var(--color-chalk-white)]/40 md:text-transparent md:[-webkit-text-stroke:2px_var(--color-chalk-white)] opacity-90">
               HONOURED <br className="md:hidden" />
               GUESTS
             </h1>

@@ -161,7 +161,7 @@ export default function PageTransitionSplash() {
               </div>
               <div className="overflow-hidden pb-1">
                 <motion.div
-                  className="text-[14vw] font-primary uppercase tracking-tighter text-transparent [-webkit-text-stroke:1px_var(--color-chalk-white)] leading-[0.85]"
+                  className="text-[14vw] font-primary uppercase tracking-tighter text-[var(--color-chalk-white)]/40 leading-[0.85]"
                   initial={{ y: "100%" }}
                   animate={{ y: 0 }}
                   transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
@@ -171,7 +171,7 @@ export default function PageTransitionSplash() {
               </div>
               <div className="overflow-hidden pb-1">
                 <motion.div
-                  className="text-[14vw] font-primary uppercase tracking-tighter text-transparent [-webkit-text-stroke:1px_var(--color-chalk-white)] leading-[0.85]"
+                  className="text-[14vw] font-primary uppercase tracking-tighter text-[var(--color-chalk-white)]/40 leading-[0.85]"
                   initial={{ y: "100%" }}
                   animate={{ y: 0 }}
                   transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}

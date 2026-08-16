@@ -45,7 +45,7 @@ export default function MobileHero() {
             Athletic Coaching Camp
           </h1>
           
-          <div className="flex items-center gap-2 text-[15px] uppercase tracking-widest font-black text-carbon-black/60 mb-6 [-webkit-text-stroke:0.5px_rgba(10,10,10,0.6)]">
+          <div className="flex items-center gap-2 text-[15px] uppercase tracking-widest font-black text-carbon-black/60 mb-6">
             <span>Since 1969</span>
             <span className="w-1.5 h-1.5 rounded-full bg-track-red" />
             <span>Sodepur • Bengal</span>

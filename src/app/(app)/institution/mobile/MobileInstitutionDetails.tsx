@@ -43,7 +43,7 @@ export default function MobileInstitutionDetails() {
           <div className="mb-10">
             <div className="text-track-red text-[10px] tracking-[0.4em] uppercase mb-4 font-bold">01 // The Ethos</div>
             <h2 className="text-4xl sm:text-5xl font-primary uppercase tracking-tight leading-[1.1] mb-6">
-              Driven By Passion.<br/> <span className="text-transparent [-webkit-text-stroke:1.5px_var(--color-chalk-white)]">Not Profit.</span>
+              Driven By Passion.<br/> <span className="text-[var(--color-chalk-white)]/40">Not Profit.</span>
             </h2>
           </div>
           

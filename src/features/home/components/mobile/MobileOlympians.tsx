@@ -106,7 +106,7 @@ export default function MobileOlympians() {
 
               <div className="flex flex-col gap-2 mt-1">
                 {/* Big OLYMPIAN text */}
-                <div className="text-[clamp(1rem,5.5vw,1.25rem)] font-primary font-bold uppercase tracking-[0.2em] text-track-red drop-shadow-md [-webkit-text-stroke:0.5px_#000] md:[-webkit-text-stroke:1px_#000]">
+                <div className="text-[clamp(1rem,5.5vw,1.25rem)] font-primary font-bold uppercase tracking-[0.2em] text-track-red drop-shadow-md md:[-webkit-text-stroke:1px_#000]">
                   OLYMPIAN
                 </div>
                 

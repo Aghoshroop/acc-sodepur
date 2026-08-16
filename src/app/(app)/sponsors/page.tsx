@@ -34,7 +34,7 @@ export default function SponsorsPage() {
             </span>
             <h1 className="font-primary text-5xl sm:text-7xl md:text-[9rem] uppercase tracking-tighter leading-[0.85] text-white drop-shadow-2xl">
               PARTNER WITH <br />
-              <span className="text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,1)] md:[-webkit-text-stroke:2px_rgba(255,255,255,1)] opacity-90">
+              <span className="text-white/40 md:text-transparent md:[-webkit-text-stroke:2px_rgba(255,255,255,1)] opacity-90">
                 LEGACY
               </span>
             </h1>
