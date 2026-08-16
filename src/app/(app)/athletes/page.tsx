@@ -304,7 +304,7 @@ export default async function AthletesPage() {
         metric: a.metric,
         // Provide a placeholder path so the image box is still rendered
         image: imgPath || '/images/athletes/placeholder.jpg',
-        imagePosition: a.name.toLowerCase().includes("sayan karmakar") ? "object-[center_10%]" : a.name.toLowerCase().includes("abhishek") ? "object-top" : "object-center"
+        imagePosition: a.name.toLowerCase().includes("sayan karmakar") ? "object-[center_10%]" : a.name.toLowerCase().includes("abhishek") || a.name.toLowerCase().includes("surya") ? "object-top" : "object-center"
       };
     });
 
