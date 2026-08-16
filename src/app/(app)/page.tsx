@@ -20,7 +20,6 @@ import OlympiansSection from '@/features/home/components/OlympiansSection';
 import TrainingProgrammes from '@/features/home/components/TrainingProgrammes';
 import KnowledgeCentre from '@/features/home/components/KnowledgeCentre';
 import AdmissionsCTA from '@/features/home/components/AdmissionsCTA';
-import EntrySplashScreen from '@/components/ui/EntrySplashScreen';
 import MobileHero from '@/features/home/components/mobile/MobileHero';
 import MobileNoticeBoard from '@/features/home/components/mobile/MobileNoticeBoard';
 import MobileAbout from '@/features/home/components/mobile/MobileAbout';
@@ -120,9 +119,7 @@ export default async function InstitutionalHomepage() {
 
   return (
     <main className="w-full min-h-screen bg-acc-black flex flex-col selection:bg-acc-gray selection:text-acc-black">
-      <EntrySplashScreen>
-        {homepageContent}
-      </EntrySplashScreen>
+      {homepageContent}
     </main>
   );
 }
