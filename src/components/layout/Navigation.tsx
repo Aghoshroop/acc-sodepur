@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import { CompetitionResult } from '@/features/results/types';
+import LatestResultStrip from './LatestResultStrip';
 
 const NAV_ITEMS = [
   { label: 'Home', href: '/' },
@@ -45,7 +47,15 @@ const NAV_ITEMS = [
 // Easing for ultra-smooth premium feel (Apple-like)
 const transitionConfig = { duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] };
 
-export default function Navigation({ notices = [] }: { notices?: { id: string; publishDate: string }[] }) {
+export default function Navigation({ 
+  notices = [],
+  latestResult,
+  topNavResults = []
+}: { 
+  notices?: { id: string; publishDate: string }[];
+  latestResult?: CompetitionResult | null;
+  topNavResults?: CompetitionResult[];
+}) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -92,43 +102,48 @@ export default function Navigation({ notices = [] }: { notices?: { id: string; p
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ ...transitionConfig, duration: 1, delay: 0.1 }}
-        className={`fixed top-0 left-0 w-full z-[100] transition-all duration-700 ease-out border-b ${
-          isScrolled || mobileMenuOpen
-            ? 'bg-chalk-white/95 backdrop-blur-2xl backdrop-saturate-[1.8] border-carbon-black/10 shadow-[0_10px_40px_rgba(0,0,0,0.1)] h-[50px] overflow-visible'
-            : 'bg-transparent border-transparent py-3 md:py-0 shadow-none overflow-visible'
-        }`}
+        className="fixed top-0 left-0 w-full z-[100] transition-all duration-500 ease-out flex flex-col"
       >
-        <div className={`max-w-[1600px] mx-auto flex justify-between items-center relative w-full h-full transition-all duration-700 ease-out ${
-          isScrolled ? 'px-4 md:px-6' : 'px-6 md:px-8'
-        }`}>
-          <Link href="/" className={`group z-50 absolute left-1/2 -translate-x-1/2 md:relative md:left-auto md:translate-x-0 flex items-center transition-transform duration-700 ease-out ${!isScrolled ? 'md:-translate-y-6' : 'md:translate-y-0'}`}>
-            <motion.div 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className={`relative flex items-center justify-center transition-all duration-700 ease-out ${
-                isScrolled ? 'w-[60px] h-[40px] md:w-[65px] md:h-[45px] lg:w-[75px] lg:h-[50px] xl:w-[86px] xl:h-[60px]' : 'w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28'
-              }`}
-            >
-              <Image
-                src="/images/logo.png"
-                alt="ACC Logo"
-                fill
-                className={`object-contain transition-all duration-700 ease-out ${
-                  !isScrolled ? 'brightness-0 invert' : ''
-                }`}
-              />
-            </motion.div>
-          </Link>
+        {/* Glamourous Latest Result Strip Over Navbar */}
+        <LatestResultStrip results={topNavResults.length > 0 ? topNavResults : (latestResult ? [latestResult] : [])} isScrolled={isScrolled} />
 
-          {/* Desktop Nav */}
-          <nav 
-            className={`hidden md:flex items-center justify-center gap-2 md:gap-3 lg:gap-5 xl:gap-8 relative transition-transform duration-700 ease-out ${!isScrolled ? '-translate-y-6' : 'translate-y-0'}`}
-            onPointerLeave={(e) => {
-              if (e.pointerType !== 'mouse') return;
-              setHoveredItem(null);
-              setActiveDropdown(null);
-            }}
-          >
+        {/* Main Navbar Bar */}
+        <div className={`w-full transition-all duration-500 ease-out ${
+          isScrolled || mobileMenuOpen
+            ? 'bg-chalk-white/95 backdrop-blur-2xl backdrop-saturate-[1.8] border-b border-carbon-black/10 shadow-[0_10px_40px_rgba(0,0,0,0.1)]'
+            : 'bg-transparent border-transparent shadow-none'
+        }`}>
+          <div className={`max-w-[1600px] mx-auto flex justify-between items-center relative w-full transition-all duration-500 ease-out ${
+            isScrolled ? 'px-4 md:px-6 h-[50px]' : 'px-6 md:px-8 h-[60px] md:h-[68px]'
+          }`}>
+            <Link href="/" className="group z-50 relative flex items-center transition-transform duration-500 ease-out shrink-0">
+              <motion.div 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className={`relative flex items-center justify-center transition-all duration-500 ease-out ${
+                  isScrolled ? 'w-[55px] h-[36px] md:w-[65px] md:h-[42px] lg:w-[75px] lg:h-[48px]' : 'w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20'
+                }`}
+              >
+                <Image
+                  src="/images/logo.png"
+                  alt="ACC Logo"
+                  fill
+                  className={`object-contain transition-all duration-500 ease-out ${
+                    !isScrolled ? 'brightness-0 invert' : ''
+                  }`}
+                />
+              </motion.div>
+            </Link>
+
+            {/* Desktop Nav */}
+            <nav 
+              className="hidden md:flex items-center justify-center gap-2 md:gap-3 lg:gap-5 xl:gap-8 relative transition-transform duration-500 ease-out"
+              onPointerLeave={(e) => {
+                if (e.pointerType !== 'mouse') return;
+                setHoveredItem(null);
+                setActiveDropdown(null);
+              }}
+            >
             {NAV_ITEMS.map((item, index) => (
               <motion.div 
                 key={item.label} 
@@ -252,7 +267,7 @@ export default function Navigation({ notices = [] }: { notices?: { id: string; p
           </nav>
 
           {/* Right Action Items (Bell + Mobile Menu Toggle) */}
-          <div className={`flex items-center justify-between md:justify-end gap-2 md:gap-4 z-50 w-full md:w-auto transition-transform duration-700 ease-out ${!isScrolled ? 'md:-translate-y-6' : 'md:translate-y-0'}`}>
+          <div className="flex items-center justify-end gap-2 md:gap-4 z-50 transition-transform duration-500 ease-out shrink-0">
             {/* Bell Notification Icon */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -291,7 +306,8 @@ export default function Navigation({ notices = [] }: { notices?: { id: string; p
             </motion.button>
           </div>
         </div>
-      </motion.header>
+      </div>
+    </motion.header>
 
       {/* Mobile Off-Canvas Menu Backdrop */}
       <AnimatePresence>

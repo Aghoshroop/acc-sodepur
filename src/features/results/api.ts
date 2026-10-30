@@ -1,6 +1,5 @@
 import { adminDb } from '@/lib/firebase/admin';
 import { CompetitionResult } from './types';
-import resultsData from '@/data/results.json';
 
 export async function getAllResults(): Promise<CompetitionResult[]> {
   try {
@@ -10,7 +9,7 @@ export async function getAllResults(): Promise<CompetitionResult[]> {
       .get();
       
     if (snapshot.empty) {
-      return resultsData as CompetitionResult[];
+      return [];
     }
       
     return snapshot.docs.map(doc => ({
@@ -19,6 +18,35 @@ export async function getAllResults(): Promise<CompetitionResult[]> {
     } as CompetitionResult));
   } catch (error) {
     console.error('Error fetching results:', error);
-    return resultsData as CompetitionResult[];
+    return [];
   }
+}
+
+export async function getTopNavResults(): Promise<CompetitionResult[]> {
+  try {
+    const snapshot = await adminDb
+      .collection('results')
+      .orderBy('year', 'desc')
+      .get();
+      
+    if (snapshot.empty) {
+      return [];
+    }
+
+    const docs = snapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    } as CompetitionResult));
+
+    // ONLY visible those achievements which are explicitly set visible for top nav by admin
+    return docs.filter(d => d.showOnTopNav === true && d.isActive !== false);
+  } catch (error) {
+    console.error('Error fetching top nav results:', error);
+    return [];
+  }
+}
+
+export async function getLatestActiveResult(): Promise<CompetitionResult | null> {
+  const topNavResults = await getTopNavResults();
+  return topNavResults[0] || null;
 }

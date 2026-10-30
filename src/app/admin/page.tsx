@@ -14,7 +14,7 @@ const STATS = [
   { label: 'Athletes', value: 'Roster', icon: Users, href: '/admin/athletes', color: 'text-purple-400', bg: 'bg-purple-400/10' },
   { label: 'Calendar', value: 'Events', icon: CalendarDays, href: '/admin/calendar', color: 'text-red-400', bg: 'bg-red-400/10' },
   { label: 'Coaches', value: 'Staff', icon: Users, href: '/admin/coaches', color: 'text-orange-400', bg: 'bg-orange-400/10' },
-  { label: 'Achievements', value: 'Results', icon: Trophy, href: '/admin/achievements', color: 'text-yellow-400', bg: 'bg-yellow-400/10' },
+  { label: 'Latest Results', value: 'Broadcast', icon: Trophy, href: '/admin/results', color: 'text-yellow-400', bg: 'bg-yellow-400/10' },
   { label: 'Archive', value: 'Gallery', icon: Archive, href: '/admin/archive', color: 'text-indigo-400', bg: 'bg-indigo-400/10' },
 ];
 

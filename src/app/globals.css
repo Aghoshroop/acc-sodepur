@@ -79,3 +79,27 @@ body {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+/* Glamourous Latest Result Marquee & Shimmer Animations */
+@keyframes marquee-scroll {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee-infinite {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 42s linear infinite;
+  will-change: transform;
+}
+
+@keyframes light-sweep {
+  0% { transform: translateX(-150%); }
+  60%, 100% { transform: translateX(350%); }
+}
+
+.animate-light-sweep {
+  animation: light-sweep 6s ease-in-out infinite;
+  will-change: transform;
+}
+

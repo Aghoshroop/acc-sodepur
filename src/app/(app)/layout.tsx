@@ -2,6 +2,7 @@ import Navigation from '@/components/layout/Navigation';
 import MasterCanvas from '@/components/layout/MasterCanvas';
 import Footer from '@/components/layout/Footer';
 import { getActiveNotices } from '@/features/notices/api';
+import { getTopNavResults } from '@/features/results/api';
 import EntrySplashScreen from '@/components/ui/EntrySplashScreen';
 
 export default async function AppLayout({
@@ -10,6 +11,8 @@ export default async function AppLayout({
   children: React.ReactNode;
 }) {
   const notices = await getActiveNotices();
+  const topNavResults = await getTopNavResults();
+
   const serializedNotices = notices.map(n => ({
     id: n.id,
     publishDate: n.publishDate
@@ -20,8 +23,8 @@ export default async function AppLayout({
       <div className="min-h-screen flex flex-col text-carbon-black selection:bg-track-red selection:text-chalk-white relative z-0">
         <MasterCanvas />
         
-        {/* Navigation (Responsive Header & Sidebar) */}
-        <Navigation notices={serializedNotices} />
+        {/* Navigation (Responsive Header & Sidebar with Latest Result Strip) */}
+        <Navigation notices={serializedNotices} topNavResults={topNavResults} />
 
         {/* Main page content - z-20 so it covers the footer until the end */}
         <div className="relative z-20 flex-grow flex flex-col bg-[var(--color-carbon-black)]">

@@ -24,8 +24,8 @@ const NAV_ITEMS = [
   { label: 'Athletes', href: '/admin/athletes', icon: Users },
   { label: 'Coaches', href: '/admin/coaches', icon: Users }, // Will implement later
   { label: 'Competitions', href: '/admin/calendar', icon: CalendarDays },
-  { label: 'Achievements', href: '/admin/achievements', icon: Trophy }, // Will implement later
-  { label: 'Archive', href: '/admin/archive', icon: Archive }, // Will implement later
+  { label: 'Latest Results', href: '/admin/results', icon: Trophy },
+  { label: 'Archive', href: '/admin/archive', icon: Archive },
 ];
 
 export default function AdminSidebar({ children }: { children: React.ReactNode }) {
@@ -35,9 +35,12 @@ export default function AdminSidebar({ children }: { children: React.ReactNode }
 
   const handleLogout = async () => {
     await fetch('/api/admin/auth/login', { method: 'DELETE' });
-    router.push('/admin/login');
-    router.refresh();
+    window.location.href = '/admin/login';
   };
+
+  if (pathname === '/admin/login') {
+    return <>{children}</>;
+  }
 
   return (
     <div className="min-h-screen bg-carbon-black flex">

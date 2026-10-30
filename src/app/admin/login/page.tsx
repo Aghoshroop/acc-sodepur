@@ -18,14 +18,13 @@ export default function AdminLogin() {
       const res = await fetch('/api/admin/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password }),
+        body: JSON.stringify({ password: password.trim() }),
       });
 
       const data = await res.json();
 
       if (res.ok) {
-        router.push('/admin');
-        router.refresh(); // Refresh to ensure middleware sees the new cookie
+        window.location.href = '/admin';
       } else {
         setError(data.error || 'Login failed');
       }
