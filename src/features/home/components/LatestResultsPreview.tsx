@@ -1,12 +1,11 @@
-import { getAllResults } from '@/features/results/api';
+import { getFeaturedResult } from '@/features/results/api';
 import Link from 'next/link';
 
 import Image from 'next/image';
 import AnimatedCounter from '@/components/ui/AnimatedCounter';
 
 export default async function LatestResultsPreview() {
-  const results = await getAllResults();
-  const latestResult = results[0];
+  const latestResult = await getFeaturedResult();
 
   if (!latestResult) return null;
 

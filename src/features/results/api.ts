@@ -22,24 +22,42 @@ export async function getAllResults(): Promise<CompetitionResult[]> {
   }
 }
 
+export async function getFeaturedResult(): Promise<CompetitionResult | null> {
+  try {
+    const allResults = await getAllResults();
+    const activeResults = allResults.filter(r => r.isActive !== false);
+    if (activeResults.length === 0) return null;
+
+    // 1. Look for explicitly pinned / featured result (even if older year)
+    const featured = activeResults.find(r => r.isFeatured === true || r.isPinnedToStrip === true);
+    if (featured) return featured;
+
+    // 2. Default fallback to newest active result
+    return activeResults[0] || null;
+  } catch (error) {
+    console.error('Error fetching featured result:', error);
+    return null;
+  }
+}
+
 export async function getTopNavResults(): Promise<CompetitionResult[]> {
   try {
-    const snapshot = await adminDb
-      .collection('results')
-      .orderBy('year', 'desc')
-      .get();
-      
-    if (snapshot.empty) {
+    const allResults = await getAllResults();
+    const activeResults = allResults.filter(d => d.isActive !== false);
+    
+    if (activeResults.length === 0) {
       return [];
     }
 
-    const docs = snapshot.docs.map(doc => ({
-      id: doc.id,
-      ...doc.data()
-    } as CompetitionResult));
-
     // ONLY visible those achievements which are explicitly set visible for top nav by admin
-    return docs.filter(d => d.showOnTopNav === true && d.isActive !== false);
+    const explicitTopNav = activeResults.filter(d => d.showOnTopNav === true);
+    if (explicitTopNav.length > 0) {
+      return explicitTopNav;
+    }
+
+    // Fallback: If no results have been explicitly set for top nav yet,
+    // default to the newest active result so the top strip is active!
+    return [activeResults[0]];
   } catch (error) {
     console.error('Error fetching top nav results:', error);
     return [];
@@ -47,6 +65,5 @@ export async function getTopNavResults(): Promise<CompetitionResult[]> {
 }
 
 export async function getLatestActiveResult(): Promise<CompetitionResult | null> {
-  const topNavResults = await getTopNavResults();
-  return topNavResults[0] || null;
+  return getFeaturedResult();
 }

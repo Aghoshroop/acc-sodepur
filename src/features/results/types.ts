@@ -31,7 +31,8 @@ export interface CompetitionResult {
   description: string;
   isActive?: boolean;
   showOnTopNav?: boolean; // Set by admin to control visibility on top nav strip
-  isPinnedToStrip?: boolean;
+  isPinnedToStrip?: boolean; // Featured result in Homepage "Latest Results" section (legacy alias)
+  isFeatured?: boolean; // Featured result in Homepage "Latest Results" section
   highlights?: string[];
   athletes?: AthletePerformance[];
   createdAt?: string;

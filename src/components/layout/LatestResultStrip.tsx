@@ -37,8 +37,7 @@ export default function LatestResultStrip({ results, result, isScrolled }: Lates
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [selectedEditorial]);
 
-  // STRICT RULE: ONLY visible those achievements which are explicitly set showOnTopNav === true by admin!
-  // All other achievements MUST NOT be visible on the top nav.
+  // Active results passed from getTopNavResults (either explicitly chosen or newest active fallback)
   const rawList: CompetitionResult[] = [];
   if (results && results.length > 0) {
     rawList.push(...results);
@@ -47,10 +46,10 @@ export default function LatestResultStrip({ results, result, isScrolled }: Lates
   }
 
   const activeResults = rawList.filter(
-    (item) => item && item.showOnTopNav === true && item.isActive !== false
+    (item) => item && item.isActive !== false
   );
 
-  // If there are no achievements set visible on top nav by admin, completely hide the strip on home & everywhere!
+  // If there are no achievements to broadcast, hide the strip
   if (activeResults.length === 0) {
     return null;
   }

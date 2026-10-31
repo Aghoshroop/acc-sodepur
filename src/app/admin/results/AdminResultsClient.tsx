@@ -4,11 +4,11 @@ import React, { useState } from 'react';
 import { CompetitionResult, AthletePerformance, ResultCategory } from '@/features/results/types';
 import { 
   createResult, updateResult, deleteResult, 
-  toggleResultActive, toggleShowOnTopNav, pinResultToStrip, seedInitialResults 
+  toggleResultActive, toggleShowOnTopNav, toggleFeaturedResult, pinResultToStrip, seedInitialResults 
 } from '@/features/results/actions';
 import { 
   Trophy, Medal, Zap, Flame, Sparkles, Plus, Edit2, 
-  Trash2, Radio, Check, X, MapPin, Calendar, Database, RefreshCw, UserCheck, Eye, EyeOff
+  Trash2, Radio, Check, X, MapPin, Calendar, Database, RefreshCw, UserCheck, Eye, EyeOff, Star
 } from 'lucide-react';
 
 interface AdminResultsClientProps {
@@ -32,7 +32,8 @@ export default function AdminResultsClient({ initialResults }: AdminResultsClien
     date: '',
     description: '',
     isActive: true,
-    showOnTopNav: false,
+    showOnTopNav: true,
+    isFeatured: false,
     isPinnedToStrip: false,
     highlightsText: '',
     metrics: {
@@ -60,6 +61,13 @@ export default function AdminResultsClient({ initialResults }: AdminResultsClien
   // Achievements set visible on top nav by admin
   const topNavVisibleResults = results.filter(r => r.showOnTopNav === true && r.isActive !== false);
 
+  // Active results
+  const activeResults = results.filter(r => r.isActive !== false);
+
+  // Currently Featured Result for Homepage Latest Results section
+  const explicitlyFeatured = results.find(r => (r.isFeatured === true || r.isPinnedToStrip === true) && r.isActive !== false);
+  const homeFeaturedResult = explicitlyFeatured || activeResults[0] || null;
+
   const resetForm = () => {
     setFormData({
       championship: '',
@@ -69,7 +77,8 @@ export default function AdminResultsClient({ initialResults }: AdminResultsClien
       date: '',
       description: '',
       isActive: true,
-      showOnTopNav: false,
+      showOnTopNav: true,
+      isFeatured: false,
       isPinnedToStrip: false,
       highlightsText: '',
       metrics: {
@@ -97,7 +106,8 @@ export default function AdminResultsClient({ initialResults }: AdminResultsClien
       description: item.description || '',
       isActive: item.isActive !== false,
       showOnTopNav: item.showOnTopNav === true,
-      isPinnedToStrip: !!item.isPinnedToStrip,
+      isFeatured: Boolean(item.isFeatured || item.isPinnedToStrip),
+      isPinnedToStrip: Boolean(item.isFeatured || item.isPinnedToStrip),
       highlightsText: (item.highlights || []).join('\n'),
       metrics: {
         gold: item.metrics?.gold || 0,
@@ -167,6 +177,7 @@ export default function AdminResultsClient({ initialResults }: AdminResultsClien
       .map(s => s.trim())
       .filter(s => s.length > 0);
 
+    const isFeat = Boolean(formData.isFeatured || formData.isPinnedToStrip);
     const payload: Omit<CompetitionResult, 'id'> = {
       championship: formData.championship.trim(),
       year: Number(formData.year),
@@ -176,7 +187,8 @@ export default function AdminResultsClient({ initialResults }: AdminResultsClien
       description: formData.description.trim(),
       isActive: formData.isActive,
       showOnTopNav: formData.showOnTopNav,
-      isPinnedToStrip: formData.isPinnedToStrip,
+      isFeatured: isFeat,
+      isPinnedToStrip: isFeat,
       highlights,
       athletes: formData.athletes,
       metrics: {
@@ -193,13 +205,27 @@ export default function AdminResultsClient({ initialResults }: AdminResultsClien
       if (editingId) {
         const res = await updateResult(editingId, payload);
         if (!res.success) throw new Error(res.error);
-        setResults(prev => prev.map(r => r.id === editingId ? { ...payload, id: editingId } : r));
+        setResults(prev => prev.map(r => {
+          if (r.id === editingId) {
+            return { ...payload, id: editingId };
+          }
+          if (isFeat) {
+            return { ...r, isFeatured: false, isPinnedToStrip: false };
+          }
+          return r;
+        }));
         setSuccess('Competition result updated successfully!');
       } else {
         const res = await createResult(payload);
         if (!res.success) throw new Error(res.error);
         if (res.id) {
-          setResults(prev => [{ ...payload, id: res.id }, ...prev]);
+          const newItem = { ...payload, id: res.id };
+          setResults(prev => {
+            const list = isFeat 
+              ? prev.map(r => ({ ...r, isFeatured: false, isPinnedToStrip: false }))
+              : prev;
+            return [newItem, ...list];
+          });
         }
         setSuccess('New competition result created successfully!');
       }
@@ -227,24 +253,33 @@ export default function AdminResultsClient({ initialResults }: AdminResultsClien
     }
   };
 
-  const handlePin = async (item: CompetitionResult) => {
+  const handleToggleFeatured = async (item: CompetitionResult) => {
     if (!item.id) return;
+    const isCurrentlyFeatured = item.isFeatured === true || item.isPinnedToStrip === true;
+    const nextStatus = !isCurrentlyFeatured;
     setLoading(true);
     try {
-      const res = await pinResultToStrip(item.id);
+      const res = await toggleFeaturedResult(item.id, nextStatus);
       if (!res.success) throw new Error(res.error);
       setResults(prev => prev.map(r => ({
         ...r,
-        isPinnedToStrip: r.id === item.id,
-        isActive: r.id === item.id ? true : r.isActive
+        isFeatured: r.id === item.id ? nextStatus : false,
+        isPinnedToStrip: r.id === item.id ? nextStatus : false,
+        isActive: r.id === item.id && nextStatus ? true : r.isActive
       })));
-      setSuccess(`"${item.championship}" pinned to homepage navigation strip!`);
+      setSuccess(
+        nextStatus
+          ? `"${item.championship}" (${item.year}) is now FEATURED in the Homepage "Latest Results" section!`
+          : `"${item.championship}" unfeatured. Homepage will display the newest active result.`
+      );
     } catch (err: any) {
-      setError(err.message || 'Failed to pin result.');
+      setError(err.message || 'Failed to toggle featured status.');
     } finally {
       setLoading(false);
     }
   };
+
+  const handlePin = handleToggleFeatured;
 
   const handleDelete = async (id?: string) => {
     if (!id) return;
@@ -296,83 +331,134 @@ export default function AdminResultsClient({ initialResults }: AdminResultsClien
         </div>
       )}
 
-      {/* Live Broadcast Indicator Card */}
-      <div className={`p-6 rounded-2xl border transition-all ${
-        topNavVisibleResults.length > 0 
-          ? 'bg-gradient-to-r from-black via-zinc-950 to-black border-track-red shadow-[0_0_30px_rgba(200,50,43,0.25)]' 
-          : 'bg-black/60 border-white/10'
-      }`}>
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div className="flex items-start md:items-center gap-3">
-            <div className={`w-3.5 h-3.5 rounded-full mt-1 md:mt-0 shrink-0 ${topNavVisibleResults.length > 0 ? 'bg-track-red animate-ping' : 'bg-white/20'}`} />
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/50 block">
-                  Home Top Nav Strip Status
+      {/* Live Status Indicators (Dual Control: Homepage Latest Section & Top Nav Strip) */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        
+        {/* 1. Homepage "Latest Results" Section Indicator */}
+        <div className={`p-5 md:p-6 rounded-2xl border transition-all ${
+          explicitlyFeatured 
+            ? 'bg-gradient-to-br from-black via-zinc-950 to-amber-950/20 border-amber-500/50 shadow-[0_0_25px_rgba(245,158,11,0.2)]'
+            : 'bg-black/60 border-white/10'
+        }`}>
+          <div className="flex items-start gap-3.5">
+            <div className={`w-3.5 h-3.5 rounded-full mt-1 shrink-0 ${
+              explicitlyFeatured ? 'bg-amber-400 shadow-[0_0_8px_rgba(245,158,11,1)]' : 'bg-white/30'
+            }`} />
+            <div className="flex-1 min-w-0">
+              <div className="flex flex-wrap items-center gap-2 mb-1.5">
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/50">
+                  Homepage &quot;Latest Results&quot; Section
+                </span>
+                <span className={`px-2 py-0.5 rounded text-[9px] font-black uppercase tracking-wider flex items-center gap-1 ${
+                  explicitlyFeatured 
+                    ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40' 
+                    : 'bg-white/10 text-white/70'
+                }`}>
+                  <Star size={10} className={explicitlyFeatured ? "fill-amber-400 text-amber-400" : "text-white/40"} />
+                  {explicitlyFeatured ? 'Admin Selected' : 'Auto (Newest Active)'}
+                </span>
+              </div>
+
+              {homeFeaturedResult ? (
+                <div>
+                  <h4 className="text-sm md:text-base font-bold text-chalk-white truncate">
+                    {homeFeaturedResult.championship} ({homeFeaturedResult.year})
+                  </h4>
+                  <p className="text-[11px] text-white/50 mt-1 leading-relaxed">
+                    {explicitlyFeatured 
+                      ? 'This result is pinned to the homepage hero section. You can select any year or competition below.'
+                      : 'No specific result is pinned; automatically showing the newest active result. Click "Feature on Home" on any item below to feature it.'}
+                  </p>
+                </div>
+              ) : (
+                <p className="text-xs text-white/40 mt-1">No active results published.</p>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* 2. Top Nav Marquee Strip Indicator */}
+        <div className={`p-5 md:p-6 rounded-2xl border transition-all ${
+          topNavVisibleResults.length > 0 
+            ? 'bg-gradient-to-br from-black via-zinc-950 to-red-950/20 border-track-red shadow-[0_0_25px_rgba(200,50,43,0.25)]' 
+            : 'bg-black/60 border-white/10'
+        }`}>
+          <div className="flex items-start gap-3.5">
+            <div className={`w-3.5 h-3.5 rounded-full mt-1 shrink-0 ${
+              topNavVisibleResults.length > 0 ? 'bg-track-red animate-ping' : 'bg-white/30'
+            }`} />
+            <div className="flex-1 min-w-0">
+              <div className="flex flex-wrap items-center gap-2 mb-1.5">
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/50">
+                  Top Nav Marquee Strip
                 </span>
                 <span className={`px-2 py-0.5 rounded text-[9px] font-black uppercase tracking-wider ${
                   topNavVisibleResults.length > 0 ? 'bg-track-red text-white' : 'bg-white/10 text-white/50'
                 }`}>
-                  {topNavVisibleResults.length > 0 ? `LIVE (${topNavVisibleResults.length} VISIBLE)` : 'HIDDEN ON HOME'}
+                  {topNavVisibleResults.length > 0 ? `LIVE (${topNavVisibleResults.length} VISIBLE)` : 'AUTO FALLBACK'}
                 </span>
               </div>
 
               {topNavVisibleResults.length > 0 ? (
-                <div className="mt-1">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <span className="text-sm md:text-base font-bold text-chalk-white">
-                      Visible on Website Top Strip:
-                    </span>
+                <div>
+                  <div className="flex flex-wrap items-center gap-1.5 max-h-16 overflow-y-auto">
                     {topNavVisibleResults.map((item) => (
-                      <span key={item.id} className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-white/10 border border-track-red/60 text-chalk-white">
-                        <Radio size={10} className="text-track-red animate-pulse" />
+                      <span key={item.id} className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold bg-white/10 border border-track-red/60 text-chalk-white">
+                        <Radio size={9} className="text-track-red animate-pulse" />
                         {item.championship} ({item.year})
                       </span>
                     ))}
                   </div>
-                  <span className="text-[11px] text-white/40 block mt-1">
-                    Only achievements set visible here appear in the top nav strip. All other achievements are kept hidden from top nav.
-                  </span>
+                  <p className="text-[11px] text-white/50 mt-1.5">
+                    Competitions streaming in the infinite ticker above the navigation bar.
+                  </p>
                 </div>
               ) : (
-                <div className="mt-1">
-                  <span className="text-sm font-semibold text-white/60 block">
-                    Strip Hidden: No achievements are set visible by admin. The top navigation strip is currently not displayed on the homepage.
-                  </span>
-                  <span className="text-[11px] text-white/40 block mt-0.5">
-                    Click &quot;Show on Top Nav&quot; on any achievement below to make it visible on the top nav strip.
-                  </span>
+                <div>
+                  <p className="text-xs text-white/70 font-medium">
+                    No results explicitly marked. Ticker defaults to showing the newest active result so the strip is never empty.
+                  </p>
+                  <p className="text-[11px] text-white/40 mt-1">
+                    Click &quot;Show on Top Nav&quot; on any item to add it to the live strip.
+                  </p>
                 </div>
               )}
             </div>
           </div>
+        </div>
 
-          <div className="flex items-center gap-3 shrink-0">
-            {results.length === 0 && (
-              <button
-                onClick={handleSeed}
-                disabled={loading}
-                className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 text-xs font-bold uppercase tracking-wider text-chalk-white flex items-center gap-2 transition-all"
-              >
-                <Database size={14} className="text-track-red" />
-                Seed Initial Data
-              </button>
-            )}
+      </div>
 
+      {/* Action Header: Add Result / Seed */}
+      <div className="flex items-center justify-between gap-4 bg-white/[0.02] border border-white/10 p-4 rounded-xl">
+        <span className="text-xs text-white/60 font-medium">
+          Create, edit, or broadcast championships and athlete performances.
+        </span>
+        <div className="flex items-center gap-3 shrink-0">
+          {results.length === 0 && (
             <button
-              onClick={() => {
-                if (isFormOpen && !editingId) setIsFormOpen(false);
-                else {
-                  resetForm();
-                  setIsFormOpen(true);
-                }
-              }}
-              className="px-4 py-2.5 rounded-lg bg-track-red hover:bg-red-700 text-white text-xs font-black uppercase tracking-wider flex items-center gap-2 shadow-[0_0_15px_rgba(200,50,43,0.4)] transition-all"
+              onClick={handleSeed}
+              disabled={loading}
+              className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 text-xs font-bold uppercase tracking-wider text-chalk-white flex items-center gap-2 transition-all"
             >
-              <Plus size={16} />
-              {isFormOpen ? 'Close Form' : 'Add New Result'}
+              <Database size={14} className="text-track-red" />
+              Seed Initial Data
             </button>
-          </div>
+          )}
+
+          <button
+            onClick={() => {
+              if (isFormOpen && !editingId) setIsFormOpen(false);
+              else {
+                resetForm();
+                setIsFormOpen(true);
+              }
+            }}
+            className="px-4 py-2.5 rounded-lg bg-track-red hover:bg-red-700 text-white text-xs font-black uppercase tracking-wider flex items-center gap-2 shadow-[0_0_15px_rgba(200,50,43,0.4)] transition-all"
+          >
+            <Plus size={16} />
+            {isFormOpen ? 'Close Form' : 'Add New Result'}
+          </button>
         </div>
       </div>
 
@@ -666,7 +752,27 @@ export default function AdminResultsClient({ initialResults }: AdminResultsClien
           </div>
 
           {/* Status Toggles */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-3 border-t border-white/10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-3 border-t border-white/10">
+            {/* Feature in Homepage Section */}
+            <label className="flex items-start gap-3 cursor-pointer bg-white/5 p-3.5 rounded-xl border border-amber-500/30 hover:border-amber-500/60 transition-all">
+              <input 
+                type="checkbox" 
+                checked={formData.isFeatured}
+                onChange={(e) => setFormData({ ...formData, isFeatured: e.target.checked, isPinnedToStrip: e.target.checked })}
+                className="w-5 h-5 rounded text-amber-500 focus:ring-0 accent-amber-500 mt-0.5"
+              />
+              <div>
+                <span className="text-xs font-black uppercase tracking-wider text-amber-300 flex items-center gap-1.5">
+                  <Star size={13} className={formData.isFeatured ? "text-amber-400 fill-amber-400" : "text-white/40"} />
+                  Feature on Homepage Section
+                </span>
+                <span className="text-[11px] text-white/50 block mt-0.5">
+                  Showcase in homepage &quot;Latest Results&quot; hero section (works for any season or previous years).
+                </span>
+              </div>
+            </label>
+
+            {/* Visible on Top Navigation Strip */}
             <label className="flex items-start gap-3 cursor-pointer bg-white/5 p-3.5 rounded-xl border border-white/10 hover:border-white/20 transition-all">
               <input 
                 type="checkbox" 
@@ -680,11 +786,12 @@ export default function AdminResultsClient({ initialResults }: AdminResultsClien
                   Visible on Top Navigation Strip
                 </span>
                 <span className="text-[11px] text-white/50 block mt-0.5">
-                  When enabled, this achievement is shown in the red/black/white top bar above the navbar.
+                  When enabled, this achievement streams in the red/black/white top bar above the navbar.
                 </span>
               </div>
             </label>
 
+            {/* Active in Leaderboard */}
             <label className="flex items-start gap-3 cursor-pointer bg-white/5 p-3.5 rounded-xl border border-white/10 hover:border-white/20 transition-all">
               <input 
                 type="checkbox" 
@@ -694,7 +801,7 @@ export default function AdminResultsClient({ initialResults }: AdminResultsClien
               />
               <div>
                 <span className="text-xs font-black uppercase tracking-wider text-chalk-white">
-                  Active in Leaderboard (/results)
+                  Active in Archive (/results)
                 </span>
                 <span className="text-[11px] text-white/50 block mt-0.5">
                   When checked, this result is visible on the full results leaderboard page.
@@ -750,15 +857,20 @@ export default function AdminResultsClient({ initialResults }: AdminResultsClien
         ) : (
           <div className="grid grid-cols-1 gap-4">
             {results.map((result) => {
-              const isPinned = result.isPinnedToStrip;
+              const isFeatured = Boolean(result.isFeatured || result.isPinnedToStrip);
               const isActive = result.isActive !== false;
               const isTopNav = result.showOnTopNav === true && isActive;
+              const isDefaultHome = !explicitlyFeatured && homeFeaturedResult?.id === result.id;
 
               return (
                 <div 
                   key={result.id}
                   className={`bg-black/60 border rounded-xl p-5 md:p-6 transition-all ${
-                    isTopNav ? 'border-track-red shadow-[0_0_20px_rgba(200,50,43,0.25)]' : 'border-white/10 hover:border-white/20'
+                    isFeatured 
+                      ? 'border-amber-500/60 shadow-[0_0_20px_rgba(245,158,11,0.25)]' 
+                      : isTopNav 
+                        ? 'border-track-red shadow-[0_0_20px_rgba(200,50,43,0.25)]' 
+                        : 'border-white/10 hover:border-white/20'
                   }`}
                 >
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -774,6 +886,17 @@ export default function AdminResultsClient({ initialResults }: AdminResultsClien
                         <span className="text-xs font-bold text-white/60">
                           {result.year} Season
                         </span>
+
+                        {/* Homepage Featured Badge */}
+                        {isFeatured ? (
+                          <span className="px-2.5 py-0.5 rounded text-[9px] font-black uppercase tracking-wider bg-amber-500/20 text-amber-300 border border-amber-500/40 flex items-center gap-1 shadow-[0_0_10px_rgba(245,158,11,0.3)]">
+                            <Star size={10} className="fill-amber-400 text-amber-400" /> Featured on Homepage
+                          </span>
+                        ) : isDefaultHome ? (
+                          <span className="px-2 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider bg-white/10 text-amber-200/80 border border-amber-500/20 flex items-center gap-1">
+                            <Star size={9} className="text-amber-300/70" /> Default on Home (Newest)
+                          </span>
+                        ) : null}
 
                         {/* Top Nav Status Badge */}
                         {isTopNav ? (
@@ -817,6 +940,21 @@ export default function AdminResultsClient({ initialResults }: AdminResultsClien
                     {/* Actions */}
                     <div className="flex flex-wrap md:flex-col lg:flex-row items-center gap-2 shrink-0 pt-2 md:pt-0 border-t md:border-t-0 border-white/10">
                       
+                      {/* Feature in Homepage Latest Section */}
+                      <button
+                        onClick={() => handleToggleFeatured(result)}
+                        disabled={loading}
+                        className={`px-3 py-1.5 rounded-lg text-xs font-black uppercase tracking-wider transition-all flex items-center gap-1.5 border ${
+                          isFeatured 
+                            ? 'bg-amber-500/25 text-amber-300 border-amber-500/70 shadow-[0_0_12px_rgba(245,158,11,0.4)] hover:bg-amber-500/35' 
+                            : 'bg-white/5 border-white/20 text-white/70 hover:text-white hover:border-amber-500/50 hover:bg-amber-500/10'
+                        }`}
+                        title="Feature this result (any year) in homepage 'Latest Results' section"
+                      >
+                        <Star size={12} className={isFeatured ? "fill-amber-400 text-amber-400" : "text-white/40"} />
+                        {isFeatured ? 'Featured on Home' : 'Feature on Home'}
+                      </button>
+
                       {/* Dedicated Top Nav Visibility Toggle */}
                       <button
                         onClick={() => handleToggleTopNav(result)}
@@ -844,20 +982,6 @@ export default function AdminResultsClient({ initialResults }: AdminResultsClien
                         title="Toggle active status in full results"
                       >
                         {isActive ? 'Active' : 'Archived'}
-                      </button>
-
-                      {/* Pin to Top Strip Button */}
-                      <button
-                        onClick={() => handlePin(result)}
-                        disabled={loading}
-                        className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-colors border ${
-                          isPinned 
-                            ? 'bg-track-red text-white border-track-red shadow-[0_0_10px_rgba(200,50,43,0.5)]' 
-                            : 'bg-white/5 border-white/10 text-white/60 hover:text-white hover:border-track-red'
-                        }`}
-                        title="Pin as headline on top nav strip"
-                      >
-                        {isPinned ? '★ Pinned' : 'Pin to Strip'}
                       </button>
 
                       {/* Edit Button */}

@@ -186,13 +186,17 @@ export default function ResultsClient({ initialResults }: ResultsClientProps) {
             {filteredResults.map((result) => {
               const isExpanded = !!expandedCards[result.id || ''];
               const isNational = result.category === 'national' || result.category === 'all_india';
-              const isPinned = result.isPinnedToStrip;
+              const isFeatured = Boolean(result.isFeatured || result.isPinnedToStrip);
 
               return (
                 <div 
                   key={result.id || result.championship}
                   className={`bg-black/70 border rounded-2xl overflow-hidden transition-all duration-300 ${
-                    isPinned ? 'border-track-red shadow-[0_0_30px_rgba(200,50,43,0.2)]' : 'border-white/10 hover:border-white/25'
+                    isFeatured 
+                      ? 'border-amber-500/60 shadow-[0_0_30px_rgba(245,158,11,0.2)]' 
+                      : result.showOnTopNav === true 
+                        ? 'border-track-red shadow-[0_0_30px_rgba(200,50,43,0.2)]' 
+                        : 'border-white/10 hover:border-white/25'
                   }`}
                 >
                   {/* Card Header Bar */}
@@ -210,6 +214,12 @@ export default function ResultsClient({ initialResults }: ResultsClientProps) {
                         <span className="px-3 py-1 rounded-full bg-white/5 text-white/70 text-[10px] md:text-xs font-bold uppercase tracking-widest border border-white/10">
                           {result.year} Season
                         </span>
+
+                        {isFeatured && (
+                          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40 text-[10px] md:text-xs font-black uppercase tracking-widest shadow-[0_0_12px_rgba(245,158,11,0.25)]">
+                            ★ Featured on Home
+                          </span>
+                        )}
 
                         {result.showOnTopNav === true && (
                           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-track-red/20 text-track-red border border-track-red/40 text-[10px] md:text-xs font-black uppercase tracking-widest">

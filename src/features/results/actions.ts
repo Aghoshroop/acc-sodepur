@@ -20,14 +20,31 @@ export async function createResult(data: Omit<CompetitionResult, 'id'>) {
   if (!isAuthenticated) return { success: false, error: 'Unauthorized' };
   
   try {
+    const isFeat = Boolean(data.isFeatured || data.isPinnedToStrip);
     const docData = {
       ...data,
       isActive: data.isActive !== undefined ? data.isActive : true,
-      showOnTopNav: data.showOnTopNav === true,
+      showOnTopNav: data.showOnTopNav !== undefined ? Boolean(data.showOnTopNav) : true,
+      isFeatured: isFeat,
+      isPinnedToStrip: isFeat,
       category: data.category || 'state',
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
     };
+
+    if (isFeat) {
+      const snapshot = await adminDb.collection('results').get();
+      const batch = adminDb.batch();
+      snapshot.docs.forEach((doc) => {
+        batch.update(doc.ref, { isFeatured: false, isPinnedToStrip: false });
+      });
+      const docRef = adminDb.collection('results').doc();
+      batch.set(docRef, docData);
+      await batch.commit();
+      revalidateAllPaths();
+      return { success: true, id: docRef.id };
+    }
+
     const docRef = await adminDb.collection('results').add(docData);
     revalidateAllPaths();
     return { success: true, id: docRef.id };
@@ -48,6 +65,25 @@ export async function updateResult(id: string, data: Partial<CompetitionResult>)
     };
     if (data.showOnTopNav !== undefined) {
       updateData.showOnTopNav = Boolean(data.showOnTopNav);
+    }
+    if (data.isFeatured !== undefined || data.isPinnedToStrip !== undefined) {
+      const isFeat = Boolean(data.isFeatured ?? data.isPinnedToStrip);
+      updateData.isFeatured = isFeat;
+      updateData.isPinnedToStrip = isFeat;
+      if (isFeat) {
+        const snapshot = await adminDb.collection('results').get();
+        const batch = adminDb.batch();
+        snapshot.docs.forEach((doc) => {
+          if (doc.id === id) {
+            batch.update(doc.ref, updateData);
+          } else {
+            batch.update(doc.ref, { isFeatured: false, isPinnedToStrip: false });
+          }
+        });
+        await batch.commit();
+        revalidateAllPaths();
+        return { success: true };
+      }
     }
     await adminDb.collection('results').doc(id).update(updateData);
     revalidateAllPaths();
@@ -106,7 +142,7 @@ export async function toggleShowOnTopNav(id: string, showOnTopNav: boolean) {
   }
 }
 
-export async function pinResultToStrip(id: string) {
+export async function toggleFeaturedResult(id: string, isFeatured: boolean) {
   const isAuthenticated = await verifyAdminSession();
   if (!isAuthenticated) return { success: false, error: 'Unauthorized' };
 
@@ -116,9 +152,14 @@ export async function pinResultToStrip(id: string) {
 
     snapshot.docs.forEach((doc) => {
       if (doc.id === id) {
-        batch.update(doc.ref, { isPinnedToStrip: true, isActive: true, updatedAt: new Date().toISOString() });
-      } else {
-        batch.update(doc.ref, { isPinnedToStrip: false });
+        batch.update(doc.ref, { 
+          isFeatured, 
+          isPinnedToStrip: isFeatured, 
+          isActive: true, 
+          updatedAt: new Date().toISOString() 
+        });
+      } else if (isFeatured) {
+        batch.update(doc.ref, { isFeatured: false, isPinnedToStrip: false });
       }
     });
 
@@ -126,9 +167,13 @@ export async function pinResultToStrip(id: string) {
     revalidateAllPaths();
     return { success: true };
   } catch (error: any) {
-    console.error('Error pinning result:', error);
-    return { success: false, error: error?.message || 'Failed to pin result' };
+    console.error('Error setting featured result:', error);
+    return { success: false, error: error?.message || 'Failed to set featured result' };
   }
+}
+
+export async function pinResultToStrip(id: string) {
+  return toggleFeaturedResult(id, true);
 }
 
 export async function seedInitialResults() {
